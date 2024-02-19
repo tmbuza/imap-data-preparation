@@ -1,0 +1,40 @@
+Project Tree
+.
+├── LICENSE
+├── README.md
+├── _bookdown.yml
+├── _output.yml
+├── bkgd.png
+├── coders.png
+├── config
+│   └── config.yml
+├── images
+│   ├── coders.png
+│   └── dataprep.png
+├── index.Rmd
+├── library
+│   ├── apa.csl
+│   ├── imap.bib
+│   ├── packages.bib
+│   └── references.bib
+├── output
+├── renv
+│   ├── activate.R
+│   ├── library
+│   ├── settings.json
+│   └── staging
+├── renv.lock
+├── reports
+│   └── project_tree.txt
+├── smkreport
+│   └── screenshot.png
+└── workflow
+    ├── Snakefile
+    ├── Snakefile__
+    ├── envs
+    ├── report
+    ├── rules
+    ├── schemas
+    └── scripts
+
+16 directories, 21 files

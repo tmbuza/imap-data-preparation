@@ -1,0 +1,42 @@
+from snakemake.utils import min_version
+
+min_version("6.10.0")
+
+# Configuration file containing all user-specified settings
+configfile: "config/config.yml"
+
+report: "report/workflow.rst"
+
+
+include: "rules/import_qiime2_data.smk"
+# include: "rules/qiime2_composite.smk"
+# include: "rules/qiime2_phyloseq_objects.smk"
+
+include: "rules/rmd_report.smk"
+
+rule all:
+    input:
+        "index.html",    
+        # "data/qiime2/qiime2_sample_metadata.tsv",
+        # "data/qiime2/qiime2_taxonomy.tsv",
+        # "data/qiime2/qiime2_features.tsv",
+
+        # "data/qiime2/qiime2_tidy_taxonomy.csv",
+        # "data/qiime2/qiime2_tidy_features.csv",
+        # "data/qiime2/qiime2_tidy_metadata.csv",
+        # "data/qiime2/qiime2_composite.csv",
+
+        # "data/qiime2/qiime2_phyloseq_objects.rda",
+
+        # "data/mothur/mothur_composite.csv",
+        # "data/mothur/mothur_tidy_taxonomy.csv",
+        # "data/mothur/mothur_tidy_otutable.csv",
+        # "data/mothur/mothur_tidy_metadata.csv",
+        # "data/mothur/mothur_taxonomy.tsv",
+        # "data/mothur/mothur_otutable.tsv",
+        # "data/mothur/mothur_metadata.tsv",
+
+
+        # "figures/taxon_barplot.svg",
+        # "images/smkreport/screenshot.png",
+        # "report.html",

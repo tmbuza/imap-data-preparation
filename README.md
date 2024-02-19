@@ -1,2 +1,2 @@
-# taxa-data-preparation
- Microbiome data cleaning, tidying and transformation
+# Microbiome Data Preparation for Downstream Analyses
+ Microbiome data cleaning, tidying, and transformation

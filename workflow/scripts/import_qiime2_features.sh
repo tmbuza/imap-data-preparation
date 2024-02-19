@@ -1,4 +1,4 @@
-INPUTDIR="../imap-bioinformatics-qiime2/qiime2_process/export/feature-table.tsv"
+INPUTDIR="../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv"
 OUTDIR="data/qiime2"
 
 echo PROGRESS: Importing QiiME2 features

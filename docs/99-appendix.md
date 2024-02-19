@@ -107,6 +107,11 @@ href="https://tmbuza.github.io/imap-snakemake-workflows/">In-progress</a></td>
 
 ![](dags/rulegraph.svg)
 
+<br>
+<br>
+
+![](figures/taxon_barplot.svg)
+
 
 # Session Information
 

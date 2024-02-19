@@ -1,5 +1,5 @@
 # qiime2_metadata
-rule process_qiime2_tidy_metadata:
+rule qiime2_tidy_metadata:
     input:
         metadata=rules.import_qiime2_metadata.output
     output:
@@ -11,7 +11,7 @@ rule process_qiime2_tidy_metadata:
 
 
 # qiime2_features
-rule process_qiime2_tidy_features:
+rule qiime2_tidy_features:
     input:
         features=rules.import_qiime2_features.output
     output:
@@ -23,7 +23,7 @@ rule process_qiime2_tidy_features:
 
 
 # qiime2_taxonomy
-rule process_qiime2_tidy_taxonomy:
+rule qiime2_tidy_taxonomy:
     input:
         taxonomy=rules.import_qiime2_taxonomy.output
     output:
@@ -37,9 +37,9 @@ rule process_qiime2_tidy_taxonomy:
 # qiime2_composite
 rule qiime2_composite_Robject:
     input:
-        metadata=rules.process_qiime2_tidy_metadata.output,
-        features=rules.process_qiime2_tidy_features.output,
-        taxonomy=rules.process_qiime2_tidy_taxonomy.output,
+        metadata=rules.qiime2_tidy_metadata.output,
+        features=rules.qiime2_tidy_features.output,
+        taxonomy=rules.qiime2_tidy_taxonomy.output,
     output:
         "data/qiime2/qiime2_composite.csv"
     conda:

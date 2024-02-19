@@ -1,5 +1,5 @@
-METADATA="../imap-bioinformatics-mothur/resources/metadata/mothur_test_sample_metadata.tsv"
-DESIGN="../imap-bioinformatics-mothur/resources/metadata/mothur_test_design_file.tsv"
+METADATA="../imap-mothur-bioinformatics/resources/metadata/mothur_test_sample_metadata.tsv"
+DESIGN="../imap-mothur-bioinformatics/resources/metadata/mothur_test_design_file.tsv"
 OUTDIR="data/mothur"
 
 echo PROGRESS: Importing MOTHUR metadata

@@ -1,4 +1,4 @@
-INPUTDIR="../imap-bioinformatics-mothur/mothur_process/otu_analysis/final.opti_mcc.0.03.cons.taxonomy"
+INPUTDIR="../imap-mothur-bioinformatics/mothur_process/otu_analysis/final.opti_mcc.0.03.cons.taxonomy"
 OUTDIR="data/mothur"
 
 echo PROGRESS: Importing MOTHUR taxonomy

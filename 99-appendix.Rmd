@@ -22,6 +22,11 @@
 
 ![](dags/rulegraph.svg)
 
+<br>
+<br>
+
+![](figures/taxon_barplot.svg)
+
 
 # Session Information
 

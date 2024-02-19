@@ -1,4 +1,16 @@
 preface
+import-library
+mothur-metadata
+mothur-otutable
+mothur-taxonomy
+mothur-composite
+qiime2-metadata
+qiime2-metadata-1
+qiime2-otutable
+qiime2-taxonomy
+qiime2-composite
+create-a-phyloseq-object
+confirm-the-phyloseq-object
 imap-github-repos
 data-preparation-rulegraph
 session-information

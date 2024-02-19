@@ -1,15 +1,29 @@
 ## QIIME2 metadata
-```{r get_ready}
+
+```r
 if (!dir.exists('data')) {dir.create('data')}
 if (!dir.exists('data/mothur')) {dir.create('data/mothur')}
 if (!dir.exists('data/qiime2')) {dir.create('data/qiime2')}
 
 library(tidyverse, suppressPackageStartupMessages())
+```
 
+```
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 # QIIME2  metadata
-```{r qiime_data}
+
+```r
 read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadata.tsv", show_col_types = FALSE) %>% 
   dplyr::rename(sample_id="sample-id") %>% 
   write_csv("data/qiime2/qiime2_tidy_metadata.csv")
@@ -17,7 +31,8 @@ read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadat
 
 
 ## QIIME2  otutable
-```{r}
+
+```r
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv", skip = 1, show_col_types = FALSE) %>%
   dplyr::rename(feature='#OTU ID') %>%
   select(-starts_with('Mock')) %>% 
@@ -30,7 +45,8 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv"
 
 
 ## QIIME2 taxonomy
-```{r}
+
+```r
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", show_col_types=FALSE) %>% 
   dplyr::rename(feature="Feature ID") %>% 
   distinct() %>%
@@ -50,12 +66,12 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", sho
   mutate(Taxon = str_replace_all(Taxon, "\\w__", "")) %>% 
   separate(Taxon, into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus"), sep = ";") %>% 
   write_csv("data/qiime2/qiime2_tidy_taxonomy.csv")
-
 ```
 
 
 ## QIIME2 composite
-```{r}
+
+```r
 # QIIME2 composite
 library(tidyverse, suppressPackageStartupMessages())
 
@@ -75,12 +91,64 @@ write_csv(qiime2_composite, "data/qiime2/qiime2_composite.csv")
 ```
 
 ## Create a phyloseq object
-```{r}
+
+```r
 library(tidyverse)
 library(phyloseq)
-library(microbiome)
-library(ape)
+```
 
+```
+## Warning in .recacheSubclasses(def@className, def, env): undefined subclass
+## "ndiMatrix" of class "replValueSp"; definition not updated
+```
+
+```r
+library(microbiome)
+```
+
+```
+## 
+## microbiome R package (microbiome.github.com)
+##     
+## 
+## 
+##  Copyright (C) 2011-2022 Leo Lahti, 
+##     Sudarshan Shetty et al. <microbiome.github.io>
+```
+
+```
+## 
+## Attaching package: 'microbiome'
+```
+
+```
+## The following object is masked from 'package:ggplot2':
+## 
+##     alpha
+```
+
+```
+## The following object is masked from 'package:base':
+## 
+##     transform
+```
+
+```r
+library(ape)
+```
+
+```
+## 
+## Attaching package: 'ape'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     where
+```
+
+```r
 metadata <- read_csv("data/qiime2/qiime2_tidy_metadata.csv",show_col_types = FALSE) %>% 
   tibble::column_to_rownames("sample_id") %>% 
   sample_data(metadata)
@@ -107,7 +175,16 @@ save(ps_tree, ps_raw, ps_rel,  file = "data/qiime2/qiime2_phyloseq_objects.rda")
 ```
 
 ## Confirm the phyloseq object
-```{r}
+
+```r
 ps_raw
+```
+
+```
+## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
+## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
+## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
 ```
 

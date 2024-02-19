@@ -4,7 +4,7 @@ rule plot_taxa_barplot:
         "data/qiime2_composite.csv",
     output:
         report("figures/taxon_barplot.svg", caption="../report/barplot_1.rst", category="Genus Abundance"),
-        "figures/taxon_barplot.png",
+       "figures/{plot}.png"
     conda:
         "../envs/environment.yml"
     script:

@@ -9,10 +9,40 @@ configfile: "config/config.yml"
 # print("Configuration:")
 # print(config)
 
+include: "rules/import_mothur_data.smk"
+include: "rules/mothur_composite.smk"
+include: "rules/mothur_phyloseq_objects.smk"
+include: "rules/import_qiime2_data.smk"
+include: "rules/qiime2_composite.smk"
+include: "rules/qiime2_phyloseq_objects.smk"
 
 rule FINAL_TARGET:
     input:
-        "docs/index.html"
+        "docs/index.html",
+        # "data/qiime2/qiime2_sample_metadata.tsv",
+        # "data/qiime2/qiime2_taxonomy.tsv",
+        # "data/qiime2/qiime2_features.tsv",
+
+        # "data/qiime2/qiime2_tidy_taxonomy.csv",
+        # "data/qiime2/qiime2_tidy_features.csv",
+        # "data/qiime2/qiime2_tidy_metadata.csv",
+        # "data/qiime2/qiime2_composite.csv",
+
+        "data/qiime2/qiime2_phyloseq_objects.rda",
+
+        # "data/mothur/mothur_composite.csv",
+        # "data/mothur/mothur_tidy_taxonomy.csv",
+        # "data/mothur/mothur_tidy_otutable.csv",
+        # "data/mothur/mothur_tidy_metadata.csv",
+        # "data/mothur/mothur_taxonomy.tsv",
+        # "data/mothur/mothur_otutable.tsv",
+        # "data/mothur/mothur_metadata.tsv",
+
+
+        # "figures/taxon_barplot.svg",
+        # "images/smkreport/screenshot.png",
+        # "report.html",
+
 
 # Rule to generate the rule graph and create the dags folder if it doesn't exist
 rule generate_rulegraph:
@@ -30,7 +60,7 @@ rule generate_rulegraph:
         """
 
 # Rule to generate a directory tree
-rule generate_tree:
+rule project_tree:
     output:
         directory("output"),
         "reports/project_tree.txt"
@@ -49,12 +79,26 @@ rule snakemake_report:
     shell:
         "snakemake --keep-going --use-conda --report {output[0]}"
 
+
+rule exploratory_analysis:
+    input:
+        # "data/mothur/mothur_composite.csv",
+        "data/mothur/mothur_phyloseq_objects.rda",
+        # "data/qiime2/qiime2_composite.csv",
+        "data/qiime2/qiime2_phyloseq_objects.rda",
+    output:
+        "figures/taxon_barplot.png"
+    script:
+        "scripts/plot_taxa_barplot.R"
+
+
 rule render_bs4_book:
     input:
         "reports/snakemake_report.html",
         "reports/project_tree.txt",
         "dags/rulegraph.png",
         "dags/rulegraph.svg",
+        "figures/taxon_barplot.png"
     output:
         "docs/index.html"
     shell:

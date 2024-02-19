@@ -1,14 +1,16 @@
+```{r demo_figure, fig.height=10, fig.width=10}
 library(tidyverse)
 library(svglite)
 
 mo <- read_csv("data/mothur/mothur_composite.csv", show_col_types = FALSE) %>% 
   mutate(pipeline="MOTHUR", .before=2) %>% 
-  select(-otu)
+  select(-otu, -3)
 
 q2 <- read_csv("data/qiime2/qiime2_composite.csv", show_col_types = FALSE) %>% 
   
   mutate(pipeline="QIIME2", .before=2) %>% 
-  select(-feature)
+  select(-feature, -c(3:14))
+  
 
 rbind(mo, q2) %>% 
   group_by(sample_id) %>%
@@ -16,14 +18,17 @@ rbind(mo, q2) %>%
   filter(total > 0) %>%
   group_by(Genus) %>%
   mutate(total = sum(count)) %>%
-  filter(total != 0) %>%
+  # filter(total != 0) %>%
+  filter(total >= 30) %>%
   ungroup() %>%
   select(-total) %>% 
   ggplot(aes(x=Genus, y=rel_abund, fill=pipeline)) +
   facet_grid(~pipeline) +
   geom_col() +
   coord_flip() +
-  labs(fill="Bioinfo\nPipeline")
+  labs(fill="Pipeline")
 
 ggsave(file="figures/taxon_barplot.png", width=10, height=10)
 ggsave(file="figures/taxon_barplot.svg", width=10, height=10)
+```
+

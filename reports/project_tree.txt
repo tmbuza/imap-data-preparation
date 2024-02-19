@@ -1,16 +1,51 @@
 Project Tree
 .
+├── 00-preface.Rmd
+├── 01_prepare_mothur_output.Rmd
+├── 02_prepare_qiime2_output.Rmd
+├── 99-appendix.Rmd
+├── 999-references.Rmd
+├── 9999-footer.Rmd
 ├── LICENSE
 ├── README.md
 ├── _bookdown.yml
+├── _common.R
+├── _global.Rmd
 ├── _output.yml
-├── bkgd.png
-├── coders.png
+├── bs4_template.html
 ├── config
 │   └── config.yml
+├── dags
+│   ├── rulegraph.png
+│   └── rulegraph.svg
+├── data
+│   ├── mothur
+│   └── qiime2
+├── data-prep.rds
+├── docs
+│   ├── 00-preface.md
+│   ├── 01_prepare_mothur_output.md
+│   ├── 404.html
+│   ├── 99-appendix.md
+│   ├── 999-references.md
+│   ├── 9999-footer.md
+│   ├── dags
+│   ├── data-preparation-rulegraph.html
+│   ├── images
+│   ├── imap-github-repos.html
+│   ├── index.html
+│   ├── index.md
+│   ├── libs
+│   ├── preface.html
+│   ├── reference-keys.txt
+│   ├── references.html
+│   ├── search.json
+│   ├── session-information.html
+│   └── style.css
 ├── images
 │   ├── coders.png
 │   └── dataprep.png
+├── imap-data-preparation.Rproj
 ├── index.Rmd
 ├── library
 │   ├── apa.csl
@@ -25,9 +60,13 @@ Project Tree
 │   └── staging
 ├── renv.lock
 ├── reports
-│   └── project_tree.txt
+│   ├── project_tree.txt
+│   └── snakemake_report.html
+├── resources
+│   └── session_info.txt
 ├── smkreport
 │   └── screenshot.png
+├── style.css
 └── workflow
     ├── Snakefile
     ├── Snakefile__
@@ -37,4 +76,4 @@ Project Tree
     ├── schemas
     └── scripts
 
-16 directories, 21 files
+25 directories, 51 files

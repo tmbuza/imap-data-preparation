@@ -6,4 +6,5 @@ dependencies:
   - r-base =4.2.2
   - bioconductor-biomformat
   - bioconductor-microbiome =1.16.0 
+  - bioconductor-pyloseq
   - r-rtsne =0.16 

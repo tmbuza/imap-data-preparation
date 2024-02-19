@@ -46,11 +46,38 @@ description: |
 # <u>IMAP-Part 07</u>:  Microbiome Data Preparation Guide {-#data-preparation}
 
 <br>
-<br>
 ![Book cover](images/dataprep.png)
 <br>
-<br>
 
-## Welcome to Chapter 7 {-}
+## Welcome to chapter 7 {-}
 
-Welcome to the "Microbiome Data Preparation Guide." This comprehensive guide is designed to assist researchers and practitioners in the crucial phase of data preparation for microbiome studies. Whether you're delving into the intricate world of microbial communities for the first time or seeking advanced strategies for refining your data, this guide provides step-by-step instructions and best practices to ensure the integrity and reliability of your microbiome data.
+Welcome to the "Microbiome Data Preparation Guide." This comprehensive guide is tailored for researchers and analysts engaged in microbiome studies, providing essential insights and methodologies for effective data preparation. Assuming that the bioinformatics analysis phase has been successfully completed and you now possess the output or features tables, including Operational Taxonomic Unit (OTU) tables, taxonomy tables, and a metadata table, from platforms such as Mothur or Qiime2, this guide will lead you through the crucial steps of refining and optimizing your microbiome data.
+
+## Why Data Preparation Matters {-}
+
+Microbiome analysis hinges on the quality and integrity of the data. As researchers and analysts, the intricate process of data preparation is paramount in ensuring the reliability of downstream analyses and the accuracy of biological interpretations. This guide acknowledges the diverse skill levels of its readers, accommodating both novice researchers seeking foundational knowledge and experienced analysts looking for advanced strategies.
+
+## Using OTU and Taxonomy Tables {-}
+
+In this chapter, we delve into the practical aspects of using Operational Taxonomic Unit (OTU) tables and taxonomy tables as inputs for downstream analysis. These tables, derived from the bioinformatics phase, serve as key components in exploring the composition and diversity of microbial communities. You will learn how to effectively clean, transform, and integrate these tables to prepare them for a range of downstream analyses.
+
+## Integrating Metadata for Context {-}
+
+The integration of a metadata table further enhances your analytical capabilities by allowing you to group observations based on relevant variables. This integration not only provides context to your microbiome data but also enables you to explore the impact of different conditions or factors on microbial community composition. In this guide, we'll demonstrate how to seamlessly incorporate metadata, unlocking valuable insights into the relationships between microbial communities and external variables.
+
+## What to Expect {-}
+
+- **Step-by-Step Instructions:** Each section of this guide presents clear and concise step-by-step instructions, ensuring that you can follow along seamlessly.
+
+- **Best Practices:** Explore best practices for data cleaning, transformation, and integration, with an emphasis on optimizing your microbiome datasets for robust analysis.
+
+- **Practical Insights:** Beyond technical instructions, the guide provides practical insights to help you navigate nuanced decisions in data preparation, empowering you to make informed choices that align with your research goals.
+
+Whether you are delving into the world of microbial communities for the first time or seeking advanced strategies to refine your microbiome data, this guide is your companion. As you embark on this journey, your commitment to data preparation will be pivotal in extracting meaningful biological insights and contributing to the advancement of microbiome research.
+
+Let's dive in!
+
+
+
+
+

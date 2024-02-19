@@ -1,4 +1,4 @@
-INPUTDIR="../imap-bioinformatics-qiime2/resources/metadata/qiime2_sample_metadata.tsv"
+INPUTDIR="../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadata.tsv"
 OUTDIR="data/qiime2"
 
 echo PROGRESS: Importing QIIME2 metadata

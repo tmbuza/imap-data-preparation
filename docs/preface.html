@@ -75,6 +75,7 @@
 <li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
 <li class="book-part">DATA PREPARATION</li>
 <li><a class="active" href="preface.html"><span class="header-section-number">1</span> Preparing for Downstream Analysis</a></li>
+<li><a class="" href="qiime2-metadata-1.html"><span class="header-section-number">2</span> QIIME2 metadata</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -93,16 +94,75 @@
 </h1>
 <p>In this preface, we set the stage for an in-depth exploration into the intricacies of preparing microbiome data. As the foundation of downstream analyses, effective data preparation is essential for extracting meaningful biological insights. This guide not only addresses the technical aspects of data cleaning, transformation, and integration but also offers practical insights to guide researchers through the nuanced decisions involved in optimizing their microbiome datasets. Whether you’re a novice or an experienced researcher, embark on this journey to elevate the quality and reliability of your microbiome analysis.</p>
 
+<div id="import-library" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Import library<a class="anchor" aria-label="anchor" href="#import-library"><i class="fas fa-link"></i></a>
+</h2>
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(tidyverse, suppressPackageStartupMessages())
+</a></code></pre>
 </div>
+<div id="mothur-metadata" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Mothur metadata<a class="anchor" aria-label="anchor" href="#mothur-metadata"><i class="fas fa-link"></i></a>
+</h2>
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(tidyverse, suppressPackageStartupMessages())
+</a></code></pre>
+</div>
+<div id="mothur-otutable" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Mothur otutable<a class="anchor" aria-label="anchor" href="#mothur-otutable"><i class="fas fa-link"></i></a>
+</h2>
+<pre><code></code></pre>
+</div>
+<div id="mothur-taxonomy" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Mothur taxonomy<a class="anchor" aria-label="anchor" href="#mothur-taxonomy"><i class="fas fa-link"></i></a>
+</h2>
+<pre><code></code></pre>
+</div>
+<div id="mothur-composite" class="section level2" number="1.5">
+<h2>
+<span class="header-section-number">1.5</span> Mothur composite<a class="anchor" aria-label="anchor" href="#mothur-composite"><i class="fas fa-link"></i></a>
+</h2>
+<pre><code></code></pre>
 
-
-
+</div>
+<div id="qiime2-metadata" class="section level2" number="1.6">
+<h2>
+<span class="header-section-number">1.6</span> QIIME2 metadata<a class="anchor" aria-label="anchor" href="#qiime2-metadata"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="st">'data'</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">'data'</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="st">'data/mothur'</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">'data/mothur'</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="st">'data/qiime2'</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">'data/qiime2'</span><span class="op">)</span><span class="op">}</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></div>
-<div class="next"><a href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></div>
+<div class="next"><a href="qiime2-metadata-1.html"><span class="header-section-number">2</span> QIIME2 metadata</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#preface"><span class="header-section-number">1</span> Preparing for Downstream Analysis</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#preface"><span class="header-section-number">1</span> Preparing for Downstream Analysis</a></li>
+<li><a class="nav-link" href="#import-library"><span class="header-section-number">1.1</span> Import library</a></li>
+<li><a class="nav-link" href="#mothur-metadata"><span class="header-section-number">1.2</span> Mothur metadata</a></li>
+<li><a class="nav-link" href="#mothur-otutable"><span class="header-section-number">1.3</span> Mothur otutable</a></li>
+<li><a class="nav-link" href="#mothur-taxonomy"><span class="header-section-number">1.4</span> Mothur taxonomy</a></li>
+<li><a class="nav-link" href="#mothur-composite"><span class="header-section-number">1.5</span> Mothur composite</a></li>
+<li><a class="nav-link" href="#qiime2-metadata"><span class="header-section-number">1.6</span> QIIME2 metadata</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

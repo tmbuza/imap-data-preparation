@@ -1,5 +1,5 @@
 # mothur_metadata
-rule process_mothur_tidy_metadata:
+rule mothur_tidy_metadata:
     input:
         metadata=rules.import_mothur_metadata.output
     output:
@@ -11,7 +11,7 @@ rule process_mothur_tidy_metadata:
 
 
 # mothur_shared_file
-rule process_mothur_tidy_otutable:
+rule mothur_tidy_otutable:
     input:
         otutable=rules.import_mothur_otutable.output
     output:
@@ -23,7 +23,7 @@ rule process_mothur_tidy_otutable:
 
 
 # mothur_taxonomy
-rule process_mothur_tidy_taxonomy:
+rule mothur_tidy_taxonomy:
     input:
         taxonomy=rules.import_mothur_taxonomy.output
     output:
@@ -35,11 +35,11 @@ rule process_mothur_tidy_taxonomy:
 
 
 # mothur_composite
-rule mothur_composite:
+rule mothur_composite_Robject:
     input:
-        metadata=rules.process_mothur_tidy_metadata.output,
-        otutable=rules.process_mothur_tidy_otutable.output,
-        taxonomy=rules.process_mothur_tidy_taxonomy.output,
+        metadata=rules.mothur_tidy_metadata.output,
+        otutable=rules.mothur_tidy_otutable.output,
+        taxonomy=rules.mothur_tidy_taxonomy.output,
     output:
         "data/mothur/mothur_composite.csv"
     conda:

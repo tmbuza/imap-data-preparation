@@ -1,4 +1,5 @@
 # Additional
+_bookdown_files/*
 gitbook?*
 .vscode
 .DS_store
@@ -155,3 +156,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .Rproj.user
+.Rhistory
+.Rhistory

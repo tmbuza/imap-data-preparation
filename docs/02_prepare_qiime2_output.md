@@ -95,14 +95,6 @@ write_csv(qiime2_composite, "data/qiime2/qiime2_composite.csv")
 ```r
 library(tidyverse)
 library(phyloseq)
-```
-
-```
-## Warning in .recacheSubclasses(def@className, def, env): undefined subclass
-## "ndiMatrix" of class "replValueSp"; definition not updated
-```
-
-```r
 library(microbiome)
 ```
 

@@ -143,6 +143,16 @@ library(lefser)
 if(!require("DESeq2")) {BiocManager::install("DESeq2")}
 library(DESeq2)
 
+if(!require("DESeq2")) {BiocManager::install("DESeq2")}
+library(DESeq2)
+
+if(!require("dada2")) {BiocManager::install("dada2")}
+library(dada2)
+
+if(!require("microbiomeMarker")) {BiocManager::install("microbiomeMarker")}
+library(microbiomeMarker)
+
+
 
 plotbeta<-function(physeq,group,shape=NULL,distance="bray",method="PCoA",color=NULL,size=3,ellipse=FALSE){
     if(!taxa_are_rows(physeq)){

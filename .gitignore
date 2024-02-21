@@ -1,3 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+
 # Additional
 _bookdown_files/*
 gitbook?*

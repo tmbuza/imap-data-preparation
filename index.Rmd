@@ -20,7 +20,7 @@ citation_package:
 url: https://tmbuza.github.io/imap-data-preparation/
 cover-image: images/planning.png
 email_address: "ndelly@gmail.com"
-github-repo: tmbuza/imap-project-overview
+github-repo: tmbuza/imap-data-preparation
 biblio-style: apalike
 description: |
   | This part will be added before release.

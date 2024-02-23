@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 .Rapp.history
+renv/
 
 # Additional
 _bookdown_files/*

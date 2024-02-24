@@ -46,7 +46,7 @@ description: |
 # <u>IMAP-Part 07</u>:  Microbiome Data Preparation Guide {-#data-preparation}
 
 <br>
-![Book cover](images/dataprep.png)
+![](images/dataprep.png)
 <br>
 
 ## Welcome to chapter 7 {-}

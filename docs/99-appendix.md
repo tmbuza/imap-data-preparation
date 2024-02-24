@@ -119,19 +119,16 @@ Reproducibility relies on the ability to precisely recreate the working environm
 
 
 ```r
-library(knitr)
 library(sessioninfo)
 
 # Get session info
 info <- capture.output(print(session_info()))
 
-# Create the 'resources' folder if it doesn't exist
-if (!dir.exists("resources")) {
-  dir.create("resources")
-}
+# Exclude lines containing specific information (e.g., pandoc and library path)
+info_filtered <- info[!grepl("pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library", info)]
 
-# Save the session information to a text file without line numbers
-cat(info, file = "session_info.txt", sep = "\n")
+# Save the filtered session info to a text file in the root directory without line numbers
+cat(info_filtered, file = "session_info.txt", sep = "\n")
 ```
 
 > For a detailed overview of the tools and versions suitable for this guide, I encourage you to explore the session information saved in the accompanying text file named `session_info.txt`,

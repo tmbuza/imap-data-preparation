@@ -17,7 +17,7 @@ rmd_files:
     - 02_prepare_qiime2_output.Rmd
     - 99-appendix.Rmd
     - 999-references.Rmd
-    - 9999-footer.Rmd
+# - 9999-footer.Rmd
   
 
 

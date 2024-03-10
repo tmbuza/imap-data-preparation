@@ -1,5 +1,6 @@
 --- 
 title: "<big>IMAP:</big> Integrated Microbiome Analysis Pipelines"
+permalink: /imap-overview/
 subtitle: "End-to-End Practical User Guides Using Integrated Approaches"
 date:
 - <b>`r Sys.Date()`</b>

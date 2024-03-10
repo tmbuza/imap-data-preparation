@@ -1,8 +1,9 @@
 --- 
 title: "<big>IMAP:</big> Integrated Microbiome Analysis Pipelines"
+permalink: /imap-overview/
 subtitle: "End-to-End Practical User Guides Using Integrated Approaches"
 date:
-- <b>2024-02-20</b>
+- <b>2024-03-10</b>
 author: Teresia Mrema-Buza
 site: bookdown::bookdown_site
 documentclass: book
@@ -20,7 +21,7 @@ citation_package:
 url: https://tmbuza.github.io/imap-data-preparation/
 cover-image: images/planning.png
 email_address: "ndelly@gmail.com"
-github-repo: tmbuza/imap-project-overview
+github-repo: tmbuza/imap-data-preparation
 biblio-style: apalike
 description: |
   | This part will be added before release.

@@ -1,8 +1,10 @@
-## QIIME2 metadata
+# (PART) QIIME2 OUTPUT {-}
+# Prepare Qiime2 Output
+
+## Data directories
 
 ```r
 if (!dir.exists('data')) {dir.create('data')}
-if (!dir.exists('data/mothur')) {dir.create('data/mothur')}
 if (!dir.exists('data/qiime2')) {dir.create('data/qiime2')}
 
 library(tidyverse, suppressPackageStartupMessages())
@@ -21,7 +23,7 @@ library(tidyverse, suppressPackageStartupMessages())
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-# QIIME2  metadata
+## Qiime2 metadata
 
 ```r
 read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadata.tsv", show_col_types = FALSE) %>% 
@@ -30,7 +32,7 @@ read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadat
 ```
 
 
-## QIIME2  otutable
+## Qiime2 otutable
 
 ```r
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv", skip = 1, show_col_types = FALSE) %>%
@@ -44,7 +46,7 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv"
 ```
 
 
-## QIIME2 taxonomy
+## Qiime2 taxonomy
 
 ```r
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", show_col_types=FALSE) %>% 
@@ -69,7 +71,7 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", sho
 ```
 
 
-## QIIME2 composite
+## Qiime2 composite
 
 ```r
 # QIIME2 composite
@@ -95,6 +97,14 @@ write_csv(qiime2_composite, "data/qiime2/qiime2_composite.csv")
 ```r
 library(tidyverse)
 library(phyloseq)
+```
+
+```
+## Warning in .recacheSubclasses(def@className, def, env): undefined subclass
+## "ndiMatrix" of class "replValueSp"; definition not updated
+```
+
+```r
 library(microbiome)
 ```
 
@@ -145,7 +155,7 @@ metadata <- read_csv("data/qiime2/qiime2_tidy_metadata.csv",show_col_types = FAL
   tibble::column_to_rownames("sample_id") %>% 
   sample_data(metadata)
 
-otutable <- read_csv("data/qiime2/qiime2_tidy_features.csv",show_col_types = FALSE) %>% 
+otutable <- read_csv("data/qiime2/qiime2_tidy_otutable.csv",show_col_types = FALSE) %>% 
   pivot_wider(id_cols = sample_id, names_from = feature, values_from = count) %>% 
   tibble::column_to_rownames("sample_id") %>% 
   otu_table(otutable, taxa_are_rows = FALSE)
@@ -163,20 +173,32 @@ ps_raw <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
 
 ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
 
-save(ps_tree, ps_raw, ps_rel,  file = "data/qiime2/qiime2_phyloseq_objects.rda")
+ps_df_raw <- psmelt(ps_raw)
+
+ps_df_rel <- psmelt(ps_raw)
+
+save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/qiime2_phyloseq_objects.rda")
 ```
 
-## Confirm the phyloseq object
+## Review the phyloseq object
+
 
 ```r
-ps_raw
+load("data/qiime2/qiime2_phyloseq_objects.rda", verbose = TRUE)
 ```
 
 ```
-## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
-## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
-## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
+## Loading objects:
+##   ps_tree
+##   ps_raw
+##   ps_rel
+##   ps_df_raw
+##   ps_df_rel
 ```
 
+```r
+write_csv(ps_df_raw, "data/qiime2/ps_df_raw.csv")
+write_csv(ps_df_rel, "data/qiime2/ps_df_rel.csv")
+```
+
+...

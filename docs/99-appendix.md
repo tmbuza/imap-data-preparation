@@ -5,99 +5,84 @@
 <div class="tmbinfo">
 <table>
 <colgroup>
-<col width="32%" />
-<col width="46%" />
-<col width="20%" />
+<col width="29%" />
+<col width="36%" />
+<col width="33%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">Repo</th>
+<th>IMAP-Repo</th>
 <th>Description</th>
-<th align="right">Status</th>
+<th>GH-Pages</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a
-href="https://github.com/datainsights/imap-project-overview/">IMAP-OVERVIEW</a></td>
+<td><a
+href="https://github.com/datainsights/imap-project-overview/">OVERVIEW</a></td>
 <td>IMAP project overview</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-project-overview/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-project-overview/">Link</a></td>
 </tr>
 <tr class="even">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-software-requirements/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-software-requirements/">PART
 01</a></td>
 <td>Software requirement for microbiome data analysis with Snakemake
 workflows</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-software-requirements/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-essential-software/">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-sample-metadata/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-sample-metadata/">PART
 02</a></td>
 <td>Downloading and exploring microbiome sample metadata from SRA
 Database</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-sample-metadata/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-sample-metadata/">Link</a></td>
 </tr>
 <tr class="even">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-download-sra-reads/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-download-sra-reads/">PART
 03</a></td>
 <td>Downloading and filtering microbiome sequencing data from SRA
 database</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-download-sra-reads/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-download-sra-reads/">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-read-quality-control/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-read-quality-control/">PART
 04</a></td>
 <td>Quality Control of Microbiome Next Generation Sequencing Reads</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-read-quality-control/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-read-quality-control/">Link</a></td>
 </tr>
 <tr class="even">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-bioinformatics-mothur/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-bioinformatics-mothur/">PART
 05</a></td>
 <td>Microbial profiling using MOTHUR and Snakemake workflows</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-bioinformatics-mothur/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-mothur-bioinformatics/">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-bioinformatics-qiime2/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-bioinformatics-qiime2/">PART
 06</a></td>
 <td>Microbial profiling using QIIME2 and Snakemake workflows</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-bioinformatics-qiime2/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-qiime2-bioinformatics/">Link</a></td>
 </tr>
 <tr class="even">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-data-processing/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-data-processing/">PART
 07</a></td>
 <td>Processing Output from 16S-Based microbiome bioinformatics
 pipelines</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-data-processing/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-data-preparation/">Link</a></td>
 </tr>
 <tr class="odd">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-exploratory-analysis/">IMAP-PART
+<td><a href="https://github.com/tmbuza/imap-exploratory-analysis/">PART
 08</a></td>
 <td>Exploratory Analysis of 16S-Based Microbiome Processed Data</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-exploratory-analysis/">In-progress</a></td>
-</tr>
-<tr class="even">
-<td align="left"><a
-href="https://github.com/tmbuza/imap-snakemake-workflows/">IMAP-SUMMARY</a></td>
-<td>Summary of snakemake workflows for microbiome data analysis</td>
-<td align="right"><a
-href="https://tmbuza.github.io/imap-snakemake-workflows/">In-progress</a></td>
+<td><a
+href="https://tmbuza.github.io/imap-data-exploration/">Link</a></td>
 </tr>
 </tbody>
 </table>
@@ -110,6 +95,7 @@ href="https://tmbuza.github.io/imap-snakemake-workflows/">In-progress</a></td>
 <br>
 <br>
 
+# Platform Comparison
 ![](figures/taxon_barplot.svg)
 
 
@@ -125,12 +111,12 @@ library(sessioninfo)
 info <- capture.output(print(session_info()))
 
 # Exclude lines containing specific information (e.g., pandoc and library path)
-info_filtered <- info[!grepl("pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library", info)]
+info_filtered <- info[!grepl("pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library|*/Users/*", info)]
 
 # Save the filtered session info to a text file in the root directory without line numbers
 cat(info_filtered, file = "session_info.txt", sep = "\n")
 ```
 
-> For a detailed overview of the tools and versions suitable for this guide, I encourage you to explore the session information saved in the accompanying text file named `session_info.txt`,
+
 
 

@@ -5,9 +5,9 @@
 ```{block type="tmbinfo", echo=TRUE}
 
 | IMAP-Repo                                      | Description                                               | GH-Pages                                             |
-| ---------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------- |
-| [OVERVIEW](https://github.com/datainsights/imap-project-overview/) | IMAP project overview                                     | [Link](https://tmbuza.github.io/imap-project-overview/) |
-| [PART 01](https://github.com/tmbuza/imap-software-requirements/) | Software requirement for microbiome data analysis with Snakemake workflows | [Link](https://tmbuza.github.io/imap-essential-software/) |
+| :---------------------------------------------- | :--------------------------------------------------------- | :-----------------------------------------------------: |
+| [OVERVIEW](https://github.com/tmbuza/imap-project-overview/) | IMAP project overview                                     | [Link](https://tmbuza.github.io/imap-project-overview/) |
+| [PART 01](https://github.com/tmbuza/imap-essential-software/) | Software requirement for microbiome data analysis with Snakemake workflows | [Link](https://tmbuza.github.io/imap-essential-software/) |
 | [PART 02](https://github.com/tmbuza/imap-sample-metadata/) | Downloading and exploring microbiome sample metadata from SRA Database | [Link](https://tmbuza.github.io/imap-sample-metadata/) |
 | [PART 03](https://github.com/tmbuza/imap-download-sra-reads/) | Downloading and filtering microbiome sequencing data from SRA database | [Link](https://tmbuza.github.io/imap-download-sra-reads/) |
 | [PART 04](https://github.com/tmbuza/imap-read-quality-control/) | Quality Control of Microbiome Next Generation Sequencing Reads | [Link](https://tmbuza.github.io/imap-read-quality-control/) |
@@ -38,13 +38,16 @@ library(sessioninfo)
 # Get session info
 info <- capture.output(print(session_info()))
 
-# Exclude lines containing specific information (e.g., pandoc and library path)
-info_filtered <- info[!grepl("pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library|*/Users/*", info)]
+# Define patterns to exclude
+exclude_patterns <- c("/Users/.*", "Africa/Dar_es_Salaam") # This line is location-dependent
+
+# Exclude lines containing specific information
+info_filtered <- info[!grepl(paste(exclude_patterns, collapse = "|"), info)]
 
 # Save the filtered session info to a text file in the root directory without line numbers
 cat(info_filtered, file = "session_info.txt", sep = "\n")
-```
 
+```
 
 
 

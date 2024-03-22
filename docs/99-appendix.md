@@ -19,7 +19,7 @@
 <tbody>
 <tr class="odd">
 <td><a
-href="https://github.com/datainsights/imap-project-overview/">OVERVIEW</a></td>
+href="https://github.com/tmbuza/imap-project-overview/">OVERVIEW</a></td>
 <td>IMAP project overview</td>
 <td><a
 href="https://tmbuza.github.io/imap-project-overview/">Link</a></td>

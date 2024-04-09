@@ -2,7 +2,7 @@
 # Prepare Qiime2 Output
 
 ## Data directories
-```{r get_qiime2_ready}}
+```{r qiime2dir}}
 if (!dir.exists('data')) {dir.create('data')}
 if (!dir.exists('data/qiime2')) {dir.create('data/qiime2')}
 
@@ -11,7 +11,7 @@ library(tidyverse, suppressPackageStartupMessages())
 ```
 
 ## Qiime2 metadata
-```{r qiime_data}
+```{r qiime2metadata}
 read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadata.tsv", show_col_types = FALSE) %>% 
   dplyr::rename(sample_id="sample-id") %>% 
   write_csv("data/qiime2/qiime2_tidy_metadata.csv")
@@ -19,7 +19,7 @@ read_tsv("../imap-qiime2-bioinformatics/resources/metadata/qiime2_sample_metadat
 
 
 ## Qiime2 otutable
-```{r}
+```{r qiime2otutable}
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv", skip = 1, show_col_types = FALSE) %>%
   dplyr::rename(feature='#OTU ID') %>%
   select(-starts_with('Mock')) %>% 
@@ -32,7 +32,7 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/feature-table.tsv"
 
 
 ## Qiime2 taxonomy
-```{r}
+```{r qiime2taxonomy}
 read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", show_col_types=FALSE) %>% 
   dplyr::rename(feature="Feature ID") %>% 
   distinct() %>%
@@ -57,7 +57,7 @@ read_tsv("../imap-qiime2-bioinformatics/qiime2_process/export/taxonomy.tsv", sho
 
 
 ## Qiime2 composite
-```{r}
+```{r qiime2composite}
 # QIIME2 composite
 library(tidyverse, suppressPackageStartupMessages())
 
@@ -77,7 +77,7 @@ write_csv(qiime2_composite, "data/qiime2/qiime2_composite.csv")
 ```
 
 ## Create a phyloseq object
-```{r}
+```{r qiime2physeqobj}
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
@@ -101,6 +101,7 @@ ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
 
 library(ape)
 ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+
 ps_raw <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
 
 ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
@@ -114,11 +115,8 @@ save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/qiime2_p
 
 ## Review the phyloseq object
 
-```{r review_qiime2_ps_data}
-load("data/qiime2/qiime2_phyloseq_objects.rda", verbose = TRUE)
-
-write_csv(ps_df_raw, "data/qiime2/ps_df_raw.csv")
-write_csv(ps_df_rel, "data/qiime2/ps_df_rel.csv")
+```{r qiime2psraw}
+ps_raw
 ```
 
 ...

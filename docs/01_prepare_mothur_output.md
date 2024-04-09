@@ -1,4 +1,5 @@
 # (PART) MOTHUR OUTPUT {-}
+
 # Prepare Mothur Output
 
 ## Data directories
@@ -10,19 +11,6 @@ if (!dir.exists('data/mothur')) {dir.create('data/mothur')}
 library(tidyverse, suppressPackageStartupMessages())
 ```
 
-```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
 ## Mothur  metadata
 
 ```r
@@ -32,7 +20,8 @@ read_tsv("data/mothur/mothur_sample_metadata.tsv", show_col_types = FALSE) %>%
 
 
 ## Mothur  otutable
-```R
+
+```r
 read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.shared", skip = 0, show_col_types = FALSE) %>%
   dplyr::rename(group="Group") %>% 
   dplyr::select(-c(label, numASVs)) %>% 
@@ -44,7 +33,8 @@ read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.sh
 
 
 ## Mothur taxonomy
-```R
+
+```r
 read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.ASV.cons.taxonomy", show_col_types=FALSE) %>% 
   distinct() %>%
   dplyr::select(-Size) %>%
@@ -52,12 +42,12 @@ read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.AS
   mutate(Taxonomy = gsub("\\(100\\)", "", Taxonomy)) %>%  
   separate(Taxonomy, into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus"), sep = ";") %>% 
   write_csv("data/mothur/mothur_tidy_taxonomy.csv")
-
 ```
 
 
 ## Mothur composite
-```R
+
+```r
 # Mothur composite
 library(tidyverse, suppressPackageStartupMessages())
 
@@ -77,7 +67,8 @@ write_csv(mothur_composite, "data/mothur/mothur_composite.csv")
 ```
 
 ## Create a phyloseq object
-```R
+
+```r
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
@@ -101,26 +92,30 @@ ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
 
 library(ape)
 ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+
 ps_raw <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
 
 ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
 
-save(ps_tree, ps_raw, ps_rel,  file = "data/mothur/mothur_phyloseq_objects.rda")
+ps_df_raw <- psmelt(ps_raw)
+
+ps_df_rel <- psmelt(ps_raw)
+
+save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/mothur_phyloseq_objects.rda")
 ```
 
-## Review the phyloseq object
+## Review the mothur phyloseq object
 
 
 ```r
-load("data/qiime2/qiime2_phyloseq_objects.rda", verbose = TRUE)
+ps_raw
 ```
 
 ```
-## Loading objects:
-##   ps_tree
-##   ps_raw
-##   ps_rel
-##   ps_df_raw
-##   ps_df_rel
+## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
+## sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
+## tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]
 ```
 

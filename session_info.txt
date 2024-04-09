@@ -1,14 +1,13 @@
 ─ Session info ───────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.3.2 (2023-10-31)
- os       macOS Sonoma 14.4
+ os       macOS Sonoma 14.4.1
  system   aarch64, darwin20
  ui       X11
  language (EN)
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
- tz       Africa/Dar_es_Salaam
- date     2024-03-10
+ date     2024-04-09
 
 ─ Packages ───────────────────────────────────────────────────────────────────
  ! package     * version date (UTC) lib source

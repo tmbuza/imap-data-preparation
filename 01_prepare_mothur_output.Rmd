@@ -1,8 +1,9 @@
 # (PART) MOTHUR OUTPUT {-}
+
 # Prepare Mothur Output
 
 ## Data directories
-```{r get_mothur_ready}
+```{r mothurdirs, message=FALSE, warning=FALSE}
 if (!dir.exists('data')) {dir.create('data')}
 if (!dir.exists('data/mothur')) {dir.create('data/mothur')}
 
@@ -11,14 +12,14 @@ library(tidyverse, suppressPackageStartupMessages())
 ```
 
 ## Mothur  metadata
-```{r mothur_data}
+```{r mothurmetadata, message=FALSE, warning=FALSE}
 read_tsv("data/mothur/mothur_sample_metadata.tsv", show_col_types = FALSE) %>% 
   write_csv("data/mothur/mothur_tidy_metadata.csv")
 ```
 
 
 ## Mothur  otutable
-```R
+```{r mothurotutable, message=FALSE, warning=FALSE}
 read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.shared", skip = 0, show_col_types = FALSE) %>%
   dplyr::rename(group="Group") %>% 
   dplyr::select(-c(label, numASVs)) %>% 
@@ -30,7 +31,7 @@ read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.sh
 
 
 ## Mothur taxonomy
-```R
+```{r mothurtaxonomy, message=FALSE, warning=FALSE}
 read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.ASV.cons.taxonomy", show_col_types=FALSE) %>% 
   distinct() %>%
   dplyr::select(-Size) %>%
@@ -43,7 +44,7 @@ read_tsv("../imap-mothur-bioinformatics/mothur_process/asv_analysis/final.asv.AS
 
 
 ## Mothur composite
-```R
+```{r mothurcomposite, message=FALSE, warning=FALSE}
 # Mothur composite
 library(tidyverse, suppressPackageStartupMessages())
 
@@ -63,7 +64,7 @@ write_csv(mothur_composite, "data/mothur/mothur_composite.csv")
 ```
 
 ## Create a phyloseq object
-```R
+```{r mothurphyseqobj, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(phyloseq)
 library(microbiome)
@@ -87,16 +88,22 @@ ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
 
 library(ape)
 ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+
 ps_raw <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
 
 ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
 
-save(ps_tree, ps_raw, ps_rel,  file = "data/mothur/mothur_phyloseq_objects.rda")
+ps_df_raw <- psmelt(ps_raw)
+
+ps_df_rel <- psmelt(ps_raw)
+
+save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/mothur_phyloseq_objects.rda")
+
 ```
 
-## Review the phyloseq object
+## Review the mothur phyloseq object
 
-```{r review_qiime2_ps_data}
-load("data/qiime2/qiime2_phyloseq_objects.rda", verbose = TRUE)
+```{r mothurpsraw}
+ps_raw
 ```
 

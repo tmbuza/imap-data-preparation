@@ -6,7 +6,7 @@ mothur-otutable
 mothur-taxonomy
 mothur-composite
 create-a-phyloseq-object
-review-the-phyloseq-object
+review-the-mothur-phyloseq-object
 prepare-qiime2-output
 data-directories-1
 qiime2-metadata
@@ -14,7 +14,7 @@ qiime2-otutable
 qiime2-taxonomy
 qiime2-composite
 create-a-phyloseq-object-1
-review-the-phyloseq-object-1
+review-the-phyloseq-object
 imap-github-repos
 data-preparation-rulegraph
 platform-comparison

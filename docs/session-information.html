@@ -75,14 +75,17 @@
 <span class="header-section-number">D</span> Session Information<a class="anchor" aria-label="anchor" href="#session-information"><i class="fas fa-link"></i></a>
 </h1>
 <p>Reproducibility relies on the ability to precisely recreate the working environment, and session information serves as a vital reference to achieve this consistency. Here we record details about the R environment, package versions, and system settings of the computing environment at the time of analysis.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/sessioninfo#readme">sessioninfo</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Get session info</span></span>
 <span><span class="va">info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/capture.output.html">capture.output</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://r-lib.github.io/sessioninfo/reference/session_info.html">session_info</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Exclude lines containing specific information (e.g., pandoc and library path)</span></span>
-<span><span class="va">info_filtered</span> <span class="op">&lt;-</span> <span class="va">info</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"pandoc|/Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/|/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library|*/Users/*"</span>, <span class="va">info</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="co"># Define patterns to exclude</span></span>
+<span><span class="va">exclude_patterns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"/Users/.*"</span>, <span class="st">"Africa/Dar_es_Salaam"</span><span class="op">)</span> <span class="co"># This line is location-dependent</span></span>
+<span></span>
+<span><span class="co"># Exclude lines containing specific information</span></span>
+<span><span class="va">info_filtered</span> <span class="op">&lt;-</span> <span class="va">info</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">exclude_patterns</span>, collapse <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span>, <span class="va">info</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># Save the filtered session info to a text file in the root directory without line numbers</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="va">info_filtered</span>, file <span class="op">=</span> <span class="st">"session_info.txt"</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
@@ -111,7 +114,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-03-10</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-09</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

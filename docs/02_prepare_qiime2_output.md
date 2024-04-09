@@ -169,6 +169,7 @@ ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
 
 library(ape)
 ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+
 ps_raw <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
 
 ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
@@ -184,21 +185,15 @@ save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/qiime2_p
 
 
 ```r
-load("data/qiime2/qiime2_phyloseq_objects.rda", verbose = TRUE)
+ps_raw
 ```
 
 ```
-## Loading objects:
-##   ps_tree
-##   ps_raw
-##   ps_rel
-##   ps_df_raw
-##   ps_df_rel
-```
-
-```r
-write_csv(ps_df_raw, "data/qiime2/ps_df_raw.csv")
-write_csv(ps_df_rel, "data/qiime2/ps_df_rel.csv")
+## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
+## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
+## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
 ```
 
 ...

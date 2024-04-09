@@ -1,4 +1,3 @@
-preface
 prepare-mothur-output
 data-directories
 mothur-metadata
@@ -17,5 +16,4 @@ create-a-phyloseq-object-1
 review-the-phyloseq-object
 imap-github-repos
 data-preparation-rulegraph
-platform-comparison
 session-information

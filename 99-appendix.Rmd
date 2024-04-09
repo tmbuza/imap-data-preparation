@@ -22,11 +22,6 @@
 ![](dags/rulegraph.svg)
 
 <br>
-<br>
-
-# Platform Comparison
-![](figures/taxon_barplot.svg)
-
 
 # Session Information
 

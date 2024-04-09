@@ -2,6 +2,15 @@
 
 # Prepare Mothur Output
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+```
+
 ## Data directories
 ```{r mothurdirs, message=FALSE, warning=FALSE}
 if (!dir.exists('data')) {dir.create('data')}

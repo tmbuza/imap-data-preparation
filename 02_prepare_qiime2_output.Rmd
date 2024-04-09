@@ -1,5 +1,16 @@
 # (PART) QIIME2 OUTPUT {-}
+
 # Prepare Qiime2 Output
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+```
+
 
 ## Data directories
 ```{r qiime2dir}}

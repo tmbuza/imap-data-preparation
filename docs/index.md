@@ -54,17 +54,6 @@ description: |
 
 Microbiome research employs high-throughput sequencing to explore microbial communities across diverse environments. This project focuses on preparing and visualizing microbiome data generated from the Mothur and QIIME2 pipelines. The dataset comprises an OTU table, taxonomic assignments, and metadata. This comprehensive guide is tailored for researchers and analysts engaged in microbiome studies, providing essential insights and methodologies for adequate data preparation. Assuming that the bioinformatics analysis phase has been successfully completed and you now possess the output or features tables, including Operational Taxonomic Unit (OTU) tables, taxonomy tables, and a metadata table, from platforms such as Mothur or QIIME2, this guide will lead you through the crucial steps of refining and optimizing your microbiome data.
 
-## Why Data Preparation Matters {-}
-
-Microbiome analysis relies heavily on the quality and integrity of the data. As researchers and analysts, the meticulous process of data preparation is crucial in guaranteeing the reliability of downstream analyses and the accuracy of biological interpretations. This guide acknowledges the diverse skill levels of its readers, catering to both novice researchers seeking foundational knowledge and experienced analysts in search of advanced strategies.
-
-
-## Using OTU and Taxonomy Tables {-}
-In this chapter, we explore the practical utilization of Operational Taxonomic Unit (OTU) tables and taxonomy tables as essential inputs for downstream analysis. Derived from the bioinformatics phase, these tables play pivotal roles in investigating the composition and diversity of microbial communities. You will gain insights into effectively cleaning, transforming, and integrating these tables to prepare them for a variety of downstream analyses.
-
-## Integrating Metadata for Context {-}
-The integration of a metadata table enhances your analytical capabilities by facilitating the grouping of observations based on relevant variables. This integration not only contextualizes your microbiome data but also enables exploration of the impact of different conditions or factors on microbial community composition. This guide demonstrates seamless incorporation of metadata, unlocking valuable insights into the relationships between microbial communities and external variables.
-
 
 ## What to Expect {-}
 

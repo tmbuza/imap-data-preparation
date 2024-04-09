@@ -51,17 +51,16 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
-<li class="book-part">DATA PREPARATION</li>
-<li><a class="" href="preface.html"><span class="header-section-number">1</span> Preparing for Downstream Analysis</a></li>
+<li class="book-part">GETTING STARTED</li>
+<li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
 <li class="book-part">MOTHUR OUTPUT</li>
-<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
+<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">1</span> Prepare Mothur Output</a></li>
 <li class="book-part">QIIME2 OUTPUT</li>
-<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">2</span> Prepare Qiime2 Output</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
-<li><a class="" href="platform-comparison.html"><span class="header-section-number">C</span> Platform Comparison</a></li>
-<li><a class="" href="session-information.html"><span class="header-section-number">D</span> Session Information</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -79,21 +78,6 @@
 <h2>Welcome to chapter 7<a class="anchor" aria-label="anchor" href="#welcome-to-chapter-7"><i class="fas fa-link"></i></a>
 </h2>
 <p>Microbiome research employs high-throughput sequencing to explore microbial communities across diverse environments. This project focuses on preparing and visualizing microbiome data generated from the Mothur and QIIME2 pipelines. The dataset comprises an OTU table, taxonomic assignments, and metadata. This comprehensive guide is tailored for researchers and analysts engaged in microbiome studies, providing essential insights and methodologies for adequate data preparation. Assuming that the bioinformatics analysis phase has been successfully completed and you now possess the output or features tables, including Operational Taxonomic Unit (OTU) tables, taxonomy tables, and a metadata table, from platforms such as Mothur or QIIME2, this guide will lead you through the crucial steps of refining and optimizing your microbiome data.</p>
-</div>
-<div id="why-data-preparation-matters" class="section level2 unnumbered">
-<h2>Why Data Preparation Matters<a class="anchor" aria-label="anchor" href="#why-data-preparation-matters"><i class="fas fa-link"></i></a>
-</h2>
-<p>Microbiome analysis relies heavily on the quality and integrity of the data. As researchers and analysts, the meticulous process of data preparation is crucial in guaranteeing the reliability of downstream analyses and the accuracy of biological interpretations. This guide acknowledges the diverse skill levels of its readers, catering to both novice researchers seeking foundational knowledge and experienced analysts in search of advanced strategies.</p>
-</div>
-<div id="using-otu-and-taxonomy-tables" class="section level2 unnumbered">
-<h2>Using OTU and Taxonomy Tables<a class="anchor" aria-label="anchor" href="#using-otu-and-taxonomy-tables"><i class="fas fa-link"></i></a>
-</h2>
-<p>In this chapter, we explore the practical utilization of Operational Taxonomic Unit (OTU) tables and taxonomy tables as essential inputs for downstream analysis. Derived from the bioinformatics phase, these tables play pivotal roles in investigating the composition and diversity of microbial communities. You will gain insights into effectively cleaning, transforming, and integrating these tables to prepare them for a variety of downstream analyses.</p>
-</div>
-<div id="integrating-metadata-for-context" class="section level2 unnumbered">
-<h2>Integrating Metadata for Context<a class="anchor" aria-label="anchor" href="#integrating-metadata-for-context"><i class="fas fa-link"></i></a>
-</h2>
-<p>The integration of a metadata table enhances your analytical capabilities by facilitating the grouping of observations based on relevant variables. This integration not only contextualizes your microbiome data but also enables exploration of the impact of different conditions or factors on microbial community composition. This guide demonstrates seamless incorporation of metadata, unlocking valuable insights into the relationships between microbial communities and external variables.</p>
 </div>
 <div id="what-to-expect" class="section level2 unnumbered">
 <h2>What to Expect<a class="anchor" aria-label="anchor" href="#what-to-expect"><i class="fas fa-link"></i></a>
@@ -116,15 +100,12 @@
 
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="preface.html"><span class="header-section-number">1</span> Preparing for Downstream Analysis</a></div>
+<div class="next"><a href="preface.html">Preparing for Downstream Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data-preparation">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
 <li><a class="nav-link" href="#welcome-to-chapter-7">Welcome to chapter 7</a></li>
-<li><a class="nav-link" href="#why-data-preparation-matters">Why Data Preparation Matters</a></li>
-<li><a class="nav-link" href="#using-otu-and-taxonomy-tables">Using OTU and Taxonomy Tables</a></li>
-<li><a class="nav-link" href="#integrating-metadata-for-context">Integrating Metadata for Context</a></li>
 <li><a class="nav-link" href="#what-to-expect">What to Expect</a></li>
 </ul>
 

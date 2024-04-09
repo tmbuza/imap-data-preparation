@@ -12,7 +12,7 @@ output_dir: docs
 rmd_files:
   html:
     - index.Rmd
-    - 00-preface.Rmd
+    - 00_preface.Rmd
     - 01_prepare_mothur_output.Rmd
     - 02_prepare_qiime2_output.Rmd
     - 99-appendix.Rmd

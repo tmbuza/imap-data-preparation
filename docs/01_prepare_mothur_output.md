@@ -2,6 +2,8 @@
 
 # Prepare Mothur Output
 
+
+
 ## Data directories
 
 ```r
@@ -112,10 +114,10 @@ ps_raw
 ```
 
 ```
-## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
-## sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
-## tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
+sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
+tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]
 ```
 

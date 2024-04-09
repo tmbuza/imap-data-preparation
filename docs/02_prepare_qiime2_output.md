@@ -1,5 +1,9 @@
 # (PART) QIIME2 OUTPUT {-}
+
 # Prepare Qiime2 Output
+
+
+
 
 ## Data directories
 
@@ -8,19 +12,6 @@ if (!dir.exists('data')) {dir.create('data')}
 if (!dir.exists('data/qiime2')) {dir.create('data/qiime2')}
 
 library(tidyverse, suppressPackageStartupMessages())
-```
-
-```
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 ## Qiime2 metadata
@@ -97,60 +88,9 @@ write_csv(qiime2_composite, "data/qiime2/qiime2_composite.csv")
 ```r
 library(tidyverse)
 library(phyloseq)
-```
-
-```
-## Warning in .recacheSubclasses(def@className, def, env): undefined subclass
-## "ndiMatrix" of class "replValueSp"; definition not updated
-```
-
-```r
 library(microbiome)
-```
-
-```
-## 
-## microbiome R package (microbiome.github.com)
-##     
-## 
-## 
-##  Copyright (C) 2011-2022 Leo Lahti, 
-##     Sudarshan Shetty et al. <microbiome.github.io>
-```
-
-```
-## 
-## Attaching package: 'microbiome'
-```
-
-```
-## The following object is masked from 'package:ggplot2':
-## 
-##     alpha
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     transform
-```
-
-```r
 library(ape)
-```
 
-```
-## 
-## Attaching package: 'ape'
-```
-
-```
-## The following object is masked from 'package:dplyr':
-## 
-##     where
-```
-
-```r
 metadata <- read_csv("data/qiime2/qiime2_tidy_metadata.csv",show_col_types = FALSE) %>% 
   tibble::column_to_rownames("sample_id") %>% 
   sample_data(metadata)
@@ -189,11 +129,11 @@ ps_raw
 ```
 
 ```
-## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
-## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
-## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
+sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
+tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
 ```
 
 ...

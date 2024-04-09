@@ -103,11 +103,6 @@ href="https://tmbuza.github.io/imap-data-exploration/">Link</a></td>
 ![](dags/rulegraph.svg)
 
 <br>
-<br>
-
-# Platform Comparison
-![](figures/taxon_barplot.svg)
-
 
 # Session Information
 

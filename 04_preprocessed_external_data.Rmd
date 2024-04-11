@@ -1,0 +1,57 @@
+# (PART) EXTERNAL DATASETS {-}
+
+# Import Preprocessed Microbiome Data
+
+In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+```
+
+
+## The GlobalPatterns dataset
+The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here's a breakdown of its key attributes:
+
+- **Source:** GlobalPatterns originates from the Earth Microbiome Project (EMP), collecting samples worldwide.
+
+- **Composition:** It comprises high-throughput sequencing data, revealing the taxonomic composition of microbial communities.
+
+- **Scope:** Samples represent diverse global ecosystems, offering a comprehensive view of microbial biodiversity.
+
+- **Format:** Presented as a phyloseq object in R, it integrates sample metadata and taxonomic abundance for analysis.
+
+- **Utility:** Researchers utilize it for community profiling, abundance testing, and ecological modeling, enhancing understanding of global microbial diversity and function.
+
+```{r}
+library(phyloseq)
+data("GlobalPatterns")
+
+GlobalPatterns
+
+```
+
+## The dietswap dataset
+The dietswap dataset, available through the microbiome R package, offers valuable insights into the effects of dietary interventions on microbial communities. Here's an overview of its attributes:
+
+- **Source:** The dietswap dataset is derived from research examining the impact of dietary changes on the human gut microbiome.
+
+- **Composition:** It comprises high-throughput sequencing data, providing insights into the taxonomic composition and dynamics of microbial communities in response to dietary alterations.
+
+- **Scope:** Samples are obtained from human participants undergoing dietary interventions, enabling researchers to explore how different diets influence microbial diversity and function within the gut microbiome.
+
+- **Format:** Presented in a format suitable for microbiome analysis, the dataset includes sample metadata and taxonomic abundance data, facilitating comprehensive analyses of microbial community dynamics.
+
+- **Utility:** Researchers utilize the dietswap dataset to investigate the effects of dietary interventions on gut microbiome composition, contributing to a better understanding of the intricate interactions between diet, host physiology, and microbial ecology.
+
+```{r}
+library(microbiome)
+data("dietswap")
+
+dietswap
+
+```

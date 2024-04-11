@@ -13,8 +13,10 @@ rmd_files:
   html:
     - index.Rmd
     - 00_preface.Rmd
-    - 01_prepare_mothur_output.Rmd
-    - 02_prepare_qiime2_output.Rmd
+    # - 01_data_t idying.Rmd
+    - 02_prepare_mothur_output.Rmd
+    - 03_prepare_qiime2_output.Rmd
+    - 04_preprocessed_external_data.Rmd
     - 99-appendix.Rmd
     - 999-references.Rmd
 # - 9999-footer.Rmd

@@ -2,8 +2,6 @@
 
 # Import Preprocessed Microbiome Data
 
-In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.
-
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   echo  =TRUE,
@@ -11,8 +9,11 @@ knitr::opts_chunk$set(
   warning  =FALSE,
   cache  =FALSE,
   comment  =NA)
+
+library(tidyverse)
 ```
 
+In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.
 
 ## The GlobalPatterns dataset
 The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here's a breakdown of its key attributes:
@@ -28,10 +29,18 @@ The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), ser
 - **Utility:** Researchers utilize it for community profiling, abundance testing, and ecological modeling, enhancing understanding of global microbial diversity and function.
 
 ```{r}
-library(phyloseq)
+library(phyloseq) # for GlobalPatterns dataset
 data("GlobalPatterns")
 
-GlobalPatterns
+ps_GlobalPatterns <-GlobalPatterns
+df_GlobalPatterns <-GlobalPatterns %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_GlobalPatterns)
+cat("\n")
+ps_GlobalPatterns
 
 ```
 
@@ -49,9 +58,208 @@ The dietswap dataset, available through the microbiome R package, offers valuabl
 - **Utility:** Researchers utilize the dietswap dataset to investigate the effects of dietary interventions on gut microbiome composition, contributing to a better understanding of the intricate interactions between diet, host physiology, and microbial ecology.
 
 ```{r}
-library(microbiome)
+library(microbiome) # for dietswap dataset
 data("dietswap")
 
-dietswap
+ps_dietswap <-dietswap
+df_dietswap <-dietswap %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  dplyr::select(-9) %>% 
+  rename_all(tolower)
+
+colnames(df_dietswap)
+cat("\n")
+ps_dietswap
 
 ```
+
+## Caporaso dataset
+
+The Caporaso dataset provides valuable insights into microbial marker genes and their associations with various biological factors.
+
+- **Source:** The Caporaso dataset is included in the `microbiomeMarker` R package and is derived from research led by Dr. J. Gregory Caporaso. It aims to provide insights into microbial marker genes and their associations with various biological factors.
+
+- **Composition:** The dataset comprises high-throughput sequencing data, focusing on microbial marker genes from diverse biological samples. It offers valuable information regarding the taxonomic composition and functional potential of microbial communities.
+
+- **Scope:** Samples are collected from a range of environments, including but not limited to human microbiomes, environmental samples, and animal microbiomes. This diversity allows researchers to explore microbial diversity across different ecosystems and conditions.
+
+- **Format:** The dataset is structured to facilitate microbiome marker analysis, with sample metadata and taxonomic abundance data included. This format enables researchers to conduct comprehensive analyses of microbial marker genes and their associations with environmental or biological factors.
+
+- **Utility:** Researchers utilize the Caporaso dataset to investigate microbial marker genes' roles in various ecosystems, such as host-microbiome interactions, environmental responses, and disease states. The dataset contributes to a better understanding of microbial ecology and its implications for human health and environmental management.
+
+```{r}
+library(microbiomeMarker) # for caporaso dataset
+data("caporaso")
+
+ps_caporaso <-caporaso
+df_caporaso <-caporaso %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_caporaso)
+cat("\n")
+ps_caporaso
+
+```
+
+
+## Kostic_CRC dataset
+
+The Kostic_CRC dataset provides valuable insights into the gut microbiome of individuals diagnosed with colorectal cancer (CRC).
+
+- **Source:** The Kostic_CRC dataset is included in the `microbiomeMarker` R package. It is derived from research conducted by the Kostic Lab and focuses on investigating the gut microbiome in colorectal cancer (CRC) patients.
+
+- **Composition:** This dataset comprises high-throughput sequencing data, specifically targeting the gut microbiome of individuals with colorectal cancer. It provides insights into the taxonomic composition and potential functional characteristics of microbial communities associated with CRC.
+
+- **Scope:** Samples are collected from individuals diagnosed with colorectal cancer, allowing researchers to explore the microbial diversity and potential biomarkers associated with CRC development and progression.
+
+- **Format:** The dataset is structured to facilitate microbiome marker analysis, including sample metadata and taxonomic abundance data. This format enables researchers to conduct comprehensive analyses of microbial community dynamics in colorectal cancer.
+
+- **Utility:** Researchers utilize the Kostic_CRC dataset to investigate the role of the gut microbiome in colorectal cancer pathogenesis, prognosis, and treatment response. The dataset contributes to a deeper understanding of the complex interplay between the gut microbiome and colorectal cancer biology, potentially leading to novel diagnostic or therapeutic strategies.
+
+
+```{r}
+library(microbiomeMarker) # for kostic_crc dataset
+data("kostic_crc")
+
+ps_kostic_crc <-kostic_crc
+df_kostic_crc <-kostic_crc %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_kostic_crc)
+cat("\n")
+ps_kostic_crc
+
+```
+
+
+## Save objects for transformation and exploration {#save_ps_objects}
+
+```{r}
+save(df_GlobalPatterns, 
+     # df_ibd_phylo, 
+     df_dietswap,  
+     df_caporaso,
+     df_kostic_crc,
+
+     ps_GlobalPatterns, 
+     # ps_ibd_phylo, 
+     ps_dietswap,
+     ps_caporaso,
+     ps_kostic_crc,
+     file = "data/external/external_ps_objects.rda")
+
+```
+
+## Confirm saved objects
+```{r}
+load("data/external/external_ps_objects.rda", verbose = TRUE)
+```
+
+## Review Phyloseq Objects
+```{r message=FALSE, warning=FALSE}
+library(phyloseq)
+library(ape)
+
+ps <- ps_dietswap
+
+library(metagMisc)
+
+```
+
+### Taxonomy rank names
+```{r}
+rank_names(ps)
+
+```
+
+### Number of taxa
+```{r}
+ntaxa(ps)
+```
+
+### Split by taxon name, e.g. Firmicutes
+```{r}
+taxa_stats <- phyloseq_sep_tax(ps, TaxRank = "Phylum", drop_NA = FALSE)
+cat("\n")
+taxa_stats$Firmicutes
+cat("\n")
+taxa_stats$Bacteroidetes
+cat("\n")
+taxa_stats$Actinobacteria
+
+```
+
+
+### Number of samples
+```{r}
+nsamples(ps)
+```
+
+### Sample names
+```{r}
+head(sample_names(ps), 20)
+```
+
+
+### Sample variables
+```{r}
+sample_variables(ps)
+```
+
+### Abundance table
+```{r}
+otu_table(ps)[1:5, 1:5]
+```
+
+### Taxonomy table
+```{r}
+tax_table(ps)[1:5, ]
+```
+
+### Phylogenetic tree if available
+```{r, warning=FALSE, include=FALSE}
+# phy_tree(ps)
+```
+
+### Taxa names
+```{r}
+taxa_names(ps)[1:10]
+```
+
+### Summarize Phyloseq Object
+```{r message=FALSE, warning=FALSE}
+
+microbiome::summarize_phyloseq(ps)
+
+```
+
+
+### Sort Samples in ascending and descending
+```{r}
+cat("In ascending order\n")
+head(sort(phyloseq::sample_sums(ps), decreasing = F))
+cat("\nIn descending order\n")
+head(sort(phyloseq::sample_sums(ps), decreasing = T))
+
+```
+
+### Drop Samples Below a Threshold
+```{r}
+ps1perc0 <- phyloseq::subset_samples(ps, phyloseq::sample_sums(ps) > 1)
+ps1perc0
+```
+
+### Drop Taxa Below a Threshold
+```{r}
+pstaxa01 <- phyloseq::prune_taxa(phyloseq::taxa_sums(ps) > 1, ps)
+pstaxa01 
+```
+
+
+
+

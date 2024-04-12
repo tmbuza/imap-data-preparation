@@ -1,4 +1,6 @@
-# Data processing
+# Data Tidying
+
+
 
 ## General snakemake workflow 
 
@@ -20,7 +22,7 @@ Requires:
 
 <br>
 
-## Composite objects
+## Microbiome composite R objects
 
 Requires:
 
@@ -32,7 +34,7 @@ The `mothur` and `qiime2` composite objects are in a long-format which is suitab
 
 <br>
 
-## Phyloseq objects
+## Microbioma phyloseq objects
 Requires:
 
 - A `phyloseq` package
@@ -74,3 +76,5 @@ Dimensionality reduction is intended to reduce the dimension of the variables bu
     - LDA (Linear Discriminant Analysis)
     - More [here.](https://towardsdatascience.com/dimensionality-reduction-for-machine-learning-80a46c2ebb7e)
 2. Non-linear methods
+
+

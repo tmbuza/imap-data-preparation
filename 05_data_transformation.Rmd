@@ -1,0 +1,176 @@
+# (PART) DATA TRANSFORMATION {-}
+
+# Data Tranformation from Phyloseq Objects {#data-tarnsformation}
+
+The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on modifying the data itself. In this context, we will explore various methods used for this transformation on a phyloseq object.
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+
+library(phyloseq)
+library(microbiome)
+```
+
+
+
+## Import processed phyloseq object
+```{r}
+load("../imap-data-preparation/data/external/external_ps_objects.rda", verbose = TRUE) 
+
+```
+
+## Raw Abundance
+
+```{r}
+ps_raw <- ps_dietswap
+otu_table(ps_raw)[1:10, 1:10]
+
+```
+
+##  No Transformation
+
+> Similar to raw abundance
+
+```{r ps_identity}
+(ps_identity <- microbiome::transform(ps_raw, 'identity'))
+
+cat("\n\n")
+otu_table(ps_identity)[1:5, 1:3]
+
+```
+
+## Relative abundance
+
+```{r transform_ps_rel }
+(ps_rel = phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)}))
+
+otu_table(ps_rel)[1:5, 1:3]
+
+```
+
+## Arc sine (asin) transformation
+
+- Typically used when dealing with proportional and percentages. 
+- Proportionals range from 0 to 1
+- Percentages range from 0 to 100
+- The Metaphlan3 relative abundances are in percentages! That means the column totals in 100.
+
+```{r ps_asin}
+x = otu_table(ps_rel)
+y <- x/max(x)
+
+ps_asin <- round(asin(sqrt(y)), 6)
+
+ps_asin <- as.matrix(ps_asin)
+ps_asin[1:5, 1:4]
+```
+
+## Compositional Version
+Compositional data represents relative proportions or percentages of different microbial taxa within a sample, rather than the absolute abundance of each taxon. This transformation is necessary because raw abundance data is typically affected by various factors, such as sequencing depth, which can lead to spurious correlations and biases in downstream analyses.
+
+```{r ps_compositional}
+(ps_compositional <- microbiome::transform(ps_raw, 'compositional'))
+
+cat("\n\n")
+otu_table(ps_compositional)[1:5, 1:3]
+```
+
+## Z-transform for OTUs
+
+```{r ps_z_otu, message=FALSE, warning=FALSE}
+(ps_z_otu <- microbiome::transform(ps_raw, 'Z', 'OTU'))
+
+cat("\n\n")
+otu_table(ps_z_otu)[1:5, 1:3]
+```
+
+## Z-transform for Samples
+
+```{r ps_z_sample, message=FALSE, warning=FALSE}
+(ps_z_sample <- microbiome::transform(ps_raw, 'Z', 'sample'))
+
+cat("\n\n")
+otu_table(ps_z_sample)[1:5, 1:3]
+```
+
+## Log10 Transform
+
+```{r ps_log10, message=FALSE, warning=FALSE}
+(ps_log10 <- microbiome::transform(ps_raw, 'log10'))
+
+cat("\n\n")
+otu_table(ps_log10)[1:5, 1:3]
+```
+
+## Log10p Transform
+
+```{r message=FALSE, warning=FALSE}
+(ps_log10p <- microbiome::transform(ps_raw, 'log10p'))
+
+cat("\n\n")
+otu_table(ps_log10p)[1:5, 1:3]
+```
+
+## CLR Transform
+
+- Note that small pseudocount is added if data contains zeroes
+```{r ps_clr}
+(ps_clr <- microbiome::transform(ps_raw, 'clr'))
+
+cat("\n\n")
+otu_table(ps_clr)[1:5, 1:3]
+
+```
+
+
+## Shift the baseline
+
+```{r ps_shift}
+(ps_shift <- microbiome::transform(ps_raw, 'shift', shift=1))
+
+cat("\n\n")
+otu_table(ps_shift)[1:5, 1:3]
+
+```
+
+## Data Scaling
+
+```{r ps_scale}
+(ps_scale <- microbiome::transform(ps_raw, 'scale', scale=1))
+
+cat("\n\n")
+otu_table(ps_scale)[1:5, 1:3]
+
+```
+
+## Save transformed objects
+
+```{r}
+save(
+  ps_asin, 
+  ps_identity,
+  ps_compositional, 
+  ps_z_otu, 
+  ps_z_sample, 
+  ps_log10, 
+  ps_log10p, 
+  ps_clr, 
+  ps_shift, 
+  ps_scale, 
+  file = "data/ps_transformed.rda")
+
+```
+
+## Confirm saved object
+
+```{r}
+load("data/ps_transformed.rda", verbose = TRUE)
+
+```
+
+

@@ -1,6 +1,6 @@
 
-library(microbiomeMarker) # For example dataset
-library(phyloseq)
+library(microbiomeMarker) # For caporaso dataset
+library(phyloseq) # Also for dietswap dataset 
 library(microViz) # For misc conversion, not in CRAN yet, not installed in the environment
 library(metagMisc) # For visualization, not in CRAN yet, not installed in the environment
 library(metagenomeSeq)

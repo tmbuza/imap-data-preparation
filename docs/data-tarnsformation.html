@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<meta name="author" content="Teresia Mrema-Buza">
+<meta name="description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="5 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/data-tarnsformation.html">
+<meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<meta property="og:description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
+<meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Sen-0.4.8/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/Bitter-0.4.8/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="End-to-End Practical User Guides Using Integrated Approaches"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a>:
+        <small class="text-muted">End-to-End Practical User Guides Using Integrated Approaches</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
+<li class="book-part">GETTING STARTED</li>
+<li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
+<li><a class="" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
+<li class="book-part">MOTHUR OUTPUT</li>
+<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
+<li class="book-part">QIIME2 OUTPUT</li>
+<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li class="book-part">EXTERNAL DATASETS</li>
+<li><a class="" href="import-preprocessed-microbiome-data.html"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
+<li class="book-part">DATA TRANSFORMATION</li>
+<li><a class="active" href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></li>
+<li class="book-part">DIMENSIONAL REDUCTION</li>
+<li><a class="" href="data-reduction.html"><span class="header-section-number">6</span> Dimensionality Reduction</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
+<li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tmbuza/imap-data-preparation.git">View book source <i class="fas fa-air-freshener"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-tarnsformation" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects<a class="anchor" aria-label="anchor" href="#data-tarnsformation"><i class="fas fa-link"></i></a>
+</h1>
+<p>The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on modifying the data itself. In this context, we will explore various methods used for this transformation on a phyloseq object.</p>
+<div id="import-processed-phyloseq-object" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Import processed phyloseq object<a class="anchor" aria-label="anchor" href="#import-processed-phyloseq-object"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/external/external_ps_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
+<pre><code>Loading objects:
+  df_GlobalPatterns
+  df_dietswap
+  df_caporaso
+  df_kostic_crc
+  ps_GlobalPatterns
+  ps_dietswap
+  ps_caporaso
+  ps_kostic_crc</code></pre>
+</div>
+<div id="raw-abundance" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Raw Abundance<a class="anchor" aria-label="anchor" href="#raw-abundance"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ps_raw</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [10 taxa and 10 samples]
+                     taxa are rows
+                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Actinomycetaceae                         0        1        0        1        0
+Aerococcus                               0        0        0        0        0
+Aeromonas                                0        0        0        0        0
+Akkermansia                             18       97       67      256       21
+Alcaligenes faecalis et rel.             1        2        3        2        2
+Allistipes et rel.                     336       63       36       96       49
+Anaerobiospirillum                       0        0        0        0        0
+Anaerofustis                             0        1        0        0        0
+Anaerostipes caccae et rel.            244      137       27       36       23
+Anaerotruncus colihominis et rel.       12      108      203       68       15
+                                  Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Actinomycetaceae                         0        0        0        0         0
+Aerococcus                               0        0        0        0         0
+Aeromonas                                0        0        0        0         0
+Akkermansia                             16       26       30       19       125
+Alcaligenes faecalis et rel.             2        2        2        2         7
+Allistipes et rel.                      17       47       49       14        31
+Anaerobiospirillum                       0        0        0        0         0
+Anaerofustis                             0        0        0        0         0
+Anaerostipes caccae et rel.             29       58       49       23        29
+Anaerotruncus colihominis et rel.       36       31       40       19       720</code></pre>
+</div>
+<div id="no-transformation" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> No Transformation<a class="anchor" aria-label="anchor" href="#no-transformation"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Similar to raw abundance</p>
+</blockquote>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_identity</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'identity'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_identity</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                             Sample-1 Sample-2 Sample-3
+Actinomycetaceae                    0        1        0
+Aerococcus                          0        0        0
+Aeromonas                           0        0        0
+Akkermansia                        18       97       67
+Alcaligenes faecalis et rel.        1        2        3</code></pre>
+</div>
+<div id="relative-abundance" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Relative abundance<a class="anchor" aria-label="anchor" href="#relative-abundance"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_rel</span> <span class="op">=</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                                 Sample-1     Sample-2     Sample-3
+Actinomycetaceae             0.0000000000 4.742483e-05 0.0000000000
+Aerococcus                   0.0000000000 0.000000e+00 0.0000000000
+Aeromonas                    0.0000000000 0.000000e+00 0.0000000000
+Akkermansia                  0.0021279111 4.600209e-03 0.0023197036
+Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 0.0001038673</code></pre>
+</div>
+<div id="arc-sine-asin-transformation" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Arc sine (asin) transformation<a class="anchor" aria-label="anchor" href="#arc-sine-asin-transformation"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Typically used when dealing with proportional and percentages.</li>
+<li>Proportionals range from 0 to 1</li>
+<li>Percentages range from 0 to 100</li>
+<li>The Metaphlan3 relative abundances are in percentages! That means the column totals in 100.</li>
+</ul>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps_asin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html">asin</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps_asin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">ps_asin</span><span class="op">)</span></span>
+<span><span class="va">ps_asin</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 4 samples]
+                     taxa are rows
+                             Sample-1 Sample-2 Sample-3 Sample-4
+Actinomycetaceae             0.000000 0.007848 0.000000 0.009903
+Aerococcus                   0.000000 0.000000 0.000000 0.000000
+Aeromonas                    0.000000 0.000000 0.000000 0.000000
+Akkermansia                  0.052595 0.077374 0.054917 0.159111
+Alcaligenes faecalis et rel. 0.012391 0.011099 0.011615 0.014005</code></pre>
+</div>
+<div id="compositional-version" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Compositional Version<a class="anchor" aria-label="anchor" href="#compositional-version"><i class="fas fa-link"></i></a>
+</h2>
+<p>Compositional data represents relative proportions or percentages of different microbial taxa within a sample, rather than the absolute abundance of each taxon. This transformation is necessary because raw abundance data is typically affected by various factors, such as sequencing depth, which can lead to spurious correlations and biases in downstream analyses.</p>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_compositional</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'compositional'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_compositional</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                                 Sample-1     Sample-2     Sample-3
+Actinomycetaceae             0.0000000000 4.742483e-05 0.0000000000
+Aerococcus                   0.0000000000 0.000000e+00 0.0000000000
+Aeromonas                    0.0000000000 0.000000e+00 0.0000000000
+Akkermansia                  0.0021279111 4.600209e-03 0.0023197036
+Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 0.0001038673</code></pre>
+</div>
+<div id="z-transform-for-otus" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Z-transform for OTUs<a class="anchor" aria-label="anchor" href="#z-transform-for-otus"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_z_otu</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'Z'</span>, <span class="st">'OTU'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_otu</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                                Sample-1    Sample-2    Sample-3
+Actinomycetaceae             -0.27806481  3.58008443 -0.27806481
+Aerococcus                    0.00000000  0.00000000  0.00000000
+Aeromonas                    -0.09513127 -0.09513127 -0.09513127
+Akkermansia                  -0.73331670  0.65311419  0.34425962
+Alcaligenes faecalis et rel. -0.93076516 -0.44189484 -0.09503583</code></pre>
+</div>
+<div id="z-transform-for-samples" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Z-transform for Samples<a class="anchor" aria-label="anchor" href="#z-transform-for-samples"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_z_sample</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'Z'</span>, <span class="st">'sample'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_sample</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                               Sample-1   Sample-2   Sample-3
+Actinomycetaceae             -1.1517915 -0.8924188 -1.1804675
+Aerococcus                   -1.1517915 -1.2167251 -1.1804675
+Aeromonas                    -1.1517915 -1.2167251 -1.1804675
+Akkermansia                   0.4182158  0.9284674  0.7203872
+Alcaligenes faecalis et rel. -0.7821978 -0.7027117 -0.5559529</code></pre>
+</div>
+<div id="log10-transform" class="section level2" number="5.9">
+<h2>
+<span class="header-section-number">5.9</span> Log10 Transform<a class="anchor" aria-label="anchor" href="#log10-transform"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_log10</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'log10'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                             Sample-1  Sample-2 Sample-3
+Actinomycetaceae             0.000000 0.3010300 0.000000
+Aerococcus                   0.000000 0.0000000 0.000000
+Aeromonas                    0.000000 0.0000000 0.000000
+Akkermansia                  1.278754 1.9912261 1.832509
+Alcaligenes faecalis et rel. 0.301030 0.4771213 0.602060</code></pre>
+</div>
+<div id="log10p-transform" class="section level2" number="5.10">
+<h2>
+<span class="header-section-number">5.10</span> Log10p Transform<a class="anchor" aria-label="anchor" href="#log10p-transform"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_log10p</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'log10p'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10p</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                             Sample-1  Sample-2 Sample-3
+Actinomycetaceae             0.000000 0.3010300 0.000000
+Aerococcus                   0.000000 0.0000000 0.000000
+Aeromonas                    0.000000 0.0000000 0.000000
+Akkermansia                  1.278754 1.9912261 1.832509
+Alcaligenes faecalis et rel. 0.301030 0.4771213 0.602060</code></pre>
+</div>
+<div id="clr-transform" class="section level2" number="5.11">
+<h2>
+<span class="header-section-number">5.11</span> CLR Transform<a class="anchor" aria-label="anchor" href="#clr-transform"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Note that small pseudocount is added if data contains zeroes</li>
+</ul>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_clr</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'clr'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_clr</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                              Sample-1  Sample-2  Sample-3
+Actinomycetaceae             -3.555474 -2.040486 -3.114983
+Aerococcus                   -3.555474 -3.359449 -3.114983
+Aeromonas                    -3.555474 -3.359449 -3.114983
+Akkermansia                   1.264169  2.226809  1.790291
+Alcaligenes faecalis et rel. -1.497647 -1.490870 -1.169073</code></pre>
+</div>
+<div id="shift-the-baseline" class="section level2" number="5.12">
+<h2>
+<span class="header-section-number">5.12</span> Shift the baseline<a class="anchor" aria-label="anchor" href="#shift-the-baseline"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_shift</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'shift'</span>, shift<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_shift</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                             Sample-1 Sample-2 Sample-3
+Actinomycetaceae                    1        2        1
+Aerococcus                          1        1        1
+Aeromonas                           1        1        1
+Akkermansia                        19       98       68
+Alcaligenes faecalis et rel.        2        3        4</code></pre>
+</div>
+<div id="data-scaling" class="section level2" number="5.13">
+<h2>
+<span class="header-section-number">5.13</span> Data Scaling<a class="anchor" aria-label="anchor" href="#data-scaling"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_scale</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'scale'</span>, scale<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_scale</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
+<pre><code>OTU Table:          [5 taxa and 3 samples]
+                     taxa are rows
+                             Sample-1 Sample-2 Sample-3
+Actinomycetaceae                    0        1        0
+Aerococcus                          0        0        0
+Aeromonas                           0        0        0
+Akkermansia                        18       97       67
+Alcaligenes faecalis et rel.        1        2        3</code></pre>
+</div>
+<div id="save-transformed-objects" class="section level2" number="5.14">
+<h2>
+<span class="header-section-number">5.14</span> Save transformed objects<a class="anchor" aria-label="anchor" href="#save-transformed-objects"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span></span>
+<span>  <span class="va">ps_asin</span>, </span>
+<span>  <span class="va">ps_identity</span>,</span>
+<span>  <span class="va">ps_compositional</span>, </span>
+<span>  <span class="va">ps_z_otu</span>, </span>
+<span>  <span class="va">ps_z_sample</span>, </span>
+<span>  <span class="va">ps_log10</span>, </span>
+<span>  <span class="va">ps_log10p</span>, </span>
+<span>  <span class="va">ps_clr</span>, </span>
+<span>  <span class="va">ps_shift</span>, </span>
+<span>  <span class="va">ps_scale</span>, </span>
+<span>  file <span class="op">=</span> <span class="st">"data/ps_transformed.rda"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="confirm-saved-object" class="section level2" number="5.15">
+<h2>
+<span class="header-section-number">5.15</span> Confirm saved object<a class="anchor" aria-label="anchor" href="#confirm-saved-object"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/ps_transformed.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Loading objects:
+  ps_asin
+  ps_identity
+  ps_compositional
+  ps_z_otu
+  ps_z_sample
+  ps_log10
+  ps_log10p
+  ps_clr
+  ps_shift
+  ps_scale</code></pre>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="import-preprocessed-microbiome-data.html"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></div>
+<div class="next"><a href="data-reduction.html"><span class="header-section-number">6</span> Dimensionality Reduction</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-tarnsformation"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="nav-link" href="#import-processed-phyloseq-object"><span class="header-section-number">5.1</span> Import processed phyloseq object</a></li>
+<li><a class="nav-link" href="#raw-abundance"><span class="header-section-number">5.2</span> Raw Abundance</a></li>
+<li><a class="nav-link" href="#no-transformation"><span class="header-section-number">5.3</span> No Transformation</a></li>
+<li><a class="nav-link" href="#relative-abundance"><span class="header-section-number">5.4</span> Relative abundance</a></li>
+<li><a class="nav-link" href="#arc-sine-asin-transformation"><span class="header-section-number">5.5</span> Arc sine (asin) transformation</a></li>
+<li><a class="nav-link" href="#compositional-version"><span class="header-section-number">5.6</span> Compositional Version</a></li>
+<li><a class="nav-link" href="#z-transform-for-otus"><span class="header-section-number">5.7</span> Z-transform for OTUs</a></li>
+<li><a class="nav-link" href="#z-transform-for-samples"><span class="header-section-number">5.8</span> Z-transform for Samples</a></li>
+<li><a class="nav-link" href="#log10-transform"><span class="header-section-number">5.9</span> Log10 Transform</a></li>
+<li><a class="nav-link" href="#log10p-transform"><span class="header-section-number">5.10</span> Log10p Transform</a></li>
+<li><a class="nav-link" href="#clr-transform"><span class="header-section-number">5.11</span> CLR Transform</a></li>
+<li><a class="nav-link" href="#shift-the-baseline"><span class="header-section-number">5.12</span> Shift the baseline</a></li>
+<li><a class="nav-link" href="#data-scaling"><span class="header-section-number">5.13</span> Data Scaling</a></li>
+<li><a class="nav-link" href="#save-transformed-objects"><span class="header-section-number">5.14</span> Save transformed objects</a></li>
+<li><a class="nav-link" href="#confirm-saved-object"><span class="header-section-number">5.15</span> Confirm saved object</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/05_data_transformation.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/05_data_transformation.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-13</b>.</p>
+<br>
+</div>
+      <div class="col-12 col-md-6 mt-3">
+        <p>Note: This practical guide was created using the <a class="text-light" href="https://bookdown.org/yihui/bookdown/">bookdown</a> R package, styled with the modern bs4_book format.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+</body>
+</html>

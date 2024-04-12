@@ -1,0 +1,46 @@
+# (PART) DIMENSIONAL REDUCTION {-}
+
+# Dimensionality Reduction {#data-reduction}
+Data dimensional reduction is a crucial step in microbiome analysis, aimed at reducing the complexity of datasets while retaining important information. In this section, we'll explore techniques for reducing the number of features or variables in a phyloseq object, allowing for more efficient analysis and visualization of microbial community data.
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+
+library(phyloseq)
+library(microbiome)
+```
+
+## Prerequisite
+- Preprocessed R objects
+- Preprocessed phyloseq objects
+
+> Either of the R or phyloseq objects can be used as input data.
+
+## Import libraries and data objects
+```{r}
+set.seed(110912)
+
+library(tidyverse, suppressPackageStartupMessages())
+library(phyloseq)
+library(microbiome)
+
+cat("\nSaved phyloseq objects and dataframes\n\n")
+load("../imap-data-preparation/data/external/external_ps_objects.rda", verbose = T)
+```
+
+
+```{r}
+library(phyloseq)
+library(microbiome)
+
+ps_raw <- ps_dietswap
+ps_raw
+```
+
+

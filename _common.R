@@ -16,7 +16,6 @@ if (!require('rmarkdown')) {
   install.packages('rmarkdown', dependencies = TRUE)
 }
 
-
 knitr::write_bib(c(.packages(), 'base','bookdown', 'knitr','rmarkdown'), 'library/packages.bib')
 
 knitr::opts_chunk$set(

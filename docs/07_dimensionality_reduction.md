@@ -22,6 +22,7 @@ set.seed(110912)
 library(tidyverse, suppressPackageStartupMessages())
 library(phyloseq)
 library(microbiome)
+library(vegan)
 
 cat("\nSaved phyloseq objects and dataframes\n\n")
 ```
@@ -109,6 +110,19 @@ library(stats)
 mds_asin_bray_metrics <- cmdscale(ps_asin_bray_dist)
 ```
 
+## PCoA (Principal Coordinates Analysis)
+Principal Coordinates Analysis (PCoA), also known as classical multidimensional scaling (MDS), is a dimensionality reduction technique commonly used in ecology and other fields to visualize and explore patterns in distance or dissimilarity data. PCoA takes a distance or dissimilarity matrix as input and transforms it into a set of orthogonal axes (principal coordinates) that capture the maximum variation in the data. These principal coordinates represent a lower-dimensional representation of the original data while preserving the pairwise distances between samples as much as possible. PCoA is particularly useful for visualizing and interpreting relationships between samples based on their similarities or dissimilarities, facilitating the identification of clusters, gradients, or other patterns in complex datasets
+
+
+```r
+# Sample R code for MDS with distance matrices
+library(vegan)
+
+# Assuming 'distance_matrix' is your distance matrix between samples
+pcoa_asin_bray_metrics <- capscale(ps_asin_bray_dist ~ 1)
+```
+
+
 
 ## t-SNE (t-Distributed Stochastic Neighbor Embedding)
 
@@ -121,6 +135,12 @@ library(Rtsne)
 
 # Assuming 'distance_matrix' is your distance matrix between samples
 tsne_asin_bray_metrics <- Rtsne(as.dist(ps_asin_bray_dist))
+```
+
+
+
+```r
+save(pca_asin_bray_metrics, mds_asin_bray_metrics, pcoa_asin_bray_metrics, tsne_asin_bray_metrics, file = "data/reduced_dimension.rda")
 ```
 
 

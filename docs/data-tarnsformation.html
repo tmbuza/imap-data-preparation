@@ -108,28 +108,39 @@
 <span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium felsineum et rel.            0        0        0        0        0
-Streptococcus mitis et rel.             41       41       54       21       43
-Catenibacterium mitsuokai et rel.        0        5        3        2        0
-Pseudomonas                              0        0        0        0        0
-Bacteroides ovatus et rel.             427       15       31       46       29
-Aeromonas                                0        0        0        0        0
-Fusobacteria                             4        5        5        5        5
-Akkermansia                             18       97       67      256       21
-Campylobacter                            4        4        4        4        4
-Lactococcus                              1        4        2       81        1
-                                  Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Clostridium felsineum et rel.            0        0        0        0         0
-Streptococcus mitis et rel.            111       23       44      243        37
-Catenibacterium mitsuokai et rel.        8        7        1        2         1
-Pseudomonas                              0        0        0        0         0
-Bacteroides ovatus et rel.              13       15       19        7        11
-Aeromonas                                0        0        0        0         0
-Fusobacteria                             8        5        5        4         5
-Akkermansia                             16       26       30       19       125
-Campylobacter                            4        4        4        4         4
-Lactococcus                              6        1        1        7         1</code></pre>
+                                      Sample-1 Sample-2 Sample-3 Sample-4
+Clostridium (sensu stricto)                 15       51       42      154
+Clostridium symbiosum et rel.              220      247      214      111
+Uncultured Clostridiales II                 27      205      284      155
+Enterobacter aerogenes et rel.               7       10       14       36
+Clostridium colinum et rel.                 24       30       11       10
+Anaerovorax odorimutans et rel.              6       73       30       60
+Phascolarctobacterium faecium et rel.        4        5       13        4
+Eubacterium rectale et rel.                190       19       64       15
+Peptostreptococcus micros et rel.            2        3        2        3
+Dorea formicigenerans et rel.               42      267      419      135
+                                      Sample-5 Sample-6 Sample-7 Sample-8
+Clostridium (sensu stricto)                 21       39       42       21
+Clostridium symbiosum et rel.              155      274      211      226
+Uncultured Clostridiales II                 30       35      175       45
+Enterobacter aerogenes et rel.              15       65        9        7
+Clostridium colinum et rel.                 86        9        7       29
+Anaerovorax odorimutans et rel.             12        9       45       14
+Phascolarctobacterium faecium et rel.       33       20        8       11
+Eubacterium rectale et rel.                 63      227       25      187
+Peptostreptococcus micros et rel.            2        2        2        2
+Dorea formicigenerans et rel.              189      331      480      156
+                                      Sample-9 Sample-10
+Clostridium (sensu stricto)                 24       104
+Clostridium symbiosum et rel.              153       168
+Uncultured Clostridiales II                 51       141
+Enterobacter aerogenes et rel.              61        24
+Clostridium colinum et rel.                  7        22
+Anaerovorax odorimutans et rel.             14        32
+Phascolarctobacterium faecium et rel.       21       103
+Eubacterium rectale et rel.                 27        21
+Peptostreptococcus micros et rel.            2         2
+Dorea formicigenerans et rel.              101        70</code></pre>
 </div>
 <div id="no-transformation" class="section level2" number="5.3">
 <h2>
@@ -151,12 +162,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_identity</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3
-Clostridium felsineum et rel.            0        0        0
-Streptococcus mitis et rel.             41       41       54
-Catenibacterium mitsuokai et rel.        0        5        3
-Pseudomonas                              0        0        0
-Bacteroides ovatus et rel.             427       15       31</code></pre>
+                               Sample-1 Sample-2 Sample-3
+Clostridium (sensu stricto)          15       51       42
+Clostridium symbiosum et rel.       220      247      214
+Uncultured Clostridiales II          27      205      284
+Enterobacter aerogenes et rel.        7       10       14
+Clostridium colinum et rel.          24       30       11</code></pre>
 </div>
 <div id="relative-abundance" class="section level2" number="5.4">
 <h2>
@@ -173,12 +184,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                     Sample-1     Sample-2     Sample-3
-Clostridium felsineum et rel.     0.000000000 0.0000000000 0.0000000000
-Streptococcus mitis et rel.       0.004846909 0.0019444181 0.0018696119
-Catenibacterium mitsuokai et rel. 0.000000000 0.0002371242 0.0001038673
-Pseudomonas                       0.000000000 0.0000000000 0.0000000000
-Bacteroides ovatus et rel.        0.050478780 0.0007113725 0.0010732957</code></pre>
+                                  Sample-1     Sample-2     Sample-3
+Clostridium (sensu stricto)    0.001773259 0.0024186664 0.0014541426
+Clostridium symbiosum et rel.  0.026007802 0.0117139334 0.0074092026
+Uncultured Clostridiales II    0.003191867 0.0097220905 0.0098327736
+Enterobacter aerogenes et rel. 0.000827521 0.0004742483 0.0004847142
+Clostridium colinum et rel.    0.002837215 0.0014227449 0.0003808469</code></pre>
 </div>
 <div id="arc-sine-asin-transformation" class="section level2" number="5.5">
 <h2>
@@ -200,12 +211,12 @@ Bacteroides ovatus et rel.        0.050478780 0.0007113725 0.0010732957</code></
 <span><span class="va">ps_asin</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium felsineum et rel.     0.000000 0.000000 0.000000 0.000000
-Streptococcus mitis et rel.       0.079426 0.050275 0.049297 0.045395
-Catenibacterium mitsuokai et rel. 0.000000 0.017550 0.011615 0.014005
-Pseudomonas                       0.000000 0.000000 0.000000 0.000000
-Bacteroides ovatus et rel.        0.258934 0.030401 0.037345 0.067213</code></pre>
+                               Sample-1 Sample-2 Sample-3 Sample-4
+Clostridium (sensu stricto)    0.048009 0.056077 0.043472 0.123198
+Clostridium symbiosum et rel.  0.184841 0.123660 0.098255 0.104520
+Uncultured Clostridiales II    0.064431 0.112608 0.113250 0.123600
+Enterobacter aerogenes et rel. 0.032790 0.024821 0.025093 0.059450
+Clostridium colinum et rel.    0.060741 0.043000 0.022242 0.031320</code></pre>
 </div>
 <div id="compositional-version" class="section level2" number="5.6">
 <h2>
@@ -225,12 +236,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_compositional</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                     Sample-1     Sample-2     Sample-3
-Clostridium felsineum et rel.     0.000000000 0.0000000000 0.0000000000
-Streptococcus mitis et rel.       0.004846909 0.0019444181 0.0018696119
-Catenibacterium mitsuokai et rel. 0.000000000 0.0002371242 0.0001038673
-Pseudomonas                       0.000000000 0.0000000000 0.0000000000
-Bacteroides ovatus et rel.        0.050478780 0.0007113725 0.0010732957</code></pre>
+                                  Sample-1     Sample-2     Sample-3
+Clostridium (sensu stricto)    0.001773259 0.0024186664 0.0014541426
+Clostridium symbiosum et rel.  0.026007802 0.0117139334 0.0074092026
+Uncultured Clostridiales II    0.003191867 0.0097220905 0.0098327736
+Enterobacter aerogenes et rel. 0.000827521 0.0004742483 0.0004847142
+Clostridium colinum et rel.    0.002837215 0.0014227449 0.0003808469</code></pre>
 </div>
 <div id="z-transform-for-otus" class="section level2" number="5.7">
 <h2>
@@ -249,12 +260,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_otu</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                    Sample-1   Sample-2   Sample-3
-Clostridium felsineum et rel.      0.0000000  0.0000000  0.0000000
-Streptococcus mitis et rel.        0.5316419  0.5316419  0.7956010
-Catenibacterium mitsuokai et rel. -1.0236796  0.9649155  0.5149076
-Pseudomonas                       -0.2050931 -0.2050931 -0.2050931
-Bacteroides ovatus et rel.         1.8048752 -1.1375439 -0.5169724</code></pre>
+                                 Sample-1    Sample-2   Sample-3
+Clostridium (sensu stricto)    -0.6651233  1.73874887  1.3511541
+Clostridium symbiosum et rel.   0.2565546  0.40691215  0.2206504
+Uncultured Clostridiales II    -0.5712673  1.65878223  2.0215188
+Enterobacter aerogenes et rel. -0.4834495 -0.05597094  0.3603677
+Clostridium colinum et rel.     0.3285117  0.56820398 -0.4893285</code></pre>
 </div>
 <div id="z-transform-for-samples" class="section level2" number="5.8">
 <h2>
@@ -273,12 +284,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_sample</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                    Sample-1    Sample-2   Sample-3
-Clostridium felsineum et rel.     -1.1517915 -1.21672513 -1.1804675
-Streptococcus mitis et rel.        0.8411751  0.53203778  0.6248043
-Catenibacterium mitsuokai et rel. -1.1517915 -0.37840531 -0.5559529
-Pseudomonas                       -1.1517915 -1.21672513 -1.1804675
-Bacteroides ovatus et rel.         2.0789997  0.08050037  0.3808190</code></pre>
+                                  Sample-1   Sample-2    Sample-3
+Clostridium (sensu stricto)     0.32658334  0.6319638  0.51392329
+Clostridium symbiosum et rel.   1.72656831  1.3628714  1.23896230
+Uncultured Clostridiales II     0.62497665  1.2760560  1.36593401
+Enterobacter aerogenes et rel. -0.04301037 -0.0948094  0.03948761
+Clostridium colinum et rel.     0.56454854  0.3899523 -0.06103679</code></pre>
 </div>
 <div id="log10-transform" class="section level2" number="5.9">
 <h2>
@@ -297,12 +308,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1  Sample-2 Sample-3
-Clostridium felsineum et rel.     0.000000 0.0000000 0.000000
-Streptococcus mitis et rel.       1.623249 1.6232493 1.740363
-Catenibacterium mitsuokai et rel. 0.000000 0.7781513 0.602060
-Pseudomonas                       0.000000 0.0000000 0.000000
-Bacteroides ovatus et rel.        2.631444 1.2041200 1.505150</code></pre>
+                               Sample-1 Sample-2 Sample-3
+Clostridium (sensu stricto)    1.204120 1.716003 1.633468
+Clostridium symbiosum et rel.  2.344392 2.394452 2.332438
+Uncultured Clostridiales II    1.447158 2.313867 2.454845
+Enterobacter aerogenes et rel. 0.903090 1.041393 1.176091
+Clostridium colinum et rel.    1.397940 1.491362 1.079181</code></pre>
 </div>
 <div id="log10p-transform" class="section level2" number="5.10">
 <h2>
@@ -321,12 +332,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10p</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1  Sample-2 Sample-3
-Clostridium felsineum et rel.     0.000000 0.0000000 0.000000
-Streptococcus mitis et rel.       1.623249 1.6232493 1.740363
-Catenibacterium mitsuokai et rel. 0.000000 0.7781513 0.602060
-Pseudomonas                       0.000000 0.0000000 0.000000
-Bacteroides ovatus et rel.        2.631444 1.2041200 1.505150</code></pre>
+                               Sample-1 Sample-2 Sample-3
+Clostridium (sensu stricto)    1.204120 1.716003 1.633468
+Clostridium symbiosum et rel.  2.344392 2.394452 2.332438
+Uncultured Clostridiales II    1.447158 2.313867 2.454845
+Enterobacter aerogenes et rel. 0.903090 1.041393 1.176091
+Clostridium colinum et rel.    1.397940 1.491362 1.079181</code></pre>
 </div>
 <div id="clr-transform" class="section level2" number="5.11">
 <h2>
@@ -348,12 +359,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_clr</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1   Sample-2  Sample-3
-Clostridium felsineum et rel.     -3.555474 -3.3594489 -3.114983
-Streptococcus mitis et rel.        2.082832  1.3707778  1.576365
-Catenibacterium mitsuokai et rel. -3.555474 -0.6717570 -1.169073
-Pseudomonas                       -3.555474 -3.3594489 -3.114983
-Bacteroides ovatus et rel.         4.422822  0.3804359  1.028151</code></pre>
+                                Sample-1    Sample-2   Sample-3
+Clostridium (sensu stricto)    1.0834602  1.58729959 1.32766789
+Clostridium symbiosum et rel.  3.7599879  3.15920718 2.94647355
+Uncultured Clostridiales II    1.6669407  2.97313111 3.22889707
+Enterobacter aerogenes et rel. 0.3323087 -0.01322079 0.25231246
+Clostridium colinum et rel.    1.5498317  1.06163354 0.02051085</code></pre>
 </div>
 <div id="shift-the-baseline" class="section level2" number="5.12">
 <h2>
@@ -372,12 +383,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_shift</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3
-Clostridium felsineum et rel.            1        1        1
-Streptococcus mitis et rel.             42       42       55
-Catenibacterium mitsuokai et rel.        1        6        4
-Pseudomonas                              1        1        1
-Bacteroides ovatus et rel.             428       16       32</code></pre>
+                               Sample-1 Sample-2 Sample-3
+Clostridium (sensu stricto)          16       52       43
+Clostridium symbiosum et rel.       221      248      215
+Uncultured Clostridiales II          28      206      285
+Enterobacter aerogenes et rel.        8       11       15
+Clostridium colinum et rel.          25       31       12</code></pre>
 </div>
 <div id="data-scaling" class="section level2" number="5.13">
 <h2>
@@ -396,12 +407,12 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_scale</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3
-Clostridium felsineum et rel.            0        0        0
-Streptococcus mitis et rel.             41       41       54
-Catenibacterium mitsuokai et rel.        0        5        3
-Pseudomonas                              0        0        0
-Bacteroides ovatus et rel.             427       15       31</code></pre>
+                               Sample-1 Sample-2 Sample-3
+Clostridium (sensu stricto)          15       51       42
+Clostridium symbiosum et rel.       220      247      214
+Uncultured Clostridiales II          27      205      284
+Enterobacter aerogenes et rel.        7       10       14
+Clostridium colinum et rel.          24       30       11</code></pre>
 </div>
 <div id="save-transformed-objects" class="section level2" number="5.14">
 <h2>

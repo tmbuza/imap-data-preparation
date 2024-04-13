@@ -104,6 +104,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nSaved phyloseq objects and dataframes\n\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
@@ -169,51 +170,65 @@ Saved phyloseq objects and dataframes</code></pre>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">mds_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="t-sne-t-distributed-stochastic-neighbor-embedding" class="section level2" number="7.3">
+<div id="pcoa-principal-coordinates-analysis" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.3</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)<a class="anchor" aria-label="anchor" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> PCoA (Principal Coordinates Analysis)<a class="anchor" aria-label="anchor" href="#pcoa-principal-coordinates-analysis"><i class="fas fa-link"></i></a>
+</h2>
+<p>Principal Coordinates Analysis (PCoA), also known as classical multidimensional scaling (MDS), is a dimensionality reduction technique commonly used in ecology and other fields to visualize and explore patterns in distance or dissimilarity data. PCoA takes a distance or dissimilarity matrix as input and transforms it into a set of orthogonal axes (principal coordinates) that capture the maximum variation in the data. These principal coordinates represent a lower-dimensional representation of the original data while preserving the pairwise distances between samples as much as possible. PCoA is particularly useful for visualizing and interpreting relationships between samples based on their similarities or dissimilarities, facilitating the identification of clusters, gradients, or other patterns in complex datasets</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Sample R code for MDS with distance matrices</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
+<span><span class="va">pcoa_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/vegan/man/capscale.html">capscale</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="t-sne-t-distributed-stochastic-neighbor-embedding" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)<a class="anchor" aria-label="anchor" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><i class="fas fa-link"></i></a>
 </h2>
 <p>t-SNE is a nonlinear dimensionality reduction technique that aims to preserve both local and global relationships between samples in a lower-dimensional space. It is particularly effective for visualizing high-dimensional data in two or three dimensions, capturing fine-scale structure or clustering within the dataset. t-SNE works by modeling the similarities between samples in the high-dimensional space and mapping them to a lower-dimensional space while minimizing the Kullback-Leibler divergence between the two distributions. It is commonly used for exploratory data analysis and visualization of complex datasets, including microbiome abundance data.</p>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for t-SNE with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jkrijthe/Rtsne">Rtsne</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">tsne_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Rtsne/man/Rtsne.html">Rtsne</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html">as.dist</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pca_asin_bray_metrics</span>, <span class="va">mds_asin_bray_metrics</span>, <span class="va">pcoa_asin_bray_metrics</span>, <span class="va">tsne_asin_bray_metrics</span>, file <span class="op">=</span> <span class="st">"data/reduced_dimension.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="non-negative-matrix-factorization-nmf" class="section level2" number="7.4">
+<div id="non-negative-matrix-factorization-nmf" class="section level2" number="7.5">
 <h2>
-<span class="header-section-number">7.4</span> Non-negative Matrix Factorization (NMF)<a class="anchor" aria-label="anchor" href="#non-negative-matrix-factorization-nmf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5</span> Non-negative Matrix Factorization (NMF)<a class="anchor" aria-label="anchor" href="#non-negative-matrix-factorization-nmf"><i class="fas fa-link"></i></a>
 </h2>
 <p>NMF is a dimensionality reduction technique that factorizes a non-negative matrix into two lower-dimensional matrices with non-negative elements. In microbiome analysis, NMF can be applied to identify latent features or microbial signatures within complex microbial community data, facilitating the identification of microbial co-occurrence patterns or functional groups.</p>
 </div>
-<div id="redundancy-analysis-rda" class="section level2" number="7.5">
+<div id="redundancy-analysis-rda" class="section level2" number="7.6">
 <h2>
-<span class="header-section-number">7.5</span> Redundancy Analysis (RDA)<a class="anchor" aria-label="anchor" href="#redundancy-analysis-rda"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.6</span> Redundancy Analysis (RDA)<a class="anchor" aria-label="anchor" href="#redundancy-analysis-rda"><i class="fas fa-link"></i></a>
 </h2>
 <p>RDA is a multivariate statistical technique used to explore the relationships between multiple response variables (e.g., microbial taxa) and explanatory variables (e.g., environmental or metadata factors). In microbiome analysis, RDA can be applied to identify microbial taxa associated with specific environmental gradients or experimental conditions, providing insights into the ecological drivers shaping microbial composition.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for RDA with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">rda_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/vegan/man/cca.html">rda</a></span><span class="op">(</span><span class="va">ps_asin</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="canonical-correspondence-analysis-cca" class="section level2" number="7.6">
+<div id="canonical-correspondence-analysis-cca" class="section level2" number="7.7">
 <h2>
-<span class="header-section-number">7.6</span> Canonical Correspondence Analysis (CCA)<a class="anchor" aria-label="anchor" href="#canonical-correspondence-analysis-cca"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.7</span> Canonical Correspondence Analysis (CCA)<a class="anchor" aria-label="anchor" href="#canonical-correspondence-analysis-cca"><i class="fas fa-link"></i></a>
 </h2>
 <p>CCA is a multivariate technique similar to RDA but specifically designed for analyzing relationships between species data (e.g., microbial taxa) and environmental variables. In microbiome analysis, CCA can be used to identify microbial taxa that are most strongly correlated with environmental or metadata factors, helping to understand how microbial communities respond to different ecological conditions.</p>
 </div>
-<div id="random-forests" class="section level2" number="7.7">
+<div id="random-forests" class="section level2" number="7.8">
 <h2>
-<span class="header-section-number">7.7</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.8</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
 </h2>
 <p>Random Forests is a machine learning algorithm that can be applied for feature selection and dimensionality reduction in microbiome data. It works by constructing an ensemble of decision trees and aggregating their predictions to identify the most important features (e.g., microbial taxa) for predicting a response variable of interest (e.g., disease status). Random Forests can be useful for identifying key microbial biomarkers associated with specific outcomes or conditions.</p>
 </div>
-<div id="deep-learning" class="section level2" number="7.8">
+<div id="deep-learning" class="section level2" number="7.9">
 <h2>
-<span class="header-section-number">7.8</span> Deep Learning<a class="anchor" aria-label="anchor" href="#deep-learning"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.9</span> Deep Learning<a class="anchor" aria-label="anchor" href="#deep-learning"><i class="fas fa-link"></i></a>
 </h2>
 <p>Deep learning techniques, such as deep neural networks, can also be applied for dimensionality reduction and feature extraction in microbiome data. These techniques have the ability to learn complex patterns and representations directly from the data, potentially uncovering novel insights into microbial community structure and function. However, deep learning methods may require large amounts of data and computational resources, and their interpretability can be challenging.</p>
 <p>These methods provide alternative approaches for reducing the dimensionality of microbiome data and extracting meaningful information from complex microbial community datasets. Depending on the specific research question and characteristics of the data, different methods may be more suitable or informative.</p>
@@ -234,12 +249,13 @@ Saved phyloseq objects and dataframes</code></pre>
 <li><a class="nav-link" href="#import-libraries-and-data-objects">Import libraries and data objects</a></li>
 <li><a class="nav-link" href="#pca-principal-component-analysis"><span class="header-section-number">7.1</span> PCA (Principal Component Analysis)</a></li>
 <li><a class="nav-link" href="#mds-multidimensional-scaling"><span class="header-section-number">7.2</span> MDS (Multidimensional Scaling)</a></li>
-<li><a class="nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><span class="header-section-number">7.3</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)</a></li>
-<li><a class="nav-link" href="#non-negative-matrix-factorization-nmf"><span class="header-section-number">7.4</span> Non-negative Matrix Factorization (NMF)</a></li>
-<li><a class="nav-link" href="#redundancy-analysis-rda"><span class="header-section-number">7.5</span> Redundancy Analysis (RDA)</a></li>
-<li><a class="nav-link" href="#canonical-correspondence-analysis-cca"><span class="header-section-number">7.6</span> Canonical Correspondence Analysis (CCA)</a></li>
-<li><a class="nav-link" href="#random-forests"><span class="header-section-number">7.7</span> Random Forests</a></li>
-<li><a class="nav-link" href="#deep-learning"><span class="header-section-number">7.8</span> Deep Learning</a></li>
+<li><a class="nav-link" href="#pcoa-principal-coordinates-analysis"><span class="header-section-number">7.3</span> PCoA (Principal Coordinates Analysis)</a></li>
+<li><a class="nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><span class="header-section-number">7.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)</a></li>
+<li><a class="nav-link" href="#non-negative-matrix-factorization-nmf"><span class="header-section-number">7.5</span> Non-negative Matrix Factorization (NMF)</a></li>
+<li><a class="nav-link" href="#redundancy-analysis-rda"><span class="header-section-number">7.6</span> Redundancy Analysis (RDA)</a></li>
+<li><a class="nav-link" href="#canonical-correspondence-analysis-cca"><span class="header-section-number">7.7</span> Canonical Correspondence Analysis (CCA)</a></li>
+<li><a class="nav-link" href="#random-forests"><span class="header-section-number">7.8</span> Random Forests</a></li>
+<li><a class="nav-link" href="#deep-learning"><span class="header-section-number">7.9</span> Deep Learning</a></li>
 </ul>
 
       <div class="book-extra">

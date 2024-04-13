@@ -32180,12 +32180,12 @@ otu_table(ps)[1:5, 1:5]
 ```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium felsineum et rel.            0        0        0        0        0
-Streptococcus mitis et rel.             41       41       54       21       43
-Catenibacterium mitsuokai et rel.        0        5        3        2        0
-Pseudomonas                              0        0        0        0        0
-Bacteroides ovatus et rel.             427       15       31       46       29
+                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Clostridium (sensu stricto)          15       51       42      154       21
+Clostridium symbiosum et rel.       220      247      214      111      155
+Uncultured Clostridiales II          27      205      284      155       30
+Enterobacter aerogenes et rel.        7       10       14       36       15
+Clostridium colinum et rel.          24       30       11       10       86
 ```
 
 ### Taxonomy table
@@ -32196,18 +32196,18 @@ tax_table(ps)[1:5, ]
 
 ```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                  Phylum           Family                    
-Clostridium felsineum et rel.     "Firmicutes"     "Clostridium cluster XI"  
-Streptococcus mitis et rel.       "Firmicutes"     "Bacilli"                 
-Catenibacterium mitsuokai et rel. "Firmicutes"     "Clostridium cluster XVII"
-Pseudomonas                       "Proteobacteria" "Proteobacteria"          
-Bacteroides ovatus et rel.        "Bacteroidetes"  "Bacteroidetes"           
-                                  Genus                              
-Clostridium felsineum et rel.     "Clostridium felsineum et rel."    
-Streptococcus mitis et rel.       "Streptococcus mitis et rel."      
-Catenibacterium mitsuokai et rel. "Catenibacterium mitsuokai et rel."
-Pseudomonas                       "Pseudomonas"                      
-Bacteroides ovatus et rel.        "Bacteroides ovatus et rel."       
+                               Phylum           Family                    
+Clostridium (sensu stricto)    "Firmicutes"     "Clostridium cluster I"   
+Clostridium symbiosum et rel.  "Firmicutes"     "Clostridium cluster XIVa"
+Uncultured Clostridiales II    "Firmicutes"     "Uncultured Clostridiales"
+Enterobacter aerogenes et rel. "Proteobacteria" "Proteobacteria"          
+Clostridium colinum et rel.    "Firmicutes"     "Clostridium cluster XIVa"
+                               Genus                           
+Clostridium (sensu stricto)    "Clostridium (sensu stricto)"   
+Clostridium symbiosum et rel.  "Clostridium symbiosum et rel." 
+Uncultured Clostridiales II    "Uncultured Clostridiales II"   
+Enterobacter aerogenes et rel. "Enterobacter aerogenes et rel."
+Clostridium colinum et rel.    "Clostridium colinum et rel."   
 ```
 
 ### Phylogenetic tree if available
@@ -32220,11 +32220,16 @@ taxa_names(ps)[1:10]
 ```
 
 ```
- [1] "Clostridium felsineum et rel."     "Streptococcus mitis et rel."      
- [3] "Catenibacterium mitsuokai et rel." "Pseudomonas"                      
- [5] "Bacteroides ovatus et rel."        "Aeromonas"                        
- [7] "Fusobacteria"                      "Akkermansia"                      
- [9] "Campylobacter"                     "Lactococcus"                      
+ [1] "Clostridium (sensu stricto)"          
+ [2] "Clostridium symbiosum et rel."        
+ [3] "Uncultured Clostridiales II"          
+ [4] "Enterobacter aerogenes et rel."       
+ [5] "Clostridium colinum et rel."          
+ [6] "Anaerovorax odorimutans et rel."      
+ [7] "Phascolarctobacterium faecium et rel."
+ [8] "Eubacterium rectale et rel."          
+ [9] "Peptostreptococcus micros et rel."    
+[10] "Dorea formicigenerans et rel."        
 ```
 
 ### Summarize Phyloseq Object

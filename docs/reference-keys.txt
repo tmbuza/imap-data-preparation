@@ -71,6 +71,7 @@ aitchison-distance
 dimensionality-reduction-techniques
 pca-principal-component-analysis
 mds-multidimensional-scaling
+pcoa-principal-coordinates-analysis
 t-sne-t-distributed-stochastic-neighbor-embedding
 non-negative-matrix-factorization-nmf
 redundancy-analysis-rda

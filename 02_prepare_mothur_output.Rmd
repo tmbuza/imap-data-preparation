@@ -110,6 +110,7 @@ save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/mothur_p
 
 ```
 
+
 ## Review the mothur phyloseq object
 
 ```{r mothurpsraw}

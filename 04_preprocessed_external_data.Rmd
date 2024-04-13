@@ -61,8 +61,21 @@ The dietswap dataset, available through the microbiome R package, offers valuabl
 library(microbiome) # for dietswap dataset
 data("dietswap")
 
-ps_dietswap <-dietswap
-df_dietswap <-dietswap %>% 
+dietswap
+```
+
+> Note: dietswap is missing the phylo_tree slot, we can construct it and add it like so:
+
+```{r message=FALSE, warning=FALSE}
+library(microbiome)
+data('dietswap')
+ps_raw_basic <- dietswap
+
+library(ape)
+ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+ps_dietswap <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
+
+df_dietswap <-ps_dietswap %>% 
   phyloseq::psmelt() %>% 
   tibble::rownames_to_column("sample_id") %>% 
   dplyr::select(-9) %>% 
@@ -124,7 +137,12 @@ The Kostic_CRC dataset provides valuable insights into the gut microbiome of ind
 library(microbiomeMarker) # for kostic_crc dataset
 data("kostic_crc")
 
-ps_kostic_crc <-kostic_crc
+ps_raw_basic <- kostic_crc
+
+library(ape)
+ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+ps_kostic_crc <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
+
 df_kostic_crc <-kostic_crc %>% 
   phyloseq::psmelt() %>% 
   tibble::rownames_to_column("sample_id") %>% 
@@ -134,6 +152,10 @@ colnames(df_kostic_crc)
 cat("\n")
 ps_kostic_crc
 
+```
+
+```{r}
+df_kostic_crc
 ```
 
 

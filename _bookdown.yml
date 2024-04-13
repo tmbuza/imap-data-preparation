@@ -18,7 +18,8 @@ rmd_files:
     - 03_prepare_qiime2_output.Rmd
     - 04_preprocessed_external_data.Rmd
     - 05_data_transformation.Rmd
-    - 06_data_dimensionality_reduction.Rmd
+    - 06_distance_matrices.Rmd
+    - 07_dimensionality_reduction.Rmd
     - 99-appendix.Rmd
     - 999-references.Rmd
 # - 9999-footer.Rmd

@@ -70,6 +70,7 @@ ps_asin <- as.matrix(ps_asin)
 ps_asin[1:5, 1:4]
 ```
 
+
 ## Compositional Version
 Compositional data represents relative proportions or percentages of different microbial taxa within a sample, rather than the absolute abundance of each taxon. This transformation is necessary because raw abundance data is typically affected by various factors, such as sequencing depth, which can lead to spurious correlations and biases in downstream analyses.
 

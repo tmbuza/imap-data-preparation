@@ -11,7 +11,7 @@ The process of data transformation in microbiome analysis involves converting ra
 ## Import processed phyloseq object
 
 ```r
-load("../imap-data-preparation/data/external/external_ps_objects.rda", verbose = TRUE) 
+load("../imap-data-preparation/data/external_ps_objects.rda", verbose = TRUE) 
 ```
 
 ```
@@ -37,39 +37,28 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                      Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium (sensu stricto)                 15       51       42      154
-Clostridium symbiosum et rel.              220      247      214      111
-Uncultured Clostridiales II                 27      205      284      155
-Enterobacter aerogenes et rel.               7       10       14       36
-Clostridium colinum et rel.                 24       30       11       10
-Anaerovorax odorimutans et rel.              6       73       30       60
-Phascolarctobacterium faecium et rel.        4        5       13        4
-Eubacterium rectale et rel.                190       19       64       15
-Peptostreptococcus micros et rel.            2        3        2        3
-Dorea formicigenerans et rel.               42      267      419      135
-                                      Sample-5 Sample-6 Sample-7 Sample-8
-Clostridium (sensu stricto)                 21       39       42       21
-Clostridium symbiosum et rel.              155      274      211      226
-Uncultured Clostridiales II                 30       35      175       45
-Enterobacter aerogenes et rel.              15       65        9        7
-Clostridium colinum et rel.                 86        9        7       29
-Anaerovorax odorimutans et rel.             12        9       45       14
-Phascolarctobacterium faecium et rel.       33       20        8       11
-Eubacterium rectale et rel.                 63      227       25      187
-Peptostreptococcus micros et rel.            2        2        2        2
-Dorea formicigenerans et rel.              189      331      480      156
-                                      Sample-9 Sample-10
-Clostridium (sensu stricto)                 24       104
-Clostridium symbiosum et rel.              153       168
-Uncultured Clostridiales II                 51       141
-Enterobacter aerogenes et rel.              61        24
-Clostridium colinum et rel.                  7        22
-Anaerovorax odorimutans et rel.             14        32
-Phascolarctobacterium faecium et rel.       21       103
-Eubacterium rectale et rel.                 27        21
-Peptostreptococcus micros et rel.            2         2
-Dorea formicigenerans et rel.              101        70
+                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Bacteroides fragilis et rel.          443       21       73       29       33
+Actinomycetaceae                        0        1        0        1        0
+Ruminococcus lactaris et rel.           3        9       23       39        7
+Bryantella formatexigens et rel.       78      106      126       47       54
+Uncultured Clostridiales I             19      120     1183      399       19
+Eubacterium hallii et rel.             10      102       39       31       28
+Ruminococcus obeum et rel.             89      901      620      476      457
+Clostridium difficile et rel.          10       21       94      546       25
+Enterobacter aerogenes et rel.          7       10       14       36       15
+Asteroleplasma et rel.                  0        0        0        0        0
+                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Bacteroides fragilis et rel.           14       22      560        8        26
+Actinomycetaceae                        0        0        0        0         0
+Ruminococcus lactaris et rel.          15       22        8        4         4
+Bryantella formatexigens et rel.       52       73       43       41        48
+Uncultured Clostridiales I             43      137       70       59       315
+Eubacterium hallii et rel.             40       58       26       20        28
+Ruminococcus obeum et rel.            375      661      444      339       599
+Clostridium difficile et rel.          45       45       41       65        82
+Enterobacter aerogenes et rel.         65        9        7       61        24
+Asteroleplasma et rel.                  0        0        0        0         0
 ```
 
 ##  No Transformation
@@ -100,12 +89,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium (sensu stricto)          15       51       42
-Clostridium symbiosum et rel.       220      247      214
-Uncultured Clostridiales II          27      205      284
-Enterobacter aerogenes et rel.        7       10       14
-Clostridium colinum et rel.          24       30       11
+                                 Sample-1 Sample-2 Sample-3
+Bacteroides fragilis et rel.          443       21       73
+Actinomycetaceae                        0        1        0
+Ruminococcus lactaris et rel.           3        9       23
+Bryantella formatexigens et rel.       78      106      126
+Uncultured Clostridiales I             19      120     1183
 ```
 
 ## Relative abundance
@@ -130,12 +119,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1     Sample-2     Sample-3
-Clostridium (sensu stricto)    0.001773259 0.0024186664 0.0014541426
-Clostridium symbiosum et rel.  0.026007802 0.0117139334 0.0074092026
-Uncultured Clostridiales II    0.003191867 0.0097220905 0.0098327736
-Enterobacter aerogenes et rel. 0.000827521 0.0004742483 0.0004847142
-Clostridium colinum et rel.    0.002837215 0.0014227449 0.0003808469
+                                     Sample-1     Sample-2     Sample-3
+Bacteroides fragilis et rel.     0.0523702565 9.959215e-04 0.0025274383
+Actinomycetaceae                 0.0000000000 4.742483e-05 0.0000000000
+Ruminococcus lactaris et rel.    0.0003546519 4.268235e-04 0.0007963162
+Bryantella formatexigens et rel. 0.0092209481 5.027032e-03 0.0043624277
+Uncultured Clostridiales I       0.0022461284 5.690980e-03 0.0409583492
 ```
 
 ## Arc sine (asin) transformation
@@ -159,12 +148,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium (sensu stricto)    0.048009 0.056077 0.043472 0.123198
-Clostridium symbiosum et rel.  0.184841 0.123660 0.098255 0.104520
-Uncultured Clostridiales II    0.064431 0.112608 0.113250 0.123600
-Enterobacter aerogenes et rel. 0.032790 0.024821 0.025093 0.059450
-Clostridium colinum et rel.    0.060741 0.043000 0.022242 0.031320
+                                 Sample-1 Sample-2 Sample-3 Sample-4
+Bacteroides fragilis et rel.     0.263854 0.035973 0.057326 0.053352
+Actinomycetaceae                 0.000000 0.007848 0.000000 0.009903
+Ruminococcus lactaris et rel.    0.021464 0.023547 0.032165 0.061881
+Bryantella formatexigens et rel. 0.109655 0.080891 0.075344 0.067940
+Uncultured Clostridiales I       0.054038 0.086080 0.232740 0.199116
 ```
 
 
@@ -195,12 +184,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1     Sample-2     Sample-3
-Clostridium (sensu stricto)    0.001773259 0.0024186664 0.0014541426
-Clostridium symbiosum et rel.  0.026007802 0.0117139334 0.0074092026
-Uncultured Clostridiales II    0.003191867 0.0097220905 0.0098327736
-Enterobacter aerogenes et rel. 0.000827521 0.0004742483 0.0004847142
-Clostridium colinum et rel.    0.002837215 0.0014227449 0.0003808469
+                                     Sample-1     Sample-2     Sample-3
+Bacteroides fragilis et rel.     0.0523702565 9.959215e-04 0.0025274383
+Actinomycetaceae                 0.0000000000 4.742483e-05 0.0000000000
+Ruminococcus lactaris et rel.    0.0003546519 4.268235e-04 0.0007963162
+Bryantella formatexigens et rel. 0.0092209481 5.027032e-03 0.0043624277
+Uncultured Clostridiales I       0.0022461284 5.690980e-03 0.0409583492
 ```
 
 ## Z-transform for OTUs
@@ -229,12 +218,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1    Sample-2   Sample-3
-Clostridium (sensu stricto)    -0.6651233  1.73874887  1.3511541
-Clostridium symbiosum et rel.   0.2565546  0.40691215  0.2206504
-Uncultured Clostridiales II    -0.5712673  1.65878223  2.0215188
-Enterobacter aerogenes et rel. -0.4834495 -0.05597094  0.3603677
-Clostridium colinum et rel.     0.3285117  0.56820398 -0.4893285
+                                   Sample-1   Sample-2   Sample-3
+Bacteroides fragilis et rel.      1.3124945 -1.1679540 -0.1666035
+Actinomycetaceae                 -0.2780648  3.5800844 -0.2780648
+Ruminococcus lactaris et rel.    -0.6823416  0.4788310  1.5882717
+Bryantella formatexigens et rel.  0.4035063  0.7474051  0.9416489
+Uncultured Clostridiales I       -0.7313669  1.0472965  3.3010503
 ```
 
 ## Z-transform for Samples
@@ -263,12 +252,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1   Sample-2    Sample-3
-Clostridium (sensu stricto)     0.32658334  0.6319638  0.51392329
-Clostridium symbiosum et rel.   1.72656831  1.3628714  1.23896230
-Uncultured Clostridiales II     0.62497665  1.2760560  1.36593401
-Enterobacter aerogenes et rel. -0.04301037 -0.0948094  0.03948761
-Clostridium colinum et rel.     0.56454854  0.3899523 -0.06103679
+                                   Sample-1   Sample-2   Sample-3
+Bacteroides fragilis et rel.      2.0985693  0.2294970  0.7584797
+Actinomycetaceae                 -1.1517915 -0.8924188 -1.1804675
+Ruminococcus lactaris et rel.    -0.4126041 -0.1394027  0.2512205
+Bryantella formatexigens et rel.  1.1780462  0.9695756  1.0018003
+Uncultured Clostridiales I        0.4455659  1.0271063  2.0075089
 ```
 
 ## Log10 Transform
@@ -297,12 +286,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium (sensu stricto)    1.204120 1.716003 1.633468
-Clostridium symbiosum et rel.  2.344392 2.394452 2.332438
-Uncultured Clostridiales II    1.447158 2.313867 2.454845
-Enterobacter aerogenes et rel. 0.903090 1.041393 1.176091
-Clostridium colinum et rel.    1.397940 1.491362 1.079181
+                                 Sample-1 Sample-2 Sample-3
+Bacteroides fragilis et rel.     2.647383 1.342423 1.869232
+Actinomycetaceae                 0.000000 0.301030 0.000000
+Ruminococcus lactaris et rel.    0.602060 1.000000 1.380211
+Bryantella formatexigens et rel. 1.897627 2.029384 2.103804
+Uncultured Clostridiales I       1.301030 2.082785 3.073352
 ```
 
 ## Log10p Transform
@@ -331,12 +320,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium (sensu stricto)    1.204120 1.716003 1.633468
-Clostridium symbiosum et rel.  2.344392 2.394452 2.332438
-Uncultured Clostridiales II    1.447158 2.313867 2.454845
-Enterobacter aerogenes et rel. 0.903090 1.041393 1.176091
-Clostridium colinum et rel.    1.397940 1.491362 1.079181
+                                 Sample-1 Sample-2 Sample-3
+Bacteroides fragilis et rel.     2.647383 1.342423 1.869232
+Actinomycetaceae                 0.000000 0.301030 0.000000
+Ruminococcus lactaris et rel.    0.602060 1.000000 1.380211
+Bryantella formatexigens et rel. 1.897627 2.029384 2.103804
+Uncultured Clostridiales I       1.301030 2.082785 3.073352
 ```
 
 ## CLR Transform
@@ -366,12 +355,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1    Sample-2   Sample-3
-Clostridium (sensu stricto)    1.0834602  1.58729959 1.32766789
-Clostridium symbiosum et rel.  3.7599879  3.15920718 2.94647355
-Uncultured Clostridiales II    1.6669407  2.97313111 3.22889707
-Enterobacter aerogenes et rel. 0.3323087 -0.01322079 0.25231246
-Clostridium colinum et rel.    1.5498317  1.06163354 0.02051085
+                                   Sample-1   Sample-2   Sample-3
+Bacteroides fragilis et rel.      4.4595952  0.7100973  1.8754492
+Actinomycetaceae                 -3.5554744 -2.0404856 -3.1149834
+Ruminococcus lactaris et rel.    -0.4880348 -0.1146760  0.7351642
+Bryantella formatexigens et rel.  2.7242794  2.3152189  2.4184061
+Uncultured Clostridiales I        1.3178115  2.4388711  4.6543952
 ```
 
 
@@ -401,12 +390,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium (sensu stricto)          16       52       43
-Clostridium symbiosum et rel.       221      248      215
-Uncultured Clostridiales II          28      206      285
-Enterobacter aerogenes et rel.        8       11       15
-Clostridium colinum et rel.          25       31       12
+                                 Sample-1 Sample-2 Sample-3
+Bacteroides fragilis et rel.          444       22       74
+Actinomycetaceae                        1        2        1
+Ruminococcus lactaris et rel.           4       10       24
+Bryantella formatexigens et rel.       79      107      127
+Uncultured Clostridiales I             20      121     1184
 ```
 
 ## Data Scaling
@@ -435,12 +424,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium (sensu stricto)          15       51       42
-Clostridium symbiosum et rel.       220      247      214
-Uncultured Clostridiales II          27      205      284
-Enterobacter aerogenes et rel.        7       10       14
-Clostridium colinum et rel.          24       30       11
+                                 Sample-1 Sample-2 Sample-3
+Bacteroides fragilis et rel.          443       21       73
+Actinomycetaceae                        0        1        0
+Ruminococcus lactaris et rel.           3        9       23
+Bryantella formatexigens et rel.       78      106      126
+Uncultured Clostridiales I             19      120     1183
 ```
 
 ## Save transformed objects

@@ -33,7 +33,7 @@ Loading objects:
 ```
 
 ```r
-load("data/external/external_ps_objects.rda", verbose = TRUE)
+load("data/external_ps_objects.rda", verbose = TRUE)
 ```
 
 ```

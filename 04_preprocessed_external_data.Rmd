@@ -163,23 +163,21 @@ df_kostic_crc
 
 ```{r}
 save(df_GlobalPatterns, 
-     # df_ibd_phylo, 
      df_dietswap,  
      df_caporaso,
      df_kostic_crc,
 
      ps_GlobalPatterns, 
-     # ps_ibd_phylo, 
      ps_dietswap,
      ps_caporaso,
      ps_kostic_crc,
-     file = "data/external/external_ps_objects.rda")
+     file = "data/external_ps_objects.rda")
 
 ```
 
 ## Confirm saved objects
 ```{r}
-load("data/external/external_ps_objects.rda", verbose = TRUE)
+load("data/external_ps_objects.rda", verbose = TRUE)
 ```
 
 ## Review Phyloseq Objects

@@ -118,7 +118,7 @@ ps_df_raw <- psmelt(ps_raw)
 
 ps_df_rel <- psmelt(ps_raw)
 
-save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2/qiime2_phyloseq_objects.rda")
+save(ps_tree, ps_raw, ps_rel, ps_df_raw, ps_df_rel, file = "data/qiime2_phyloseq_objects.rda")
 ```
 
 ## Review the phyloseq object

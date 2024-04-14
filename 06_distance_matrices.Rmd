@@ -25,7 +25,7 @@ library(microbiome)
 library(vegan)
 
 load("data/ps_transformed.rda", verbose = TRUE)
-load("data/external/external_ps_objects.rda", verbose = TRUE)
+load("data/external_ps_objects.rda", verbose = TRUE)
 ```
 
 

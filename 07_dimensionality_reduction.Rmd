@@ -31,7 +31,7 @@ library(microbiome)
 library(vegan)
 
 cat("\nSaved phyloseq objects and dataframes\n\n")
-load("../imap-data-preparation/data/external/external_ps_objects.rda", verbose = T)
+load("../imap-data-preparation/data/external_ps_objects.rda", verbose = T)
 load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
 load("../imap-data-preparation/data/bray_distances.rda", verbose = T)
 

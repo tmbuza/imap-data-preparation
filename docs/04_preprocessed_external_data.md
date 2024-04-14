@@ -32021,23 +32021,21 @@ df_kostic_crc
 
 ```r
 save(df_GlobalPatterns, 
-     # df_ibd_phylo, 
      df_dietswap,  
      df_caporaso,
      df_kostic_crc,
 
      ps_GlobalPatterns, 
-     # ps_ibd_phylo, 
      ps_dietswap,
      ps_caporaso,
      ps_kostic_crc,
-     file = "data/external/external_ps_objects.rda")
+     file = "data/external_ps_objects.rda")
 ```
 
 ## Confirm saved objects
 
 ```r
-load("data/external/external_ps_objects.rda", verbose = TRUE)
+load("data/external_ps_objects.rda", verbose = TRUE)
 ```
 
 ```
@@ -32180,12 +32178,12 @@ otu_table(ps)[1:5, 1:5]
 ```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium (sensu stricto)          15       51       42      154       21
-Clostridium symbiosum et rel.       220      247      214      111      155
-Uncultured Clostridiales II          27      205      284      155       30
-Enterobacter aerogenes et rel.        7       10       14       36       15
-Clostridium colinum et rel.          24       30       11       10       86
+                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Bacteroides fragilis et rel.          443       21       73       29       33
+Actinomycetaceae                        0        1        0        1        0
+Ruminococcus lactaris et rel.           3        9       23       39        7
+Bryantella formatexigens et rel.       78      106      126       47       54
+Uncultured Clostridiales I             19      120     1183      399       19
 ```
 
 ### Taxonomy table
@@ -32196,18 +32194,18 @@ tax_table(ps)[1:5, ]
 
 ```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                               Phylum           Family                    
-Clostridium (sensu stricto)    "Firmicutes"     "Clostridium cluster I"   
-Clostridium symbiosum et rel.  "Firmicutes"     "Clostridium cluster XIVa"
-Uncultured Clostridiales II    "Firmicutes"     "Uncultured Clostridiales"
-Enterobacter aerogenes et rel. "Proteobacteria" "Proteobacteria"          
-Clostridium colinum et rel.    "Firmicutes"     "Clostridium cluster XIVa"
-                               Genus                           
-Clostridium (sensu stricto)    "Clostridium (sensu stricto)"   
-Clostridium symbiosum et rel.  "Clostridium symbiosum et rel." 
-Uncultured Clostridiales II    "Uncultured Clostridiales II"   
-Enterobacter aerogenes et rel. "Enterobacter aerogenes et rel."
-Clostridium colinum et rel.    "Clostridium colinum et rel."   
+                                 Phylum           Family                    
+Bacteroides fragilis et rel.     "Bacteroidetes"  "Bacteroidetes"           
+Actinomycetaceae                 "Actinobacteria" "Actinobacteria"          
+Ruminococcus lactaris et rel.    "Firmicutes"     "Clostridium cluster XIVa"
+Bryantella formatexigens et rel. "Firmicutes"     "Clostridium cluster XIVa"
+Uncultured Clostridiales I       "Firmicutes"     "Uncultured Clostridiales"
+                                 Genus                             
+Bacteroides fragilis et rel.     "Bacteroides fragilis et rel."    
+Actinomycetaceae                 "Actinomycetaceae"                
+Ruminococcus lactaris et rel.    "Ruminococcus lactaris et rel."   
+Bryantella formatexigens et rel. "Bryantella formatexigens et rel."
+Uncultured Clostridiales I       "Uncultured Clostridiales I"      
 ```
 
 ### Phylogenetic tree if available
@@ -32220,16 +32218,11 @@ taxa_names(ps)[1:10]
 ```
 
 ```
- [1] "Clostridium (sensu stricto)"          
- [2] "Clostridium symbiosum et rel."        
- [3] "Uncultured Clostridiales II"          
- [4] "Enterobacter aerogenes et rel."       
- [5] "Clostridium colinum et rel."          
- [6] "Anaerovorax odorimutans et rel."      
- [7] "Phascolarctobacterium faecium et rel."
- [8] "Eubacterium rectale et rel."          
- [9] "Peptostreptococcus micros et rel."    
-[10] "Dorea formicigenerans et rel."        
+ [1] "Bacteroides fragilis et rel."     "Actinomycetaceae"                
+ [3] "Ruminococcus lactaris et rel."    "Bryantella formatexigens et rel."
+ [5] "Uncultured Clostridiales I"       "Eubacterium hallii et rel."      
+ [7] "Ruminococcus obeum et rel."       "Clostridium difficile et rel."   
+ [9] "Enterobacter aerogenes et rel."   "Asteroleplasma et rel."          
 ```
 
 ### Summarize Phyloseq Object

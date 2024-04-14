@@ -32178,12 +32178,18 @@ otu_table(ps)[1:5, 1:5]
 ```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Bacteroides fragilis et rel.          443       21       73       29       33
-Actinomycetaceae                        0        1        0        1        0
-Ruminococcus lactaris et rel.           3        9       23       39        7
-Bryantella formatexigens et rel.       78      106      126       47       54
-Uncultured Clostridiales I             19      120     1183      399       19
+                                    Sample-1 Sample-2 Sample-3 Sample-4
+Clostridium ramosum et rel.                2        2        2        2
+Staphylococcus                             0        0        0        0
+Papillibacter cinnamivorans et rel.        9       59       55       45
+Campylobacter                              4        4        4        4
+Micrococcaceae                             0        0        0        0
+                                    Sample-5
+Clostridium ramosum et rel.                2
+Staphylococcus                             0
+Papillibacter cinnamivorans et rel.      108
+Campylobacter                              4
+Micrococcaceae                             0
 ```
 
 ### Taxonomy table
@@ -32194,18 +32200,24 @@ tax_table(ps)[1:5, ]
 
 ```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                 Phylum           Family                    
-Bacteroides fragilis et rel.     "Bacteroidetes"  "Bacteroidetes"           
-Actinomycetaceae                 "Actinobacteria" "Actinobacteria"          
-Ruminococcus lactaris et rel.    "Firmicutes"     "Clostridium cluster XIVa"
-Bryantella formatexigens et rel. "Firmicutes"     "Clostridium cluster XIVa"
-Uncultured Clostridiales I       "Firmicutes"     "Uncultured Clostridiales"
-                                 Genus                             
-Bacteroides fragilis et rel.     "Bacteroides fragilis et rel."    
-Actinomycetaceae                 "Actinomycetaceae"                
-Ruminococcus lactaris et rel.    "Ruminococcus lactaris et rel."   
-Bryantella formatexigens et rel. "Bryantella formatexigens et rel."
-Uncultured Clostridiales I       "Uncultured Clostridiales I"      
+                                    Phylum          
+Clostridium ramosum et rel.         "Firmicutes"    
+Staphylococcus                      "Firmicutes"    
+Papillibacter cinnamivorans et rel. "Firmicutes"    
+Campylobacter                       "Proteobacteria"
+Micrococcaceae                      "Actinobacteria"
+                                    Family                     
+Clostridium ramosum et rel.         "Clostridium cluster XVIII"
+Staphylococcus                      "Bacilli"                  
+Papillibacter cinnamivorans et rel. "Clostridium cluster IV"   
+Campylobacter                       "Proteobacteria"           
+Micrococcaceae                      "Actinobacteria"           
+                                    Genus                                
+Clostridium ramosum et rel.         "Clostridium ramosum et rel."        
+Staphylococcus                      "Staphylococcus"                     
+Papillibacter cinnamivorans et rel. "Papillibacter cinnamivorans et rel."
+Campylobacter                       "Campylobacter"                      
+Micrococcaceae                      "Micrococcaceae"                     
 ```
 
 ### Phylogenetic tree if available
@@ -32218,11 +32230,11 @@ taxa_names(ps)[1:10]
 ```
 
 ```
- [1] "Bacteroides fragilis et rel."     "Actinomycetaceae"                
- [3] "Ruminococcus lactaris et rel."    "Bryantella formatexigens et rel."
- [5] "Uncultured Clostridiales I"       "Eubacterium hallii et rel."      
- [7] "Ruminococcus obeum et rel."       "Clostridium difficile et rel."   
- [9] "Enterobacter aerogenes et rel."   "Asteroleplasma et rel."          
+ [1] "Clostridium ramosum et rel."         "Staphylococcus"                     
+ [3] "Papillibacter cinnamivorans et rel." "Campylobacter"                      
+ [5] "Micrococcaceae"                      "Prevotella ruminicola et rel."      
+ [7] "Bryantella formatexigens et rel."    "Veillonella"                        
+ [9] "Catenibacterium mitsuokai et rel."   "Uncultured Clostridiales II"        
 ```
 
 ### Summarize Phyloseq Object

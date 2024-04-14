@@ -37,28 +37,39 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Bacteroides fragilis et rel.          443       21       73       29       33
-Actinomycetaceae                        0        1        0        1        0
-Ruminococcus lactaris et rel.           3        9       23       39        7
-Bryantella formatexigens et rel.       78      106      126       47       54
-Uncultured Clostridiales I             19      120     1183      399       19
-Eubacterium hallii et rel.             10      102       39       31       28
-Ruminococcus obeum et rel.             89      901      620      476      457
-Clostridium difficile et rel.          10       21       94      546       25
-Enterobacter aerogenes et rel.          7       10       14       36       15
-Asteroleplasma et rel.                  0        0        0        0        0
-                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Bacteroides fragilis et rel.           14       22      560        8        26
-Actinomycetaceae                        0        0        0        0         0
-Ruminococcus lactaris et rel.          15       22        8        4         4
-Bryantella formatexigens et rel.       52       73       43       41        48
-Uncultured Clostridiales I             43      137       70       59       315
-Eubacterium hallii et rel.             40       58       26       20        28
-Ruminococcus obeum et rel.            375      661      444      339       599
-Clostridium difficile et rel.          45       45       41       65        82
-Enterobacter aerogenes et rel.         65        9        7       61        24
-Asteroleplasma et rel.                  0        0        0        0         0
+                                    Sample-1 Sample-2 Sample-3 Sample-4
+Clostridium ramosum et rel.                2        2        2        2
+Staphylococcus                             0        0        0        0
+Papillibacter cinnamivorans et rel.        9       59       55       45
+Campylobacter                              4        4        4        4
+Micrococcaceae                             0        0        0        0
+Prevotella ruminicola et rel.              1        2        3        2
+Bryantella formatexigens et rel.          78      106      126       47
+Veillonella                                8       19        6        5
+Catenibacterium mitsuokai et rel.          0        5        3        2
+Uncultured Clostridiales II               27      205      284      155
+                                    Sample-5 Sample-6 Sample-7 Sample-8
+Clostridium ramosum et rel.                2        2        3        2
+Staphylococcus                             0        0        0        0
+Papillibacter cinnamivorans et rel.      108      110       58       55
+Campylobacter                              4        4        4        4
+Micrococcaceae                             0        0        0        0
+Prevotella ruminicola et rel.              9        4        2        8
+Bryantella formatexigens et rel.          54       52       73       43
+Veillonella                                7        8       11       11
+Catenibacterium mitsuokai et rel.          0        8        7        1
+Uncultured Clostridiales II               30       35      175       45
+                                    Sample-9 Sample-10
+Clostridium ramosum et rel.                2         2
+Staphylococcus                             0         0
+Papillibacter cinnamivorans et rel.       99        20
+Campylobacter                              4         4
+Micrococcaceae                             0         0
+Prevotella ruminicola et rel.              1         2
+Bryantella formatexigens et rel.          41        48
+Veillonella                               71        74
+Catenibacterium mitsuokai et rel.          2         1
+Uncultured Clostridiales II               51       141
 ```
 
 ##  No Transformation
@@ -89,12 +100,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3
-Bacteroides fragilis et rel.          443       21       73
-Actinomycetaceae                        0        1        0
-Ruminococcus lactaris et rel.           3        9       23
-Bryantella formatexigens et rel.       78      106      126
-Uncultured Clostridiales I             19      120     1183
+                                    Sample-1 Sample-2 Sample-3
+Clostridium ramosum et rel.                2        2        2
+Staphylococcus                             0        0        0
+Papillibacter cinnamivorans et rel.        9       59       55
+Campylobacter                              4        4        4
+Micrococcaceae                             0        0        0
 ```
 
 ## Relative abundance
@@ -119,12 +130,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                     Sample-1     Sample-2     Sample-3
-Bacteroides fragilis et rel.     0.0523702565 9.959215e-04 0.0025274383
-Actinomycetaceae                 0.0000000000 4.742483e-05 0.0000000000
-Ruminococcus lactaris et rel.    0.0003546519 4.268235e-04 0.0007963162
-Bryantella formatexigens et rel. 0.0092209481 5.027032e-03 0.0043624277
-Uncultured Clostridiales I       0.0022461284 5.690980e-03 0.0409583492
+                                        Sample-1     Sample-2     Sample-3
+Clostridium ramosum et rel.         0.0002364346 9.484966e-05 6.924488e-05
+Staphylococcus                      0.0000000000 0.000000e+00 0.000000e+00
+Papillibacter cinnamivorans et rel. 0.0010639556 2.798065e-03 1.904234e-03
+Campylobacter                       0.0004728691 1.896993e-04 1.384898e-04
+Micrococcaceae                      0.0000000000 0.000000e+00 0.000000e+00
 ```
 
 ## Arc sine (asin) transformation
@@ -148,12 +159,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4
-Bacteroides fragilis et rel.     0.263854 0.035973 0.057326 0.053352
-Actinomycetaceae                 0.000000 0.007848 0.000000 0.009903
-Ruminococcus lactaris et rel.    0.021464 0.023547 0.032165 0.061881
-Bryantella formatexigens et rel. 0.109655 0.080891 0.075344 0.067940
-Uncultured Clostridiales I       0.054038 0.086080 0.232740 0.199116
+                                    Sample-1 Sample-2 Sample-3 Sample-4
+Clostridium ramosum et rel.         0.017525 0.011099 0.009484 0.014005
+Staphylococcus                      0.000000 0.000000 0.000000 0.000000
+Papillibacter cinnamivorans et rel. 0.037182 0.060320 0.049752 0.066477
+Campylobacter                       0.024785 0.015697 0.013412 0.019806
+Micrococcaceae                      0.000000 0.000000 0.000000 0.000000
 ```
 
 
@@ -184,12 +195,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                     Sample-1     Sample-2     Sample-3
-Bacteroides fragilis et rel.     0.0523702565 9.959215e-04 0.0025274383
-Actinomycetaceae                 0.0000000000 4.742483e-05 0.0000000000
-Ruminococcus lactaris et rel.    0.0003546519 4.268235e-04 0.0007963162
-Bryantella formatexigens et rel. 0.0092209481 5.027032e-03 0.0043624277
-Uncultured Clostridiales I       0.0022461284 5.690980e-03 0.0409583492
+                                        Sample-1     Sample-2     Sample-3
+Clostridium ramosum et rel.         0.0002364346 9.484966e-05 6.924488e-05
+Staphylococcus                      0.0000000000 0.000000e+00 0.000000e+00
+Papillibacter cinnamivorans et rel. 0.0010639556 2.798065e-03 1.904234e-03
+Campylobacter                       0.0004728691 1.896993e-04 1.384898e-04
+Micrococcaceae                      0.0000000000 0.000000e+00 0.000000e+00
 ```
 
 ## Z-transform for OTUs
@@ -218,12 +229,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1   Sample-2   Sample-3
-Bacteroides fragilis et rel.      1.3124945 -1.1679540 -0.1666035
-Actinomycetaceae                 -0.2780648  3.5800844 -0.2780648
-Ruminococcus lactaris et rel.    -0.6823416  0.4788310  1.5882717
-Bryantella formatexigens et rel.  0.4035063  0.7474051  0.9416489
-Uncultured Clostridiales I       -0.7313669  1.0472965  3.3010503
+                                        Sample-1     Sample-2     Sample-3
+Clostridium ramosum et rel.         -0.584998298 -0.584998298 -0.584998298
+Staphylococcus                      -0.268583981 -0.268583981 -0.268583981
+Papillibacter cinnamivorans et rel. -1.141005100  1.316483388  1.221856185
+Campylobacter                       -0.008355085 -0.008355085 -0.008355085
+Micrococcaceae                       0.000000000  0.000000000  0.000000000
 ```
 
 ## Z-transform for Samples
@@ -252,12 +263,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1   Sample-2   Sample-3
-Bacteroides fragilis et rel.      2.0985693  0.2294970  0.7584797
-Actinomycetaceae                 -1.1517915 -0.8924188 -1.1804675
-Ruminococcus lactaris et rel.    -0.4126041 -0.1394027  0.2512205
-Bryantella formatexigens et rel.  1.1780462  0.9695756  1.0018003
-Uncultured Clostridiales I        0.4455659  1.0271063  2.0075089
+                                       Sample-1   Sample-2   Sample-3
+Clostridium ramosum et rel.         -0.56599933 -0.7027117 -0.6855514
+Staphylococcus                      -1.15179151 -1.2167251 -1.1804675
+Papillibacter cinnamivorans et rel.  0.07597223  0.6989171  0.6329215
+Campylobacter                       -0.29362148 -0.4637090 -0.4554285
+Micrococcaceae                      -1.15179151 -1.2167251 -1.1804675
 ```
 
 ## Log10 Transform
@@ -286,12 +297,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3
-Bacteroides fragilis et rel.     2.647383 1.342423 1.869232
-Actinomycetaceae                 0.000000 0.301030 0.000000
-Ruminococcus lactaris et rel.    0.602060 1.000000 1.380211
-Bryantella formatexigens et rel. 1.897627 2.029384 2.103804
-Uncultured Clostridiales I       1.301030 2.082785 3.073352
+                                     Sample-1  Sample-2  Sample-3
+Clostridium ramosum et rel.         0.4771213 0.4771213 0.4771213
+Staphylococcus                      0.0000000 0.0000000 0.0000000
+Papillibacter cinnamivorans et rel. 1.0000000 1.7781513 1.7481880
+Campylobacter                       0.6989700 0.6989700 0.6989700
+Micrococcaceae                      0.0000000 0.0000000 0.0000000
 ```
 
 ## Log10p Transform
@@ -320,12 +331,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3
-Bacteroides fragilis et rel.     2.647383 1.342423 1.869232
-Actinomycetaceae                 0.000000 0.301030 0.000000
-Ruminococcus lactaris et rel.    0.602060 1.000000 1.380211
-Bryantella formatexigens et rel. 1.897627 2.029384 2.103804
-Uncultured Clostridiales I       1.301030 2.082785 3.073352
+                                     Sample-1  Sample-2  Sample-3
+Clostridium ramosum et rel.         0.4771213 0.4771213 0.4771213
+Staphylococcus                      0.0000000 0.0000000 0.0000000
+Papillibacter cinnamivorans et rel. 1.0000000 1.7781513 1.7481880
+Campylobacter                       0.6989700 0.6989700 0.6989700
+Micrococcaceae                      0.0000000 0.0000000 0.0000000
 ```
 
 ## CLR Transform
@@ -355,12 +366,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1   Sample-2   Sample-3
-Bacteroides fragilis et rel.      4.4595952  0.7100973  1.8754492
-Actinomycetaceae                 -3.5554744 -2.0404856 -3.1149834
-Ruminococcus lactaris et rel.    -0.4880348 -0.1146760  0.7351642
-Bryantella formatexigens et rel.  2.7242794  2.3152189  2.4184061
-Uncultured Clostridiales I        1.3178115  2.4388711  4.6543952
+                                      Sample-1   Sample-2   Sample-3
+Clostridium ramosum et rel.         -0.8704964 -1.4908696 -1.5055455
+Staphylococcus                      -3.5554744 -3.3594489 -3.1149834
+Papillibacter cinnamivorans et rel.  0.5790592  1.7320473  1.5945468
+Campylobacter                       -0.2120560 -0.8780341 -0.9177588
+Micrococcaceae                      -3.5554744 -3.3594489 -3.1149834
 ```
 
 
@@ -390,12 +401,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3
-Bacteroides fragilis et rel.          444       22       74
-Actinomycetaceae                        1        2        1
-Ruminococcus lactaris et rel.           4       10       24
-Bryantella formatexigens et rel.       79      107      127
-Uncultured Clostridiales I             20      121     1184
+                                    Sample-1 Sample-2 Sample-3
+Clostridium ramosum et rel.                3        3        3
+Staphylococcus                             1        1        1
+Papillibacter cinnamivorans et rel.       10       60       56
+Campylobacter                              5        5        5
+Micrococcaceae                             1        1        1
 ```
 
 ## Data Scaling
@@ -424,12 +435,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3
-Bacteroides fragilis et rel.          443       21       73
-Actinomycetaceae                        0        1        0
-Ruminococcus lactaris et rel.           3        9       23
-Bryantella formatexigens et rel.       78      106      126
-Uncultured Clostridiales I             19      120     1183
+                                    Sample-1 Sample-2 Sample-3
+Clostridium ramosum et rel.                2        2        2
+Staphylococcus                             0        0        0
+Papillibacter cinnamivorans et rel.        9       59       55
+Campylobacter                              4        4        4
+Micrococcaceae                             0        0        0
 ```
 
 ## Save transformed objects

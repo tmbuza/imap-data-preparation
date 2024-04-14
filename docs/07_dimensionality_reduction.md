@@ -24,12 +24,12 @@ library(phyloseq)
 library(microbiome)
 library(vegan)
 
-cat("\nSaved phyloseq objects and dataframes\n\n")
+cat("\nSaved RData objects\n\n")
 ```
 
 ```
 
-Saved phyloseq objects and dataframes
+Saved RData objects
 ```
 
 ```r

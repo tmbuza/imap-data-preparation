@@ -12,6 +12,11 @@ knitr::opts_chunk$set(
   warning  =FALSE,
   cache  =FALSE,
   comment  =NA)
+
+cat("\nSaved RData objects\n\n")
+load("../imap-data-preparation/data/external_ps_objects.rda", verbose = T)
+load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
+load("../imap-data-preparation/data/bray_distances.rda", verbose = T)
 ```
 
 
@@ -30,7 +35,7 @@ library(phyloseq)
 library(microbiome)
 library(vegan)
 
-cat("\nSaved phyloseq objects and dataframes\n\n")
+cat("\nSaved RData objects\n\n")
 load("../imap-data-preparation/data/external_ps_objects.rda", verbose = T)
 load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
 load("../imap-data-preparation/data/bray_distances.rda", verbose = T)

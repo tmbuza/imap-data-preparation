@@ -4,6 +4,7 @@
 .Ruserdata
 .Rapp.history
 renv/
+moq2bar.Rmd
 
 # Additional
 _bookdown_files/*

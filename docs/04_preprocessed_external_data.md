@@ -32178,18 +32178,12 @@ otu_table(ps)[1:5, 1:5]
 ```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                    Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium ramosum et rel.                2        2        2        2
-Staphylococcus                             0        0        0        0
-Papillibacter cinnamivorans et rel.        9       59       55       45
-Campylobacter                              4        4        4        4
-Micrococcaceae                             0        0        0        0
-                                    Sample-5
-Clostridium ramosum et rel.                2
-Staphylococcus                             0
-Papillibacter cinnamivorans et rel.      108
-Campylobacter                              4
-Micrococcaceae                             0
+                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Clostridium cellulosi et rel.        91      917      495      310      728
+Oceanospirillum                       1        2        1        2        1
+Bifidobacterium                      43       25      183      493       22
+Clostridium sphenoides et rel.       41      127      133       63       94
+Micrococcaceae                        0        0        0        0        0
 ```
 
 ### Taxonomy table
@@ -32200,24 +32194,18 @@ tax_table(ps)[1:5, ]
 
 ```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                    Phylum          
-Clostridium ramosum et rel.         "Firmicutes"    
-Staphylococcus                      "Firmicutes"    
-Papillibacter cinnamivorans et rel. "Firmicutes"    
-Campylobacter                       "Proteobacteria"
-Micrococcaceae                      "Actinobacteria"
-                                    Family                     
-Clostridium ramosum et rel.         "Clostridium cluster XVIII"
-Staphylococcus                      "Bacilli"                  
-Papillibacter cinnamivorans et rel. "Clostridium cluster IV"   
-Campylobacter                       "Proteobacteria"           
-Micrococcaceae                      "Actinobacteria"           
-                                    Genus                                
-Clostridium ramosum et rel.         "Clostridium ramosum et rel."        
-Staphylococcus                      "Staphylococcus"                     
-Papillibacter cinnamivorans et rel. "Papillibacter cinnamivorans et rel."
-Campylobacter                       "Campylobacter"                      
-Micrococcaceae                      "Micrococcaceae"                     
+                               Phylum           Family                    
+Clostridium cellulosi et rel.  "Firmicutes"     "Clostridium cluster IV"  
+Oceanospirillum                "Proteobacteria" "Proteobacteria"          
+Bifidobacterium                "Actinobacteria" "Actinobacteria"          
+Clostridium sphenoides et rel. "Firmicutes"     "Clostridium cluster XIVa"
+Micrococcaceae                 "Actinobacteria" "Actinobacteria"          
+                               Genus                           
+Clostridium cellulosi et rel.  "Clostridium cellulosi et rel." 
+Oceanospirillum                "Oceanospirillum"               
+Bifidobacterium                "Bifidobacterium"               
+Clostridium sphenoides et rel. "Clostridium sphenoides et rel."
+Micrococcaceae                 "Micrococcaceae"                
 ```
 
 ### Phylogenetic tree if available
@@ -32230,11 +32218,11 @@ taxa_names(ps)[1:10]
 ```
 
 ```
- [1] "Clostridium ramosum et rel."         "Staphylococcus"                     
- [3] "Papillibacter cinnamivorans et rel." "Campylobacter"                      
- [5] "Micrococcaceae"                      "Prevotella ruminicola et rel."      
- [7] "Bryantella formatexigens et rel."    "Veillonella"                        
- [9] "Catenibacterium mitsuokai et rel."   "Uncultured Clostridiales II"        
+ [1] "Clostridium cellulosi et rel."    "Oceanospirillum"                 
+ [3] "Bifidobacterium"                  "Clostridium sphenoides et rel."  
+ [5] "Micrococcaceae"                   "Peptococcus niger et rel."       
+ [7] "Burkholderia"                     "Streptococcus bovis et rel."     
+ [9] "Lactobacillus salivarius et rel." "Mitsuokella multiacida et rel."  
 ```
 
 ### Summarize Phyloseq Object

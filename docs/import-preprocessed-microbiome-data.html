@@ -32154,18 +32154,12 @@ phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]</code></pre>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                    Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium ramosum et rel.                2        2        2        2
-Staphylococcus                             0        0        0        0
-Papillibacter cinnamivorans et rel.        9       59       55       45
-Campylobacter                              4        4        4        4
-Micrococcaceae                             0        0        0        0
-                                    Sample-5
-Clostridium ramosum et rel.                2
-Staphylococcus                             0
-Papillibacter cinnamivorans et rel.      108
-Campylobacter                              4
-Micrococcaceae                             0</code></pre>
+                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Clostridium cellulosi et rel.        91      917      495      310      728
+Oceanospirillum                       1        2        1        2        1
+Bifidobacterium                      43       25      183      493       22
+Clostridium sphenoides et rel.       41      127      133       63       94
+Micrococcaceae                        0        0        0        0        0</code></pre>
 </div>
 <div id="taxonomy-table" class="section level3" number="4.7.8">
 <h3>
@@ -32174,24 +32168,18 @@ Micrococcaceae                             0</code></pre>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                    Phylum          
-Clostridium ramosum et rel.         "Firmicutes"    
-Staphylococcus                      "Firmicutes"    
-Papillibacter cinnamivorans et rel. "Firmicutes"    
-Campylobacter                       "Proteobacteria"
-Micrococcaceae                      "Actinobacteria"
-                                    Family                     
-Clostridium ramosum et rel.         "Clostridium cluster XVIII"
-Staphylococcus                      "Bacilli"                  
-Papillibacter cinnamivorans et rel. "Clostridium cluster IV"   
-Campylobacter                       "Proteobacteria"           
-Micrococcaceae                      "Actinobacteria"           
-                                    Genus                                
-Clostridium ramosum et rel.         "Clostridium ramosum et rel."        
-Staphylococcus                      "Staphylococcus"                     
-Papillibacter cinnamivorans et rel. "Papillibacter cinnamivorans et rel."
-Campylobacter                       "Campylobacter"                      
-Micrococcaceae                      "Micrococcaceae"                     </code></pre>
+                               Phylum           Family                    
+Clostridium cellulosi et rel.  "Firmicutes"     "Clostridium cluster IV"  
+Oceanospirillum                "Proteobacteria" "Proteobacteria"          
+Bifidobacterium                "Actinobacteria" "Actinobacteria"          
+Clostridium sphenoides et rel. "Firmicutes"     "Clostridium cluster XIVa"
+Micrococcaceae                 "Actinobacteria" "Actinobacteria"          
+                               Genus                           
+Clostridium cellulosi et rel.  "Clostridium cellulosi et rel." 
+Oceanospirillum                "Oceanospirillum"               
+Bifidobacterium                "Bifidobacterium"               
+Clostridium sphenoides et rel. "Clostridium sphenoides et rel."
+Micrococcaceae                 "Micrococcaceae"                </code></pre>
 </div>
 <div id="phylogenetic-tree-if-available" class="section level3" number="4.7.9">
 <h3>
@@ -32204,11 +32192,11 @@ Micrococcaceae                      "Micrococcaceae"                     </code>
 </h3>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
-<pre><code> [1] "Clostridium ramosum et rel."         "Staphylococcus"                     
- [3] "Papillibacter cinnamivorans et rel." "Campylobacter"                      
- [5] "Micrococcaceae"                      "Prevotella ruminicola et rel."      
- [7] "Bryantella formatexigens et rel."    "Veillonella"                        
- [9] "Catenibacterium mitsuokai et rel."   "Uncultured Clostridiales II"        </code></pre>
+<pre><code> [1] "Clostridium cellulosi et rel."    "Oceanospirillum"                 
+ [3] "Bifidobacterium"                  "Clostridium sphenoides et rel."  
+ [5] "Micrococcaceae"                   "Peptococcus niger et rel."       
+ [7] "Burkholderia"                     "Streptococcus bovis et rel."     
+ [9] "Lactobacillus salivarius et rel." "Mitsuokella multiacida et rel."  </code></pre>
 </div>
 <div id="summarize-phyloseq-object" class="section level3" number="4.7.11">
 <h3>
@@ -32352,7 +32340,7 @@ phy_tree()    Phylogenetic Tree: [ 120 tips and 119 internal nodes ]</code></pre
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-14</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-15</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

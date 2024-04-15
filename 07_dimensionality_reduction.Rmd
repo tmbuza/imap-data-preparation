@@ -13,10 +13,6 @@ knitr::opts_chunk$set(
   cache  =FALSE,
   comment  =NA)
 
-cat("\nSaved RData objects\n\n")
-load("../imap-data-preparation/data/external_ps_objects.rda", verbose = T)
-load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
-load("../imap-data-preparation/data/bray_distances.rda", verbose = T)
 ```
 
 

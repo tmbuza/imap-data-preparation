@@ -33,15 +33,11 @@ Saved RData objects
 ```
 
 ```r
-load("../imap-data-preparation/data/external_ps_objects.rda", verbose = T)
+load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = T)
 ```
 
 ```
 Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso

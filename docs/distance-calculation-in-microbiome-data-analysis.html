@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>6 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>9 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
 <meta name="description" content="Calculating distance matrices between samples using appropriate metrics is a fundamental step in data preprocessing. This practice efficiently captures the similarity or dissimilarity between...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="6 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="9 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/distance-calculation-in-microbiome-data-analysis.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <meta property="og:description" content="Calculating distance matrices between samples using appropriate metrics is a fundamental step in data preprocessing. This practice efficiently captures the similarity or dissimilarity between...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="6 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:title" content="9 Distance Calculation in Microbiome Data Analysis | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta name="twitter:description" content="Calculating distance matrices between samples using appropriate metrics is a fundamental step in data preprocessing. This practice efficiently captures the similarity or dissimilarity between...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,14 +58,20 @@
 <li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
 <li class="book-part">QIIME2 OUTPUT</li>
 <li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li class="book-part">PHYLOSEQ OBJECTS</li>
+<li><a class="" href="creating-phyloseq-objects.html"><span class="header-section-number">4</span> Creating phyloseq Objects</a></li>
 <li class="book-part">EXTERNAL DATASETS</li>
-<li><a class="" href="import-preprocessed-microbiome-data.html"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
+<li><a class="" href="phyloseq-objects-demo-datasets.html"><span class="header-section-number">5</span> Phyloseq Objects Demo Datasets</a></li>
+<li class="book-part">PHYLOSEQ FUNCTIONS</li>
+<li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
+<li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
+<li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
 <li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
-<li><a class="active" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">6</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="active" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">7</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">10</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -78,16 +84,16 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="distance-calculation-in-microbiome-data-analysis" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="distance-calculation-in-microbiome-data-analysis" class="section level1" number="9">
 <h1>
-<span class="header-section-number">6</span> Distance Calculation in Microbiome Data Analysis<a class="anchor" aria-label="anchor" href="#distance-calculation-in-microbiome-data-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis<a class="anchor" aria-label="anchor" href="#distance-calculation-in-microbiome-data-analysis"><i class="fas fa-link"></i></a>
 </h1>
 <p>Calculating distance matrices between samples using appropriate metrics is a fundamental step in data preprocessing. This practice efficiently captures the similarity or dissimilarity between samples, laying the groundwork for subsequent analysis and dimensionality reduction techniques such as PCA, MDS, or t-SNE.</p>
-<div id="import-processed-and-transformed-data-objects" class="section level2" number="6.1">
+<div id="import-processed-and-transformed-data-objects" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">6.1</span> Import processed and transformed data objects<a class="anchor" aria-label="anchor" href="#import-processed-and-transformed-data-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Import processed and transformed data objects<a class="anchor" aria-label="anchor" href="#import-processed-and-transformed-data-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
@@ -106,24 +112,20 @@
   ps_clr
   ps_shift
   ps_scale</code></pre>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/external_ps_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
   ps_kostic_crc</code></pre>
 </div>
-<div id="bray-curtis-dissimilarity" class="section level2" number="6.2">
+<div id="bray-curtis-dissimilarity" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">6.2</span> Bray-Curtis Dissimilarity<a class="anchor" aria-label="anchor" href="#bray-curtis-dissimilarity"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Bray-Curtis Dissimilarity<a class="anchor" aria-label="anchor" href="#bray-curtis-dissimilarity"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Bray-Curtis dissimilarity calculates the dissimilarity between two samples based on the relative abundances of taxa. It considers both presence and abundance information but is not sensitive to differences in abundance magnitude.</p>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -159,11 +161,11 @@
 <span>     <span class="va">ps_scale_bray_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/bray_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-computed-bray-curtis-distance-objects" class="section level2" number="6.3">
+<div id="confirm-computed-bray-curtis-distance-objects" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">6.3</span> Confirm computed Bray-Curtis distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-bray-curtis-distance-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Confirm computed Bray-Curtis distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-bray-curtis-distance-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/bray_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin_bray_dist
@@ -176,12 +178,12 @@
   ps_shift_bray_dist
   ps_scale_bray_dist</code></pre>
 </div>
-<div id="jaccard-distance" class="section level2" number="6.4">
+<div id="jaccard-distance" class="section level2" number="9.4">
 <h2>
-<span class="header-section-number">6.4</span> Jaccard Distance<a class="anchor" aria-label="anchor" href="#jaccard-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Jaccard Distance<a class="anchor" aria-label="anchor" href="#jaccard-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Jaccard distance measures the dissimilarity between two samples based on the presence or absence of taxa, ignoring their abundance information. It is calculated as the ratio of the number of taxa found in only one of the samples to the total number of taxa found in both samples.</p>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -217,11 +219,11 @@
 <span>     <span class="va">ps_scale_jaccard_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/jaccard_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-computed-jaccard-distance-objects" class="section level2" number="6.5">
+<div id="confirm-computed-jaccard-distance-objects" class="section level2" number="9.5">
 <h2>
-<span class="header-section-number">6.5</span> Confirm computed Jaccard distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-jaccard-distance-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Confirm computed Jaccard distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-jaccard-distance-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/jaccard_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin_jaccard_dist
@@ -234,12 +236,12 @@
   ps_shift_jaccard_dist
   ps_scale_jaccard_dist</code></pre>
 </div>
-<div id="unifrac-distance-weighted-and-unweighted" class="section level2" number="6.6">
+<div id="unifrac-distance-weighted-and-unweighted" class="section level2" number="9.6">
 <h2>
-<span class="header-section-number">6.6</span> UniFrac Distance (Weighted and Unweighted)<a class="anchor" aria-label="anchor" href="#unifrac-distance-weighted-and-unweighted"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.6</span> UniFrac Distance (Weighted and Unweighted)<a class="anchor" aria-label="anchor" href="#unifrac-distance-weighted-and-unweighted"><i class="fas fa-link"></i></a>
 </h2>
 <p>UniFrac distances quantify the dissimilarity between microbial communities based on the evolutionary distances along a phylogenetic tree. Unweighted UniFrac considers only the presence or absence of taxa, while weighted UniFrac also takes into account the relative abundance of taxa.</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -275,12 +277,12 @@
 <span>     <span class="va">ps_scale_jaccard_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/jaccard_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="euclidean-distance" class="section level2" number="6.7">
+<div id="euclidean-distance" class="section level2" number="9.7">
 <h2>
-<span class="header-section-number">6.7</span> Euclidean Distance<a class="anchor" aria-label="anchor" href="#euclidean-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.7</span> Euclidean Distance<a class="anchor" aria-label="anchor" href="#euclidean-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Euclidean distance calculates the straight-line distance between two samples in a multidimensional space based on their abundance profiles. It considers differences in both presence and abundance of taxa.</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -316,15 +318,15 @@
 <span>     <span class="va">ps_scale_euclidean_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/euclidean_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="aitchison-distance" class="section level2" number="6.8">
+<div id="aitchison-distance" class="section level2" number="9.8">
 <h2>
-<span class="header-section-number">6.8</span> Aitchison Distance<a class="anchor" aria-label="anchor" href="#aitchison-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.8</span> Aitchison Distance<a class="anchor" aria-label="anchor" href="#aitchison-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Aitchison distance, also known as the compositional distance or log-ratio distance, is specifically designed for compositional data such as microbiome abundance data. It calculates the dissimilarity between two samples based on the log-ratio transformations of their compositional vectors, providing meaningful comparisons between samples while addressing the compositional constraints inherent in relative abundance data.</p>
 <ul>
 <li>Computing aitchison using <code>microViz</code> packages</li>
 </ul>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -344,20 +346,20 @@
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></div>
-<div class="next"><a href="dimensionality-reduction-techniques.html"><span class="header-section-number">7</span> Dimensionality Reduction Techniques</a></div>
+<div class="prev"><a href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></div>
+<div class="next"><a href="dimensionality-reduction-techniques.html"><span class="header-section-number">10</span> Dimensionality Reduction Techniques</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#distance-calculation-in-microbiome-data-analysis"><span class="header-section-number">6</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li><a class="nav-link" href="#import-processed-and-transformed-data-objects"><span class="header-section-number">6.1</span> Import processed and transformed data objects</a></li>
-<li><a class="nav-link" href="#bray-curtis-dissimilarity"><span class="header-section-number">6.2</span> Bray-Curtis Dissimilarity</a></li>
-<li><a class="nav-link" href="#confirm-computed-bray-curtis-distance-objects"><span class="header-section-number">6.3</span> Confirm computed Bray-Curtis distance objects</a></li>
-<li><a class="nav-link" href="#jaccard-distance"><span class="header-section-number">6.4</span> Jaccard Distance</a></li>
-<li><a class="nav-link" href="#confirm-computed-jaccard-distance-objects"><span class="header-section-number">6.5</span> Confirm computed Jaccard distance objects</a></li>
-<li><a class="nav-link" href="#unifrac-distance-weighted-and-unweighted"><span class="header-section-number">6.6</span> UniFrac Distance (Weighted and Unweighted)</a></li>
-<li><a class="nav-link" href="#euclidean-distance"><span class="header-section-number">6.7</span> Euclidean Distance</a></li>
-<li><a class="nav-link" href="#aitchison-distance"><span class="header-section-number">6.8</span> Aitchison Distance</a></li>
+<li><a class="nav-link" href="#distance-calculation-in-microbiome-data-analysis"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="nav-link" href="#import-processed-and-transformed-data-objects"><span class="header-section-number">9.1</span> Import processed and transformed data objects</a></li>
+<li><a class="nav-link" href="#bray-curtis-dissimilarity"><span class="header-section-number">9.2</span> Bray-Curtis Dissimilarity</a></li>
+<li><a class="nav-link" href="#confirm-computed-bray-curtis-distance-objects"><span class="header-section-number">9.3</span> Confirm computed Bray-Curtis distance objects</a></li>
+<li><a class="nav-link" href="#jaccard-distance"><span class="header-section-number">9.4</span> Jaccard Distance</a></li>
+<li><a class="nav-link" href="#confirm-computed-jaccard-distance-objects"><span class="header-section-number">9.5</span> Confirm computed Jaccard distance objects</a></li>
+<li><a class="nav-link" href="#unifrac-distance-weighted-and-unweighted"><span class="header-section-number">9.6</span> UniFrac Distance (Weighted and Unweighted)</a></li>
+<li><a class="nav-link" href="#euclidean-distance"><span class="header-section-number">9.7</span> Euclidean Distance</a></li>
+<li><a class="nav-link" href="#aitchison-distance"><span class="header-section-number">9.8</span> Aitchison Distance</a></li>
 </ul>
 
       <div class="book-extra">
@@ -376,7 +378,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-15</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-16</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

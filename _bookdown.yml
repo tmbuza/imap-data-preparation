@@ -16,7 +16,7 @@ rmd_files:
     - 01_data_tidying.Rmd
     - 02_prepare_mothur_output.Rmd
     - 03_prepare_qiime2_output.Rmd
-    - 04_preprocessed_external_data.Rmd
+    - 04_create_phyloseq_objects.Rmd
     - 05_data_transformation.Rmd
     - 06_distance_matrices.Rmd
     - 07_dimensionality_reduction.Rmd

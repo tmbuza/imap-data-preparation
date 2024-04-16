@@ -84,5 +84,5 @@ save(df_GlobalPatterns,
      ps_dietswap,
      ps_caporaso,
      ps_kostic_crc,
-     file = "data/external/external_ps_objects.rda")
+     file = "data/external/phyloseq_objects.rda")
 

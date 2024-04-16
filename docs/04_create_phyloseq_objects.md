@@ -1,112 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines</title>
-<meta name="author" content="Teresia Mrema-Buza">
-<meta name="description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
-<meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines">
-<meta property="og:type" content="book">
-<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/import-preprocessed-microbiome-data.html">
-<meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
-<meta property="og:description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines">
-<meta name="twitter:description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
-<meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Sen-0.4.8/font.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
-<link href="libs/Bitter-0.4.8/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
-<link rel="stylesheet" href="style.css">
-</head>
-<body data-spy="scroll" data-target="#toc">
+# (PART) PHYLOSEQ OBJECTS {-}
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+# Creating phyloseq Objects
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="End-to-End Practical User Guides Using Integrated Approaches"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a>:
-        <small class="text-muted">End-to-End Practical User Guides Using Integrated Approaches</small>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
+In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+## From mothur output
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
-<li class="book-part">GETTING STARTED</li>
-<li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
-<li><a class="" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
-<li class="book-part">MOTHUR OUTPUT</li>
-<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
-<li class="book-part">QIIME2 OUTPUT</li>
-<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
-<li class="book-part">EXTERNAL DATASETS</li>
-<li><a class="active" href="import-preprocessed-microbiome-data.html"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
-<li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></li>
-<li class="book-part">DISTANCES MATRICES</li>
-<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">6</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">7</span> Dimensionality Reduction Techniques</a></li>
-<li class="book-part">APPENDIX</li>
-<li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
-<li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
-<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+```r
+library(tidyverse)
+library(phyloseq)
+library(microbiome)
+library(ape)
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/tmbuza/imap-data-preparation.git">View book source <i class="fas fa-air-freshener"></i></a></p>
-        </div>
-      </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="import-preprocessed-microbiome-data" class="section level1" number="4">
-<h1>
-<span class="header-section-number">4</span> Import Preprocessed Microbiome Data<a class="anchor" aria-label="anchor" href="#import-preprocessed-microbiome-data"><i class="fas fa-link"></i></a>
-</h1>
-<p>In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.</p>
-<div id="the-globalpatterns-dataset" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> The GlobalPatterns dataset<a class="anchor" aria-label="anchor" href="#the-globalpatterns-dataset"><i class="fas fa-link"></i></a>
-</h2>
-<p>The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here’s a breakdown of its key attributes:</p>
-<ul>
-<li><p><strong>Source:</strong> GlobalPatterns originates from the Earth Microbiome Project (EMP), collecting samples worldwide.</p></li>
-<li><p><strong>Composition:</strong> It comprises high-throughput sequencing data, revealing the taxonomic composition of microbial communities.</p></li>
-<li><p><strong>Scope:</strong> Samples represent diverse global ecosystems, offering a comprehensive view of microbial biodiversity.</p></li>
-<li><p><strong>Format:</strong> Presented as a phyloseq object in R, it integrates sample metadata and taxonomic abundance for analysis.</p></li>
-<li><p><strong>Utility:</strong> Researchers utilize it for community profiling, abundance testing, and ecological modeling, enhancing understanding of global microbial diversity and function.</p></li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span> <span class="co"># for GlobalPatterns dataset</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"GlobalPatterns"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps_GlobalPatterns</span> <span class="op">&lt;-</span><span class="va">GlobalPatterns</span></span>
-<span><span class="va">df_GlobalPatterns</span> <span class="op">&lt;-</span><span class="va">GlobalPatterns</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_GlobalPatterns</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                "otu"                     
+metadata <- read_csv("data/mothur/mothur_tidy_metadata.csv",show_col_types = FALSE) %>% 
+  tibble::column_to_rownames("group") %>% 
+  sample_data(metadata)
+
+otutable <- read_csv("data/mothur/mothur_tidy_otutable.csv",show_col_types = FALSE) %>% 
+  pivot_wider(id_cols = group, names_from = OTU, values_from = count) %>% 
+  tibble::column_to_rownames("group") %>% 
+  otu_table(otutable, taxa_are_rows = FALSE)
+
+taxonomy <- read_csv("data/mothur/mothur_tidy_taxonomy.csv", show_col_types = FALSE) %>%
+  tibble::column_to_rownames("OTU") %>%
+  as.matrix() %>% 
+  tax_table(taxonomy)
+
+mt_ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
+
+library(ape)
+mt_ps_tree = rtree(ntaxa(mt_ps_raw_basic), rooted=TRUE, tip.label=taxa_names(mt_ps_raw_basic))
+
+mt_ps_raw <- phyloseq::merge_phyloseq(mt_ps_raw_basic, mt_ps_tree)
+
+mt_ps_rel <- phyloseq::transform_sample_counts(mt_ps_raw, function(x){x / sum(x)})
+
+mt_ps_df_raw <- psmelt(mt_ps_raw)
+
+mt_ps_df_rel <- psmelt(mt_ps_raw)
+
+save(mt_ps_tree, mt_ps_raw, mt_ps_rel, mt_ps_df_raw, mt_ps_df_rel, file = "data/mothur_phyloseq_objects.rda")
+```
+
+
+### Review the mothur phyloseq object
+
+
+```r
+mt_ps_raw
+```
+
+```
+## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
+## sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
+## tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]
+```
+
+## From QIIME2 output
+## Create a phyloseq object
+
+```r
+library(tidyverse)
+library(phyloseq)
+library(microbiome)
+library(ape)
+
+metadata <- read_csv("data/qiime2/qiime2_tidy_metadata.csv",show_col_types = FALSE) %>% 
+  tibble::column_to_rownames("sample_id") %>% 
+  sample_data(metadata)
+
+otutable <- read_csv("data/qiime2/qiime2_tidy_otutable.csv",show_col_types = FALSE) %>% 
+  pivot_wider(id_cols = sample_id, names_from = feature, values_from = count) %>% 
+  tibble::column_to_rownames("sample_id") %>% 
+  otu_table(otutable, taxa_are_rows = FALSE)
+
+taxonomy <- read_csv("data/qiime2/qiime2_tidy_taxonomy.csv", show_col_types = FALSE) %>%
+  tibble::column_to_rownames("feature") %>%
+  as.matrix() %>% 
+  tax_table(taxonomy)
+
+q2_ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
+
+library(ape)
+q2_ps_tree = rtree(ntaxa(q2_ps_raw_basic), rooted=TRUE, tip.label=taxa_names(q2_ps_raw_basic))
+
+q2_ps_raw <- phyloseq::merge_phyloseq(q2_ps_raw_basic, q2_ps_tree)
+
+q2_ps_rel <- phyloseq::transform_sample_counts(q2_ps_raw, function(x){x / sum(x)})
+
+q2_ps_df_raw <- psmelt(q2_ps_raw)
+
+q2_ps_df_rel <- psmelt(q2_ps_raw)
+
+save(q2_ps_tree, q2_ps_raw, q2_ps_rel, q2_ps_df_raw, q2_ps_df_rel, file = "data/qiime2_phyloseq_objects.rda")
+```
+
+
+## Review the phyloseq object
+
+
+```r
+q2_ps_raw
+```
+
+```
+## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
+## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
+## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
+## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]
+```
+
+
+
+# (PART) EXTERNAL DATASETS {-}
+
+# Phyloseq Objects Demo Datasets
+
+
+
+In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.
+
+## The GlobalPatterns dataset
+The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here's a breakdown of its key attributes:
+
+- **Source:** GlobalPatterns originates from the Earth Microbiome Project (EMP), collecting samples worldwide.
+
+- **Composition:** It comprises high-throughput sequencing data, revealing the taxonomic composition of microbial communities.
+
+- **Scope:** Samples represent diverse global ecosystems, offering a comprehensive view of microbial biodiversity.
+
+- **Format:** Presented as a phyloseq object in R, it integrates sample metadata and taxonomic abundance for analysis.
+
+- **Utility:** Researchers utilize it for community profiling, abundance testing, and ecological modeling, enhancing understanding of global microbial diversity and function.
+
+
+```r
+library(phyloseq) # for GlobalPatterns dataset
+data("GlobalPatterns")
+
+ps_GlobalPatterns <-GlobalPatterns
+df_GlobalPatterns <-GlobalPatterns %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_GlobalPatterns)
+```
+
+```
+ [1] "sample_id"                "otu"                     
  [3] "sample"                   "abundance"               
  [5] "x.sampleid"               "primer"                  
  [7] "final_barcode"            "barcode_truncated_plus_t"
@@ -114,96 +159,128 @@
 [11] "description"              "kingdom"                 
 [13] "phylum"                   "class"                   
 [15] "order"                    "family"                  
-[17] "genus"                    "species"                 </code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_GlobalPatterns</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+[17] "genus"                    "species"                 
+```
+
+```r
+cat("\n")
+```
+
+```r
+ps_GlobalPatterns
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 19216 taxa and 26 samples ]
 sample_data() Sample Data:       [ 26 samples by 7 sample variables ]
 tax_table()   Taxonomy Table:    [ 19216 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</code></pre>
-</div>
-<div id="the-dietswap-dataset" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> The dietswap dataset<a class="anchor" aria-label="anchor" href="#the-dietswap-dataset"><i class="fas fa-link"></i></a>
-</h2>
-<p>The dietswap dataset, available through the microbiome R package, offers valuable insights into the effects of dietary interventions on microbial communities. Here’s an overview of its attributes:</p>
-<ul>
-<li><p><strong>Source:</strong> The dietswap dataset is derived from research examining the impact of dietary changes on the human gut microbiome.</p></li>
-<li><p><strong>Composition:</strong> It comprises high-throughput sequencing data, providing insights into the taxonomic composition and dynamics of microbial communities in response to dietary alterations.</p></li>
-<li><p><strong>Scope:</strong> Samples are obtained from human participants undergoing dietary interventions, enabling researchers to explore how different diets influence microbial diversity and function within the gut microbiome.</p></li>
-<li><p><strong>Format:</strong> Presented in a format suitable for microbiome analysis, the dataset includes sample metadata and taxonomic abundance data, facilitating comprehensive analyses of microbial community dynamics.</p></li>
-<li><p><strong>Utility:</strong> Researchers utilize the dietswap dataset to investigate the effects of dietary interventions on gut microbiome composition, contributing to a better understanding of the intricate interactions between diet, host physiology, and microbial ecology.</p></li>
-</ul>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span> <span class="co"># for dietswap dataset</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"dietswap"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dietswap</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
-<blockquote>
-<p>Note: dietswap is missing the phylo_tree slot, we can construct it and add it like so:</p>
-</blockquote>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">'dietswap'</span><span class="op">)</span></span>
-<span><span class="va">ps_raw_basic</span> <span class="op">&lt;-</span> <span class="va">dietswap</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
-<span><span class="va">ps_tree</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps_raw_basic</span><span class="op">)</span>, rooted<span class="op">=</span><span class="cn">TRUE</span>, tip.label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps_raw_basic</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ps_dietswap</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">ps_raw_basic</span>, <span class="va">ps_tree</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">df_dietswap</span> <span class="op">&lt;-</span><span class="va">ps_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_dietswap</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"              "otu"                    "sample"                
- [4] "abundance"              "subject"                "sex"                   
- [7] "nationality"            "group"                  "timepoint"             
-[10] "timepoint.within.group" "bmi_group"              "phylum"                
-[13] "family"                 "genus"                 </code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_dietswap</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]
+```
+
+## The dietswap dataset
+The dietswap dataset, available through the microbiome R package, offers valuable insights into the effects of dietary interventions on microbial communities. Here's an overview of its attributes:
+
+- **Source:** The dietswap dataset is derived from research examining the impact of dietary changes on the human gut microbiome.
+
+- **Composition:** It comprises high-throughput sequencing data, providing insights into the taxonomic composition and dynamics of microbial communities in response to dietary alterations.
+
+- **Scope:** Samples are obtained from human participants undergoing dietary interventions, enabling researchers to explore how different diets influence microbial diversity and function within the gut microbiome.
+
+- **Format:** Presented in a format suitable for microbiome analysis, the dataset includes sample metadata and taxonomic abundance data, facilitating comprehensive analyses of microbial community dynamics.
+
+- **Utility:** Researchers utilize the dietswap dataset to investigate the effects of dietary interventions on gut microbiome composition, contributing to a better understanding of the intricate interactions between diet, host physiology, and microbial ecology.
+
+
+```r
+library(microbiome) # for dietswap dataset
+data("dietswap")
+
+dietswap
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-</div>
-<div id="caporaso-dataset" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Caporaso dataset<a class="anchor" aria-label="anchor" href="#caporaso-dataset"><i class="fas fa-link"></i></a>
-</h2>
-<p>The Caporaso dataset provides valuable insights into microbial marker genes and their associations with various biological factors.</p>
-<ul>
-<li><p><strong>Source:</strong> The Caporaso dataset is included in the <code>microbiomeMarker</code> R package and is derived from research led by Dr. J. Gregory Caporaso. It aims to provide insights into microbial marker genes and their associations with various biological factors.</p></li>
-<li><p><strong>Composition:</strong> The dataset comprises high-throughput sequencing data, focusing on microbial marker genes from diverse biological samples. It offers valuable information regarding the taxonomic composition and functional potential of microbial communities.</p></li>
-<li><p><strong>Scope:</strong> Samples are collected from a range of environments, including but not limited to human microbiomes, environmental samples, and animal microbiomes. This diversity allows researchers to explore microbial diversity across different ecosystems and conditions.</p></li>
-<li><p><strong>Format:</strong> The dataset is structured to facilitate microbiome marker analysis, with sample metadata and taxonomic abundance data included. This format enables researchers to conduct comprehensive analyses of microbial marker genes and their associations with environmental or biological factors.</p></li>
-<li><p><strong>Utility:</strong> Researchers utilize the Caporaso dataset to investigate microbial marker genes’ roles in various ecosystems, such as host-microbiome interactions, environmental responses, and disease states. The dataset contributes to a better understanding of microbial ecology and its implications for human health and environmental management.</p></li>
-</ul>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yiluheihei/microbiomeMarker">microbiomeMarker</a></span><span class="op">)</span> <span class="co"># for caporaso dataset</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"caporaso"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps_caporaso</span> <span class="op">&lt;-</span><span class="va">caporaso</span></span>
-<span><span class="va">df_caporaso</span> <span class="op">&lt;-</span><span class="va">caporaso</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_caporaso</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                "otu"                     
+```
+
+> Note: dietswap is missing the phylo_tree slot, we can construct it and add it like so:
+
+
+```r
+library(microbiome)
+data('dietswap')
+ps_raw_basic <- dietswap
+
+library(ape)
+ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+ps_dietswap <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
+
+df_dietswap <-ps_dietswap %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  dplyr::select(-9) %>% 
+  rename_all(tolower)
+
+colnames(df_dietswap)
+```
+
+```
+ [1] "sample_id"              "otu"                    "sample"                
+ [4] "abundance"              "subject"                "sex"                   
+ [7] "nationality"            "group"                  "timepoint"             
+[10] "timepoint.within.group" "bmi_group"              "phylum"                
+[13] "family"                 "genus"                 
+```
+
+```r
+cat("\n")
+```
+
+```r
+ps_dietswap
+```
+
+```
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
+```
+
+## Caporaso dataset
+
+The Caporaso dataset provides valuable insights into microbial marker genes and their associations with various biological factors.
+
+- **Source:** The Caporaso dataset is included in the `microbiomeMarker` R package and is derived from research led by Dr. J. Gregory Caporaso. It aims to provide insights into microbial marker genes and their associations with various biological factors.
+
+- **Composition:** The dataset comprises high-throughput sequencing data, focusing on microbial marker genes from diverse biological samples. It offers valuable information regarding the taxonomic composition and functional potential of microbial communities.
+
+- **Scope:** Samples are collected from a range of environments, including but not limited to human microbiomes, environmental samples, and animal microbiomes. This diversity allows researchers to explore microbial diversity across different ecosystems and conditions.
+
+- **Format:** The dataset is structured to facilitate microbiome marker analysis, with sample metadata and taxonomic abundance data included. This format enables researchers to conduct comprehensive analyses of microbial marker genes and their associations with environmental or biological factors.
+
+- **Utility:** Researchers utilize the Caporaso dataset to investigate microbial marker genes' roles in various ecosystems, such as host-microbiome interactions, environmental responses, and disease states. The dataset contributes to a better understanding of microbial ecology and its implications for human health and environmental management.
+
+
+```r
+library(microbiomeMarker) # for caporaso dataset
+data("caporaso")
+
+ps_caporaso <-caporaso
+df_caporaso <-caporaso %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_caporaso)
+```
+
+```
+ [1] "sample_id"                "otu"                     
  [3] "sample"                   "abundance"               
  [5] "sampletype"               "year"                    
  [7] "month"                    "day"                     
@@ -212,46 +289,62 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 [13] "kingdom"                  "phylum"                  
 [15] "class"                    "order"                   
 [17] "family"                   "genus"                   
-[19] "species"                 </code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_caporaso</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+[19] "species"                 
+```
+
+```r
+cat("\n")
+```
+
+```r
+ps_caporaso
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 3426 taxa and 34 samples ]
 sample_data() Sample Data:       [ 34 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 3426 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></pre>
-</div>
-<div id="kostic_crc-dataset" class="section level2" number="4.4">
-<h2>
-<span class="header-section-number">4.4</span> Kostic_CRC dataset<a class="anchor" aria-label="anchor" href="#kostic_crc-dataset"><i class="fas fa-link"></i></a>
-</h2>
-<p>The Kostic_CRC dataset provides valuable insights into the gut microbiome of individuals diagnosed with colorectal cancer (CRC).</p>
-<ul>
-<li><p><strong>Source:</strong> The Kostic_CRC dataset is included in the <code>microbiomeMarker</code> R package. It is derived from research conducted by the Kostic Lab and focuses on investigating the gut microbiome in colorectal cancer (CRC) patients.</p></li>
-<li><p><strong>Composition:</strong> This dataset comprises high-throughput sequencing data, specifically targeting the gut microbiome of individuals with colorectal cancer. It provides insights into the taxonomic composition and potential functional characteristics of microbial communities associated with CRC.</p></li>
-<li><p><strong>Scope:</strong> Samples are collected from individuals diagnosed with colorectal cancer, allowing researchers to explore the microbial diversity and potential biomarkers associated with CRC development and progression.</p></li>
-<li><p><strong>Format:</strong> The dataset is structured to facilitate microbiome marker analysis, including sample metadata and taxonomic abundance data. This format enables researchers to conduct comprehensive analyses of microbial community dynamics in colorectal cancer.</p></li>
-<li><p><strong>Utility:</strong> Researchers utilize the Kostic_CRC dataset to investigate the role of the gut microbiome in colorectal cancer pathogenesis, prognosis, and treatment response. The dataset contributes to a deeper understanding of the complex interplay between the gut microbiome and colorectal cancer biology, potentially leading to novel diagnostic or therapeutic strategies.</p></li>
-</ul>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yiluheihei/microbiomeMarker">microbiomeMarker</a></span><span class="op">)</span> <span class="co"># for kostic_crc dataset</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"kostic_crc"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps_raw_basic</span> <span class="op">&lt;-</span> <span class="va">kostic_crc</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
-<span><span class="va">ps_tree</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps_raw_basic</span><span class="op">)</span>, rooted<span class="op">=</span><span class="cn">TRUE</span>, tip.label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps_raw_basic</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ps_kostic_crc</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">ps_raw_basic</span>, <span class="va">ps_tree</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">df_kostic_crc</span> <span class="op">&lt;-</span><span class="va">kostic_crc</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_kostic_crc</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                     "otu"                          
+phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]
+```
+
+
+## Kostic_CRC dataset
+
+The Kostic_CRC dataset provides valuable insights into the gut microbiome of individuals diagnosed with colorectal cancer (CRC).
+
+- **Source:** The Kostic_CRC dataset is included in the `microbiomeMarker` R package. It is derived from research conducted by the Kostic Lab and focuses on investigating the gut microbiome in colorectal cancer (CRC) patients.
+
+- **Composition:** This dataset comprises high-throughput sequencing data, specifically targeting the gut microbiome of individuals with colorectal cancer. It provides insights into the taxonomic composition and potential functional characteristics of microbial communities associated with CRC.
+
+- **Scope:** Samples are collected from individuals diagnosed with colorectal cancer, allowing researchers to explore the microbial diversity and potential biomarkers associated with CRC development and progression.
+
+- **Format:** The dataset is structured to facilitate microbiome marker analysis, including sample metadata and taxonomic abundance data. This format enables researchers to conduct comprehensive analyses of microbial community dynamics in colorectal cancer.
+
+- **Utility:** Researchers utilize the Kostic_CRC dataset to investigate the role of the gut microbiome in colorectal cancer pathogenesis, prognosis, and treatment response. The dataset contributes to a deeper understanding of the complex interplay between the gut microbiome and colorectal cancer biology, potentially leading to novel diagnostic or therapeutic strategies.
+
+
+
+```r
+library(microbiomeMarker) # for kostic_crc dataset
+data("kostic_crc")
+
+ps_raw_basic <- kostic_crc
+
+library(ape)
+ps_tree = rtree(ntaxa(ps_raw_basic), rooted=TRUE, tip.label=taxa_names(ps_raw_basic))
+ps_kostic_crc <- phyloseq::merge_phyloseq(ps_raw_basic, ps_tree)
+
+df_kostic_crc <-kostic_crc %>% 
+  phyloseq::psmelt() %>% 
+  tibble::rownames_to_column("sample_id") %>% 
+  rename_all(tolower)
+
+colnames(df_kostic_crc)
+```
+
+```
+ [1] "sample_id"                     "otu"                          
  [3] "sample"                        "abundance"                    
  [5] "x.sampleid"                    "barcodesequence"              
  [7] "linkerprimersequence"          "necrosis_percent"             
@@ -291,19 +384,32 @@ phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></p
 [75] "description"                   "kingdom"                      
 [77] "phylum"                        "class"                        
 [79] "order"                         "family"                       
-[81] "genus"                         "species"                      </code></pre>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_kostic_crc</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+[81] "genus"                         "species"                      
+```
+
+```r
+cat("\n")
+```
+
+```r
+ps_kostic_crc
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 2505 taxa and 177 samples ]
 sample_data() Sample Data:       [ 177 samples by 71 sample variables ]
 tax_table()   Taxonomy Table:    [ 2505 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df_kostic_crc</span></span></code></pre></div>
-<pre><code>     sample_id    otu          sample abundance      x.sampleid barcodesequence
+phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]
+```
+
+
+```r
+df_kostic_crc
+```
+
+```
+     sample_id    otu          sample abundance      x.sampleid barcodesequence
 1       356848 470429  C0378.T.518104      4847  C0378.T.518104     TCAGAGTCGAC
 2       356894 470429  C0318.T.518140      4467  C0318.T.518140    TCAGACCTGAAC
 3       356866 470429  C0341.T.518113      3707  C0341.T.518113     TCAGATCTTAC
@@ -28778,7 +28884,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 412  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
 413  Bacteria   Fusobacteria   Fusobacteria (class)    Fusobacteriales
 414  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
-415  Bacteria Proteobacteria    Alphaproteobacteria               &lt;NA&gt;
+415  Bacteria Proteobacteria    Alphaproteobacteria               <NA>
 416  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
 417  Bacteria   Fusobacteria   Fusobacteria (class)    Fusobacteriales
 418  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
@@ -29214,7 +29320,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 848  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
 849  Bacteria     Firmicutes             Clostridia      Clostridiales
 850  Bacteria     Firmicutes             Clostridia      Clostridiales
-851  Bacteria Proteobacteria    Alphaproteobacteria               &lt;NA&gt;
+851  Bacteria Proteobacteria    Alphaproteobacteria               <NA>
 852  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
 853  Bacteria     Firmicutes             Clostridia      Clostridiales
 854  Bacteria  Bacteroidetes            Bacteroidia      Bacteroidales
@@ -29587,19 +29693,19 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1                             Fusobacteriaceae         Fusobacterium
 2                             Fusobacteriaceae         Fusobacterium
 3                             Fusobacteriaceae         Fusobacterium
-4                                         &lt;NA&gt;                  &lt;NA&gt;
+4                                         <NA>                  <NA>
 5                             Fusobacteriaceae         Fusobacterium
 6                           Enterobacteriaceae           Escherichia
-7                                         &lt;NA&gt;                  &lt;NA&gt;
-8                                         &lt;NA&gt;                  &lt;NA&gt;
+7                                         <NA>                  <NA>
+8                                         <NA>                  <NA>
 9                              Enterococcaceae          Enterococcus
 10                          Enterobacteriaceae           Escherichia
 11                            Fusobacteriaceae         Fusobacterium
 12                            Fusobacteriaceae         Fusobacterium
 13                            Fusobacteriaceae         Fusobacterium
-14                                        &lt;NA&gt;                  &lt;NA&gt;
-15                                        &lt;NA&gt;                  &lt;NA&gt;
-16                                        &lt;NA&gt;                  &lt;NA&gt;
+14                                        <NA>                  <NA>
+15                                        <NA>                  <NA>
+16                                        <NA>                  <NA>
 17                              Prevotellaceae            Prevotella
 18                              Prevotellaceae            Prevotella
 19                              Bacteroidaceae           Bacteroides
@@ -29611,13 +29717,13 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 25                            Fusobacteriaceae         Fusobacterium
 26                              Prevotellaceae            Prevotella
 27                            Fusobacteriaceae         Fusobacterium
-28                                        &lt;NA&gt;                  &lt;NA&gt;
-29                                        &lt;NA&gt;                  &lt;NA&gt;
+28                                        <NA>                  <NA>
+29                                        <NA>                  <NA>
 30                            Lactobacillaceae         Lactobacillus
 31                            Fusobacteriaceae         Fusobacterium
 32                            Fusobacteriaceae         Fusobacterium
 33                              Prevotellaceae            Prevotella
-34                                        &lt;NA&gt;                  &lt;NA&gt;
+34                                        <NA>                  <NA>
 35                              Prevotellaceae            Prevotella
 36                              Prevotellaceae            Prevotella
 37                              Prevotellaceae            Prevotella
@@ -29629,23 +29735,23 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 43                              Bacteroidaceae           Bacteroides
 44                              Bacteroidaceae           Bacteroides
 45                              Prevotellaceae            Prevotella
-46     Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+46     Clostridiales Family XI. Incertae Sedis                  <NA>
 47                            Fusobacteriaceae          Leptotrichia
 48                              Bacteroidaceae           Bacteroides
 49                              Prevotellaceae            Prevotella
-50                                        &lt;NA&gt;                  &lt;NA&gt;
+50                                        <NA>                  <NA>
 51                              Prevotellaceae            Prevotella
 52                          Enterobacteriaceae               Erwinia
 53                              Bacteroidaceae           Bacteroides
-54                                        &lt;NA&gt;                  &lt;NA&gt;
+54                                        <NA>                  <NA>
 55                            Fusobacteriaceae          Leptotrichia
 56                              Prevotellaceae            Prevotella
 57                            Fusobacteriaceae         Fusobacterium
 58                              Bacteroidaceae           Bacteroides
 59                            Fusobacteriaceae         Fusobacterium
-60                                        &lt;NA&gt;                  &lt;NA&gt;
+60                                        <NA>                  <NA>
 61                              Prevotellaceae            Prevotella
-62                                        &lt;NA&gt;                  &lt;NA&gt;
+62                                        <NA>                  <NA>
 63                              Prevotellaceae            Prevotella
 64                            Fusobacteriaceae         Fusobacterium
 65                             Ruminococcaceae      Faecalibacterium
@@ -29653,20 +29759,20 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 67                              Bacteroidaceae           Bacteroides
 68                            Fusobacteriaceae         Fusobacterium
 69                             Ruminococcaceae      Faecalibacterium
-70                                        &lt;NA&gt;                  &lt;NA&gt;
-71                                        &lt;NA&gt;                  &lt;NA&gt;
+70                                        <NA>                  <NA>
+71                                        <NA>                  <NA>
 72                              Prevotellaceae            Prevotella
-73                                        &lt;NA&gt;                  &lt;NA&gt;
+73                                        <NA>                  <NA>
 74                              Prevotellaceae            Prevotella
 75                            Lactobacillaceae         Lactobacillus
 76                            Fusobacteriaceae         Fusobacterium
-77                                        &lt;NA&gt;                  &lt;NA&gt;
+77                                        <NA>                  <NA>
 78                              Prevotellaceae            Prevotella
-79                                        &lt;NA&gt;                  &lt;NA&gt;
+79                                        <NA>                  <NA>
 80                              Prevotellaceae            Prevotella
-81                                        &lt;NA&gt;                  &lt;NA&gt;
+81                                        <NA>                  <NA>
 82                              Bacteroidaceae           Bacteroides
-83                             Lachnospiraceae                  &lt;NA&gt;
+83                             Lachnospiraceae                  <NA>
 84                          Porphyromonadaceae       Parabacteroides
 85                          Enterobacteriaceae           Escherichia
 86                          Enterobacteriaceae           Escherichia
@@ -29674,12 +29780,12 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 88                             Pasteurellaceae           Haemophilus
 89                            Fusobacteriaceae         Fusobacterium
 90                          Enterobacteriaceae               Erwinia
-91                                        &lt;NA&gt;                  &lt;NA&gt;
-92                                        &lt;NA&gt;                  &lt;NA&gt;
-93                             Ruminococcaceae                  &lt;NA&gt;
+91                                        <NA>                  <NA>
+92                                        <NA>                  <NA>
+93                             Ruminococcaceae                  <NA>
 94                              Prevotellaceae            Prevotella
 95                            Fusobacteriaceae         Fusobacterium
-96                                        &lt;NA&gt;                  &lt;NA&gt;
+96                                        <NA>                  <NA>
 97                            Fusobacteriaceae         Fusobacterium
 98                             Lachnospiraceae             Roseburia
 99                              Bacteroidaceae           Bacteroides
@@ -29696,40 +29802,40 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 110                             Bacteroidaceae           Bacteroides
 111                            Ruminococcaceae      Faecalibacterium
 112                             Prevotellaceae            Prevotella
-113                                       &lt;NA&gt;                  &lt;NA&gt;
+113                                       <NA>                  <NA>
 114                             Prevotellaceae            Prevotella
 115                             Prevotellaceae            Prevotella
 116                             Bacteroidaceae           Bacteroides
 117                             Bacteroidaceae           Bacteroides
 118                            Lachnospiraceae           Eubacterium
 119                         Enterobacteriaceae           Escherichia
-120                                       &lt;NA&gt;                  &lt;NA&gt;
+120                                       <NA>                  <NA>
 121                             Prevotellaceae            Prevotella
-122                                       &lt;NA&gt;                  &lt;NA&gt;
+122                                       <NA>                  <NA>
 123                            Lachnospiraceae          Ruminococcus
 124                             Bacteroidaceae           Bacteroides
-125                                       &lt;NA&gt;                  &lt;NA&gt;
+125                                       <NA>                  <NA>
 126                         Enterobacteriaceae           Escherichia
-127                                       &lt;NA&gt;                  &lt;NA&gt;
+127                                       <NA>                  <NA>
 128                             Bacteroidaceae           Bacteroides
 129                             Bacteroidaceae           Bacteroides
 130                           Fusobacteriaceae         Fusobacterium
 131                           Fusobacteriaceae         Fusobacterium
 132                             Bacteroidaceae           Bacteroides
 133                             Prevotellaceae            Prevotella
-134    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
-135    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+134    Clostridiales Family XI. Incertae Sedis                  <NA>
+135    Clostridiales Family XI. Incertae Sedis                  <NA>
 136                            Ruminococcaceae      Faecalibacterium
 137                         Enterobacteriaceae           Escherichia
 138                         Enterobacteriaceae           Escherichia
 139                           Fusobacteriaceae          Leptotrichia
 140                            Lachnospiraceae           Eubacterium
-141                                       &lt;NA&gt;                  &lt;NA&gt;
+141                                       <NA>                  <NA>
 142                            Ruminococcaceae      Faecalibacterium
 143                             Bacteroidaceae           Bacteroides
-144                                       &lt;NA&gt;                  &lt;NA&gt;
+144                                       <NA>                  <NA>
 145                             Bacteroidaceae           Bacteroides
-146                                       &lt;NA&gt;               Gemella
+146                                       <NA>               Gemella
 147                            Ruminococcaceae      Faecalibacterium
 148                           Fusobacteriaceae         Fusobacterium
 149                         Enterobacteriaceae            Klebsiella
@@ -29742,15 +29848,15 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 156                             Prevotellaceae            Prevotella
 157                            Ruminococcaceae      Faecalibacterium
 158                           Pseudomonadaceae           Pseudomonas
-159                                       &lt;NA&gt;                  &lt;NA&gt;
+159                                       <NA>                  <NA>
 160                           Fusobacteriaceae         Fusobacterium
 161                             Bacteroidaceae           Bacteroides
-162                            Lachnospiraceae                  &lt;NA&gt;
+162                            Lachnospiraceae                  <NA>
 163                             Bacteroidaceae           Bacteroides
 164                             Bacteroidaceae           Bacteroides
 165                             Bacteroidaceae           Bacteroides
 166                             Bacteroidaceae           Bacteroides
-167    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+167    Clostridiales Family XI. Incertae Sedis                  <NA>
 168                             Bacteroidaceae           Bacteroides
 169                             Bacteroidaceae           Bacteroides
 170                             Prevotellaceae            Prevotella
@@ -29762,27 +29868,27 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 176                             Prevotellaceae            Prevotella
 177                             Bacteroidaceae           Bacteroides
 178                             Bacteroidaceae           Bacteroides
-179                                       &lt;NA&gt;                  &lt;NA&gt;
+179                                       <NA>                  <NA>
 180                            Lachnospiraceae             Roseburia
 181                      Peptostreptococcaceae    Peptostreptococcus
 182                             Bacteroidaceae           Bacteroides
 183                             Bacteroidaceae           Bacteroides
-184                                       &lt;NA&gt;                  &lt;NA&gt;
+184                                       <NA>                  <NA>
 185                            Ruminococcaceae      Faecalibacterium
-186                                       &lt;NA&gt;                  &lt;NA&gt;
+186                                       <NA>                  <NA>
 187                         Enterobacteriaceae               Erwinia
 188                             Bacteroidaceae           Bacteroides
 189                           Fusobacteriaceae         Fusobacterium
 190                             Bacteroidaceae           Bacteroides
-191                                       &lt;NA&gt;                  &lt;NA&gt;
+191                                       <NA>                  <NA>
 192                             Bacteroidaceae           Bacteroides
-193                                       &lt;NA&gt;                  &lt;NA&gt;
+193                                       <NA>                  <NA>
 194                             Prevotellaceae            Prevotella
-195                                       &lt;NA&gt;                  &lt;NA&gt;
+195                                       <NA>                  <NA>
 196                         Campylobacteraceae         Campylobacter
 197                           Streptococcaceae         Streptococcus
-198                                       &lt;NA&gt;                  &lt;NA&gt;
-199                                       &lt;NA&gt;                  &lt;NA&gt;
+198                                       <NA>                  <NA>
+199                                       <NA>                  <NA>
 200                             Prevotellaceae            Prevotella
 201                             Bacteroidaceae           Bacteroides
 202                         Enterobacteriaceae           Escherichia
@@ -29800,7 +29906,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 214                             Bacteroidaceae           Bacteroides
 215                            Ruminococcaceae      Faecalibacterium
 216                             Bacteroidaceae           Bacteroides
-217                            Lachnospiraceae                  &lt;NA&gt;
+217                            Lachnospiraceae                  <NA>
 218                           Fusobacteriaceae                 J2-29
 219                            Lachnospiraceae          Ruminococcus
 220                             Prevotellaceae            Prevotella
@@ -29808,10 +29914,10 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 222                            Lachnospiraceae           Eubacterium
 223                             Bacteroidaceae           Bacteroides
 224                            Ruminococcaceae      Faecalibacterium
-225                                       &lt;NA&gt;                  &lt;NA&gt;
+225                                       <NA>                  <NA>
 226                            Veillonellaceae           Selenomonas
 227                             Prevotellaceae            Prevotella
-228                                       &lt;NA&gt;                  &lt;NA&gt;
+228                                       <NA>                  <NA>
 229                             Bacteroidaceae           Bacteroides
 230                            Ruminococcaceae      Faecalibacterium
 231                             Bacteroidaceae           Bacteroides
@@ -29823,14 +29929,14 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 237                           Fusobacteriaceae         Fusobacterium
 238                             Prevotellaceae            Prevotella
 239                             Prevotellaceae            Prevotella
-240    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+240    Clostridiales Family XI. Incertae Sedis                  <NA>
 241                             Prevotellaceae            Prevotella
-242                                       &lt;NA&gt;                  &lt;NA&gt;
-243                                       &lt;NA&gt;                  &lt;NA&gt;
+242                                       <NA>                  <NA>
+243                                       <NA>                  <NA>
 244                             Bacteroidaceae           Bacteroides
 245                             Bacteroidaceae           Bacteroides
 246                        Erysipelotrichaceae               p-75-a5
-247                           Acetobacteraceae                  &lt;NA&gt;
+247                           Acetobacteraceae                  <NA>
 248                             Bacteroidaceae           Bacteroides
 249                         Porphyromonadaceae         Porphyromonas
 250                             Bacteroidaceae           Bacteroides
@@ -29845,13 +29951,13 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 259                             Prevotellaceae            Prevotella
 260                             Bacteroidaceae           Bacteroides
 261                           Fusobacteriaceae         Fusobacterium
-262                                       &lt;NA&gt;                  &lt;NA&gt;
+262                                       <NA>                  <NA>
 263                             Alcaligenaceae            Sutterella
-264                            Lachnospiraceae                  &lt;NA&gt;
-265    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+264                            Lachnospiraceae                  <NA>
+265    Clostridiales Family XI. Incertae Sedis                  <NA>
 266                      Peptostreptococcaceae    Peptostreptococcus
 267                             Prevotellaceae            Prevotella
-268                            Lachnospiraceae                  &lt;NA&gt;
+268                            Lachnospiraceae                  <NA>
 269                             Prevotellaceae            Prevotella
 270                           Fusobacteriaceae         Fusobacterium
 271                             Bacteroidaceae           Bacteroides
@@ -29859,12 +29965,12 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 273                             Bacteroidaceae           Bacteroides
 274                             Bacteroidaceae           Bacteroides
 275                             Prevotellaceae            Prevotella
-276                                       &lt;NA&gt;                  &lt;NA&gt;
+276                                       <NA>                  <NA>
 277                             Prevotellaceae            Prevotella
-278                                       &lt;NA&gt;                  &lt;NA&gt;
+278                                       <NA>                  <NA>
 279                            Ruminococcaceae      Faecalibacterium
 280                            Ruminococcaceae      Faecalibacterium
-281                                       &lt;NA&gt;                  &lt;NA&gt;
+281                                       <NA>                  <NA>
 282                             Prevotellaceae            Prevotella
 283                           Fusobacteriaceae         Fusobacterium
 284                         Porphyromonadaceae       Parabacteroides
@@ -29884,7 +29990,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 298                             Bacteroidaceae           Bacteroides
 299                            Ruminococcaceae      Faecalibacterium
 300                            Lachnospiraceae           Clostridium
-301                                       &lt;NA&gt;                  &lt;NA&gt;
+301                                       <NA>                  <NA>
 302                             Bacteroidaceae           Bacteroides
 303                             Prevotellaceae            Prevotella
 304                            Lachnospiraceae          Ruminococcus
@@ -29903,21 +30009,21 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 317                             Bacteroidaceae           Bacteroides
 318                         Enterobacteriaceae               Erwinia
 319                             Bacteroidaceae           Bacteroides
-320                                       &lt;NA&gt;                  &lt;NA&gt;
+320                                       <NA>                  <NA>
 321                         Enterobacteriaceae           Escherichia
 322                           Fusobacteriaceae         Fusobacterium
-323                            Ruminococcaceae                  &lt;NA&gt;
-324                                       &lt;NA&gt;               Gemella
+323                            Ruminococcaceae                  <NA>
+324                                       <NA>               Gemella
 325                            Ruminococcaceae      Faecalibacterium
 326                           Actinomycetaceae           Actinomyces
-327                                       &lt;NA&gt;                  &lt;NA&gt;
-328                                       &lt;NA&gt;                  &lt;NA&gt;
+327                                       <NA>                  <NA>
+328                                       <NA>                  <NA>
 329                      Peptostreptococcaceae    Peptostreptococcus
 330                            Lachnospiraceae          Ruminococcus
 331                             Synergistaceae        Cloacibacillus
 332                             Bacteroidaceae           Bacteroides
-333                                       &lt;NA&gt;                  &lt;NA&gt;
-334                        Erysipelotrichaceae                  &lt;NA&gt;
+333                                       <NA>                  <NA>
+334                        Erysipelotrichaceae                  <NA>
 335                             Bacteroidaceae           Bacteroides
 336                             Bacteroidaceae           Bacteroides
 337                         Enterobacteriaceae               Erwinia
@@ -29931,14 +30037,14 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 345                            Ruminococcaceae      Faecalibacterium
 346                             Prevotellaceae            Prevotella
 347                             Prevotellaceae            Prevotella
-348                                       &lt;NA&gt;                  &lt;NA&gt;
+348                                       <NA>                  <NA>
 349                            Ruminococcaceae          Ruminococcus
 350                           Fusobacteriaceae         Fusobacterium
 351                             Prevotellaceae            Prevotella
 352                           Fusobacteriaceae          Leptotrichia
 353                            Ruminococcaceae      Faecalibacterium
 354                             Bacteroidaceae           Bacteroides
-355                                       &lt;NA&gt;                  &lt;NA&gt;
+355                                       <NA>                  <NA>
 356                          Carnobacteriaceae        Granulicatella
 357                             Bacteroidaceae           Bacteroides
 358                           Fusobacteriaceae         Fusobacterium
@@ -29950,7 +30056,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 364                         Enterobacteriaceae           Escherichia
 365                             Bacteroidaceae           Bacteroides
 366                            Enterococcaceae          Enterococcus
-367                                       &lt;NA&gt;                  &lt;NA&gt;
+367                                       <NA>                  <NA>
 368                             Bacteroidaceae           Bacteroides
 369                          Carnobacteriaceae        Granulicatella
 370                             Bacteroidaceae           Bacteroides
@@ -29962,7 +30068,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 376                         Enterobacteriaceae           Escherichia
 377                             Bacteroidaceae           Bacteroides
 378                         Porphyromonadaceae       Parabacteroides
-379                                       &lt;NA&gt;                  &lt;NA&gt;
+379                                       <NA>                  <NA>
 380                             Bacteroidaceae           Bacteroides
 381                             Bacteroidaceae           Bacteroides
 382                             Alcaligenaceae            Sutterella
@@ -29971,16 +30077,16 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 385                        Erysipelotrichaceae           Clostridium
 386                           Fusobacteriaceae         Fusobacterium
 387                           Fusobacteriaceae         Fusobacterium
-388                                       &lt;NA&gt;                  &lt;NA&gt;
+388                                       <NA>                  <NA>
 389                           Fusobacteriaceae         Fusobacterium
-390                                       &lt;NA&gt;                  &lt;NA&gt;
+390                                       <NA>                  <NA>
 391                             Bacteroidaceae           Bacteroides
 392                            Ruminococcaceae      Faecalibacterium
-393                                       &lt;NA&gt;                  &lt;NA&gt;
+393                                       <NA>                  <NA>
 394                             Clostridiaceae           Clostridium
 395                      Peptostreptococcaceae    Peptostreptococcus
 396                             Bacteroidaceae           Bacteroides
-397                                       &lt;NA&gt;                  &lt;NA&gt;
+397                                       <NA>                  <NA>
 398                            Ruminococcaceae      Faecalibacterium
 399                         Enterobacteriaceae           Escherichia
 400                            Lachnospiraceae          Ruminococcus
@@ -29993,12 +30099,12 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 407                            Ruminococcaceae      Faecalibacterium
 408                           Fusobacteriaceae         Fusobacterium
 409                             Bacteroidaceae           Bacteroides
-410                            Lachnospiraceae                  &lt;NA&gt;
+410                            Lachnospiraceae                  <NA>
 411                           Fusobacteriaceae         Fusobacterium
 412                             Bacteroidaceae           Bacteroides
 413                           Fusobacteriaceae         Fusobacterium
 414                             Bacteroidaceae           Bacteroides
-415                                       &lt;NA&gt;                  &lt;NA&gt;
+415                                       <NA>                  <NA>
 416                             Bacteroidaceae           Bacteroides
 417                           Fusobacteriaceae         Fusobacterium
 418                             Bacteroidaceae           Bacteroides
@@ -30010,13 +30116,13 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 424                         Enterobacteriaceae            Klebsiella
 425                             Prevotellaceae            Prevotella
 426                              Rikenellaceae             Alistipes
-427                                       &lt;NA&gt;                  &lt;NA&gt;
+427                                       <NA>                  <NA>
 428                      Peptostreptococcaceae    Peptostreptococcus
-429                         Porphyromonadaceae                  &lt;NA&gt;
+429                         Porphyromonadaceae                  <NA>
 430                            Ruminococcaceae      Faecalibacterium
-431                            Ruminococcaceae                  &lt;NA&gt;
+431                            Ruminococcaceae                  <NA>
 432                             Prevotellaceae            Prevotella
-433                                       &lt;NA&gt;                  &lt;NA&gt;
+433                                       <NA>                  <NA>
 434                             Prevotellaceae            Prevotella
 435                             Bacteroidaceae           Bacteroides
 436                             Bacteroidaceae           Bacteroides
@@ -30024,10 +30130,10 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 438                           Fusobacteriaceae         Fusobacterium
 439                         Enterobacteriaceae           Escherichia
 440                              Rikenellaceae             Alistipes
-441                                       &lt;NA&gt;                  &lt;NA&gt;
+441                                       <NA>                  <NA>
 442                             Bacteroidaceae           Bacteroides
 443                             Bacteroidaceae           Bacteroides
-444    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+444    Clostridiales Family XI. Incertae Sedis                  <NA>
 445                            Ruminococcaceae      Faecalibacterium
 446                             Prevotellaceae            Prevotella
 447                      Peptostreptococcaceae    Peptostreptococcus
@@ -30038,7 +30144,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 452                             Bacteroidaceae           Bacteroides
 453                            Lachnospiraceae          Ruminococcus
 454                            Ruminococcaceae      Faecalibacterium
-455                                       &lt;NA&gt;                  &lt;NA&gt;
+455                                       <NA>                  <NA>
 456                             Bacteroidaceae           Bacteroides
 457                             Bacteroidaceae           Bacteroides
 458                             Bacteroidaceae           Bacteroides
@@ -30053,11 +30159,11 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 467                         Enterobacteriaceae               Erwinia
 468                         Enterobacteriaceae           Escherichia
 469                             Bacteroidaceae           Bacteroides
-470                                       &lt;NA&gt;                  &lt;NA&gt;
+470                                       <NA>                  <NA>
 471                           Fusobacteriaceae         Fusobacterium
 472                             Bacteroidaceae           Bacteroides
 473                             Prevotellaceae            Prevotella
-474                            Lachnospiraceae                  &lt;NA&gt;
+474                            Lachnospiraceae                  <NA>
 475                             Prevotellaceae            Prevotella
 476                         Enterobacteriaceae           Escherichia
 477                            Ruminococcaceae      Faecalibacterium
@@ -30069,7 +30175,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 483                           Fusobacteriaceae         Fusobacterium
 484                             Bacteroidaceae           Bacteroides
 485                           Fusobacteriaceae         Fusobacterium
-486                            Lachnospiraceae                  &lt;NA&gt;
+486                            Lachnospiraceae                  <NA>
 487                      Peptostreptococcaceae    Peptostreptococcus
 488                            Ruminococcaceae      Faecalibacterium
 489                             Bacteroidaceae           Bacteroides
@@ -30080,7 +30186,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 494                            Ruminococcaceae           Eubacterium
 495                             Prevotellaceae            Prevotella
 496                             Bacteroidaceae           Bacteroides
-497                                       &lt;NA&gt;                  &lt;NA&gt;
+497                                       <NA>                  <NA>
 498                             Prevotellaceae            Prevotella
 499                             Aeromonadaceae             Aeromonas
 500                            Ruminococcaceae      Faecalibacterium
@@ -30093,7 +30199,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 507                             Bacteroidaceae           Bacteroides
 508                             Bacteroidaceae           Bacteroides
 509                              Rikenellaceae             Alistipes
-510                                       &lt;NA&gt;                  &lt;NA&gt;
+510                                       <NA>                  <NA>
 511                             Prevotellaceae            Prevotella
 512                           Fusobacteriaceae         Fusobacterium
 513                             Bacteroidaceae           Bacteroides
@@ -30105,15 +30211,15 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 519                           Mycoplasmataceae            Mycoplasma
 520                             Bacteroidaceae           Bacteroides
 521    Clostridiales Family XI. Incertae Sedis          Anaerococcus
-522                                       &lt;NA&gt;                  &lt;NA&gt;
+522                                       <NA>                  <NA>
 523                           Streptococcaceae         Streptococcus
-524                                       &lt;NA&gt;                  &lt;NA&gt;
-525                            Lachnospiraceae                  &lt;NA&gt;
+524                                       <NA>                  <NA>
+525                            Lachnospiraceae                  <NA>
 526                             Prevotellaceae            Prevotella
 527                            Ruminococcaceae          Oscillospira
-528                                       &lt;NA&gt;               Gemella
+528                                       <NA>               Gemella
 529                             Alcaligenaceae            Sutterella
-530                                       &lt;NA&gt;                  &lt;NA&gt;
+530                                       <NA>                  <NA>
 531                             Prevotellaceae            Prevotella
 532                             Bacteroidaceae           Bacteroides
 533                             Bacteroidaceae           Bacteroides
@@ -30121,16 +30227,16 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 535                             Bacteroidaceae           Bacteroides
 536                           Fusobacteriaceae         Fusobacterium
 537                             Bacteroidaceae           Bacteroides
-538    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+538    Clostridiales Family XI. Incertae Sedis                  <NA>
 539                             Bacteroidaceae           Bacteroides
 540                         Enterobacteriaceae               Erwinia
 541                            Ruminococcaceae      Faecalibacterium
 542                            Ruminococcaceae      Faecalibacterium
-543                                       &lt;NA&gt;               Gemella
+543                                       <NA>               Gemella
 544                            Ruminococcaceae      Faecalibacterium
 545                             Prevotellaceae            Prevotella
-546                                       &lt;NA&gt;                  &lt;NA&gt;
-547                            Lachnospiraceae                  &lt;NA&gt;
+546                                       <NA>                  <NA>
+547                            Lachnospiraceae                  <NA>
 548                         Porphyromonadaceae         Porphyromonas
 549                           Fusobacteriaceae         Fusobacterium
 550                             Bacteroidaceae           Bacteroides
@@ -30147,7 +30253,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 561                      Peptostreptococcaceae    Peptostreptococcus
 562                             Prevotellaceae            Prevotella
 563                            Ruminococcaceae          Ruminococcus
-564    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+564    Clostridiales Family XI. Incertae Sedis                  <NA>
 565                            Lachnospiraceae           Eubacterium
 566                            Lachnospiraceae          Ruminococcus
 567                             Bacteroidaceae           Bacteroides
@@ -30158,13 +30264,13 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 572                             Bacteroidaceae           Bacteroides
 573                             Bacteroidaceae           Bacteroides
 574                         Enterobacteriaceae               Erwinia
-575                                       &lt;NA&gt;                  &lt;NA&gt;
+575                                       <NA>                  <NA>
 576                             Prevotellaceae            Prevotella
 577                           Fusobacteriaceae         Fusobacterium
-578                                       &lt;NA&gt;                  &lt;NA&gt;
+578                                       <NA>                  <NA>
 579                             Bacteroidaceae           Bacteroides
 580                             Bacteroidaceae           Bacteroides
-581  Clostridiales Family XIII. Incertae Sedis                  &lt;NA&gt;
+581  Clostridiales Family XIII. Incertae Sedis                  <NA>
 582                      Peptostreptococcaceae    Peptostreptococcus
 583                            Lachnospiraceae           Clostridium
 584                            Lachnospiraceae           Eubacterium
@@ -30179,18 +30285,18 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 593                              Rikenellaceae             Alistipes
 594                        Erysipelotrichaceae           Clostridium
 595                             Alcaligenaceae            Sutterella
-596                                       &lt;NA&gt;                  &lt;NA&gt;
+596                                       <NA>                  <NA>
 597                             Bacteroidaceae           Bacteroides
 598                           Fusobacteriaceae         Fusobacterium
-599                                       &lt;NA&gt;                  &lt;NA&gt;
-600                            Lachnospiraceae                  &lt;NA&gt;
-601                            Lachnospiraceae                  &lt;NA&gt;
+599                                       <NA>                  <NA>
+600                            Lachnospiraceae                  <NA>
+601                            Lachnospiraceae                  <NA>
 602                        Erysipelotrichaceae               p-75-a5
 603                             Bacteroidaceae           Bacteroides
 604                             Prevotellaceae            Prevotella
 605                            Ruminococcaceae      Faecalibacterium
 606                            Lachnospiraceae          Ruminococcus
-607                                       &lt;NA&gt;                  &lt;NA&gt;
+607                                       <NA>                  <NA>
 608                            Ruminococcaceae          Oscillospira
 609                         Enterobacteriaceae           Escherichia
 610                             Bacteroidaceae           Bacteroides
@@ -30210,22 +30316,22 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 624                         Enterobacteriaceae               Erwinia
 625                           Fusobacteriaceae         Fusobacterium
 626                            Ruminococcaceae      Faecalibacterium
-627                                       &lt;NA&gt;                  &lt;NA&gt;
-628                            Lachnospiraceae                  &lt;NA&gt;
+627                                       <NA>                  <NA>
+628                            Lachnospiraceae                  <NA>
 629                         Porphyromonadaceae         Porphyromonas
 630                            Ruminococcaceae      Faecalibacterium
 631                         Porphyromonadaceae       Parabacteroides
 632                             Prevotellaceae            Prevotella
 633                             Bacteroidaceae           Bacteroides
-634                              Neisseriaceae                  &lt;NA&gt;
+634                              Neisseriaceae                  <NA>
 635                             Alcaligenaceae            Sutterella
 636                             Bacteroidaceae           Bacteroides
 637                            Ruminococcaceae      Faecalibacterium
-638                                       &lt;NA&gt;                  &lt;NA&gt;
-639                                       &lt;NA&gt;                  &lt;NA&gt;
+638                                       <NA>                  <NA>
+639                                       <NA>                  <NA>
 640                             Bacteroidaceae           Bacteroides
 641                            Veillonellaceae Phascolarctobacterium
-642                            Lachnospiraceae                  &lt;NA&gt;
+642                            Lachnospiraceae                  <NA>
 643                            Lachnospiraceae           Clostridium
 644                    Dethiosulfovibrionaceae                   TG5
 645                             Bacteroidaceae           Bacteroides
@@ -30235,42 +30341,42 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 649                             Bacteroidaceae           Bacteroides
 650                             Bacteroidaceae           Bacteroides
 651                            Ruminococcaceae      Faecalibacterium
-652                          Coriobacteriaceae                  &lt;NA&gt;
+652                          Coriobacteriaceae                  <NA>
 653                        Erysipelotrichaceae           Clostridium
 654                            Lachnospiraceae          Ruminococcus
 655                            Ruminococcaceae      Faecalibacterium
 656                            Ruminococcaceae      Faecalibacterium
 657                             Bacteroidaceae           Bacteroides
 658                             Aeromonadaceae             Aeromonas
-659                        Erysipelotrichaceae                  &lt;NA&gt;
-660                                       &lt;NA&gt;                  &lt;NA&gt;
+659                        Erysipelotrichaceae                  <NA>
+660                                       <NA>                  <NA>
 661                             Bacteroidaceae           Bacteroides
 662                            Ruminococcaceae      Faecalibacterium
 663                             Prevotellaceae            Prevotella
 664                           Fusobacteriaceae         Fusobacterium
 665                            Ruminococcaceae      Faecalibacterium
-666                                       &lt;NA&gt;                  &lt;NA&gt;
-667                          Flavobacteriaceae                  &lt;NA&gt;
+666                                       <NA>                  <NA>
+667                          Flavobacteriaceae                  <NA>
 668                             Bacteroidaceae           Bacteroides
 669                      Peptostreptococcaceae    Peptostreptococcus
-670                                       &lt;NA&gt;                  &lt;NA&gt;
+670                                       <NA>                  <NA>
 671                         Porphyromonadaceae           Odoribacter
 672                            Veillonellaceae             Dialister
-673    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+673    Clostridiales Family XI. Incertae Sedis                  <NA>
 674                         Porphyromonadaceae         Porphyromonas
 675                            Ruminococcaceae      Faecalibacterium
 676                             Bacteroidaceae           Bacteroides
 677                             Bacteroidaceae           Bacteroides
-678                            Lachnospiraceae                  &lt;NA&gt;
+678                            Lachnospiraceae                  <NA>
 679                             Alcaligenaceae            Sutterella
 680                             Bacteroidaceae           Bacteroides
 681                            Lachnospiraceae           Eubacterium
 682                            Ruminococcaceae      Faecalibacterium
-683                                       &lt;NA&gt;                  &lt;NA&gt;
-684                                       &lt;NA&gt;                  &lt;NA&gt;
-685                                       &lt;NA&gt;                  &lt;NA&gt;
+683                                       <NA>                  <NA>
+684                                       <NA>                  <NA>
+685                                       <NA>                  <NA>
 686                         Porphyromonadaceae           Odoribacter
-687                                       &lt;NA&gt;               Gemella
+687                                       <NA>               Gemella
 688                            Ruminococcaceae           Eubacterium
 689                            Ruminococcaceae      Faecalibacterium
 690                         Porphyromonadaceae         Porphyromonas
@@ -30278,7 +30384,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 692                             Bacteroidaceae           Bacteroides
 693                           Fusobacteriaceae         Fusobacterium
 694                             Bacteroidaceae           Bacteroides
-695                                       &lt;NA&gt;                  &lt;NA&gt;
+695                                       <NA>                  <NA>
 696                         Porphyromonadaceae       Parabacteroides
 697                         Enterobacteriaceae           Escherichia
 698                            Lachnospiraceae          Ruminococcus
@@ -30288,12 +30394,12 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 702                            Ruminococcaceae           Eubacterium
 703                            Lachnospiraceae           Clostridium
 704                             Bacteroidaceae           Bacteroides
-705    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+705    Clostridiales Family XI. Incertae Sedis                  <NA>
 706                            Ruminococcaceae          Oscillospira
-707                                       &lt;NA&gt;                  &lt;NA&gt;
+707                                       <NA>                  <NA>
 708                             Bacteroidaceae           Bacteroides
 709                         Porphyromonadaceae           Odoribacter
-710                        Erysipelotrichaceae                  &lt;NA&gt;
+710                        Erysipelotrichaceae                  <NA>
 711                           Fusobacteriaceae         Fusobacterium
 712                            Veillonellaceae             Dialister
 713                          Carnobacteriaceae        Granulicatella
@@ -30301,24 +30407,24 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 715                             Bacteroidaceae           Bacteroides
 716                        Erysipelotrichaceae           Clostridium
 717                             Prevotellaceae            Prevotella
-718                                       &lt;NA&gt;                  &lt;NA&gt;
+718                                       <NA>                  <NA>
 719                            Lachnospiraceae           Clostridium
 720                          Carnobacteriaceae        Granulicatella
 721                            Ruminococcaceae      Faecalibacterium
 722                            Lachnospiraceae          Ruminococcus
-723                                       &lt;NA&gt;                  &lt;NA&gt;
-724                                       &lt;NA&gt;                  &lt;NA&gt;
+723                                       <NA>                  <NA>
+724                                       <NA>                  <NA>
 725                            Pasteurellaceae        Actinobacillus
 726                             Bacteroidaceae           Bacteroides
 727                           Fusobacteriaceae         Fusobacterium
 728                             Prevotellaceae            Prevotella
-729                                       &lt;NA&gt;                  &lt;NA&gt;
+729                                       <NA>                  <NA>
 730                             Alcaligenaceae            Sutterella
 731                         Enterobacteriaceae           Escherichia
 732                             Prevotellaceae            Prevotella
-733                            Lachnospiraceae                  &lt;NA&gt;
+733                            Lachnospiraceae                  <NA>
 734                            Lachnospiraceae           Clostridium
-735                                       &lt;NA&gt;                  &lt;NA&gt;
+735                                       <NA>                  <NA>
 736                             Bacteroidaceae           Bacteroides
 737                         Enterobacteriaceae               Erwinia
 738                            Ruminococcaceae          Oscillospira
@@ -30329,19 +30435,19 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 743                         Porphyromonadaceae         Porphyromonas
 744                             Bacteroidaceae           Bacteroides
 745                             Prevotellaceae            Prevotella
-746    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
-747                            Lachnospiraceae                  &lt;NA&gt;
-748                           Catabacteriaceae                  &lt;NA&gt;
+746    Clostridiales Family XI. Incertae Sedis                  <NA>
+747                            Lachnospiraceae                  <NA>
+748                           Catabacteriaceae                  <NA>
 749                             Prevotellaceae            Prevotella
 750                             Bacteroidaceae           Bacteroides
 751                            Lachnospiraceae           Clostridium
 752                             Bacteroidaceae           Bacteroides
 753                             Bacteroidaceae           Bacteroides
 754                            Lachnospiraceae           Eubacterium
-755                                       &lt;NA&gt;                  &lt;NA&gt;
+755                                       <NA>                  <NA>
 756                            Pasteurellaceae        Actinobacillus
-757                                       &lt;NA&gt;                  &lt;NA&gt;
-758                                       &lt;NA&gt;                  &lt;NA&gt;
+757                                       <NA>                  <NA>
+758                                       <NA>                  <NA>
 759                             Bacteroidaceae           Bacteroides
 760                             Bacteroidaceae           Bacteroides
 761                             Bacteroidaceae           Bacteroides
@@ -30350,71 +30456,71 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 764                            Ruminococcaceae          Oscillospira
 765                           Fusobacteriaceae         Fusobacterium
 766                           Fusobacteriaceae         Fusobacterium
-767                                       &lt;NA&gt;                  &lt;NA&gt;
+767                                       <NA>                  <NA>
 768                           Fusobacteriaceae         Fusobacterium
-769                            Veillonellaceae                  &lt;NA&gt;
+769                            Veillonellaceae                  <NA>
 770                             Bacteroidaceae           Bacteroides
 771                         Porphyromonadaceae       Parabacteroides
 772                             Bacteroidaceae           Bacteroides
-773                            Ruminococcaceae                  &lt;NA&gt;
+773                            Ruminococcaceae                  <NA>
 774                             Bacteroidaceae           Bacteroides
 775                             Bacteroidaceae           Bacteroides
 776                             Bacteroidaceae           Bacteroides
 777                             Bacteroidaceae           Bacteroides
 778                             Bacteroidaceae           Bacteroides
 779                            Ruminococcaceae          Oscillospira
-780                                       &lt;NA&gt;                  &lt;NA&gt;
+780                                       <NA>                  <NA>
 781                             Bacteroidaceae           Bacteroides
 782                             Bacteroidaceae           Bacteroides
 783                             Bacteroidaceae           Bacteroides
 784                             Bacteroidaceae           Bacteroides
 785                             Bacteroidaceae           Bacteroides
-786    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+786    Clostridiales Family XI. Incertae Sedis                  <NA>
 787                            Ruminococcaceae      Faecalibacterium
 788                        Erysipelotrichaceae           Clostridium
-789                                       &lt;NA&gt;                  &lt;NA&gt;
-790                                       &lt;NA&gt;                  &lt;NA&gt;
-791                                       &lt;NA&gt;                  &lt;NA&gt;
+789                                       <NA>                  <NA>
+790                                       <NA>                  <NA>
+791                                       <NA>                  <NA>
 792                             Bacteroidaceae           Bacteroides
 793                         Porphyromonadaceae           Odoribacter
 794                        Erysipelotrichaceae           Clostridium
-795                             Prevotellaceae                  &lt;NA&gt;
+795                             Prevotellaceae                  <NA>
 796                             Bacteroidaceae           Bacteroides
 797                         Porphyromonadaceae       Parabacteroides
 798                           Fusobacteriaceae         Fusobacterium
 799                             Bacteroidaceae           Bacteroides
 800                           Fusobacteriaceae         Fusobacterium
-801                                       &lt;NA&gt;               Gemella
+801                                       <NA>               Gemella
 802                             Prevotellaceae            Prevotella
 803                             Bacteroidaceae           Bacteroides
 804                             Prevotellaceae            Prevotella
-805                            Lachnospiraceae                  &lt;NA&gt;
+805                            Lachnospiraceae                  <NA>
 806                             Prevotellaceae            Prevotella
 807                             Bacteroidaceae           Bacteroides
 808                             Clostridiaceae           Clostridium
 809                            Lachnospiraceae          Ruminococcus
 810                            Lachnospiraceae          Ruminococcus
 811                             Prevotellaceae            Prevotella
-812                                       &lt;NA&gt;                  &lt;NA&gt;
+812                                       <NA>                  <NA>
 813                             Alcaligenaceae            Sutterella
-814                            Lachnospiraceae                  &lt;NA&gt;
+814                            Lachnospiraceae                  <NA>
 815                            Spirochaetaceae             Treponema
-816                                       &lt;NA&gt;               Gemella
+816                                       <NA>               Gemella
 817                           Fusobacteriaceae         Fusobacterium
-818                            Lachnospiraceae                  &lt;NA&gt;
+818                            Lachnospiraceae                  <NA>
 819                            Ruminococcaceae      Faecalibacterium
 820                            Lachnospiraceae                 Dorea
 821                             Prevotellaceae            Prevotella
 822                            Ruminococcaceae      Faecalibacterium
-823                                       &lt;NA&gt;                  &lt;NA&gt;
-824                            Lachnospiraceae                  &lt;NA&gt;
+823                                       <NA>                  <NA>
+824                            Lachnospiraceae                  <NA>
 825                           Fusobacteriaceae         Fusobacterium
 826                            Spirochaetaceae             Treponema
 827                           Streptococcaceae         Streptococcus
 828                             Bacteroidaceae           Bacteroides
 829                            Veillonellaceae Phascolarctobacterium
 830                            Ruminococcaceae      Faecalibacterium
-831                                       &lt;NA&gt;                  &lt;NA&gt;
+831                                       <NA>                  <NA>
 832                             Prevotellaceae            Prevotella
 833                         Enterobacteriaceae               Erwinia
 834                            Ruminococcaceae           Eubacterium
@@ -30426,20 +30532,20 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 840                            Ruminococcaceae      Faecalibacterium
 841                            Ruminococcaceae      Faecalibacterium
 842                            Ruminococcaceae           Eubacterium
-843                                       &lt;NA&gt;                  &lt;NA&gt;
+843                                       <NA>                  <NA>
 844                         Porphyromonadaceae           Odoribacter
 845                             Aeromonadaceae             Aeromonas
-846    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+846    Clostridiales Family XI. Incertae Sedis                  <NA>
 847                          Carnobacteriaceae        Granulicatella
 848                             Prevotellaceae            Prevotella
-849                            Ruminococcaceae                  &lt;NA&gt;
+849                            Ruminococcaceae                  <NA>
 850                            Lachnospiraceae                 Dorea
-851                                       &lt;NA&gt;                  &lt;NA&gt;
-852                                       &lt;NA&gt;                  &lt;NA&gt;
+851                                       <NA>                  <NA>
+852                                       <NA>                  <NA>
 853                            Ruminococcaceae      Faecalibacterium
 854                             Prevotellaceae            Prevotella
-855                                       &lt;NA&gt;                  &lt;NA&gt;
-856                            Lachnospiraceae                  &lt;NA&gt;
+855                                       <NA>                  <NA>
+856                            Lachnospiraceae                  <NA>
 857                         Porphyromonadaceae           Odoribacter
 858                           Streptococcaceae         Streptococcus
 859                         Porphyromonadaceae       Parabacteroides
@@ -30448,9 +30554,9 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 862                             Prevotellaceae            Prevotella
 863                            Ruminococcaceae      Faecalibacterium
 864                            Ruminococcaceae      Faecalibacterium
-865                                       &lt;NA&gt;                  &lt;NA&gt;
-866                                       &lt;NA&gt;                  &lt;NA&gt;
-867                         Porphyromonadaceae                  &lt;NA&gt;
+865                                       <NA>                  <NA>
+866                                       <NA>                  <NA>
+867                         Porphyromonadaceae                  <NA>
 868                         Porphyromonadaceae         Porphyromonas
 869                            Ruminococcaceae      Faecalibacterium
 870                            Ruminococcaceae          Oscillospira
@@ -30463,7 +30569,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 877                            Ruminococcaceae      Faecalibacterium
 878                            Lachnospiraceae                 Dorea
 879                             Bacteroidaceae           Bacteroides
-880                                       &lt;NA&gt;                  &lt;NA&gt;
+880                                       <NA>                  <NA>
 881                         Enterobacteriaceae               Erwinia
 882                      Peptostreptococcaceae    Peptostreptococcus
 883                            Ruminococcaceae      Faecalibacterium
@@ -30473,45 +30579,45 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 887                            Ruminococcaceae      Faecalibacterium
 888                             Prevotellaceae            Prevotella
 889                            Ruminococcaceae           Eubacterium
-890                                       &lt;NA&gt;                  &lt;NA&gt;
+890                                       <NA>                  <NA>
 891                             Bacteroidaceae           Bacteroides
 892                            Enterococcaceae          Enterococcus
 893                            Ruminococcaceae      Faecalibacterium
 894                            Veillonellaceae Phascolarctobacterium
 895                            Ruminococcaceae      Faecalibacterium
-896                            Lachnospiraceae                  &lt;NA&gt;
+896                            Lachnospiraceae                  <NA>
 897                             Alcaligenaceae            Sutterella
 898                            Ruminococcaceae          Oscillospira
 899                             Bacteroidaceae           Bacteroides
-900                                       &lt;NA&gt;                  &lt;NA&gt;
+900                                       <NA>                  <NA>
 901                              Rikenellaceae             Alistipes
 902                         Porphyromonadaceae       Parabacteroides
-903                        Erysipelotrichaceae                  &lt;NA&gt;
+903                        Erysipelotrichaceae                  <NA>
 904                           Fusobacteriaceae         Fusobacterium
 905                             Comamonadaceae            Acidovorax
 906                             Prevotellaceae            Prevotella
 907                            Enterococcaceae          Enterococcus
 908                             Bacteroidaceae           Bacteroides
-909                                       &lt;NA&gt;                  &lt;NA&gt;
+909                                       <NA>                  <NA>
 910                         Enterobacteriaceae           Escherichia
 911                             Bacteroidaceae           Bacteroides
 912                             Prevotellaceae            Prevotella
-913                                       &lt;NA&gt;                  &lt;NA&gt;
+913                                       <NA>                  <NA>
 914                             Bacteroidaceae           Bacteroides
 915                            Lachnospiraceae           Clostridium
 916                           Actinomycetaceae           Actinomyces
 917                            Ruminococcaceae      Faecalibacterium
 918                             Bacteroidaceae           Bacteroides
-919    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
-920    Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+919    Clostridiales Family XI. Incertae Sedis                  <NA>
+920    Clostridiales Family XI. Incertae Sedis                  <NA>
 921                            Veillonellaceae Phascolarctobacterium
-922                                       &lt;NA&gt;                  &lt;NA&gt;
+922                                       <NA>                  <NA>
 923                         Porphyromonadaceae       Parabacteroides
-924                         Enterobacteriaceae                  &lt;NA&gt;
+924                         Enterobacteriaceae                  <NA>
 925                             Bacteroidaceae           Bacteroides
 926                            Ruminococcaceae      Faecalibacterium
 927                             Bacteroidaceae           Bacteroides
-928                            Lachnospiraceae                  &lt;NA&gt;
+928                            Lachnospiraceae                  <NA>
 929                            Ruminococcaceae      Faecalibacterium
 930                             Bacteroidaceae           Bacteroides
 931                            Ruminococcaceae      Faecalibacterium
@@ -30522,38 +30628,38 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 936                             Bacteroidaceae           Bacteroides
 937                            Veillonellaceae Phascolarctobacterium
 938                            Ruminococcaceae      Faecalibacterium
-939                                       &lt;NA&gt;                  &lt;NA&gt;
+939                                       <NA>                  <NA>
 940                           Fusobacteriaceae          Leptotrichia
 941                             Prevotellaceae            Prevotella
-942                                       &lt;NA&gt;                  &lt;NA&gt;
+942                                       <NA>                  <NA>
 943                             Bacteroidaceae           Bacteroides
 944                             Prevotellaceae            Prevotella
 945                         Enterobacteriaceae               Erwinia
 946                            Ruminococcaceae      Faecalibacterium
 947                             Bacteroidaceae           Bacteroides
 948                            Veillonellaceae Phascolarctobacterium
-949                                       &lt;NA&gt;                  &lt;NA&gt;
+949                                       <NA>                  <NA>
 950                            Lachnospiraceae           Clostridium
 951                             Bacteroidaceae           Bacteroides
 952                         Enterobacteriaceae           Escherichia
 953                         Porphyromonadaceae           Odoribacter
 954                            Lachnospiraceae           Clostridium
-955                                       &lt;NA&gt;                  &lt;NA&gt;
+955                                       <NA>                  <NA>
 956                           Streptococcaceae         Streptococcus
 957                            Ruminococcaceae          Oscillospira
 958                         Porphyromonadaceae         Porphyromonas
 959                            Ruminococcaceae      Faecalibacterium
-960                                       &lt;NA&gt;                  &lt;NA&gt;
+960                                       <NA>                  <NA>
 961                             Prevotellaceae            Prevotella
 962                      Peptostreptococcaceae    Peptostreptococcus
-963                                       &lt;NA&gt;                  &lt;NA&gt;
+963                                       <NA>                  <NA>
 964                            Lachnospiraceae           Clostridium
 965                             Bacteroidaceae           Bacteroides
 966                             Bacteroidaceae           Bacteroides
-967                            Lachnospiraceae                  &lt;NA&gt;
+967                            Lachnospiraceae                  <NA>
 968                             Bacteroidaceae           Bacteroides
 969                            Ruminococcaceae          Ruminococcus
-970                                       &lt;NA&gt;                  &lt;NA&gt;
+970                                       <NA>                  <NA>
 971                             Bacteroidaceae           Bacteroides
 972                             Bacteroidaceae           Bacteroides
 973                           Fusobacteriaceae         Fusobacterium
@@ -30561,16 +30667,16 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 975                              Rikenellaceae             Alistipes
 976                             Bacteroidaceae           Bacteroides
 977                            Ruminococcaceae      Faecalibacterium
-978                                       &lt;NA&gt;                  &lt;NA&gt;
-979                                       &lt;NA&gt;                  &lt;NA&gt;
-980                         Porphyromonadaceae                  &lt;NA&gt;
+978                                       <NA>                  <NA>
+979                                       <NA>                  <NA>
+980                         Porphyromonadaceae                  <NA>
 981                             Prevotellaceae            Prevotella
 982                            Ruminococcaceae      Faecalibacterium
 983                            Ruminococcaceae      Faecalibacterium
 984                            Ruminococcaceae      Faecalibacterium
 985                            Ruminococcaceae      Faecalibacterium
 986                            Lachnospiraceae           Eubacterium
-987                                       &lt;NA&gt;                  &lt;NA&gt;
+987                                       <NA>                  <NA>
 988                           Fusobacteriaceae         Fusobacterium
 989                             Bacteroidaceae           Bacteroides
 990                              Rikenellaceae             Alistipes
@@ -30579,13 +30685,13 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 993                         Porphyromonadaceae       Parabacteroides
 994                           Fusobacteriaceae         Fusobacterium
 995                        Erysipelotrichaceae           Clostridium
-996                                       &lt;NA&gt;                  &lt;NA&gt;
+996                                       <NA>                  <NA>
 997                             Prevotellaceae            Prevotella
 998                             Prevotellaceae            Prevotella
 999                            Lachnospiraceae           Clostridium
 1000                          Fusobacteriaceae         Fusobacterium
 1001                            Bacteroidaceae           Bacteroides
-1002                                      &lt;NA&gt;                  &lt;NA&gt;
+1002                                      <NA>                  <NA>
 1003                           Lachnospiraceae           Clostridium
 1004                            Bacteroidaceae           Bacteroides
 1005                            Bacteroidaceae           Bacteroides
@@ -30596,8 +30702,8 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1010                            Bacteroidaceae           Bacteroides
 1011                           Ruminococcaceae           Eubacterium
 1012                           Lachnospiraceae           Eubacterium
-1013                                      &lt;NA&gt;                  &lt;NA&gt;
-1014                                      &lt;NA&gt;                  &lt;NA&gt;
+1013                                      <NA>                  <NA>
+1014                                      <NA>                  <NA>
 1015                            Bacteroidaceae           Bacteroides
 1016                        Porphyromonadaceae       Parabacteroides
 1017                            Prevotellaceae            Prevotella
@@ -30607,28 +30713,28 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1021                            Prevotellaceae            Prevotella
 1022                     Peptostreptococcaceae    Peptostreptococcus
 1023                           Ruminococcaceae      Faecalibacterium
-1024                                      &lt;NA&gt;                  &lt;NA&gt;
+1024                                      <NA>                  <NA>
 1025                           Pasteurellaceae        Actinobacillus
-1026                           Veillonellaceae                  &lt;NA&gt;
+1026                           Veillonellaceae                  <NA>
 1027                        Enterobacteriaceae           Escherichia
 1028                            Prevotellaceae            Prevotella
 1029                       Erysipelotrichaceae           Clostridium
 1030                            Prevotellaceae            Prevotella
 1031                            Alcaligenaceae            Sutterella
-1032                           Lachnospiraceae                  &lt;NA&gt;
+1032                           Lachnospiraceae                  <NA>
 1033                            Alcaligenaceae            Sutterella
-1034                                      &lt;NA&gt;                  &lt;NA&gt;
+1034                                      <NA>                  <NA>
 1035                            Bacteroidaceae           Bacteroides
 1036                             Rikenellaceae             Alistipes
-1037                                      &lt;NA&gt;                  &lt;NA&gt;
+1037                                      <NA>                  <NA>
 1038                            Bacteroidaceae           Bacteroides
 1039                          Streptococcaceae         Streptococcus
 1040                            Bacteroidaceae           Bacteroides
-1041   Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+1041   Clostridiales Family XI. Incertae Sedis                  <NA>
 1042                            Bacteroidaceae           Bacteroides
 1043                     Peptostreptococcaceae    Peptostreptococcus
 1044                           Lachnospiraceae           Clostridium
-1045                                      &lt;NA&gt;                  &lt;NA&gt;
+1045                                      <NA>                  <NA>
 1046                           Ruminococcaceae          Oscillospira
 1047                            Prevotellaceae            Prevotella
 1048                        Porphyromonadaceae           Odoribacter
@@ -30644,8 +30750,8 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1058                       Succinivibrionaceae         Succinivibrio
 1059                            Prevotellaceae            Prevotella
 1060                        Enterobacteriaceae               Erwinia
-1061                           Lachnospiraceae                  &lt;NA&gt;
-1062                           Lachnospiraceae                  &lt;NA&gt;
+1061                           Lachnospiraceae                  <NA>
+1062                           Lachnospiraceae                  <NA>
 1063                        Porphyromonadaceae         Porphyromonas
 1064                            Bacteroidaceae           Bacteroides
 1065                            Bacteroidaceae           Bacteroides
@@ -30655,7 +30761,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1069                     Peptostreptococcaceae    Peptostreptococcus
 1070                             Rikenellaceae             Alistipes
 1071                            Bacteroidaceae           Bacteroides
-1072                           Lachnospiraceae                  &lt;NA&gt;
+1072                           Lachnospiraceae                  <NA>
 1073                            Bacteroidaceae           Bacteroides
 1074                            Bacteroidaceae           Bacteroides
 1075                            Bacteroidaceae           Bacteroides
@@ -30663,16 +30769,16 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1077                          Fusobacteriaceae         Fusobacterium
 1078                            Prevotellaceae            Prevotella
 1079                            Bacteroidaceae           Bacteroides
-1080                           Lachnospiraceae                  &lt;NA&gt;
-1081                        Enterobacteriaceae                  &lt;NA&gt;
+1080                           Lachnospiraceae                  <NA>
+1081                        Enterobacteriaceae                  <NA>
 1082                            Bacteroidaceae           Bacteroides
 1083                          Fusobacteriaceae         Fusobacterium
 1084                           Lachnospiraceae           Clostridium
 1085                       Erysipelotrichaceae           Clostridium
 1086                           Ruminococcaceae      Faecalibacterium
 1087                           Lachnospiraceae           Eubacterium
-1088                           Ruminococcaceae                  &lt;NA&gt;
-1089                           Lachnospiraceae                  &lt;NA&gt;
+1088                           Ruminococcaceae                  <NA>
+1089                           Lachnospiraceae                  <NA>
 1090                            Bacteroidaceae           Bacteroides
 1091                            Bacteroidaceae           Bacteroides
 1092                        Enterobacteriaceae           Escherichia
@@ -30681,7 +30787,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1095   Clostridiales Family XI. Incertae Sedis            Finegoldia
 1096                            Bacteroidaceae           Bacteroides
 1097                           Ruminococcaceae      Faecalibacterium
-1098                           Ruminococcaceae                  &lt;NA&gt;
+1098                           Ruminococcaceae                  <NA>
 1099                        Porphyromonadaceae       Parabacteroides
 1100                            Bacteroidaceae           Bacteroides
 1101                           Lachnospiraceae           Clostridium
@@ -30692,8 +30798,8 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1106                           Lachnospiraceae             Catonella
 1107                         Carnobacteriaceae        Granulicatella
 1108                           Ruminococcaceae      Faecalibacterium
-1109                                      &lt;NA&gt;                  &lt;NA&gt;
-1110                           Ruminococcaceae                  &lt;NA&gt;
+1109                                      <NA>                  <NA>
+1110                           Ruminococcaceae                  <NA>
 1111                        Porphyromonadaceae           Odoribacter
 1112                          Fusobacteriaceae         Fusobacterium
 1113                          Fusobacteriaceae         Fusobacterium
@@ -30704,7 +30810,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1118                          Fusobacteriaceae         Fusobacterium
 1119                           Ruminococcaceae      Faecalibacterium
 1120                           Pasteurellaceae           Haemophilus
-1121                                      &lt;NA&gt;                  &lt;NA&gt;
+1121                                      <NA>                  <NA>
 1122                           Veillonellaceae           Selenomonas
 1123                          Fusobacteriaceae          Leptotrichia
 1124                        Enterobacteriaceae           Escherichia
@@ -30714,9 +30820,9 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1128                           Lachnospiraceae             Roseburia
 1129                           Ruminococcaceae      Faecalibacterium
 1130                           Ruminococcaceae      Faecalibacterium
-1131                                      &lt;NA&gt;                  &lt;NA&gt;
+1131                                      <NA>                  <NA>
 1132                            Alcaligenaceae            Sutterella
-1133                           Ruminococcaceae                  &lt;NA&gt;
+1133                           Ruminococcaceae                  <NA>
 1134                           Ruminococcaceae          Oscillospira
 1135                            Bacteroidaceae           Bacteroides
 1136   Clostridiales Family XI. Incertae Sedis          Anaerococcus
@@ -30724,10 +30830,10 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1138                           Lachnospiraceae              Moryella
 1139                          Fusobacteriaceae         Fusobacterium
 1140                           Pasteurellaceae           Haemophilus
-1141                          Acetobacteraceae                  &lt;NA&gt;
+1141                          Acetobacteraceae                  <NA>
 1142                            Prevotellaceae            Prevotella
-1143                                      &lt;NA&gt;                  &lt;NA&gt;
-1144                                      &lt;NA&gt;                  &lt;NA&gt;
+1143                                      <NA>                  <NA>
+1144                                      <NA>                  <NA>
 1145                           Lachnospiraceae          Oribacterium
 1146                            Prevotellaceae            Prevotella
 1147                             Rikenellaceae             Alistipes
@@ -30737,24 +30843,24 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1151                           Lachnospiraceae               Blautia
 1152                            Clostridiaceae           Clostridium
 1153                            Bacteroidaceae           Bacteroides
-1154                                      &lt;NA&gt;               Gemella
+1154                                      <NA>               Gemella
 1155                     Peptostreptococcaceae    Peptostreptococcus
 1156                            Bacteroidaceae           Bacteroides
-1157                        Porphyromonadaceae                  &lt;NA&gt;
+1157                        Porphyromonadaceae                  <NA>
 1158                           Ruminococcaceae      Faecalibacterium
 1159                           Lachnospiraceae             Roseburia
-1160                                      &lt;NA&gt;                  &lt;NA&gt;
+1160                                      <NA>                  <NA>
 1161                           Lachnospiraceae                 Dorea
 1162                            Prevotellaceae            Prevotella
 1163                           Ruminococcaceae          Oscillospira
 1164                           Lachnospiraceae           Clostridium
 1165                           Lachnospiraceae          Ruminococcus
-1166                        Porphyromonadaceae                  &lt;NA&gt;
+1166                        Porphyromonadaceae                  <NA>
 1167                            Bacteroidaceae           Bacteroides
 1168                            Bacteroidaceae           Bacteroides
-1169                           Lachnospiraceae                  &lt;NA&gt;
+1169                           Lachnospiraceae                  <NA>
 1170                        Enterobacteriaceae               Erwinia
-1171                                      &lt;NA&gt;                  &lt;NA&gt;
+1171                                      <NA>                  <NA>
 1172                            Bacteroidaceae           Bacteroides
 1173                            Prevotellaceae            Prevotella
 1174                            Bacteroidaceae           Bacteroides
@@ -30775,7 +30881,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1189                           Ruminococcaceae      Faecalibacterium
 1190                           Ruminococcaceae      Faecalibacterium
 1191                            Alcaligenaceae            Sutterella
-1192                                      &lt;NA&gt;                  &lt;NA&gt;
+1192                                      <NA>                  <NA>
 1193                           Lachnospiraceae          Ruminococcus
 1194                        Porphyromonadaceae       Parabacteroides
 1195                            Prevotellaceae            Prevotella
@@ -30784,21 +30890,21 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1198                            Bacteroidaceae           Bacteroides
 1199                            Bacteroidaceae           Bacteroides
 1200                        Porphyromonadaceae           Odoribacter
-1201                                      &lt;NA&gt;               Gemella
-1202                                      &lt;NA&gt;               Gemella
-1203   Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+1201                                      <NA>               Gemella
+1202                                      <NA>               Gemella
+1203   Clostridiales Family XI. Incertae Sedis                  <NA>
 1204                        Porphyromonadaceae       Parabacteroides
 1205                          Streptococcaceae         Streptococcus
 1206                            Bacteroidaceae           Bacteroides
 1207                           Ruminococcaceae      Faecalibacterium
 1208                           Ruminococcaceae           Eubacterium
 1209                            Prevotellaceae            Prevotella
-1210                                      &lt;NA&gt;                  &lt;NA&gt;
+1210                                      <NA>                  <NA>
 1211                         Coriobacteriaceae           Collinsella
-1212                                      &lt;NA&gt;                  &lt;NA&gt;
-1213                                      &lt;NA&gt;               Gemella
+1212                                      <NA>                  <NA>
+1213                                      <NA>               Gemella
 1214                           Lachnospiraceae           Clostridium
-1215   Clostridiales Family XI. Incertae Sedis                  &lt;NA&gt;
+1215   Clostridiales Family XI. Incertae Sedis                  <NA>
 1216                        Enterobacteriaceae               Erwinia
 1217                          Streptococcaceae         Streptococcus
 1218                     Peptostreptococcaceae    Peptostreptococcus
@@ -30807,1404 +30913,1451 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1        Fusobacterium necrophorum
 2        Fusobacterium necrophorum
 3        Fusobacterium necrophorum
-4                             &lt;NA&gt;
-5                             &lt;NA&gt;
-6                             &lt;NA&gt;
-7                             &lt;NA&gt;
-8                             &lt;NA&gt;
-9                             &lt;NA&gt;
-10                            &lt;NA&gt;
+4                             <NA>
+5                             <NA>
+6                             <NA>
+7                             <NA>
+8                             <NA>
+9                             <NA>
+10                            <NA>
 11       Fusobacterium necrophorum
 12       Fusobacterium necrophorum
-13                            &lt;NA&gt;
-14                            &lt;NA&gt;
-15                            &lt;NA&gt;
-16                            &lt;NA&gt;
+13                            <NA>
+14                            <NA>
+15                            <NA>
+16                            <NA>
 17           Prevotella intermedia
-18                            &lt;NA&gt;
+18                            <NA>
 19               Bacteroides dorei
-20                            &lt;NA&gt;
+20                            <NA>
 21           Prevotella intermedia
-22                            &lt;NA&gt;
+22                            <NA>
 23                Pantoea dispersa
-24                            &lt;NA&gt;
-25                            &lt;NA&gt;
-26                            &lt;NA&gt;
+24                            <NA>
+25                            <NA>
+26                            <NA>
 27       Fusobacterium necrophorum
-28                            &lt;NA&gt;
-29                            &lt;NA&gt;
+28                            <NA>
+29                            <NA>
 30           Lactobacillus ruminis
-31                            &lt;NA&gt;
-32                            &lt;NA&gt;
-33                            &lt;NA&gt;
-34                            &lt;NA&gt;
-35                            &lt;NA&gt;
-36                            &lt;NA&gt;
-37                            &lt;NA&gt;
+31                            <NA>
+32                            <NA>
+33                            <NA>
+34                            <NA>
+35                            <NA>
+36                            <NA>
+37                            <NA>
 38       Fusobacterium necrophorum
 39       Fusobacterium necrophorum
-40                            &lt;NA&gt;
-41                            &lt;NA&gt;
-42                            &lt;NA&gt;
+40                            <NA>
+41                            <NA>
+42                            <NA>
 43               Bacteroides dorei
 44               Bacteroides dorei
-45                            &lt;NA&gt;
-46                            &lt;NA&gt;
+45                            <NA>
+46                            <NA>
 47         Leptotrichia trevisanii
 48               Bacteroides dorei
 49           Prevotella intermedia
-50                            &lt;NA&gt;
-51                            &lt;NA&gt;
+50                            <NA>
+51                            <NA>
 52                Pantoea dispersa
-53                            &lt;NA&gt;
-54                            &lt;NA&gt;
-55                            &lt;NA&gt;
+53                            <NA>
+54                            <NA>
+55                            <NA>
 56             Prevotella tannerae
-57                            &lt;NA&gt;
-58                            &lt;NA&gt;
-59                            &lt;NA&gt;
-60                            &lt;NA&gt;
+57                            <NA>
+58                            <NA>
+59                            <NA>
+60                            <NA>
 61             Prevotella tannerae
-62                            &lt;NA&gt;
-63                            &lt;NA&gt;
+62                            <NA>
+63                            <NA>
 64       Fusobacterium necrophorum
-65                            &lt;NA&gt;
-66                            &lt;NA&gt;
+65                            <NA>
+66                            <NA>
 67               Bacteroides dorei
-68                            &lt;NA&gt;
-69                            &lt;NA&gt;
-70                            &lt;NA&gt;
-71                            &lt;NA&gt;
-72                            &lt;NA&gt;
-73                            &lt;NA&gt;
-74                            &lt;NA&gt;
+68                            <NA>
+69                            <NA>
+70                            <NA>
+71                            <NA>
+72                            <NA>
+73                            <NA>
+74                            <NA>
 75           Lactobacillus ruminis
-76                            &lt;NA&gt;
-77                            &lt;NA&gt;
+76                            <NA>
+77                            <NA>
 78           Prevotella nigrescens
-79                            &lt;NA&gt;
+79                            <NA>
 80           Prevotella nigrescens
-81                            &lt;NA&gt;
+81                            <NA>
 82               Bacteroides dorei
-83                            &lt;NA&gt;
-84                            &lt;NA&gt;
-85                            &lt;NA&gt;
-86                            &lt;NA&gt;
+83                            <NA>
+84                            <NA>
+85                            <NA>
+86                            <NA>
 87       Fusobacterium necrophorum
 88          Haemophilus influenzae
-89                            &lt;NA&gt;
+89                            <NA>
 90                Pantoea dispersa
-91                            &lt;NA&gt;
-92                            &lt;NA&gt;
-93                            &lt;NA&gt;
+91                            <NA>
+92                            <NA>
+93                            <NA>
 94           Prevotella intermedia
-95                            &lt;NA&gt;
-96                            &lt;NA&gt;
+95                            <NA>
+96                            <NA>
 97       Fusobacterium necrophorum
-98                            &lt;NA&gt;
-99                            &lt;NA&gt;
-100                           &lt;NA&gt;
-101                           &lt;NA&gt;
-102                           &lt;NA&gt;
+98                            <NA>
+99                            <NA>
+100                           <NA>
+101                           <NA>
+102                           <NA>
 103              Bacteroides dorei
 104               Prevotella copri
-105                           &lt;NA&gt;
-106                           &lt;NA&gt;
-107                           &lt;NA&gt;
-108                           &lt;NA&gt;
-109                           &lt;NA&gt;
+105                           <NA>
+106                           <NA>
+107                           <NA>
+108                           <NA>
+109                           <NA>
 110              Bacteroides dorei
-111                           &lt;NA&gt;
-112                           &lt;NA&gt;
-113                           &lt;NA&gt;
-114                           &lt;NA&gt;
+111                           <NA>
+112                           <NA>
+113                           <NA>
+114                           <NA>
 115          Prevotella intermedia
-116                           &lt;NA&gt;
-117                           &lt;NA&gt;
-118                           &lt;NA&gt;
-119                           &lt;NA&gt;
-120                           &lt;NA&gt;
-121                           &lt;NA&gt;
-122                           &lt;NA&gt;
+116                           <NA>
+117                           <NA>
+118                           <NA>
+119                           <NA>
+120                           <NA>
+121                           <NA>
+122                           <NA>
 123            Ruminococcus gnavus
-124                           &lt;NA&gt;
-125                           &lt;NA&gt;
-126                           &lt;NA&gt;
-127                           &lt;NA&gt;
-128                           &lt;NA&gt;
+124                           <NA>
+125                           <NA>
+126                           <NA>
+127                           <NA>
+128                           <NA>
 129              Bacteroides dorei
-130                           &lt;NA&gt;
-131                           &lt;NA&gt;
+130                           <NA>
+131                           <NA>
 132             Bacteroides caccae
-133                           &lt;NA&gt;
-134                           &lt;NA&gt;
-135                           &lt;NA&gt;
-136                           &lt;NA&gt;
-137                           &lt;NA&gt;
-138                           &lt;NA&gt;
+133                           <NA>
+134                           <NA>
+135                           <NA>
+136                           <NA>
+137                           <NA>
+138                           <NA>
 139        Leptotrichia trevisanii
-140                           &lt;NA&gt;
-141                           &lt;NA&gt;
-142                           &lt;NA&gt;
-143                           &lt;NA&gt;
-144                           &lt;NA&gt;
-145                           &lt;NA&gt;
+140                           <NA>
+141                           <NA>
+142                           <NA>
+143                           <NA>
+144                           <NA>
+145                           <NA>
 146            Gemella haemolysans
-147                           &lt;NA&gt;
-148                           &lt;NA&gt;
-149                           &lt;NA&gt;
-150                           &lt;NA&gt;
-151                           &lt;NA&gt;
-152                           &lt;NA&gt;
-153                           &lt;NA&gt;
-154                           &lt;NA&gt;
-155                           &lt;NA&gt;
-156                           &lt;NA&gt;
-157                           &lt;NA&gt;
-158                           &lt;NA&gt;
-159                           &lt;NA&gt;
-160                           &lt;NA&gt;
+147                           <NA>
+148                           <NA>
+149                           <NA>
+150                           <NA>
+151                           <NA>
+152                           <NA>
+153                           <NA>
+154                           <NA>
+155                           <NA>
+156                           <NA>
+157                           <NA>
+158                           <NA>
+159                           <NA>
+160                           <NA>
 161              Bacteroides dorei
-162                           &lt;NA&gt;
+162                           <NA>
 163              Bacteroides dorei
 164              Bacteroides dorei
-165                           &lt;NA&gt;
-166                           &lt;NA&gt;
-167                           &lt;NA&gt;
+165                           <NA>
+166                           <NA>
+167                           <NA>
 168          Bacteroides uniformis
 169              Bacteroides dorei
 170          Prevotella intermedia
 171              Dialister invisus
 172        Melissococcus plutonius
-173                           &lt;NA&gt;
+173                           <NA>
 174              Dialister invisus
-175                           &lt;NA&gt;
-176                           &lt;NA&gt;
-177                           &lt;NA&gt;
+175                           <NA>
+176                           <NA>
+177                           <NA>
 178              Bacteroides dorei
-179                           &lt;NA&gt;
-180                           &lt;NA&gt;
+179                           <NA>
+180                           <NA>
 181  Peptostreptococcus anaerobius
 182              Bacteroides dorei
-183                           &lt;NA&gt;
-184                           &lt;NA&gt;
-185                           &lt;NA&gt;
-186                           &lt;NA&gt;
+183                           <NA>
+184                           <NA>
+185                           <NA>
+186                           <NA>
 187               Pantoea dispersa
 188              Bacteroides dorei
-189                           &lt;NA&gt;
+189                           <NA>
 190           Bacteroides plebeius
-191                           &lt;NA&gt;
-192                           &lt;NA&gt;
-193                           &lt;NA&gt;
+191                           <NA>
+192                           <NA>
+193                           <NA>
 194          Prevotella intermedia
-195                           &lt;NA&gt;
+195                           <NA>
 196         Campylobacter gracilis
-197                           &lt;NA&gt;
-198                           &lt;NA&gt;
-199                           &lt;NA&gt;
+197                           <NA>
+198                           <NA>
+199                           <NA>
 200          Prevotella intermedia
-201                           &lt;NA&gt;
-202                           &lt;NA&gt;
-203                           &lt;NA&gt;
+201                           <NA>
+202                           <NA>
+203                           <NA>
 204             Bacteroides caccae
-205                           &lt;NA&gt;
-206                           &lt;NA&gt;
+205                           <NA>
+206                           <NA>
 207              Bacteroides dorei
 208          Prevotella nigrescens
-209                           &lt;NA&gt;
+209                           <NA>
 210               Pantoea dispersa
 211              Bacteroides dorei
-212                           &lt;NA&gt;
-213                           &lt;NA&gt;
+212                           <NA>
+213                           <NA>
 214              Bacteroides dorei
-215                           &lt;NA&gt;
+215                           <NA>
 216              Bacteroides dorei
-217                           &lt;NA&gt;
-218                           &lt;NA&gt;
+217                           <NA>
+218                           <NA>
 219           Ruminococcus torques
-220                           &lt;NA&gt;
+220                           <NA>
 221            Prevotella tannerae
-222                           &lt;NA&gt;
-223                           &lt;NA&gt;
-224                           &lt;NA&gt;
-225                           &lt;NA&gt;
+222                           <NA>
+223                           <NA>
+224                           <NA>
+225                           <NA>
 226          Selenomonas sputigena
 227                Prevotella oris
-228                           &lt;NA&gt;
+228                           <NA>
 229        Bacteroides coprophilus
-230                           &lt;NA&gt;
+230                           <NA>
 231              Bacteroides dorei
 232               Pantoea dispersa
 233          Prevotella nigrescens
-234                           &lt;NA&gt;
-235                           &lt;NA&gt;
+234                           <NA>
+235                           <NA>
 236           Bacteroides plebeius
-237                           &lt;NA&gt;
-238                           &lt;NA&gt;
-239                           &lt;NA&gt;
-240                           &lt;NA&gt;
-241                           &lt;NA&gt;
-242                           &lt;NA&gt;
-243                           &lt;NA&gt;
+237                           <NA>
+238                           <NA>
+239                           <NA>
+240                           <NA>
+241                           <NA>
+242                           <NA>
+243                           <NA>
 244              Bacteroides dorei
-245                           &lt;NA&gt;
-246                           &lt;NA&gt;
-247                           &lt;NA&gt;
-248                           &lt;NA&gt;
+245                           <NA>
+246                           <NA>
+247                           <NA>
+248                           <NA>
 249     Porphyromonas endodontalis
 250              Bacteroides dorei
 251             Bacteroides caccae
-252                           &lt;NA&gt;
-253                           &lt;NA&gt;
-254                           &lt;NA&gt;
+252                           <NA>
+253                           <NA>
+254                           <NA>
 255        Capnocytophaga ochracea
-256                           &lt;NA&gt;
-257                           &lt;NA&gt;
-258                           &lt;NA&gt;
+256                           <NA>
+257                           <NA>
+258                           <NA>
 259          Prevotella nigrescens
 260             Bacteroides caccae
 261      Fusobacterium necrophorum
-262                           &lt;NA&gt;
-263                           &lt;NA&gt;
-264                           &lt;NA&gt;
-265                           &lt;NA&gt;
+262                           <NA>
+263                           <NA>
+264                           <NA>
+265                           <NA>
 266  Peptostreptococcus anaerobius
-267                           &lt;NA&gt;
-268                           &lt;NA&gt;
-269                           &lt;NA&gt;
-270                           &lt;NA&gt;
+267                           <NA>
+268                           <NA>
+269                           <NA>
+270                           <NA>
 271              Bacteroides dorei
-272                           &lt;NA&gt;
-273                           &lt;NA&gt;
+272                           <NA>
+273                           <NA>
 274              Bacteroides dorei
 275          Prevotella intermedia
-276                           &lt;NA&gt;
-277                           &lt;NA&gt;
-278                           &lt;NA&gt;
-279                           &lt;NA&gt;
-280                           &lt;NA&gt;
-281                           &lt;NA&gt;
-282                           &lt;NA&gt;
-283                           &lt;NA&gt;
-284                           &lt;NA&gt;
-285                           &lt;NA&gt;
+276                           <NA>
+277                           <NA>
+278                           <NA>
+279                           <NA>
+280                           <NA>
+281                           <NA>
+282                           <NA>
+283                           <NA>
+284                           <NA>
+285                           <NA>
 286           Ruminococcus torques
-287                           &lt;NA&gt;
-288                           &lt;NA&gt;
+287                           <NA>
+288                           <NA>
 289              Bacteroides dorei
-290                           &lt;NA&gt;
-291                           &lt;NA&gt;
-292                           &lt;NA&gt;
+290                           <NA>
+291                           <NA>
+292                           <NA>
 293          Prevotella intermedia
-294                           &lt;NA&gt;
-295                           &lt;NA&gt;
+294                           <NA>
+295                           <NA>
 296         Prevotella nanceiensis
-297                           &lt;NA&gt;
+297                           <NA>
 298          Bacteroides uniformis
-299                           &lt;NA&gt;
-300                           &lt;NA&gt;
-301                           &lt;NA&gt;
-302                           &lt;NA&gt;
+299                           <NA>
+300                           <NA>
+301                           <NA>
+302                           <NA>
 303                Prevotella oris
-304                           &lt;NA&gt;
-305                           &lt;NA&gt;
-306                           &lt;NA&gt;
+304                           <NA>
+305                           <NA>
+306                           <NA>
 307         Granulicatella elegans
-308                           &lt;NA&gt;
-309                           &lt;NA&gt;
-310                           &lt;NA&gt;
-311                           &lt;NA&gt;
+308                           <NA>
+309                           <NA>
+310                           <NA>
+311                           <NA>
 312              Bacteroides dorei
-313                           &lt;NA&gt;
+313                           <NA>
 314           Bacteroides plebeius
-315                           &lt;NA&gt;
-316                           &lt;NA&gt;
+315                           <NA>
+316                           <NA>
 317              Bacteroides dorei
 318               Pantoea dispersa
 319             Bacteroides caccae
-320                           &lt;NA&gt;
-321                           &lt;NA&gt;
-322                           &lt;NA&gt;
-323                           &lt;NA&gt;
+320                           <NA>
+321                           <NA>
+322                           <NA>
+323                           <NA>
 324            Gemella haemolysans
-325                           &lt;NA&gt;
-326                           &lt;NA&gt;
-327                           &lt;NA&gt;
-328                           &lt;NA&gt;
+325                           <NA>
+326                           <NA>
+327                           <NA>
+328                           <NA>
 329  Peptostreptococcus anaerobius
 330            Ruminococcus gnavus
-331                           &lt;NA&gt;
-332                           &lt;NA&gt;
-333                           &lt;NA&gt;
+331                           <NA>
+332                           <NA>
+333                           <NA>
 334            Eubacterium biforme
-335                           &lt;NA&gt;
+335                           <NA>
 336              Bacteroides dorei
 337               Pantoea dispersa
-338                           &lt;NA&gt;
-339                           &lt;NA&gt;
+338                           <NA>
+339                           <NA>
 340         Granulicatella elegans
-341                           &lt;NA&gt;
-342                           &lt;NA&gt;
-343                           &lt;NA&gt;
-344                           &lt;NA&gt;
-345                           &lt;NA&gt;
-346                           &lt;NA&gt;
-347                           &lt;NA&gt;
-348                           &lt;NA&gt;
+341                           <NA>
+342                           <NA>
+343                           <NA>
+344                           <NA>
+345                           <NA>
+346                           <NA>
+347                           <NA>
+348                           <NA>
 349            Ruminococcus bromii
-350                           &lt;NA&gt;
+350                           <NA>
 351          Prevotella nigrescens
 352        Leptotrichia trevisanii
-353                           &lt;NA&gt;
+353                           <NA>
 354              Bacteroides dorei
-355                           &lt;NA&gt;
+355                           <NA>
 356         Granulicatella elegans
-357                           &lt;NA&gt;
-358                           &lt;NA&gt;
-359                           &lt;NA&gt;
+357                           <NA>
+358                           <NA>
+359                           <NA>
 360          Prevotella intermedia
-361                           &lt;NA&gt;
-362                           &lt;NA&gt;
+361                           <NA>
+362                           <NA>
 363              Bacteroides dorei
-364                           &lt;NA&gt;
-365                           &lt;NA&gt;
-366                           &lt;NA&gt;
-367                           &lt;NA&gt;
+364                           <NA>
+365                           <NA>
+366                           <NA>
+367                           <NA>
 368              Bacteroides dorei
 369         Granulicatella elegans
-370                           &lt;NA&gt;
+370                           <NA>
 371          Bacteroides uniformis
-372                           &lt;NA&gt;
-373                           &lt;NA&gt;
+372                           <NA>
+373                           <NA>
 374            Ruminococcus gnavus
-375                           &lt;NA&gt;
-376                           &lt;NA&gt;
-377                           &lt;NA&gt;
-378                           &lt;NA&gt;
-379                           &lt;NA&gt;
-380                           &lt;NA&gt;
-381                           &lt;NA&gt;
-382                           &lt;NA&gt;
+375                           <NA>
+376                           <NA>
+377                           <NA>
+378                           <NA>
+379                           <NA>
+380                           <NA>
+381                           <NA>
+382                           <NA>
 383            Clostridium bolteae
-384                           &lt;NA&gt;
+384                           <NA>
 385            Clostridium ramosum
-386                           &lt;NA&gt;
-387                           &lt;NA&gt;
-388                           &lt;NA&gt;
-389                           &lt;NA&gt;
-390                           &lt;NA&gt;
+386                           <NA>
+387                           <NA>
+388                           <NA>
+389                           <NA>
+390                           <NA>
 391              Bacteroides dorei
-392                           &lt;NA&gt;
-393                           &lt;NA&gt;
+392                           <NA>
+393                           <NA>
 394        Clostridium perfringens
 395  Peptostreptococcus anaerobius
-396                           &lt;NA&gt;
-397                           &lt;NA&gt;
-398                           &lt;NA&gt;
-399                           &lt;NA&gt;
+396                           <NA>
+397                           <NA>
+398                           <NA>
+399                           <NA>
 400            Ruminococcus gnavus
-401                           &lt;NA&gt;
-402                           &lt;NA&gt;
-403                           &lt;NA&gt;
-404                           &lt;NA&gt;
+401                           <NA>
+402                           <NA>
+403                           <NA>
+404                           <NA>
 405          Bacteroides uniformis
-406                           &lt;NA&gt;
-407                           &lt;NA&gt;
-408                           &lt;NA&gt;
+406                           <NA>
+407                           <NA>
+408                           <NA>
 409           Bacteroides plebeius
-410                           &lt;NA&gt;
-411                           &lt;NA&gt;
+410                           <NA>
+411                           <NA>
 412              Bacteroides dorei
 413      Fusobacterium necrophorum
 414              Bacteroides dorei
-415                           &lt;NA&gt;
+415                           <NA>
 416              Bacteroides dorei
-417                           &lt;NA&gt;
-418                           &lt;NA&gt;
+417                           <NA>
+418                           <NA>
 419  Peptostreptococcus anaerobius
-420                           &lt;NA&gt;
-421                           &lt;NA&gt;
-422                           &lt;NA&gt;
-423                           &lt;NA&gt;
-424                           &lt;NA&gt;
-425                           &lt;NA&gt;
-426                           &lt;NA&gt;
-427                           &lt;NA&gt;
+420                           <NA>
+421                           <NA>
+422                           <NA>
+423                           <NA>
+424                           <NA>
+425                           <NA>
+426                           <NA>
+427                           <NA>
 428  Peptostreptococcus anaerobius
-429                           &lt;NA&gt;
-430                           &lt;NA&gt;
-431                           &lt;NA&gt;
+429                           <NA>
+430                           <NA>
+431                           <NA>
 432          Prevotella intermedia
-433                           &lt;NA&gt;
-434                           &lt;NA&gt;
+433                           <NA>
+434                           <NA>
 435              Bacteroides dorei
 436             Bacteroides caccae
 437             Bacteroides caccae
-438                           &lt;NA&gt;
-439                           &lt;NA&gt;
-440                           &lt;NA&gt;
-441                           &lt;NA&gt;
+438                           <NA>
+439                           <NA>
+440                           <NA>
+441                           <NA>
 442              Bacteroides dorei
 443             Bacteroides caccae
-444                           &lt;NA&gt;
-445                           &lt;NA&gt;
-446                           &lt;NA&gt;
+444                           <NA>
+445                           <NA>
+446                           <NA>
 447  Peptostreptococcus anaerobius
-448                           &lt;NA&gt;
+448                           <NA>
 449             Bacteroides caccae
 450     Parabacteroides distasonis
 451              Dialister invisus
-452                           &lt;NA&gt;
-453                           &lt;NA&gt;
-454                           &lt;NA&gt;
-455                           &lt;NA&gt;
+452                           <NA>
+453                           <NA>
+454                           <NA>
+455                           <NA>
 456             Bacteroides caccae
 457          Bacteroides coprocola
-458                           &lt;NA&gt;
+458                           <NA>
 459           Bacteroides plebeius
-460                           &lt;NA&gt;
-461                           &lt;NA&gt;
-462                           &lt;NA&gt;
-463                           &lt;NA&gt;
-464                           &lt;NA&gt;
+460                           <NA>
+461                           <NA>
+462                           <NA>
+463                           <NA>
+464                           <NA>
 465        Leptotrichia trevisanii
-466                           &lt;NA&gt;
+466                           <NA>
 467               Pantoea dispersa
-468                           &lt;NA&gt;
+468                           <NA>
 469              Bacteroides dorei
-470                           &lt;NA&gt;
-471                           &lt;NA&gt;
-472                           &lt;NA&gt;
+470                           <NA>
+471                           <NA>
+472                           <NA>
 473               Prevotella copri
-474                           &lt;NA&gt;
-475                           &lt;NA&gt;
-476                           &lt;NA&gt;
-477                           &lt;NA&gt;
-478                           &lt;NA&gt;
-479                           &lt;NA&gt;
-480                           &lt;NA&gt;
-481                           &lt;NA&gt;
-482                           &lt;NA&gt;
+474                           <NA>
+475                           <NA>
+476                           <NA>
+477                           <NA>
+478                           <NA>
+479                           <NA>
+480                           <NA>
+481                           <NA>
+482                           <NA>
 483      Fusobacterium necrophorum
-484                           &lt;NA&gt;
-485                           &lt;NA&gt;
-486                           &lt;NA&gt;
+484                           <NA>
+485                           <NA>
+486                           <NA>
 487  Peptostreptococcus anaerobius
-488                           &lt;NA&gt;
-489                           &lt;NA&gt;
-490                           &lt;NA&gt;
+488                           <NA>
+489                           <NA>
+490                           <NA>
 491           Ruminococcus torques
 492           Ruminococcus torques
 493          Bacteroides uniformis
-494                           &lt;NA&gt;
-495                           &lt;NA&gt;
-496                           &lt;NA&gt;
-497                           &lt;NA&gt;
-498                           &lt;NA&gt;
-499                           &lt;NA&gt;
-500                           &lt;NA&gt;
-501                           &lt;NA&gt;
-502                           &lt;NA&gt;
+494                           <NA>
+495                           <NA>
+496                           <NA>
+497                           <NA>
+498                           <NA>
+499                           <NA>
+500                           <NA>
+501                           <NA>
+502                           <NA>
 503               Pantoea dispersa
-504                           &lt;NA&gt;
-505                           &lt;NA&gt;
-506                           &lt;NA&gt;
-507                           &lt;NA&gt;
+504                           <NA>
+505                           <NA>
+506                           <NA>
+507                           <NA>
 508              Bacteroides dorei
-509                           &lt;NA&gt;
-510                           &lt;NA&gt;
-511                           &lt;NA&gt;
+509                           <NA>
+510                           <NA>
+511                           <NA>
 512      Fusobacterium necrophorum
-513                           &lt;NA&gt;
-514                           &lt;NA&gt;
+513                           <NA>
+514                           <NA>
 515              Bacteroides dorei
-516                           &lt;NA&gt;
-517                           &lt;NA&gt;
-518                           &lt;NA&gt;
-519                           &lt;NA&gt;
+516                           <NA>
+517                           <NA>
+518                           <NA>
+519                           <NA>
 520              Bacteroides dorei
-521                           &lt;NA&gt;
-522                           &lt;NA&gt;
-523                           &lt;NA&gt;
-524                           &lt;NA&gt;
-525                           &lt;NA&gt;
-526                           &lt;NA&gt;
-527                           &lt;NA&gt;
+521                           <NA>
+522                           <NA>
+523                           <NA>
+524                           <NA>
+525                           <NA>
+526                           <NA>
+527                           <NA>
 528            Gemella haemolysans
-529                           &lt;NA&gt;
-530                           &lt;NA&gt;
-531                           &lt;NA&gt;
-532                           &lt;NA&gt;
-533                           &lt;NA&gt;
-534                           &lt;NA&gt;
+529                           <NA>
+530                           <NA>
+531                           <NA>
+532                           <NA>
+533                           <NA>
+534                           <NA>
 535             Bacteroides caccae
-536                           &lt;NA&gt;
+536                           <NA>
 537          Bacteroides uniformis
 538               Parvimonas micra
 539        Bacteroides coprophilus
 540               Pantoea dispersa
-541                           &lt;NA&gt;
-542                           &lt;NA&gt;
+541                           <NA>
+542                           <NA>
 543            Gemella haemolysans
-544                           &lt;NA&gt;
-545                           &lt;NA&gt;
-546                           &lt;NA&gt;
-547                           &lt;NA&gt;
+544                           <NA>
+545                           <NA>
+546                           <NA>
+547                           <NA>
 548     Porphyromonas endodontalis
-549                           &lt;NA&gt;
-550                           &lt;NA&gt;
-551                           &lt;NA&gt;
-552                           &lt;NA&gt;
+549                           <NA>
+550                           <NA>
+551                           <NA>
+552                           <NA>
 553              Bacteroides dorei
-554                           &lt;NA&gt;
+554                           <NA>
 555             Bacteroides caccae
-556                           &lt;NA&gt;
-557                           &lt;NA&gt;
-558                           &lt;NA&gt;
-559                           &lt;NA&gt;
-560                           &lt;NA&gt;
+556                           <NA>
+557                           <NA>
+558                           <NA>
+559                           <NA>
+560                           <NA>
 561  Peptostreptococcus anaerobius
 562          Prevotella intermedia
 563            Ruminococcus bromii
-564                           &lt;NA&gt;
-565                           &lt;NA&gt;
-566                           &lt;NA&gt;
+564                           <NA>
+565                           <NA>
+566                           <NA>
 567              Bacteroides dorei
 568     Porphyromonas endodontalis
-569                           &lt;NA&gt;
-570                           &lt;NA&gt;
+569                           <NA>
+570                           <NA>
 571            Clostridium ramosum
 572             Bacteroides caccae
 573          Bacteroides uniformis
 574               Pantoea dispersa
-575                           &lt;NA&gt;
-576                           &lt;NA&gt;
-577                           &lt;NA&gt;
-578                           &lt;NA&gt;
+575                           <NA>
+576                           <NA>
+577                           <NA>
+578                           <NA>
 579             Bacteroides caccae
 580              Bacteroides dorei
-581                           &lt;NA&gt;
+581                           <NA>
 582  Peptostreptococcus anaerobius
-583                           &lt;NA&gt;
-584                           &lt;NA&gt;
+583                           <NA>
+584                           <NA>
 585          Prevotella nigrescens
-586                           &lt;NA&gt;
+586                           <NA>
 587           Campylobacter curvus
-588                           &lt;NA&gt;
-589                           &lt;NA&gt;
-590                           &lt;NA&gt;
-591                           &lt;NA&gt;
-592                           &lt;NA&gt;
-593                           &lt;NA&gt;
+588                           <NA>
+589                           <NA>
+590                           <NA>
+591                           <NA>
+592                           <NA>
+593                           <NA>
 594            Clostridium ramosum
-595                           &lt;NA&gt;
-596                           &lt;NA&gt;
-597                           &lt;NA&gt;
-598                           &lt;NA&gt;
-599                           &lt;NA&gt;
-600                           &lt;NA&gt;
-601                           &lt;NA&gt;
-602                           &lt;NA&gt;
-603                           &lt;NA&gt;
-604                           &lt;NA&gt;
-605                           &lt;NA&gt;
+595                           <NA>
+596                           <NA>
+597                           <NA>
+598                           <NA>
+599                           <NA>
+600                           <NA>
+601                           <NA>
+602                           <NA>
+603                           <NA>
+604                           <NA>
+605                           <NA>
 606            Ruminococcus gnavus
-607                           &lt;NA&gt;
-608                           &lt;NA&gt;
-609                           &lt;NA&gt;
+607                           <NA>
+608                           <NA>
+609                           <NA>
 610              Bacteroides dorei
 611               Pantoea dispersa
-612                           &lt;NA&gt;
+612                           <NA>
 613               Pantoea dispersa
-614                           &lt;NA&gt;
-615                           &lt;NA&gt;
-616                           &lt;NA&gt;
-617                           &lt;NA&gt;
-618                           &lt;NA&gt;
-619                           &lt;NA&gt;
-620                           &lt;NA&gt;
-621                           &lt;NA&gt;
-622                           &lt;NA&gt;
+614                           <NA>
+615                           <NA>
+616                           <NA>
+617                           <NA>
+618                           <NA>
+619                           <NA>
+620                           <NA>
+621                           <NA>
+622                           <NA>
 623             Bacteroides caccae
 624               Pantoea dispersa
-625                           &lt;NA&gt;
-626                           &lt;NA&gt;
-627                           &lt;NA&gt;
-628                           &lt;NA&gt;
+625                           <NA>
+626                           <NA>
+627                           <NA>
+628                           <NA>
 629     Porphyromonas endodontalis
-630                           &lt;NA&gt;
+630                           <NA>
 631     Parabacteroides distasonis
-632                           &lt;NA&gt;
+632                           <NA>
 633              Bacteroides dorei
-634                           &lt;NA&gt;
-635                           &lt;NA&gt;
+634                           <NA>
+635                           <NA>
 636              Bacteroides dorei
-637                           &lt;NA&gt;
-638                           &lt;NA&gt;
-639                           &lt;NA&gt;
+637                           <NA>
+638                           <NA>
+639                           <NA>
 640              Bacteroides dorei
-641                           &lt;NA&gt;
-642                           &lt;NA&gt;
-643                           &lt;NA&gt;
-644                           &lt;NA&gt;
+641                           <NA>
+642                           <NA>
+643                           <NA>
+644                           <NA>
 645          Bacteroides uniformis
 646            Clostridium bolteae
-647                           &lt;NA&gt;
-648                           &lt;NA&gt;
-649                           &lt;NA&gt;
+647                           <NA>
+648                           <NA>
+649                           <NA>
 650              Bacteroides dorei
-651                           &lt;NA&gt;
-652                           &lt;NA&gt;
+651                           <NA>
+652                           <NA>
 653            Clostridium ramosum
 654           Ruminococcus torques
-655                           &lt;NA&gt;
-656                           &lt;NA&gt;
-657                           &lt;NA&gt;
-658                           &lt;NA&gt;
+655                           <NA>
+656                           <NA>
+657                           <NA>
+658                           <NA>
 659       Eubacterium cylindroides
-660                           &lt;NA&gt;
+660                           <NA>
 661              Bacteroides dorei
-662                           &lt;NA&gt;
-663                           &lt;NA&gt;
+662                           <NA>
+663                           <NA>
 664      Fusobacterium necrophorum
-665                           &lt;NA&gt;
-666                           &lt;NA&gt;
-667                           &lt;NA&gt;
-668                           &lt;NA&gt;
+665                           <NA>
+666                           <NA>
+667                           <NA>
+668                           <NA>
 669  Peptostreptococcus anaerobius
-670                           &lt;NA&gt;
-671                           &lt;NA&gt;
+670                           <NA>
+671                           <NA>
 672              Dialister invisus
-673                           &lt;NA&gt;
-674                           &lt;NA&gt;
-675                           &lt;NA&gt;
+673                           <NA>
+674                           <NA>
+675                           <NA>
 676          Bacteroides uniformis
 677              Bacteroides dorei
-678                           &lt;NA&gt;
-679                           &lt;NA&gt;
-680                           &lt;NA&gt;
-681                           &lt;NA&gt;
-682                           &lt;NA&gt;
-683                           &lt;NA&gt;
-684                           &lt;NA&gt;
-685                           &lt;NA&gt;
-686                           &lt;NA&gt;
+678                           <NA>
+679                           <NA>
+680                           <NA>
+681                           <NA>
+682                           <NA>
+683                           <NA>
+684                           <NA>
+685                           <NA>
+686                           <NA>
 687            Gemella haemolysans
-688                           &lt;NA&gt;
-689                           &lt;NA&gt;
+688                           <NA>
+689                           <NA>
 690     Porphyromonas endodontalis
 691               Pantoea dispersa
 692             Bacteroides caccae
-693                           &lt;NA&gt;
+693                           <NA>
 694              Bacteroides dorei
-695                           &lt;NA&gt;
+695                           <NA>
 696     Parabacteroides distasonis
-697                           &lt;NA&gt;
+697                           <NA>
 698           Ruminococcus torques
 699               Pantoea dispersa
-700                           &lt;NA&gt;
-701                           &lt;NA&gt;
-702                           &lt;NA&gt;
-703                           &lt;NA&gt;
+700                           <NA>
+701                           <NA>
+702                           <NA>
+703                           <NA>
 704          Bacteroides uniformis
-705                           &lt;NA&gt;
-706                           &lt;NA&gt;
-707                           &lt;NA&gt;
-708                           &lt;NA&gt;
-709                           &lt;NA&gt;
+705                           <NA>
+706                           <NA>
+707                           <NA>
+708                           <NA>
+709                           <NA>
 710       Eubacterium cylindroides
-711                           &lt;NA&gt;
+711                           <NA>
 712         Dialister pneumosintes
 713         Granulicatella elegans
-714                           &lt;NA&gt;
+714                           <NA>
 715             Bacteroides caccae
-716                           &lt;NA&gt;
+716                           <NA>
 717          Prevotella intermedia
-718                           &lt;NA&gt;
-719                           &lt;NA&gt;
+718                           <NA>
+719                           <NA>
 720         Granulicatella elegans
-721                           &lt;NA&gt;
+721                           <NA>
 722            Ruminococcus gnavus
-723                           &lt;NA&gt;
-724                           &lt;NA&gt;
-725                           &lt;NA&gt;
+723                           <NA>
+724                           <NA>
+725                           <NA>
 726              Bacteroides dorei
 727      Fusobacterium necrophorum
 728         Prevotella nanceiensis
-729                           &lt;NA&gt;
-730                           &lt;NA&gt;
-731                           &lt;NA&gt;
-732                           &lt;NA&gt;
-733                           &lt;NA&gt;
-734                           &lt;NA&gt;
-735                           &lt;NA&gt;
-736                           &lt;NA&gt;
+729                           <NA>
+730                           <NA>
+731                           <NA>
+732                           <NA>
+733                           <NA>
+734                           <NA>
+735                           <NA>
+736                           <NA>
 737               Pantoea dispersa
-738                           &lt;NA&gt;
-739                           &lt;NA&gt;
-740                           &lt;NA&gt;
-741                           &lt;NA&gt;
-742                           &lt;NA&gt;
-743                           &lt;NA&gt;
-744                           &lt;NA&gt;
+738                           <NA>
+739                           <NA>
+740                           <NA>
+741                           <NA>
+742                           <NA>
+743                           <NA>
+744                           <NA>
 745            Prevotella tannerae
-746                           &lt;NA&gt;
-747                           &lt;NA&gt;
-748                           &lt;NA&gt;
-749                           &lt;NA&gt;
+746                           <NA>
+747                           <NA>
+748                           <NA>
+749                           <NA>
 750             Bacteroides caccae
-751                           &lt;NA&gt;
-752                           &lt;NA&gt;
-753                           &lt;NA&gt;
-754                           &lt;NA&gt;
-755                           &lt;NA&gt;
-756                           &lt;NA&gt;
-757                           &lt;NA&gt;
-758                           &lt;NA&gt;
-759                           &lt;NA&gt;
-760                           &lt;NA&gt;
+751                           <NA>
+752                           <NA>
+753                           <NA>
+754                           <NA>
+755                           <NA>
+756                           <NA>
+757                           <NA>
+758                           <NA>
+759                           <NA>
+760                           <NA>
 761          Bacteroides uniformis
-762                           &lt;NA&gt;
-763                           &lt;NA&gt;
-764                           &lt;NA&gt;
-765                           &lt;NA&gt;
-766                           &lt;NA&gt;
-767                           &lt;NA&gt;
-768                           &lt;NA&gt;
-769                           &lt;NA&gt;
-770                           &lt;NA&gt;
-771                           &lt;NA&gt;
-772                           &lt;NA&gt;
-773                           &lt;NA&gt;
-774                           &lt;NA&gt;
+762                           <NA>
+763                           <NA>
+764                           <NA>
+765                           <NA>
+766                           <NA>
+767                           <NA>
+768                           <NA>
+769                           <NA>
+770                           <NA>
+771                           <NA>
+772                           <NA>
+773                           <NA>
+774                           <NA>
 775           Bacteroides plebeius
 776             Bacteroides caccae
-777                           &lt;NA&gt;
-778                           &lt;NA&gt;
-779                           &lt;NA&gt;
-780                           &lt;NA&gt;
-781                           &lt;NA&gt;
-782                           &lt;NA&gt;
-783                           &lt;NA&gt;
+777                           <NA>
+778                           <NA>
+779                           <NA>
+780                           <NA>
+781                           <NA>
+782                           <NA>
+783                           <NA>
 784              Bacteroides dorei
 785              Bacteroides dorei
-786                           &lt;NA&gt;
-787                           &lt;NA&gt;
-788                           &lt;NA&gt;
-789                           &lt;NA&gt;
-790                           &lt;NA&gt;
-791                           &lt;NA&gt;
+786                           <NA>
+787                           <NA>
+788                           <NA>
+789                           <NA>
+790                           <NA>
+791                           <NA>
 792          Bacteroides uniformis
-793                           &lt;NA&gt;
-794                           &lt;NA&gt;
-795                           &lt;NA&gt;
-796                           &lt;NA&gt;
-797                           &lt;NA&gt;
-798                           &lt;NA&gt;
-799                           &lt;NA&gt;
-800                           &lt;NA&gt;
+793                           <NA>
+794                           <NA>
+795                           <NA>
+796                           <NA>
+797                           <NA>
+798                           <NA>
+799                           <NA>
+800                           <NA>
 801            Gemella haemolysans
-802                           &lt;NA&gt;
-803                           &lt;NA&gt;
-804                           &lt;NA&gt;
-805                           &lt;NA&gt;
-806                           &lt;NA&gt;
-807                           &lt;NA&gt;
+802                           <NA>
+803                           <NA>
+804                           <NA>
+805                           <NA>
+806                           <NA>
+807                           <NA>
 808          Clostridium hiranonis
 809           Ruminococcus torques
 810           Ruminococcus torques
 811      Prevotella melaninogenica
-812                           &lt;NA&gt;
-813                           &lt;NA&gt;
-814                           &lt;NA&gt;
-815                           &lt;NA&gt;
+812                           <NA>
+813                           <NA>
+814                           <NA>
+815                           <NA>
 816            Gemella haemolysans
-817                           &lt;NA&gt;
-818                           &lt;NA&gt;
-819                           &lt;NA&gt;
+817                           <NA>
+818                           <NA>
+819                           <NA>
 820          Dorea formicigenerans
 821          Prevotella nigrescens
-822                           &lt;NA&gt;
-823                           &lt;NA&gt;
-824                           &lt;NA&gt;
-825                           &lt;NA&gt;
+822                           <NA>
+823                           <NA>
+824                           <NA>
+825                           <NA>
 826           Treponema socranskii
 827  Streptococcus hyointestinalis
 828          Bacteroides coprocola
-829                           &lt;NA&gt;
-830                           &lt;NA&gt;
-831                           &lt;NA&gt;
-832                           &lt;NA&gt;
+829                           <NA>
+830                           <NA>
+831                           <NA>
+832                           <NA>
 833               Pantoea dispersa
-834                           &lt;NA&gt;
-835                           &lt;NA&gt;
-836                           &lt;NA&gt;
-837                           &lt;NA&gt;
-838                           &lt;NA&gt;
-839                           &lt;NA&gt;
-840                           &lt;NA&gt;
-841                           &lt;NA&gt;
-842                           &lt;NA&gt;
-843                           &lt;NA&gt;
-844                           &lt;NA&gt;
-845                           &lt;NA&gt;
-846                           &lt;NA&gt;
+834                           <NA>
+835                           <NA>
+836                           <NA>
+837                           <NA>
+838                           <NA>
+839                           <NA>
+840                           <NA>
+841                           <NA>
+842                           <NA>
+843                           <NA>
+844                           <NA>
+845                           <NA>
+846                           <NA>
 847         Granulicatella elegans
-848                           &lt;NA&gt;
-849                           &lt;NA&gt;
+848                           <NA>
+849                           <NA>
 850          Dorea formicigenerans
-851                           &lt;NA&gt;
-852                           &lt;NA&gt;
-853                           &lt;NA&gt;
-854                           &lt;NA&gt;
-855                           &lt;NA&gt;
-856                           &lt;NA&gt;
-857                           &lt;NA&gt;
-858                           &lt;NA&gt;
-859                           &lt;NA&gt;
-860                           &lt;NA&gt;
+851                           <NA>
+852                           <NA>
+853                           <NA>
+854                           <NA>
+855                           <NA>
+856                           <NA>
+857                           <NA>
+858                           <NA>
+859                           <NA>
+860                           <NA>
 861              Dialister invisus
 862          Prevotella intermedia
-863                           &lt;NA&gt;
-864                           &lt;NA&gt;
-865                           &lt;NA&gt;
-866                           &lt;NA&gt;
-867                           &lt;NA&gt;
+863                           <NA>
+864                           <NA>
+865                           <NA>
+866                           <NA>
+867                           <NA>
 868     Porphyromonas endodontalis
-869                           &lt;NA&gt;
-870                           &lt;NA&gt;
-871                           &lt;NA&gt;
+869                           <NA>
+870                           <NA>
+871                           <NA>
 872           Bacteroides plebeius
-873                           &lt;NA&gt;
-874                           &lt;NA&gt;
-875                           &lt;NA&gt;
-876                           &lt;NA&gt;
-877                           &lt;NA&gt;
+873                           <NA>
+874                           <NA>
+875                           <NA>
+876                           <NA>
+877                           <NA>
 878          Dorea formicigenerans
 879           Bacteroides plebeius
-880                           &lt;NA&gt;
+880                           <NA>
 881               Pantoea dispersa
 882  Peptostreptococcus anaerobius
-883                           &lt;NA&gt;
+883                           <NA>
 884      Fusobacterium necrophorum
-885                           &lt;NA&gt;
-886                           &lt;NA&gt;
-887                           &lt;NA&gt;
-888                           &lt;NA&gt;
-889                           &lt;NA&gt;
-890                           &lt;NA&gt;
-891                           &lt;NA&gt;
-892                           &lt;NA&gt;
-893                           &lt;NA&gt;
-894                           &lt;NA&gt;
-895                           &lt;NA&gt;
-896                           &lt;NA&gt;
-897                           &lt;NA&gt;
-898                           &lt;NA&gt;
+885                           <NA>
+886                           <NA>
+887                           <NA>
+888                           <NA>
+889                           <NA>
+890                           <NA>
+891                           <NA>
+892                           <NA>
+893                           <NA>
+894                           <NA>
+895                           <NA>
+896                           <NA>
+897                           <NA>
+898                           <NA>
 899              Bacteroides dorei
-900                           &lt;NA&gt;
-901                           &lt;NA&gt;
+900                           <NA>
+901                           <NA>
 902     Parabacteroides distasonis
 903            Eubacterium biforme
-904                           &lt;NA&gt;
-905                           &lt;NA&gt;
+904                           <NA>
+905                           <NA>
 906            Prevotella tannerae
-907                           &lt;NA&gt;
-908                           &lt;NA&gt;
-909                           &lt;NA&gt;
-910                           &lt;NA&gt;
-911                           &lt;NA&gt;
+907                           <NA>
+908                           <NA>
+909                           <NA>
+910                           <NA>
+911                           <NA>
 912            Prevotella tannerae
-913                           &lt;NA&gt;
-914                           &lt;NA&gt;
+913                           <NA>
+914                           <NA>
 915            Clostridium bolteae
-916                           &lt;NA&gt;
-917                           &lt;NA&gt;
-918                           &lt;NA&gt;
+916                           <NA>
+917                           <NA>
+918                           <NA>
 919               Parvimonas micra
-920                           &lt;NA&gt;
-921                           &lt;NA&gt;
-922                           &lt;NA&gt;
+920                           <NA>
+921                           <NA>
+922                           <NA>
 923     Parabacteroides distasonis
-924                           &lt;NA&gt;
+924                           <NA>
 925              Bacteroides dorei
-926                           &lt;NA&gt;
+926                           <NA>
 927              Bacteroides dorei
-928                           &lt;NA&gt;
-929                           &lt;NA&gt;
-930                           &lt;NA&gt;
-931                           &lt;NA&gt;
-932                           &lt;NA&gt;
+928                           <NA>
+929                           <NA>
+930                           <NA>
+931                           <NA>
+932                           <NA>
 933             Bacteroides caccae
-934                           &lt;NA&gt;
-935                           &lt;NA&gt;
-936                           &lt;NA&gt;
-937                           &lt;NA&gt;
-938                           &lt;NA&gt;
-939                           &lt;NA&gt;
-940                           &lt;NA&gt;
+934                           <NA>
+935                           <NA>
+936                           <NA>
+937                           <NA>
+938                           <NA>
+939                           <NA>
+940                           <NA>
 941          Prevotella intermedia
-942                           &lt;NA&gt;
+942                           <NA>
 943          Bacteroides coprocola
-944                           &lt;NA&gt;
+944                           <NA>
 945               Pantoea dispersa
-946                           &lt;NA&gt;
-947                           &lt;NA&gt;
-948                           &lt;NA&gt;
-949                           &lt;NA&gt;
-950                           &lt;NA&gt;
-951                           &lt;NA&gt;
-952                           &lt;NA&gt;
-953                           &lt;NA&gt;
-954                           &lt;NA&gt;
-955                           &lt;NA&gt;
-956                           &lt;NA&gt;
-957                           &lt;NA&gt;
+946                           <NA>
+947                           <NA>
+948                           <NA>
+949                           <NA>
+950                           <NA>
+951                           <NA>
+952                           <NA>
+953                           <NA>
+954                           <NA>
+955                           <NA>
+956                           <NA>
+957                           <NA>
 958       Porphyromonas gingivalis
-959                           &lt;NA&gt;
-960                           &lt;NA&gt;
-961                           &lt;NA&gt;
+959                           <NA>
+960                           <NA>
+961                           <NA>
 962  Peptostreptococcus anaerobius
-963                           &lt;NA&gt;
-964                           &lt;NA&gt;
+963                           <NA>
+964                           <NA>
 965             Bacteroides caccae
 966          Bacteroides uniformis
-967                           &lt;NA&gt;
-968                           &lt;NA&gt;
+967                           <NA>
+968                           <NA>
 969            Ruminococcus bromii
-970                           &lt;NA&gt;
-971                           &lt;NA&gt;
+970                           <NA>
+971                           <NA>
 972             Bacteroides caccae
-973                           &lt;NA&gt;
-974                           &lt;NA&gt;
-975                           &lt;NA&gt;
-976                           &lt;NA&gt;
-977                           &lt;NA&gt;
-978                           &lt;NA&gt;
-979                           &lt;NA&gt;
-980                           &lt;NA&gt;
-981                           &lt;NA&gt;
-982                           &lt;NA&gt;
-983                           &lt;NA&gt;
-984                           &lt;NA&gt;
-985                           &lt;NA&gt;
-986                           &lt;NA&gt;
-987                           &lt;NA&gt;
-988                           &lt;NA&gt;
-989                           &lt;NA&gt;
-990                           &lt;NA&gt;
-991                           &lt;NA&gt;
-992                           &lt;NA&gt;
+973                           <NA>
+974                           <NA>
+975                           <NA>
+976                           <NA>
+977                           <NA>
+978                           <NA>
+979                           <NA>
+980                           <NA>
+981                           <NA>
+982                           <NA>
+983                           <NA>
+984                           <NA>
+985                           <NA>
+986                           <NA>
+987                           <NA>
+988                           <NA>
+989                           <NA>
+990                           <NA>
+991                           <NA>
+992                           <NA>
 993     Parabacteroides distasonis
-994                           &lt;NA&gt;
-995                           &lt;NA&gt;
-996                           &lt;NA&gt;
+994                           <NA>
+995                           <NA>
+996                           <NA>
 997            Prevotella tannerae
 998                Prevotella oris
-999                           &lt;NA&gt;
-1000                          &lt;NA&gt;
-1001                          &lt;NA&gt;
-1002                          &lt;NA&gt;
-1003                          &lt;NA&gt;
-1004                          &lt;NA&gt;
-1005                          &lt;NA&gt;
+999                           <NA>
+1000                          <NA>
+1001                          <NA>
+1002                          <NA>
+1003                          <NA>
+1004                          <NA>
+1005                          <NA>
 1006     Prevotella melaninogenica
 1007           Prevotella baroniae
-1008                          &lt;NA&gt;
-1009                          &lt;NA&gt;
-1010                          &lt;NA&gt;
-1011                          &lt;NA&gt;
-1012                          &lt;NA&gt;
-1013                          &lt;NA&gt;
-1014                          &lt;NA&gt;
-1015                          &lt;NA&gt;
+1008                          <NA>
+1009                          <NA>
+1010                          <NA>
+1011                          <NA>
+1012                          <NA>
+1013                          <NA>
+1014                          <NA>
+1015                          <NA>
 1016    Parabacteroides distasonis
-1017                          &lt;NA&gt;
-1018                          &lt;NA&gt;
-1019                          &lt;NA&gt;
+1017                          <NA>
+1018                          <NA>
+1019                          <NA>
 1020          Ruminococcus torques
-1021                          &lt;NA&gt;
+1021                          <NA>
 1022 Peptostreptococcus anaerobius
-1023                          &lt;NA&gt;
-1024                          &lt;NA&gt;
-1025                          &lt;NA&gt;
-1026                          &lt;NA&gt;
-1027                          &lt;NA&gt;
+1023                          <NA>
+1024                          <NA>
+1025                          <NA>
+1026                          <NA>
+1027                          <NA>
 1028          Prevotella veroralis
-1029                          &lt;NA&gt;
+1029                          <NA>
 1030         Prevotella intermedia
-1031                          &lt;NA&gt;
-1032                          &lt;NA&gt;
-1033                          &lt;NA&gt;
-1034                          &lt;NA&gt;
+1031                          <NA>
+1032                          <NA>
+1033                          <NA>
+1034                          <NA>
 1035             Bacteroides dorei
-1036                          &lt;NA&gt;
-1037                          &lt;NA&gt;
-1038                          &lt;NA&gt;
-1039                          &lt;NA&gt;
+1036                          <NA>
+1037                          <NA>
+1038                          <NA>
+1039                          <NA>
 1040             Bacteroides dorei
-1041                          &lt;NA&gt;
-1042                          &lt;NA&gt;
+1041                          <NA>
+1042                          <NA>
 1043 Peptostreptococcus anaerobius
-1044                          &lt;NA&gt;
-1045                          &lt;NA&gt;
-1046                          &lt;NA&gt;
-1047                          &lt;NA&gt;
-1048                          &lt;NA&gt;
-1049                          &lt;NA&gt;
-1050                          &lt;NA&gt;
-1051                          &lt;NA&gt;
+1044                          <NA>
+1045                          <NA>
+1046                          <NA>
+1047                          <NA>
+1048                          <NA>
+1049                          <NA>
+1050                          <NA>
+1051                          <NA>
 1052        Granulicatella elegans
-1053                          &lt;NA&gt;
-1054                          &lt;NA&gt;
-1055                          &lt;NA&gt;
-1056                          &lt;NA&gt;
-1057                          &lt;NA&gt;
-1058                          &lt;NA&gt;
-1059                          &lt;NA&gt;
+1053                          <NA>
+1054                          <NA>
+1055                          <NA>
+1056                          <NA>
+1057                          <NA>
+1058                          <NA>
+1059                          <NA>
 1060              Pantoea dispersa
-1061                          &lt;NA&gt;
-1062                          &lt;NA&gt;
-1063                          &lt;NA&gt;
-1064                          &lt;NA&gt;
-1065                          &lt;NA&gt;
+1061                          <NA>
+1062                          <NA>
+1063                          <NA>
+1064                          <NA>
+1065                          <NA>
 1066          Ruminococcus torques
 1067          Ruminococcus torques
-1068                          &lt;NA&gt;
+1068                          <NA>
 1069 Peptostreptococcus anaerobius
-1070                          &lt;NA&gt;
-1071                          &lt;NA&gt;
-1072                          &lt;NA&gt;
+1070                          <NA>
+1071                          <NA>
+1072                          <NA>
 1073         Bacteroides uniformis
 1074         Bacteroides uniformis
 1075             Bacteroides dorei
 1076             Bacteroides dorei
-1077                          &lt;NA&gt;
-1078                          &lt;NA&gt;
-1079                          &lt;NA&gt;
-1080                          &lt;NA&gt;
-1081                          &lt;NA&gt;
-1082                          &lt;NA&gt;
-1083                          &lt;NA&gt;
-1084                          &lt;NA&gt;
-1085                          &lt;NA&gt;
-1086                          &lt;NA&gt;
-1087                          &lt;NA&gt;
-1088                          &lt;NA&gt;
-1089                          &lt;NA&gt;
-1090                          &lt;NA&gt;
-1091                          &lt;NA&gt;
-1092                          &lt;NA&gt;
+1077                          <NA>
+1078                          <NA>
+1079                          <NA>
+1080                          <NA>
+1081                          <NA>
+1082                          <NA>
+1083                          <NA>
+1084                          <NA>
+1085                          <NA>
+1086                          <NA>
+1087                          <NA>
+1088                          <NA>
+1089                          <NA>
+1090                          <NA>
+1091                          <NA>
+1092                          <NA>
 1093         Mitsuokella multacida
-1094                          &lt;NA&gt;
-1095                          &lt;NA&gt;
-1096                          &lt;NA&gt;
-1097                          &lt;NA&gt;
-1098                          &lt;NA&gt;
+1094                          <NA>
+1095                          <NA>
+1096                          <NA>
+1097                          <NA>
+1098                          <NA>
 1099    Parabacteroides distasonis
-1100                          &lt;NA&gt;
-1101                          &lt;NA&gt;
-1102                          &lt;NA&gt;
-1103                          &lt;NA&gt;
+1100                          <NA>
+1101                          <NA>
+1102                          <NA>
+1103                          <NA>
 1104    Parabacteroides distasonis
-1105                          &lt;NA&gt;
-1106                          &lt;NA&gt;
+1105                          <NA>
+1106                          <NA>
 1107        Granulicatella elegans
-1108                          &lt;NA&gt;
-1109                          &lt;NA&gt;
-1110                          &lt;NA&gt;
-1111                          &lt;NA&gt;
-1112                          &lt;NA&gt;
-1113                          &lt;NA&gt;
-1114                          &lt;NA&gt;
-1115                          &lt;NA&gt;
+1108                          <NA>
+1109                          <NA>
+1110                          <NA>
+1111                          <NA>
+1112                          <NA>
+1113                          <NA>
+1114                          <NA>
+1115                          <NA>
 1116 Streptococcus hyointestinalis
-1117                          &lt;NA&gt;
-1118                          &lt;NA&gt;
-1119                          &lt;NA&gt;
+1117                          <NA>
+1118                          <NA>
+1119                          <NA>
 1120    Haemophilus parainfluenzae
-1121                          &lt;NA&gt;
-1122                          &lt;NA&gt;
-1123                          &lt;NA&gt;
-1124                          &lt;NA&gt;
-1125                          &lt;NA&gt;
+1121                          <NA>
+1122                          <NA>
+1123                          <NA>
+1124                          <NA>
+1125                          <NA>
 1126     Fusobacterium necrophorum
 1127              Pantoea dispersa
-1128                          &lt;NA&gt;
-1129                          &lt;NA&gt;
-1130                          &lt;NA&gt;
-1131                          &lt;NA&gt;
-1132                          &lt;NA&gt;
-1133                          &lt;NA&gt;
-1134                          &lt;NA&gt;
-1135                          &lt;NA&gt;
+1128                          <NA>
+1129                          <NA>
+1130                          <NA>
+1131                          <NA>
+1132                          <NA>
+1133                          <NA>
+1134                          <NA>
+1135                          <NA>
 1136     Anaerococcus hydrogenalis
 1137       Bacteroides coprophilus
 1138          Moryella indoligenes
-1139                          &lt;NA&gt;
+1139                          <NA>
 1140    Haemophilus parainfluenzae
-1141                          &lt;NA&gt;
-1142                          &lt;NA&gt;
-1143                          &lt;NA&gt;
-1144                          &lt;NA&gt;
+1141                          <NA>
+1142                          <NA>
+1143                          <NA>
+1144                          <NA>
 1145            Oribacterium sinus
 1146           Prevotella tannerae
-1147                          &lt;NA&gt;
-1148                          &lt;NA&gt;
-1149                          &lt;NA&gt;
-1150                          &lt;NA&gt;
+1147                          <NA>
+1148                          <NA>
+1149                          <NA>
+1150                          <NA>
 1151              Blautia producta
-1152                          &lt;NA&gt;
-1153                          &lt;NA&gt;
+1152                          <NA>
+1153                          <NA>
 1154           Gemella haemolysans
 1155 Peptostreptococcus anaerobius
 1156          Bacteroides plebeius
-1157                          &lt;NA&gt;
-1158                          &lt;NA&gt;
+1157                          <NA>
+1158                          <NA>
 1159           Eubacterium rectale
-1160                          &lt;NA&gt;
+1160                          <NA>
 1161         Dorea formicigenerans
-1162                          &lt;NA&gt;
-1163                          &lt;NA&gt;
+1162                          <NA>
+1163                          <NA>
 1164           Clostridium bolteae
 1165          Ruminococcus torques
-1166                          &lt;NA&gt;
-1167                          &lt;NA&gt;
-1168                          &lt;NA&gt;
-1169                          &lt;NA&gt;
+1166                          <NA>
+1167                          <NA>
+1168                          <NA>
+1169                          <NA>
 1170              Pantoea dispersa
-1171                          &lt;NA&gt;
-1172                          &lt;NA&gt;
-1173                          &lt;NA&gt;
+1171                          <NA>
+1172                          <NA>
+1173                          <NA>
 1174         Bacteroides coprocola
-1175                          &lt;NA&gt;
-1176                          &lt;NA&gt;
+1175                          <NA>
+1176                          <NA>
 1177      Porphyromonas gingivalis
 1178          Bacteroides plebeius
-1179                          &lt;NA&gt;
-1180                          &lt;NA&gt;
+1179                          <NA>
+1180                          <NA>
 1181            Bacteroides caccae
 1182    Parabacteroides distasonis
-1183                          &lt;NA&gt;
-1184                          &lt;NA&gt;
-1185                          &lt;NA&gt;
-1186                          &lt;NA&gt;
-1187                          &lt;NA&gt;
-1188                          &lt;NA&gt;
-1189                          &lt;NA&gt;
-1190                          &lt;NA&gt;
-1191                          &lt;NA&gt;
-1192                          &lt;NA&gt;
+1183                          <NA>
+1184                          <NA>
+1185                          <NA>
+1186                          <NA>
+1187                          <NA>
+1188                          <NA>
+1189                          <NA>
+1190                          <NA>
+1191                          <NA>
+1192                          <NA>
 1193          Ruminococcus torques
 1194      Parabacteroides gordonii
-1195                          &lt;NA&gt;
-1196                          &lt;NA&gt;
-1197                          &lt;NA&gt;
-1198                          &lt;NA&gt;
-1199                          &lt;NA&gt;
-1200                          &lt;NA&gt;
+1195                          <NA>
+1196                          <NA>
+1197                          <NA>
+1198                          <NA>
+1199                          <NA>
+1200                          <NA>
 1201           Gemella haemolysans
 1202           Gemella haemolysans
-1203                          &lt;NA&gt;
-1204                          &lt;NA&gt;
-1205                          &lt;NA&gt;
-1206                          &lt;NA&gt;
-1207                          &lt;NA&gt;
-1208                          &lt;NA&gt;
-1209                          &lt;NA&gt;
-1210                          &lt;NA&gt;
+1203                          <NA>
+1204                          <NA>
+1205                          <NA>
+1206                          <NA>
+1207                          <NA>
+1208                          <NA>
+1209                          <NA>
+1210                          <NA>
 1211       Collinsella aerofaciens
-1212                          &lt;NA&gt;
+1212                          <NA>
 1213           Gemella haemolysans
-1214                          &lt;NA&gt;
-1215                          &lt;NA&gt;
+1214                          <NA>
+1215                          <NA>
 1216              Pantoea dispersa
-1217                          &lt;NA&gt;
+1217                          <NA>
 1218 Peptostreptococcus anaerobius
-1219                          &lt;NA&gt;
- [ reached 'max' / getOption("max.print") -- omitted 442166 rows ]</code></pre>
-</div>
-<div id="save_ps_objects" class="section level2" number="4.5">
-<h2>
-<span class="header-section-number">4.5</span> Save objects for transformation and exploration<a class="anchor" aria-label="anchor" href="#save_ps_objects"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">df_GlobalPatterns</span>, </span>
-<span>     <span class="va">df_dietswap</span>,  </span>
-<span>     <span class="va">df_caporaso</span>,</span>
-<span>     <span class="va">df_kostic_crc</span>,</span>
-<span></span>
-<span>     <span class="va">ps_GlobalPatterns</span>, </span>
-<span>     <span class="va">ps_dietswap</span>,</span>
-<span>     <span class="va">ps_caporaso</span>,</span>
-<span>     <span class="va">ps_kostic_crc</span>,</span>
-<span>     file <span class="op">=</span> <span class="st">"data/phyloseq_objects.rda"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="confirm-saved-objects" class="section level2" number="4.6">
-<h2>
-<span class="header-section-number">4.6</span> Confirm saved objects<a class="anchor" aria-label="anchor" href="#confirm-saved-objects"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
+1219                          <NA>
+ [ reached 'max' / getOption("max.print") -- omitted 442166 rows ]
+```
+
+## Save objects for transformation and exploration {#save_ps_objects}
+
+
+```r
+save(df_GlobalPatterns, 
+     df_dietswap,  
+     df_caporaso,
+     df_kostic_crc,     
+     file = "data/dataframe_objects.rda")
+
+save(ps_GlobalPatterns, 
+     ps_dietswap,
+     ps_caporaso,
+     ps_kostic_crc,
+     file = "data/phyloseq_objects.rda")
+```
+
+## Confirm saved objects
+
+```r
+load("data/phyloseq_objects.rda", verbose = TRUE)
+```
+
+```
+Loading objects:
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
-  ps_kostic_crc</code></pre>
-</div>
-<div id="review-phyloseq-objects" class="section level2" number="4.7">
-<h2>
-<span class="header-section-number">4.7</span> Review Phyloseq Objects<a class="anchor" aria-label="anchor" href="#review-phyloseq-objects"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metagMisc</span><span class="op">)</span></span></code></pre></div>
-<div id="taxonomy-rank-names" class="section level3" number="4.7.1">
-<h3>
-<span class="header-section-number">4.7.1</span> Taxonomy rank names<a class="anchor" aria-label="anchor" href="#taxonomy-rank-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rank_names.html">rank_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "Phylum" "Family" "Genus" </code></pre>
-</div>
-<div id="number-of-taxa" class="section level3" number="4.7.2">
-<h3>
-<span class="header-section-number">4.7.2</span> Number of taxa<a class="anchor" aria-label="anchor" href="#number-of-taxa"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] 130</code></pre>
-</div>
-<div id="split-by-taxon-name-e.g.-firmicutes" class="section level3" number="4.7.3">
-<h3>
-<span class="header-section-number">4.7.3</span> Split by taxon name, e.g. Firmicutes<a class="anchor" aria-label="anchor" href="#split-by-taxon-name-e.g.-firmicutes"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/metagMisc/man/phyloseq_sep_tax.html">phyloseq_sep_tax</a></span><span class="op">(</span><span class="va">ps</span>, TaxRank <span class="op">=</span> <span class="st">"Phylum"</span>, drop_NA <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Firmicutes</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+  ps_kostic_crc
+```
+
+# (PART) PHYLOSEQ FUNCTIONS {-}
+
+# Reviewing Phyloseq Objects
+
+
+```r
+library(phyloseq)
+library(ape)
+
+ps <- ps_dietswap
+ps
+```
+
+```
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
+sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
+```
+
+## Taxonomy rank names
+
+```r
+rank_names(ps)
+```
+
+```
+[1] "Phylum" "Family" "Genus" 
+```
+
+## Number of taxa
+
+```r
+ntaxa(ps)
+```
+
+```
+[1] 130
+```
+
+## Split by taxon name, e.g. Firmicutes
+
+```r
+library(metagMisc) # foe phyloseq_sep_tax()
+
+taxa_stats <- phyloseq_sep_tax(ps, TaxRank = "Phylum", drop_NA = FALSE)
+cat("\n")
+```
+
+```r
+taxa_stats$Firmicutes
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 76 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 76 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 76 tips and 75 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Bacteroidetes</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+phy_tree()    Phylogenetic Tree: [ 76 tips and 75 internal nodes ]
+```
+
+```r
+cat("\n")
+```
+
+```r
+taxa_stats$Bacteroidetes
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 16 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 16 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 16 tips and 15 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Actinobacteria</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+phy_tree()    Phylogenetic Tree: [ 16 tips and 15 internal nodes ]
+```
+
+```r
+cat("\n")
+```
+
+```r
+taxa_stats$Actinobacteria
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 8 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 8 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]</code></pre>
-</div>
-<div id="number-of-samples" class="section level3" number="4.7.4">
-<h3>
-<span class="header-section-number">4.7.4</span> Number of samples<a class="anchor" aria-label="anchor" href="#number-of-samples"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/nsamples-methods.html">nsamples</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] 222</code></pre>
-</div>
-<div id="sample-names" class="section level3" number="4.7.5">
-<h3>
-<span class="header-section-number">4.7.5</span> Sample names<a class="anchor" aria-label="anchor" href="#sample-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_names-methods.html">sample_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "Sample-1"  "Sample-2"  "Sample-3"  "Sample-4"  "Sample-5"  "Sample-6" 
+phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]
+```
+
+
+## Number of samples
+
+```r
+nsamples(ps)
+```
+
+```
+[1] 222
+```
+
+## Sample names
+
+```r
+head(sample_names(ps), 20)
+```
+
+```
+ [1] "Sample-1"  "Sample-2"  "Sample-3"  "Sample-4"  "Sample-5"  "Sample-6" 
  [7] "Sample-7"  "Sample-8"  "Sample-9"  "Sample-10" "Sample-11" "Sample-12"
 [13] "Sample-13" "Sample-14" "Sample-15" "Sample-16" "Sample-17" "Sample-18"
-[19] "Sample-19" "Sample-20"</code></pre>
-</div>
-<div id="sample-variables" class="section level3" number="4.7.6">
-<h3>
-<span class="header-section-number">4.7.6</span> Sample variables<a class="anchor" aria-label="anchor" href="#sample-variables"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_variables.html">sample_variables</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "subject"                "sex"                    "nationality"           
+[19] "Sample-19" "Sample-20"
+```
+
+
+## Sample variables
+
+```r
+sample_variables(ps)
+```
+
+```
+[1] "subject"                "sex"                    "nationality"           
 [4] "group"                  "sample"                 "timepoint"             
-[7] "timepoint.within.group" "bmi_group"             </code></pre>
-</div>
-<div id="abundance-table" class="section level3" number="4.7.7">
-<h3>
-<span class="header-section-number">4.7.7</span> Abundance table<a class="anchor" aria-label="anchor" href="#abundance-table"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div>
-<pre><code>OTU Table:          [5 taxa and 5 samples]
+[7] "timepoint.within.group" "bmi_group"             
+```
+
+## Abundance table
+
+```r
+otu_table(ps)[1:5, 1:5]
+```
+
+```
+OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium cellulosi et rel.        91      917      495      310      728
-Oceanospirillum                       1        2        1        2        1
-Bifidobacterium                      43       25      183      493       22
-Clostridium sphenoides et rel.       41      127      133       63       94
-Micrococcaceae                        0        0        0        0        0</code></pre>
-</div>
-<div id="taxonomy-table" class="section level3" number="4.7.8">
-<h3>
-<span class="header-section-number">4.7.8</span> Taxonomy table<a class="anchor" aria-label="anchor" href="#taxonomy-table"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span></code></pre></div>
-<pre><code>Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                               Phylum           Family                    
-Clostridium cellulosi et rel.  "Firmicutes"     "Clostridium cluster IV"  
-Oceanospirillum                "Proteobacteria" "Proteobacteria"          
-Bifidobacterium                "Actinobacteria" "Actinobacteria"          
-Clostridium sphenoides et rel. "Firmicutes"     "Clostridium cluster XIVa"
-Micrococcaceae                 "Actinobacteria" "Actinobacteria"          
-                               Genus                           
-Clostridium cellulosi et rel.  "Clostridium cellulosi et rel." 
-Oceanospirillum                "Oceanospirillum"               
-Bifidobacterium                "Bifidobacterium"               
-Clostridium sphenoides et rel. "Clostridium sphenoides et rel."
-Micrococcaceae                 "Micrococcaceae"                </code></pre>
-</div>
-<div id="phylogenetic-tree-if-available" class="section level3" number="4.7.9">
-<h3>
-<span class="header-section-number">4.7.9</span> Phylogenetic tree if available<a class="anchor" aria-label="anchor" href="#phylogenetic-tree-if-available"><i class="fas fa-link"></i></a>
-</h3>
-</div>
-<div id="taxa-names" class="section level3" number="4.7.10">
-<h3>
-<span class="header-section-number">4.7.10</span> Taxa names<a class="anchor" aria-label="anchor" href="#taxa-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
-<pre><code> [1] "Clostridium cellulosi et rel."    "Oceanospirillum"                 
- [3] "Bifidobacterium"                  "Clostridium sphenoides et rel."  
- [5] "Micrococcaceae"                   "Peptococcus niger et rel."       
- [7] "Burkholderia"                     "Streptococcus bovis et rel."     
- [9] "Lactobacillus salivarius et rel." "Mitsuokella multiacida et rel."  </code></pre>
-</div>
-<div id="summarize-phyloseq-object" class="section level3" number="4.7.11">
-<h3>
-<span class="header-section-number">4.7.11</span> Summarize Phyloseq Object<a class="anchor" aria-label="anchor" href="#summarize-phyloseq-object"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/summarize_phyloseq.html">summarize_phyloseq</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[[1]]
+                             Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Akkermansia                        18       97       67      256       21
+Atopobium                           0        1        0        1        0
+Megasphaera elsdenii et rel.        3       14       46       31        7
+Oceanospirillum                     1        2        1        2        1
+Prevotella tannerae et rel.        63       19       16       15       15
+```
+
+## Taxonomy table
+
+```r
+tax_table(ps)[1:5, ]
+```
+
+```
+Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
+                             Phylum            Family                  
+Akkermansia                  "Verrucomicrobia" "Verrucomicrobia"       
+Atopobium                    "Actinobacteria"  "Actinobacteria"        
+Megasphaera elsdenii et rel. "Firmicutes"      "Clostridium cluster IX"
+Oceanospirillum              "Proteobacteria"  "Proteobacteria"        
+Prevotella tannerae et rel.  "Bacteroidetes"   "Bacteroidetes"         
+                             Genus                         
+Akkermansia                  "Akkermansia"                 
+Atopobium                    "Atopobium"                   
+Megasphaera elsdenii et rel. "Megasphaera elsdenii et rel."
+Oceanospirillum              "Oceanospirillum"             
+Prevotella tannerae et rel.  "Prevotella tannerae et rel." 
+```
+
+## Phylogenetic tree if available
+
+
+## Taxa names
+
+```r
+taxa_names(ps)[1:10]
+```
+
+```
+ [1] "Akkermansia"                       "Atopobium"                        
+ [3] "Megasphaera elsdenii et rel."      "Oceanospirillum"                  
+ [5] "Prevotella tannerae et rel."       "Catenibacterium mitsuokai et rel."
+ [7] "Helicobacter"                      "Eubacterium hallii et rel."       
+ [9] "Lachnospira pectinoschiza et rel." "Burkholderia"                     
+```
+
+## Summarize Phyloseq Object
+
+```r
+microbiome::summarize_phyloseq(ps)
+```
+
+```
+[[1]]
 [1] "1] Min. number of reads = 1776"
 
 [[2]]
@@ -32237,118 +32390,239 @@ Micrococcaceae                 "Micrococcaceae"                </code></pre>
 [[11]]
 [1] "subject"                "sex"                    "nationality"           
 [4] "group"                  "sample"                 "timepoint"             
-[7] "timepoint.within.group" "bmi_group"             </code></pre>
-</div>
-<div id="sort-samples-in-ascending-and-descending" class="section level3" number="4.7.12">
-<h3>
-<span class="header-section-number">4.7.12</span> Sort Samples in ascending and descending<a class="anchor" aria-label="anchor" href="#sort-samples-in-ascending-and-descending"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"In ascending order\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>In ascending order</code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Sample-56 Sample-195 Sample-196  Sample-42 Sample-164 Sample-147 
-      1776       4477       4606       5006       5541       5624 </code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nIn descending order\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-In descending order</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>  Sample-3  Sample-11  Sample-12  Sample-54 Sample-208  Sample-20 
-     28883      26895      25238      23529      23131      22413 </code></pre>
-</div>
-<div id="drop-samples-below-a-threshold" class="section level3" number="4.7.13">
-<h3>
-<span class="header-section-number">4.7.13</span> Drop Samples Below a Threshold<a class="anchor" aria-label="anchor" href="#drop-samples-below-a-threshold"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps1perc0</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/subset_samples-methods.html">subset_samples</a></span><span class="op">(</span><span class="va">ps</span>, <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">ps1perc0</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+[7] "timepoint.within.group" "bmi_group"             
+```
+
+## Sort Samples in ascending and descending
+
+```r
+cat("In ascending order\n")
+```
+
+```
+In ascending order
+```
+
+```r
+head(sort(phyloseq::sample_sums(ps), decreasing = F))
+```
+
+```
+ Sample-56 Sample-195 Sample-196  Sample-42 Sample-164 Sample-147 
+      1776       4477       4606       5006       5541       5624 
+```
+
+```r
+cat("\nIn descending order\n")
+```
+
+```
+
+In descending order
+```
+
+```r
+head(sort(phyloseq::sample_sums(ps), decreasing = T))
+```
+
+```
+  Sample-3  Sample-11  Sample-12  Sample-54 Sample-208  Sample-20 
+     28883      26895      25238      23529      23131      22413 
+```
+
+## Drop Samples Below a Threshold
+
+```r
+ps1perc0 <- phyloseq::subset_samples(ps, phyloseq::sample_sums(ps) > 1)
+ps1perc0
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-</div>
-<div id="drop-taxa-below-a-threshold" class="section level3" number="4.7.14">
-<h3>
-<span class="header-section-number">4.7.14</span> Drop Taxa Below a Threshold<a class="anchor" aria-label="anchor" href="#drop-taxa-below-a-threshold"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pstaxa01</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html">prune_taxa</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_sums.html">taxa_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="va">ps</span><span class="op">)</span></span>
-<span><span class="va">pstaxa01</span> </span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
+phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
+```
+
+## Drop Taxa Below a Threshold
+
+```r
+pstaxa01 <- phyloseq::prune_taxa(phyloseq::taxa_sums(ps) > 1, ps)
+pstaxa01 
+```
+
+```
+phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 120 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 120 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 120 tips and 119 internal nodes ]</code></pre>
-
-</div>
-</div>
-</div>
+phy_tree()    Phylogenetic Tree: [ 120 tips and 119 internal nodes ]
+```
 
 
+# (PART) PHYLOSEQ EXTRA OBJECTS {-}
 
-  <div class="chapter-nav">
-<div class="prev"><a href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></div>
-<div class="next"><a href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#import-preprocessed-microbiome-data"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
-<li><a class="nav-link" href="#the-globalpatterns-dataset"><span class="header-section-number">4.1</span> The GlobalPatterns dataset</a></li>
-<li><a class="nav-link" href="#the-dietswap-dataset"><span class="header-section-number">4.2</span> The dietswap dataset</a></li>
-<li><a class="nav-link" href="#caporaso-dataset"><span class="header-section-number">4.3</span> Caporaso dataset</a></li>
-<li><a class="nav-link" href="#kostic_crc-dataset"><span class="header-section-number">4.4</span> Kostic_CRC dataset</a></li>
-<li><a class="nav-link" href="#save_ps_objects"><span class="header-section-number">4.5</span> Save objects for transformation and exploration</a></li>
-<li><a class="nav-link" href="#confirm-saved-objects"><span class="header-section-number">4.6</span> Confirm saved objects</a></li>
-<li>
-<a class="nav-link" href="#review-phyloseq-objects"><span class="header-section-number">4.7</span> Review Phyloseq Objects</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#taxonomy-rank-names"><span class="header-section-number">4.7.1</span> Taxonomy rank names</a></li>
-<li><a class="nav-link" href="#number-of-taxa"><span class="header-section-number">4.7.2</span> Number of taxa</a></li>
-<li><a class="nav-link" href="#split-by-taxon-name-e.g.-firmicutes"><span class="header-section-number">4.7.3</span> Split by taxon name, e.g. Firmicutes</a></li>
-<li><a class="nav-link" href="#number-of-samples"><span class="header-section-number">4.7.4</span> Number of samples</a></li>
-<li><a class="nav-link" href="#sample-names"><span class="header-section-number">4.7.5</span> Sample names</a></li>
-<li><a class="nav-link" href="#sample-variables"><span class="header-section-number">4.7.6</span> Sample variables</a></li>
-<li><a class="nav-link" href="#abundance-table"><span class="header-section-number">4.7.7</span> Abundance table</a></li>
-<li><a class="nav-link" href="#taxonomy-table"><span class="header-section-number">4.7.8</span> Taxonomy table</a></li>
-<li><a class="nav-link" href="#phylogenetic-tree-if-available"><span class="header-section-number">4.7.9</span> Phylogenetic tree if available</a></li>
-<li><a class="nav-link" href="#taxa-names"><span class="header-section-number">4.7.10</span> Taxa names</a></li>
-<li><a class="nav-link" href="#summarize-phyloseq-object"><span class="header-section-number">4.7.11</span> Summarize Phyloseq Object</a></li>
-<li><a class="nav-link" href="#sort-samples-in-ascending-and-descending"><span class="header-section-number">4.7.12</span> Sort Samples in ascending and descending</a></li>
-<li><a class="nav-link" href="#drop-samples-below-a-threshold"><span class="header-section-number">4.7.13</span> Drop Samples Below a Threshold</a></li>
-<li><a class="nav-link" href="#drop-taxa-below-a-threshold"><span class="header-section-number">4.7.14</span> Drop Taxa Below a Threshold</a></li>
-</ul>
-</li>
-</ul>
+# Create psExtra Objects
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/04_preprocessed_external_data.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/04_preprocessed_external_data.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
+After the creation of phyloseq objects, we proceed to create psExtra objects using functionalities provided by the **microViz** package. The psExtra objects extend the capabilities of phyloseq objects by incorporating additional metadata, experimental conditions, or statistical results, enhancing the depth and breadth of analyses performed using microbiome data.
 
-</div>
-</div> <!-- .container -->
+## Prerequisite
 
-<footer class="bg-primary text-light mt-5"><div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 mt-3">
-        <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-15</b>.</p>
-<br>
-</div>
-      <div class="col-12 col-md-6 mt-3">
-        <p>Note: This practical guide was created using the <a class="text-light" href="https://bookdown.org/yihui/bookdown/">bookdown</a> R package, styled with the modern bs4_book format.</p>
-      </div>
+Before creating psExtra objects, it's essential to have pre-existing phyloseq objects containing microbiome data and associated metadata. These phyloseq objects serve as the input data for creating psExtra objects. For example, pre-existing phyloseq objects such as ps_dietswap, ps_GlobalPatterns, ps_caporaso, and ps_kostic_crc prepared in the previous sections should be available.
 
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+## Load pre-existing phyloseq objects
+
+```r
+load("data/phyloseq_objects.rda", verbose = TRUE)
+```
+
+```
+Loading objects:
+  ps_GlobalPatterns
+  ps_dietswap
+  ps_caporaso
+  ps_kostic_crc
+```
+
+## Aggregate taxonomic data
+
+```r
+# Load required packages
+library(phyloseq) # For handling microbiome data
+library(microViz) # For advanced microbiome visualization
+
+# Assuming ps_dietswap is already loaded or available
+
+# Aggregate taxonomic data
+psextra_clr_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "clr")
+
+# Display a subset of the transformed data
+cat("\nCentered log Ratio (CLR) Transformation\n")
+```
+
+```
+
+Centered log Ratio (CLR) Transformation
+```
+
+```r
+psextra_clr_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+```
+
+```
+OTU Table:          [3 taxa and 4 samples]
+                     taxa are columns
+         Akkermansia Atopobium Megasphaera elsdenii et rel.
+Sample-1    1.264169 -3.555474                   -0.4880348
+Sample-2    2.226809 -2.040486                    0.3131385
+Sample-3    1.790291 -3.114983                    1.4176161
+Sample-4    3.396164 -1.943474                    1.2914479
+```
+
+```r
+# Aggregate taxonomic data
+psextra_id_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "identity")
+
+# Display a subset of the transformed data
+cat("\nIdentity Transformation\n")
+```
+
+```
+
+Identity Transformation
+```
+
+```r
+psextra_id_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+```
+
+```
+OTU Table:          [3 taxa and 4 samples]
+                     taxa are columns
+         Akkermansia Atopobium Megasphaera elsdenii et rel.
+Sample-1          18         0                            3
+Sample-2          97         1                           14
+Sample-3          67         0                           46
+Sample-4         256         1                           31
+```
+
+```r
+# Aggregate taxonomic data
+psextra_log10p_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "log10p")
+
+# Display a subset of the transformed data
+cat("\nLog10p Transformation\n")
+```
+
+```
+
+Log10p Transformation
+```
+
+```r
+psextra_log10p_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+```
+
+```
+OTU Table:          [3 taxa and 4 samples]
+                     taxa are columns
+         Akkermansia Atopobium Megasphaera elsdenii et rel.
+Sample-1    1.278754   0.00000                     0.602060
+Sample-2    1.991226   0.30103                     1.176091
+Sample-3    1.832509   0.00000                     1.672098
+Sample-4    2.409933   0.30103                     1.505150
+```
+
+
+## Confirm the psExtra class
+
+```r
+summary(psextra_clr_dietswap)
+```
+
+```
+ Length   Class    Mode 
+      1 psExtra      S4 
+```
+
+```r
+summary(psextra_id_dietswap)
+```
+
+```
+ Length   Class    Mode 
+      1 psExtra      S4 
+```
+
+```r
+summary(psextra_log10p_dietswap)
+```
+
+```
+ Length   Class    Mode 
+      1 psExtra      S4 
+```
+
+## Save psExtra to R object
+
+```r
+save(psextra_clr_dietswap, psextra_id_dietswap, psextra_log10p_dietswap, file = "data/phyloseq_extra_objects.rda")
+```
+
+

@@ -20,7 +20,7 @@ library(microbiome)
 
 ## Import processed phyloseq object
 ```{r}
-load("../imap-data-preparation/data/external_ps_objects.rda", verbose = TRUE) 
+load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = TRUE) 
 
 ```
 

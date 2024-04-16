@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 
 ## Import processed and transformed data objects
-```{r}
+```{r message=FALSE, warning=FALSE}
 set.seed(110912)
 
 library(phyloseq)
@@ -25,11 +25,13 @@ library(microbiome)
 library(vegan)
 
 load("data/ps_transformed.rda", verbose = TRUE)
-load("data/external_ps_objects.rda", verbose = TRUE)
+load("data/phyloseq_objects.rda", verbose = TRUE)
+load("data/phyloseq_extra_objects.rda", verbose = TRUE)
 ```
 
 
-## Bray-Curtis Dissimilarity
+
+## Phyloseq Bray-Curtis Dissimilarity
 The Bray-Curtis dissimilarity calculates the dissimilarity between two samples based on the relative abundances of taxa. It considers both presence and abundance information but is not sensitive to differences in abundance magnitude.
 
 ```{r message=FALSE, warning=FALSE}
@@ -70,14 +72,36 @@ save(ps_asin_bray_dist,
 ```
 
 
+
+## Phyloseq Extra Bray-Curtis Dissimilarity
+In this section, we compute the Bray-Curtis dissimilarity distance from a phyloseq extra object. The Bray-Curtis dissimilarity distance is a measure of dissimilarity between microbial communities based on the abundance of different taxa present in each community. This analysis provides valuable insights into the compositional differences between microbial communities, which are essential for understanding microbial diversity and community structure in microbiome studies.
+
+```{r message=FALSE, warning=FALSE}
+library(vegan)
+library(dplyr)
+library(microViz)
+
+psextra_clr_asin_bray_dist  <- psextra_clr_dietswap %>% dist_calc(dist = "bray")
+psextra_id_asin_bray_dist  <- psextra_id_dietswap %>% dist_calc(dist = "bray")
+psextra_log10p_asin_bray_dist  <- psextra_log10p_dietswap %>% dist_calc(dist = "bray")
+
+save(psextra_clr_asin_bray_dist, 
+     psextra_id_asin_bray_dist, 
+     psextra_log10p_asin_bray_dist, 
+     file = "data/psextra_distances.rda")
+```
+
+
 ## Confirm computed Bray-Curtis distance objects
 ```{r message=FALSE, warning=FALSE}
 load("data/bray_distances.rda", verbose = T)
+load("data/psextra_distances.rda", verbose = T)
 
 ```
 
 
 ## Jaccard Distance
+
 The Jaccard distance measures the dissimilarity between two samples based on the presence or absence of taxa, ignoring their abundance information. It is calculated as the ratio of the number of taxa found in only one of the samples to the total number of taxa found in both samples.
 
 ```{r message=FALSE, warning=FALSE}

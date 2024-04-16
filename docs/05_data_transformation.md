@@ -11,15 +11,11 @@ The process of data transformation in microbiome analysis involves converting ra
 ## Import processed phyloseq object
 
 ```r
-load("../imap-data-preparation/data/external_ps_objects.rda", verbose = TRUE) 
+load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = TRUE) 
 ```
 
 ```
 Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
@@ -37,28 +33,28 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium cellulosi et rel.          91      917      495      310      728
-Oceanospirillum                         1        2        1        2        1
-Bifidobacterium                        43       25      183      493       22
-Clostridium sphenoides et rel.         41      127      133       63       94
-Micrococcaceae                          0        0        0        0        0
-Peptococcus niger et rel.               2        4       11       10        2
-Burkholderia                            1        1        2        0        2
-Streptococcus bovis et rel.           112       41       95       27      110
-Lactobacillus salivarius et rel.        1        1        3       16        1
-Mitsuokella multiacida et rel.          1        2       44        5        1
-                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Clostridium cellulosi et rel.         281     2528      992      491      1899
-Oceanospirillum                         1        1        1        1         2
-Bifidobacterium                        24      116       62      151        20
-Clostridium sphenoides et rel.         90      153       92       55        84
-Micrococcaceae                          0        0        0        0         0
-Peptococcus niger et rel.               5        8       13        2         7
-Burkholderia                            1        1        1        0         1
-Streptococcus bovis et rel.           364       17       42      925        90
-Lactobacillus salivarius et rel.        1        1        2        2         1
-Mitsuokella multiacida et rel.        102       19       21      120       392
+                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Akkermansia                             18       97       67      256       21
+Atopobium                                0        1        0        1        0
+Megasphaera elsdenii et rel.             3       14       46       31        7
+Oceanospirillum                          1        2        1        2        1
+Prevotella tannerae et rel.             63       19       16       15       15
+Catenibacterium mitsuokai et rel.        0        5        3        2        0
+Helicobacter                             2        2        2        2        2
+Eubacterium hallii et rel.              10      102       39       31       28
+Lachnospira pectinoschiza et rel.       54      141      118       55       67
+Burkholderia                             1        1        2        0        2
+                                  Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Akkermansia                             16       26       30       19       125
+Atopobium                                0        1        0        0         0
+Megasphaera elsdenii et rel.            76       49       71      356       382
+Oceanospirillum                          1        1        1        1         2
+Prevotella tannerae et rel.             18       17       18        3       111
+Catenibacterium mitsuokai et rel.        8        7        1        2         1
+Helicobacter                             2        2        2        2         2
+Eubacterium hallii et rel.              40       58       26       20        28
+Lachnospira pectinoschiza et rel.       64       64       80       40        57
+Burkholderia                             1        1        1        0         1
 ```
 
 ##  No Transformation
@@ -89,12 +85,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium cellulosi et rel.        91      917      495
-Oceanospirillum                       1        2        1
-Bifidobacterium                      43       25      183
-Clostridium sphenoides et rel.       41      127      133
-Micrococcaceae                        0        0        0
+                             Sample-1 Sample-2 Sample-3
+Akkermansia                        18       97       67
+Atopobium                           0        1        0
+Megasphaera elsdenii et rel.        3       14       46
+Oceanospirillum                     1        2        1
+Prevotella tannerae et rel.        63       19       16
 ```
 
 ## Relative abundance
@@ -119,12 +115,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Clostridium cellulosi et rel.  0.0107577728 4.348857e-02 1.713811e-02
-Oceanospirillum                0.0001182173 9.484966e-05 3.462244e-05
-Bifidobacterium                0.0050833432 1.185621e-03 6.335907e-03
-Clostridium sphenoides et rel. 0.0048469086 6.022954e-03 4.604785e-03
-Micrococcaceae                 0.0000000000 0.000000e+00 0.000000e+00
+                                 Sample-1     Sample-2     Sample-3
+Akkermansia                  0.0021279111 4.600209e-03 2.319704e-03
+Atopobium                    0.0000000000 4.742483e-05 0.000000e+00
+Megasphaera elsdenii et rel. 0.0003546519 6.639476e-04 1.592632e-03
+Oceanospirillum              0.0001182173 9.484966e-05 3.462244e-05
+Prevotella tannerae et rel.  0.0074476889 9.010718e-04 5.539591e-04
 ```
 
 ## Arc sine (asin) transformation
@@ -148,12 +144,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4
-Clostridium cellulosi et rel.  0.118481 0.239958 0.149754 0.175247
-Oceanospirillum                0.012391 0.011099 0.006706 0.014005
-Bifidobacterium                0.081344 0.039251 0.090839 0.221683
-Clostridium sphenoides et rel. 0.079426 0.088561 0.077412 0.078680
-Micrococcaceae                 0.000000 0.000000 0.000000 0.000000
+                             Sample-1 Sample-2 Sample-3 Sample-4
+Akkermansia                  0.052595 0.077374 0.054917 0.159111
+Atopobium                    0.000000 0.007848 0.000000 0.009903
+Megasphaera elsdenii et rel. 0.021464 0.029370 0.045497 0.055163
+Oceanospirillum              0.012391 0.011099 0.006706 0.014005
+Prevotella tannerae et rel.  0.098511 0.034216 0.026826 0.038362
 ```
 
 
@@ -184,12 +180,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Clostridium cellulosi et rel.  0.0107577728 4.348857e-02 1.713811e-02
-Oceanospirillum                0.0001182173 9.484966e-05 3.462244e-05
-Bifidobacterium                0.0050833432 1.185621e-03 6.335907e-03
-Clostridium sphenoides et rel. 0.0048469086 6.022954e-03 4.604785e-03
-Micrococcaceae                 0.0000000000 0.000000e+00 0.000000e+00
+                                 Sample-1     Sample-2     Sample-3
+Akkermansia                  0.0021279111 4.600209e-03 2.319704e-03
+Atopobium                    0.0000000000 4.742483e-05 0.000000e+00
+Megasphaera elsdenii et rel. 0.0003546519 6.639476e-04 1.592632e-03
+Oceanospirillum              0.0001182173 9.484966e-05 3.462244e-05
+Prevotella tannerae et rel.  0.0074476889 9.010718e-04 5.539591e-04
 ```
 
 ## Z-transform for OTUs
@@ -218,12 +214,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2   Sample-3
-Clostridium cellulosi et rel.  -0.7468356  0.7886759  0.3777517
-Oceanospirillum                -0.5570347  0.2530445 -0.5570347
-Bifidobacterium                 0.1091362 -0.4247936  1.5611951
-Clostridium sphenoides et rel. -0.5528961  1.0892951  1.1568029
-Micrococcaceae                  0.0000000  0.0000000  0.0000000
+                               Sample-1    Sample-2   Sample-3
+Akkermansia                  -0.7333167  0.65311419  0.3442596
+Atopobium                    -0.3664071  2.35344701 -0.3664071
+Megasphaera elsdenii et rel. -1.0345716 -0.04063187  0.8182075
+Oceanospirillum              -0.5570347  0.25304450 -0.5570347
+Prevotella tannerae et rel.   0.6612837 -0.55293969 -0.7225946
 ```
 
 ## Z-transform for Samples
@@ -252,12 +248,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2   Sample-3
-Clostridium cellulosi et rel.   1.2592760  1.9752118  1.6155457
-Oceanospirillum                -0.7821978 -0.7027117 -0.8682102
-Bifidobacterium                 0.8659801  0.3076574  1.1688197
-Clostridium sphenoides et rel.  0.8411751  1.0534195  1.0259704
-Micrococcaceae                 -1.1517915 -1.2167251 -1.1804675
+                               Sample-1    Sample-2    Sample-3
+Akkermansia                   0.4182158  0.92846743  0.72038722
+Atopobium                    -1.1517915 -0.89241875 -1.18046753
+Megasphaera elsdenii et rel. -0.4126041  0.05030439  0.55399343
+Oceanospirillum              -0.7821978 -0.70271169 -0.86821022
+Prevotella tannerae et rel.   1.0657708  0.18490370  0.09587261
 ```
 
 ## Log10 Transform
@@ -286,12 +282,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1  Sample-2 Sample-3
-Clostridium cellulosi et rel.  1.963788 2.9628427 2.695482
-Oceanospirillum                0.301030 0.4771213 0.301030
-Bifidobacterium                1.643453 1.4149733 2.264818
-Clostridium sphenoides et rel. 1.623249 2.1072100 2.127105
-Micrococcaceae                 0.000000 0.0000000 0.000000
+                             Sample-1  Sample-2 Sample-3
+Akkermansia                  1.278754 1.9912261 1.832509
+Atopobium                    0.000000 0.3010300 0.000000
+Megasphaera elsdenii et rel. 0.602060 1.1760913 1.672098
+Oceanospirillum              0.301030 0.4771213 0.301030
+Prevotella tannerae et rel.  1.806180 1.3010300 1.230449
 ```
 
 ## Log10p Transform
@@ -320,12 +316,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1  Sample-2 Sample-3
-Clostridium cellulosi et rel.  1.963788 2.9628427 2.695482
-Oceanospirillum                0.301030 0.4771213 0.301030
-Bifidobacterium                1.643453 1.4149733 2.264818
-Clostridium sphenoides et rel. 1.623249 2.1072100 2.127105
-Micrococcaceae                 0.000000 0.0000000 0.000000
+                             Sample-1  Sample-2 Sample-3
+Akkermansia                  1.278754 1.9912261 1.832509
+Atopobium                    0.000000 0.3010300 0.000000
+Megasphaera elsdenii et rel. 0.602060 1.1760913 1.672098
+Oceanospirillum              0.301030 0.4771213 0.301030
+Prevotella tannerae et rel.  1.806180 1.3010300 1.230449
 ```
 
 ## CLR Transform
@@ -355,12 +351,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1   Sample-2  Sample-3
-Clostridium cellulosi et rel.   2.878162  4.4698476  3.783731
-Oceanospirillum                -1.497647 -1.4908696 -2.016371
-Bifidobacterium                 2.130295  0.8817133  2.790378
-Clostridium sphenoides et rel.  2.082832  2.4953993  2.472265
-Micrococcaceae                 -3.555474 -3.3594489 -3.114983
+                               Sample-1   Sample-2   Sample-3
+Akkermansia                   1.2641691  2.2268092  1.7902914
+Atopobium                    -3.5554744 -2.0404856 -3.1149834
+Megasphaera elsdenii et rel. -0.4880348  0.3131385  1.4176161
+Oceanospirillum              -1.4976474 -1.4908696 -2.0163711
+Prevotella tannerae et rel.   2.5111514  0.6118107  0.3815242
 ```
 
 
@@ -390,12 +386,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium cellulosi et rel.        92      918      496
-Oceanospirillum                       2        3        2
-Bifidobacterium                      44       26      184
-Clostridium sphenoides et rel.       42      128      134
-Micrococcaceae                        1        1        1
+                             Sample-1 Sample-2 Sample-3
+Akkermansia                        19       98       68
+Atopobium                           1        2        1
+Megasphaera elsdenii et rel.        4       15       47
+Oceanospirillum                     2        3        2
+Prevotella tannerae et rel.        64       20       17
 ```
 
 ## Data Scaling
@@ -424,12 +420,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Clostridium cellulosi et rel.        91      917      495
-Oceanospirillum                       1        2        1
-Bifidobacterium                      43       25      183
-Clostridium sphenoides et rel.       41      127      133
-Micrococcaceae                        0        0        0
+                             Sample-1 Sample-2 Sample-3
+Akkermansia                        18       97       67
+Atopobium                           0        1        0
+Megasphaera elsdenii et rel.        3       14       46
+Oceanospirillum                     1        2        1
+Prevotella tannerae et rel.        63       19       16
 ```
 
 ## Save transformed objects

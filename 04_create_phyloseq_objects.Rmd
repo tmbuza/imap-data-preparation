@@ -1,6 +1,104 @@
+# (PART) PHYLOSEQ OBJECTS {-}
+
+# Creating phyloseq Objects
+
+In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.
+
+## From mothur output
+```{r mothurphyseqobj, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(phyloseq)
+library(microbiome)
+library(ape)
+
+metadata <- read_csv("data/mothur/mothur_tidy_metadata.csv",show_col_types = FALSE) %>% 
+  tibble::column_to_rownames("group") %>% 
+  sample_data(metadata)
+
+otutable <- read_csv("data/mothur/mothur_tidy_otutable.csv",show_col_types = FALSE) %>% 
+  pivot_wider(id_cols = group, names_from = OTU, values_from = count) %>% 
+  tibble::column_to_rownames("group") %>% 
+  otu_table(otutable, taxa_are_rows = FALSE)
+
+taxonomy <- read_csv("data/mothur/mothur_tidy_taxonomy.csv", show_col_types = FALSE) %>%
+  tibble::column_to_rownames("OTU") %>%
+  as.matrix() %>% 
+  tax_table(taxonomy)
+
+mt_ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
+
+library(ape)
+mt_ps_tree = rtree(ntaxa(mt_ps_raw_basic), rooted=TRUE, tip.label=taxa_names(mt_ps_raw_basic))
+
+mt_ps_raw <- phyloseq::merge_phyloseq(mt_ps_raw_basic, mt_ps_tree)
+
+mt_ps_rel <- phyloseq::transform_sample_counts(mt_ps_raw, function(x){x / sum(x)})
+
+mt_ps_df_raw <- psmelt(mt_ps_raw)
+
+mt_ps_df_rel <- psmelt(mt_ps_raw)
+
+save(mt_ps_tree, mt_ps_raw, mt_ps_rel, mt_ps_df_raw, mt_ps_df_rel, file = "data/mothur_phyloseq_objects.rda")
+
+```
+
+
+### Review the mothur phyloseq object
+
+```{r mothurpsraw}
+mt_ps_raw
+```
+
+## From QIIME2 output
+## Create a phyloseq object
+```{r qiime2physeqobj, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(phyloseq)
+library(microbiome)
+library(ape)
+
+metadata <- read_csv("data/qiime2/qiime2_tidy_metadata.csv",show_col_types = FALSE) %>% 
+  tibble::column_to_rownames("sample_id") %>% 
+  sample_data(metadata)
+
+otutable <- read_csv("data/qiime2/qiime2_tidy_otutable.csv",show_col_types = FALSE) %>% 
+  pivot_wider(id_cols = sample_id, names_from = feature, values_from = count) %>% 
+  tibble::column_to_rownames("sample_id") %>% 
+  otu_table(otutable, taxa_are_rows = FALSE)
+
+taxonomy <- read_csv("data/qiime2/qiime2_tidy_taxonomy.csv", show_col_types = FALSE) %>%
+  tibble::column_to_rownames("feature") %>%
+  as.matrix() %>% 
+  tax_table(taxonomy)
+
+q2_ps_raw_basic <- merge_phyloseq(metadata, otutable, taxonomy)
+
+library(ape)
+q2_ps_tree = rtree(ntaxa(q2_ps_raw_basic), rooted=TRUE, tip.label=taxa_names(q2_ps_raw_basic))
+
+q2_ps_raw <- phyloseq::merge_phyloseq(q2_ps_raw_basic, q2_ps_tree)
+
+q2_ps_rel <- phyloseq::transform_sample_counts(q2_ps_raw, function(x){x / sum(x)})
+
+q2_ps_df_raw <- psmelt(q2_ps_raw)
+
+q2_ps_df_rel <- psmelt(q2_ps_raw)
+
+save(q2_ps_tree, q2_ps_raw, q2_ps_rel, q2_ps_df_raw, q2_ps_df_rel, file = "data/qiime2_phyloseq_objects.rda")
+```
+
+
+## Review the phyloseq object
+
+```{r qiime2psraw}
+q2_ps_raw
+```
+
+
+
 # (PART) EXTERNAL DATASETS {-}
 
-# Import Preprocessed Microbiome Data
+# Phyloseq Objects Demo Datasets
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
@@ -158,52 +256,55 @@ ps_kostic_crc
 df_kostic_crc
 ```
 
-
 ## Save objects for transformation and exploration {#save_ps_objects}
 
 ```{r}
 save(df_GlobalPatterns, 
      df_dietswap,  
      df_caporaso,
-     df_kostic_crc,
+     df_kostic_crc,     
+     file = "data/dataframe_objects.rda")
 
-     ps_GlobalPatterns, 
+save(ps_GlobalPatterns, 
      ps_dietswap,
      ps_caporaso,
      ps_kostic_crc,
-     file = "data/external_ps_objects.rda")
+     file = "data/phyloseq_objects.rda")
 
 ```
 
 ## Confirm saved objects
 ```{r}
-load("data/external_ps_objects.rda", verbose = TRUE)
+load("data/phyloseq_objects.rda", verbose = TRUE)
 ```
 
-## Review Phyloseq Objects
+# (PART) PHYLOSEQ FUNCTIONS {-}
+
+# Reviewing Phyloseq Objects
+
 ```{r message=FALSE, warning=FALSE}
 library(phyloseq)
 library(ape)
 
 ps <- ps_dietswap
-
-library(metagMisc)
-
+ps
 ```
 
-### Taxonomy rank names
+## Taxonomy rank names
 ```{r}
 rank_names(ps)
 
 ```
 
-### Number of taxa
+## Number of taxa
 ```{r}
 ntaxa(ps)
 ```
 
-### Split by taxon name, e.g. Firmicutes
-```{r}
+## Split by taxon name, e.g. Firmicutes
+```{r message=FALSE, warning=FALSE}
+library(metagMisc) # foe phyloseq_sep_tax()
+
 taxa_stats <- phyloseq_sep_tax(ps, TaxRank = "Phylum", drop_NA = FALSE)
 cat("\n")
 taxa_stats$Firmicutes
@@ -215,51 +316,50 @@ taxa_stats$Actinobacteria
 ```
 
 
-### Number of samples
+## Number of samples
 ```{r}
 nsamples(ps)
 ```
 
-### Sample names
+## Sample names
 ```{r}
 head(sample_names(ps), 20)
 ```
 
 
-### Sample variables
+## Sample variables
 ```{r}
 sample_variables(ps)
 ```
 
-### Abundance table
+## Abundance table
 ```{r}
 otu_table(ps)[1:5, 1:5]
 ```
 
-### Taxonomy table
+## Taxonomy table
 ```{r}
 tax_table(ps)[1:5, ]
 ```
 
-### Phylogenetic tree if available
+## Phylogenetic tree if available
 ```{r, warning=FALSE, include=FALSE}
 # phy_tree(ps)
 ```
 
-### Taxa names
+## Taxa names
 ```{r}
 taxa_names(ps)[1:10]
 ```
 
-### Summarize Phyloseq Object
+## Summarize Phyloseq Object
 ```{r message=FALSE, warning=FALSE}
 
 microbiome::summarize_phyloseq(ps)
 
 ```
 
-
-### Sort Samples in ascending and descending
+## Sort Samples in ascending and descending
 ```{r}
 cat("In ascending order\n")
 head(sort(phyloseq::sample_sums(ps), decreasing = F))
@@ -268,18 +368,92 @@ head(sort(phyloseq::sample_sums(ps), decreasing = T))
 
 ```
 
-### Drop Samples Below a Threshold
-```{r}
+## Drop Samples Below a Threshold
+```{r message=FALSE, warning=FALSE}
 ps1perc0 <- phyloseq::subset_samples(ps, phyloseq::sample_sums(ps) > 1)
 ps1perc0
 ```
 
-### Drop Taxa Below a Threshold
-```{r}
+## Drop Taxa Below a Threshold
+```{r message=FALSE, warning=FALSE}
 pstaxa01 <- phyloseq::prune_taxa(phyloseq::taxa_sums(ps) > 1, ps)
 pstaxa01 
 ```
 
 
+# (PART) PHYLOSEQ EXTRA OBJECTS {-}
+
+# Create psExtra Objects
+
+After the creation of phyloseq objects, we proceed to create psExtra objects using functionalities provided by the **microViz** package. The psExtra objects extend the capabilities of phyloseq objects by incorporating additional metadata, experimental conditions, or statistical results, enhancing the depth and breadth of analyses performed using microbiome data.
+
+## Prerequisite
+
+Before creating psExtra objects, it's essential to have pre-existing phyloseq objects containing microbiome data and associated metadata. These phyloseq objects serve as the input data for creating psExtra objects. For example, pre-existing phyloseq objects such as ps_dietswap, ps_GlobalPatterns, ps_caporaso, and ps_kostic_crc prepared in the previous sections should be available.
+
+## Load pre-existing phyloseq objects
+```{r}
+load("data/phyloseq_objects.rda", verbose = TRUE)
+```
+
+## Aggregate taxonomic data
+```{r message=FALSE, warning=FALSE}
+# Load required packages
+library(phyloseq) # For handling microbiome data
+library(microViz) # For advanced microbiome visualization
+
+# Assuming ps_dietswap is already loaded or available
+
+# Aggregate taxonomic data
+psextra_clr_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "clr")
+
+# Display a subset of the transformed data
+cat("\nCentered log Ratio (CLR) Transformation\n")
+psextra_clr_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+
+# Aggregate taxonomic data
+psextra_id_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "identity")
+
+# Display a subset of the transformed data
+cat("\nIdentity Transformation\n")
+psextra_id_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+
+# Aggregate taxonomic data
+psextra_log10p_dietswap <- tax_agg(
+  ps = ps_dietswap,
+  rank = "Genus") %>% 
+  tax_transform(trans = "log10p")
+
+# Display a subset of the transformed data
+cat("\nLog10p Transformation\n")
+psextra_log10p_dietswap %>% 
+  otu_get() %>%
+  .[1:4, 1:3]
+
+```
+
+
+## Confirm the psExtra class
+```{r class}
+summary(psextra_clr_dietswap)
+summary(psextra_id_dietswap)
+summary(psextra_log10p_dietswap)
+```
+
+## Save psExtra to R object
+```{r}
+save(psextra_clr_dietswap, psextra_id_dietswap, psextra_log10p_dietswap, file = "data/phyloseq_extra_objects.rda")
+
+```
 
 

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>5 Phyloseq Objects Demo Datasets | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
 <meta name="description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="5 Phyloseq Objects Demo Datasets | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/import-preprocessed-microbiome-data.html">
+<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/phyloseq-objects-demo-datasets.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <meta property="og:description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4 Import Preprocessed Microbiome Data | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:title" content="5 Phyloseq Objects Demo Datasets | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta name="twitter:description" content="In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,14 +58,20 @@
 <li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
 <li class="book-part">QIIME2 OUTPUT</li>
 <li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li class="book-part">PHYLOSEQ OBJECTS</li>
+<li><a class="" href="creating-phyloseq-objects.html"><span class="header-section-number">4</span> Creating phyloseq Objects</a></li>
 <li class="book-part">EXTERNAL DATASETS</li>
-<li><a class="active" href="import-preprocessed-microbiome-data.html"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
+<li><a class="active" href="phyloseq-objects-demo-datasets.html"><span class="header-section-number">5</span> Phyloseq Objects Demo Datasets</a></li>
+<li class="book-part">PHYLOSEQ FUNCTIONS</li>
+<li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
+<li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
+<li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
 <li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
-<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">6</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">7</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">10</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -78,14 +84,14 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="import-preprocessed-microbiome-data" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="phyloseq-objects-demo-datasets" class="section level1" number="5">
 <h1>
-<span class="header-section-number">4</span> Import Preprocessed Microbiome Data<a class="anchor" aria-label="anchor" href="#import-preprocessed-microbiome-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Phyloseq Objects Demo Datasets<a class="anchor" aria-label="anchor" href="#phyloseq-objects-demo-datasets"><i class="fas fa-link"></i></a>
 </h1>
 <p>In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.</p>
-<div id="the-globalpatterns-dataset" class="section level2" number="4.1">
+<div id="the-globalpatterns-dataset" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">4.1</span> The GlobalPatterns dataset<a class="anchor" aria-label="anchor" href="#the-globalpatterns-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> The GlobalPatterns dataset<a class="anchor" aria-label="anchor" href="#the-globalpatterns-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here’s a breakdown of its key attributes:</p>
 <ul>
@@ -125,9 +131,9 @@ sample_data() Sample Data:       [ 26 samples by 7 sample variables ]
 tax_table()   Taxonomy Table:    [ 19216 taxa by 7 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</code></pre>
 </div>
-<div id="the-dietswap-dataset" class="section level2" number="4.2">
+<div id="the-dietswap-dataset" class="section level2" number="5.2">
 <h2>
-<span class="header-section-number">4.2</span> The dietswap dataset<a class="anchor" aria-label="anchor" href="#the-dietswap-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> The dietswap dataset<a class="anchor" aria-label="anchor" href="#the-dietswap-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>The dietswap dataset, available through the microbiome R package, offers valuable insights into the effects of dietary interventions on microbial communities. Here’s an overview of its attributes:</p>
 <ul>
@@ -180,9 +186,9 @@ sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
 </div>
-<div id="caporaso-dataset" class="section level2" number="4.3">
+<div id="caporaso-dataset" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">4.3</span> Caporaso dataset<a class="anchor" aria-label="anchor" href="#caporaso-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Caporaso dataset<a class="anchor" aria-label="anchor" href="#caporaso-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Caporaso dataset provides valuable insights into microbial marker genes and their associations with various biological factors.</p>
 <ul>
@@ -223,9 +229,9 @@ sample_data() Sample Data:       [ 34 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 3426 taxa by 7 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></pre>
 </div>
-<div id="kostic_crc-dataset" class="section level2" number="4.4">
+<div id="kostic_crc-dataset" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">4.4</span> Kostic_CRC dataset<a class="anchor" aria-label="anchor" href="#kostic_crc-dataset"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Kostic_CRC dataset<a class="anchor" aria-label="anchor" href="#kostic_crc-dataset"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Kostic_CRC dataset provides valuable insights into the gut microbiome of individuals diagnosed with colorectal cancer (CRC).</p>
 <ul>
@@ -32025,309 +32031,58 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 1219                          &lt;NA&gt;
  [ reached 'max' / getOption("max.print") -- omitted 442166 rows ]</code></pre>
 </div>
-<div id="save_ps_objects" class="section level2" number="4.5">
+<div id="save_ps_objects" class="section level2" number="5.5">
 <h2>
-<span class="header-section-number">4.5</span> Save objects for transformation and exploration<a class="anchor" aria-label="anchor" href="#save_ps_objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5</span> Save objects for transformation and exploration<a class="anchor" aria-label="anchor" href="#save_ps_objects"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">df_GlobalPatterns</span>, </span>
 <span>     <span class="va">df_dietswap</span>,  </span>
 <span>     <span class="va">df_caporaso</span>,</span>
-<span>     <span class="va">df_kostic_crc</span>,</span>
+<span>     <span class="va">df_kostic_crc</span>,     </span>
+<span>     file <span class="op">=</span> <span class="st">"data/dataframe_objects.rda"</span><span class="op">)</span></span>
 <span></span>
-<span>     <span class="va">ps_GlobalPatterns</span>, </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">ps_GlobalPatterns</span>, </span>
 <span>     <span class="va">ps_dietswap</span>,</span>
 <span>     <span class="va">ps_caporaso</span>,</span>
 <span>     <span class="va">ps_kostic_crc</span>,</span>
 <span>     file <span class="op">=</span> <span class="st">"data/phyloseq_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-saved-objects" class="section level2" number="4.6">
+<div id="confirm-saved-objects" class="section level2" number="5.6">
 <h2>
-<span class="header-section-number">4.6</span> Confirm saved objects<a class="anchor" aria-label="anchor" href="#confirm-saved-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.6</span> Confirm saved objects<a class="anchor" aria-label="anchor" href="#confirm-saved-objects"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
   ps_kostic_crc</code></pre>
-</div>
-<div id="review-phyloseq-objects" class="section level2" number="4.7">
-<h2>
-<span class="header-section-number">4.7</span> Review Phyloseq Objects<a class="anchor" aria-label="anchor" href="#review-phyloseq-objects"><i class="fas fa-link"></i></a>
-</h2>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">metagMisc</span><span class="op">)</span></span></code></pre></div>
-<div id="taxonomy-rank-names" class="section level3" number="4.7.1">
-<h3>
-<span class="header-section-number">4.7.1</span> Taxonomy rank names<a class="anchor" aria-label="anchor" href="#taxonomy-rank-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rank_names.html">rank_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "Phylum" "Family" "Genus" </code></pre>
-</div>
-<div id="number-of-taxa" class="section level3" number="4.7.2">
-<h3>
-<span class="header-section-number">4.7.2</span> Number of taxa<a class="anchor" aria-label="anchor" href="#number-of-taxa"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] 130</code></pre>
-</div>
-<div id="split-by-taxon-name-e.g.-firmicutes" class="section level3" number="4.7.3">
-<h3>
-<span class="header-section-number">4.7.3</span> Split by taxon name, e.g. Firmicutes<a class="anchor" aria-label="anchor" href="#split-by-taxon-name-e.g.-firmicutes"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/metagMisc/man/phyloseq_sep_tax.html">phyloseq_sep_tax</a></span><span class="op">(</span><span class="va">ps</span>, TaxRank <span class="op">=</span> <span class="st">"Phylum"</span>, drop_NA <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Firmicutes</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 76 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 76 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 76 tips and 75 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Bacteroidetes</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 16 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 16 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 16 tips and 15 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">taxa_stats</span><span class="op">$</span><span class="va">Actinobacteria</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 8 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 8 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]</code></pre>
-</div>
-<div id="number-of-samples" class="section level3" number="4.7.4">
-<h3>
-<span class="header-section-number">4.7.4</span> Number of samples<a class="anchor" aria-label="anchor" href="#number-of-samples"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/nsamples-methods.html">nsamples</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] 222</code></pre>
-</div>
-<div id="sample-names" class="section level3" number="4.7.5">
-<h3>
-<span class="header-section-number">4.7.5</span> Sample names<a class="anchor" aria-label="anchor" href="#sample-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_names-methods.html">sample_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "Sample-1"  "Sample-2"  "Sample-3"  "Sample-4"  "Sample-5"  "Sample-6" 
- [7] "Sample-7"  "Sample-8"  "Sample-9"  "Sample-10" "Sample-11" "Sample-12"
-[13] "Sample-13" "Sample-14" "Sample-15" "Sample-16" "Sample-17" "Sample-18"
-[19] "Sample-19" "Sample-20"</code></pre>
-</div>
-<div id="sample-variables" class="section level3" number="4.7.6">
-<h3>
-<span class="header-section-number">4.7.6</span> Sample variables<a class="anchor" aria-label="anchor" href="#sample-variables"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_variables.html">sample_variables</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] "subject"                "sex"                    "nationality"           
-[4] "group"                  "sample"                 "timepoint"             
-[7] "timepoint.within.group" "bmi_group"             </code></pre>
-</div>
-<div id="abundance-table" class="section level3" number="4.7.7">
-<h3>
-<span class="header-section-number">4.7.7</span> Abundance table<a class="anchor" aria-label="anchor" href="#abundance-table"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div>
-<pre><code>OTU Table:          [5 taxa and 5 samples]
-                     taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Clostridium cellulosi et rel.        91      917      495      310      728
-Oceanospirillum                       1        2        1        2        1
-Bifidobacterium                      43       25      183      493       22
-Clostridium sphenoides et rel.       41      127      133       63       94
-Micrococcaceae                        0        0        0        0        0</code></pre>
-</div>
-<div id="taxonomy-table" class="section level3" number="4.7.8">
-<h3>
-<span class="header-section-number">4.7.8</span> Taxonomy table<a class="anchor" aria-label="anchor" href="#taxonomy-table"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span></code></pre></div>
-<pre><code>Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                               Phylum           Family                    
-Clostridium cellulosi et rel.  "Firmicutes"     "Clostridium cluster IV"  
-Oceanospirillum                "Proteobacteria" "Proteobacteria"          
-Bifidobacterium                "Actinobacteria" "Actinobacteria"          
-Clostridium sphenoides et rel. "Firmicutes"     "Clostridium cluster XIVa"
-Micrococcaceae                 "Actinobacteria" "Actinobacteria"          
-                               Genus                           
-Clostridium cellulosi et rel.  "Clostridium cellulosi et rel." 
-Oceanospirillum                "Oceanospirillum"               
-Bifidobacterium                "Bifidobacterium"               
-Clostridium sphenoides et rel. "Clostridium sphenoides et rel."
-Micrococcaceae                 "Micrococcaceae"                </code></pre>
-</div>
-<div id="phylogenetic-tree-if-available" class="section level3" number="4.7.9">
-<h3>
-<span class="header-section-number">4.7.9</span> Phylogenetic tree if available<a class="anchor" aria-label="anchor" href="#phylogenetic-tree-if-available"><i class="fas fa-link"></i></a>
-</h3>
-</div>
-<div id="taxa-names" class="section level3" number="4.7.10">
-<h3>
-<span class="header-section-number">4.7.10</span> Taxa names<a class="anchor" aria-label="anchor" href="#taxa-names"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
-<pre><code> [1] "Clostridium cellulosi et rel."    "Oceanospirillum"                 
- [3] "Bifidobacterium"                  "Clostridium sphenoides et rel."  
- [5] "Micrococcaceae"                   "Peptococcus niger et rel."       
- [7] "Burkholderia"                     "Streptococcus bovis et rel."     
- [9] "Lactobacillus salivarius et rel." "Mitsuokella multiacida et rel."  </code></pre>
-</div>
-<div id="summarize-phyloseq-object" class="section level3" number="4.7.11">
-<h3>
-<span class="header-section-number">4.7.11</span> Summarize Phyloseq Object<a class="anchor" aria-label="anchor" href="#summarize-phyloseq-object"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/summarize_phyloseq.html">summarize_phyloseq</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[[1]]
-[1] "1] Min. number of reads = 1776"
-
-[[2]]
-[1] "2] Max. number of reads = 28883"
-
-[[3]]
-[1] "3] Total number of reads = 2949085"
-
-[[4]]
-[1] "4] Average number of reads = 13284.1666666667"
-
-[[5]]
-[1] "5] Median number of reads = 13255"
-
-[[6]]
-[1] "7] Sparsity = 0.205647955647956"
-
-[[7]]
-[1] "6] Any OTU sum to 1 or less? YES"
-
-[[8]]
-[1] "8] Number of singletons = 10"
-
-[[9]]
-[1] "9] Percent of OTUs that are singletons \n        (i.e. exactly one read detected across all samples)2.30769230769231"
-
-[[10]]
-[1] "10] Number of sample variables are: 8"
-
-[[11]]
-[1] "subject"                "sex"                    "nationality"           
-[4] "group"                  "sample"                 "timepoint"             
-[7] "timepoint.within.group" "bmi_group"             </code></pre>
-</div>
-<div id="sort-samples-in-ascending-and-descending" class="section level3" number="4.7.12">
-<h3>
-<span class="header-section-number">4.7.12</span> Sort Samples in ascending and descending<a class="anchor" aria-label="anchor" href="#sort-samples-in-ascending-and-descending"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"In ascending order\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>In ascending order</code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Sample-56 Sample-195 Sample-196  Sample-42 Sample-164 Sample-147 
-      1776       4477       4606       5006       5541       5624 </code></pre>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nIn descending order\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-In descending order</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>  Sample-3  Sample-11  Sample-12  Sample-54 Sample-208  Sample-20 
-     28883      26895      25238      23529      23131      22413 </code></pre>
-</div>
-<div id="drop-samples-below-a-threshold" class="section level3" number="4.7.13">
-<h3>
-<span class="header-section-number">4.7.13</span> Drop Samples Below a Threshold<a class="anchor" aria-label="anchor" href="#drop-samples-below-a-threshold"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps1perc0</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/subset_samples-methods.html">subset_samples</a></span><span class="op">(</span><span class="va">ps</span>, <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html">sample_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">ps1perc0</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-</div>
-<div id="drop-taxa-below-a-threshold" class="section level3" number="4.7.14">
-<h3>
-<span class="header-section-number">4.7.14</span> Drop Taxa Below a Threshold<a class="anchor" aria-label="anchor" href="#drop-taxa-below-a-threshold"><i class="fas fa-link"></i></a>
-</h3>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pstaxa01</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html">prune_taxa</a></span><span class="op">(</span><span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_sums.html">taxa_sums</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="va">ps</span><span class="op">)</span></span>
-<span><span class="va">pstaxa01</span> </span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 120 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 120 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 120 tips and 119 internal nodes ]</code></pre>
-
-</div>
 </div>
 </div>
 
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></div>
-<div class="next"><a href="data-tarnsformation.html"><span class="header-section-number">5</span> Data Tranformation from Phyloseq Objects</a></div>
+<div class="prev"><a href="creating-phyloseq-objects.html"><span class="header-section-number">4</span> Creating phyloseq Objects</a></div>
+<div class="next"><a href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#import-preprocessed-microbiome-data"><span class="header-section-number">4</span> Import Preprocessed Microbiome Data</a></li>
-<li><a class="nav-link" href="#the-globalpatterns-dataset"><span class="header-section-number">4.1</span> The GlobalPatterns dataset</a></li>
-<li><a class="nav-link" href="#the-dietswap-dataset"><span class="header-section-number">4.2</span> The dietswap dataset</a></li>
-<li><a class="nav-link" href="#caporaso-dataset"><span class="header-section-number">4.3</span> Caporaso dataset</a></li>
-<li><a class="nav-link" href="#kostic_crc-dataset"><span class="header-section-number">4.4</span> Kostic_CRC dataset</a></li>
-<li><a class="nav-link" href="#save_ps_objects"><span class="header-section-number">4.5</span> Save objects for transformation and exploration</a></li>
-<li><a class="nav-link" href="#confirm-saved-objects"><span class="header-section-number">4.6</span> Confirm saved objects</a></li>
-<li>
-<a class="nav-link" href="#review-phyloseq-objects"><span class="header-section-number">4.7</span> Review Phyloseq Objects</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#taxonomy-rank-names"><span class="header-section-number">4.7.1</span> Taxonomy rank names</a></li>
-<li><a class="nav-link" href="#number-of-taxa"><span class="header-section-number">4.7.2</span> Number of taxa</a></li>
-<li><a class="nav-link" href="#split-by-taxon-name-e.g.-firmicutes"><span class="header-section-number">4.7.3</span> Split by taxon name, e.g. Firmicutes</a></li>
-<li><a class="nav-link" href="#number-of-samples"><span class="header-section-number">4.7.4</span> Number of samples</a></li>
-<li><a class="nav-link" href="#sample-names"><span class="header-section-number">4.7.5</span> Sample names</a></li>
-<li><a class="nav-link" href="#sample-variables"><span class="header-section-number">4.7.6</span> Sample variables</a></li>
-<li><a class="nav-link" href="#abundance-table"><span class="header-section-number">4.7.7</span> Abundance table</a></li>
-<li><a class="nav-link" href="#taxonomy-table"><span class="header-section-number">4.7.8</span> Taxonomy table</a></li>
-<li><a class="nav-link" href="#phylogenetic-tree-if-available"><span class="header-section-number">4.7.9</span> Phylogenetic tree if available</a></li>
-<li><a class="nav-link" href="#taxa-names"><span class="header-section-number">4.7.10</span> Taxa names</a></li>
-<li><a class="nav-link" href="#summarize-phyloseq-object"><span class="header-section-number">4.7.11</span> Summarize Phyloseq Object</a></li>
-<li><a class="nav-link" href="#sort-samples-in-ascending-and-descending"><span class="header-section-number">4.7.12</span> Sort Samples in ascending and descending</a></li>
-<li><a class="nav-link" href="#drop-samples-below-a-threshold"><span class="header-section-number">4.7.13</span> Drop Samples Below a Threshold</a></li>
-<li><a class="nav-link" href="#drop-taxa-below-a-threshold"><span class="header-section-number">4.7.14</span> Drop Taxa Below a Threshold</a></li>
-</ul>
-</li>
+<li><a class="nav-link" href="#phyloseq-objects-demo-datasets"><span class="header-section-number">5</span> Phyloseq Objects Demo Datasets</a></li>
+<li><a class="nav-link" href="#the-globalpatterns-dataset"><span class="header-section-number">5.1</span> The GlobalPatterns dataset</a></li>
+<li><a class="nav-link" href="#the-dietswap-dataset"><span class="header-section-number">5.2</span> The dietswap dataset</a></li>
+<li><a class="nav-link" href="#caporaso-dataset"><span class="header-section-number">5.3</span> Caporaso dataset</a></li>
+<li><a class="nav-link" href="#kostic_crc-dataset"><span class="header-section-number">5.4</span> Kostic_CRC dataset</a></li>
+<li><a class="nav-link" href="#save_ps_objects"><span class="header-section-number">5.5</span> Save objects for transformation and exploration</a></li>
+<li><a class="nav-link" href="#confirm-saved-objects"><span class="header-section-number">5.6</span> Confirm saved objects</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/04_preprocessed_external_data.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/04_preprocessed_external_data.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/04_create_phyloseq_objects.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/04_create_phyloseq_objects.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -32340,7 +32095,7 @@ phy_tree()    Phylogenetic Tree: [ 120 tips and 119 internal nodes ]</code></pre
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-15</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-16</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

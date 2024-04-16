@@ -32029,13 +32029,13 @@ save(df_GlobalPatterns,
      ps_dietswap,
      ps_caporaso,
      ps_kostic_crc,
-     file = "data/external_ps_objects.rda")
+     file = "data/phyloseq_objects.rda")
 ```
 
 ## Confirm saved objects
 
 ```r
-load("data/external_ps_objects.rda", verbose = TRUE)
+load("data/phyloseq_objects.rda", verbose = TRUE)
 ```
 
 ```

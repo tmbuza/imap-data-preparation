@@ -30,7 +30,7 @@ Saved phyloseq objects and dataframes
 ```
 
 ```r
-load("../imap-data-preparation/data/external/external_ps_objects.rda", verbose = T)
+load("../imap-data-preparation/data/external/phyloseq_objects.rda", verbose = T)
 ```
 
 ```

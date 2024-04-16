@@ -33,15 +33,11 @@ Loading objects:
 ```
 
 ```r
-load("data/external_ps_objects.rda", verbose = TRUE)
+load("data/phyloseq_objects.rda", verbose = TRUE)
 ```
 
 ```
 Loading objects:
-  df_GlobalPatterns
-  df_dietswap
-  df_caporaso
-  df_kostic_crc
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso

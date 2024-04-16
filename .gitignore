@@ -4,7 +4,7 @@
 .Ruserdata
 .Rapp.history
 renv/
-
+REFER/*
 moq2bar.Rmd
 
 # Additional

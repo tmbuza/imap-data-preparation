@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Data Tidying | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>10 What’s Next: Utilizing Transformed Data | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
-<meta name="description" content="1.1 General snakemake workflow  A tentative snakemake workflow that defines data processing rules in a DAG (directed acyclic graph) format. A detailed interactive snakemake HTML report is...">
+<meta name="description" content="After computing distances using various methods, such as Bray-Curtis, Jaccard, Euclidean, and Aitchison, we can harness these transformed data in downstream analyses. These analyses may encompass:...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="1 Data Tidying | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="10 What’s Next: Utilizing Transformed Data | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/data-tidying.html">
+<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/utilizing-transformed-data.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
-<meta property="og:description" content="1.1 General snakemake workflow  A tentative snakemake workflow that defines data processing rules in a DAG (directed acyclic graph) format. A detailed interactive snakemake HTML report is...">
+<meta property="og:description" content="After computing distances using various methods, such as Bray-Curtis, Jaccard, Euclidean, and Aitchison, we can harness these transformed data in downstream analyses. These analyses may encompass:...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Data Tidying | IMAP: Integrated Microbiome Analysis Pipelines">
-<meta name="twitter:description" content="1.1 General snakemake workflow  A tentative snakemake workflow that defines data processing rules in a DAG (directed acyclic graph) format. A detailed interactive snakemake HTML report is...">
+<meta name="twitter:title" content="10 What’s Next: Utilizing Transformed Data | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="After computing distances using various methods, such as Bray-Curtis, Jaccard, Euclidean, and Aitchison, we can harness these transformed data in downstream analyses. These analyses may encompass:...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 <li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
 <li class="book-part">GETTING STARTED</li>
 <li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
-<li><a class="active" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
+<li><a class="" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
 <li class="book-part">MOTHUR OUTPUT</li>
 <li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
 <li class="book-part">QIIME2 OUTPUT</li>
@@ -70,7 +70,7 @@
 <li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
 <li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
+<li><a class="active" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
 <li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
@@ -85,125 +85,38 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-tidying" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="utilizing-transformed-data" class="section level1" number="10">
 <h1>
-<span class="header-section-number">1</span> Data Tidying<a class="anchor" aria-label="anchor" href="#data-tidying"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data<a class="anchor" aria-label="anchor" href="#utilizing-transformed-data"><i class="fas fa-link"></i></a>
 </h1>
-<div id="general-snakemake-workflow" class="section level2" number="1.1">
-<h2>
-<span class="header-section-number">1.1</span> General snakemake workflow<a class="anchor" aria-label="anchor" href="#general-snakemake-workflow"><i class="fas fa-link"></i></a>
-</h2>
-<p><br></p>
-<div class="inline-figure"><img src="dags/rulegraph.svg"></div>
-<p>A tentative snakemake workflow that defines <strong>data processing rules</strong> in a DAG (directed acyclic graph) format.
-A detailed interactive snakemake HTML report is available <a href="https://complexdatainsights.com/imap/imap-data-processing/report.html">here</a>. Use a wider screen to get a better interactive snakemake report.</p>
-<p><br></p>
-</div>
-<div id="data-tidying-1" class="section level2" number="1.2">
-<h2>
-<span class="header-section-number">1.2</span> Data Tidying<a class="anchor" aria-label="anchor" href="#data-tidying-1"><i class="fas fa-link"></i></a>
-</h2>
-<p>Requires:</p>
+<p>After computing distances using various methods, such as Bray-Curtis, Jaccard, Euclidean, and Aitchison, we can harness these transformed data in downstream analyses. These analyses may encompass:</p>
 <ul>
-<li>Sample metadata</li>
-<li>OTU tables from <code>mothur</code> and <code>qiime2</code> pipelines.</li>
-<li>Taxonomy tables from <code>mothur</code> and <code>qiime2</code> pipelines.</li>
+<li>
+<strong>Beta Diversity Analysis:</strong> Comparing microbial community compositions between samples to elucidate differences or similarities.</li>
+<li>
+<strong>Multivariate Statistical Analysis:</strong> Assessing the significance of differences between groups of samples using methods like PERMANOVA or MANOVA.</li>
+<li>
+<strong>Data Visualization:</strong> Identifying patterns or clusters within the microbial community data through visualization techniques such as PCoA or NMDS plots.</li>
+<li>
+<strong>Correlation Analysis:</strong> Exploring relationships between microbial taxa and environmental variables to uncover potential ecological associations.</li>
 </ul>
-<p><br></p>
-</div>
-<div id="microbiome-composite-r-objects" class="section level2" number="1.3">
-<h2>
-<span class="header-section-number">1.3</span> Microbiome composite R objects<a class="anchor" aria-label="anchor" href="#microbiome-composite-r-objects"><i class="fas fa-link"></i></a>
-</h2>
-<p>Requires:</p>
-<ul>
-<li>Tidy sample metadata.</li>
-<li>Tidy OTU tables.</li>
-<li>Tidy taxonomy tables.</li>
-</ul>
-<p>The <code>mothur</code> and <code>qiime2</code> composite objects are in a long-format which is suitable for most types of data visualization.</p>
-<p><br></p>
-</div>
-<div id="microbioma-phyloseq-objects" class="section level2" number="1.4">
-<h2>
-<span class="header-section-number">1.4</span> Microbioma phyloseq objects<a class="anchor" aria-label="anchor" href="#microbioma-phyloseq-objects"><i class="fas fa-link"></i></a>
-</h2>
-<p>Requires:</p>
-<ul>
-<li>A <code>phyloseq</code> package</li>
-<li>Tidy sample metadata.</li>
-<li>Tidy OTU tables.</li>
-<li>Tidy taxonomy tables.</li>
-</ul>
-<p><br></p>
-</div>
-<div id="data-transformation" class="section level2" number="1.5">
-<h2>
-<span class="header-section-number">1.5</span> Data transformation<a class="anchor" aria-label="anchor" href="#data-transformation"><i class="fas fa-link"></i></a>
-</h2>
-<p>Requires:</p>
-<ul>
-<li>A <code>phyloseq</code> package</li>
-<li>A <code>microbiome</code> package</li>
-<li>Phyloseq objects</li>
-</ul>
-<p>Data transformation is intended to converting the values into ready-to-use matrices.
-There are different methods out there, and here are just a few:</p>
-<ul>
-<li>No transformation is similar to raw abundance.</li>
-<li>Compositional version or relative abundance.</li>
-<li>Arc sine (asin) transformation.</li>
-<li>Z-transform for OTUs.</li>
-<li>Z-transform for Samples.</li>
-<li>Log10 transformation.</li>
-<li>Log10p transformation,</li>
-<li>CLR transformation.</li>
-<li>Shift the baseline.</li>
-<li>Data Scaling.</li>
-</ul>
-<p><br></p>
-</div>
-<div id="data-reduction" class="section level2" number="1.6">
-<h2>
-<span class="header-section-number">1.6</span> Data reduction<a class="anchor" aria-label="anchor" href="#data-reduction"><i class="fas fa-link"></i></a>
-</h2>
-<p>Dimensionality reduction is intended to reduce the dimension of the variables but keeping as much of the variation as possible. , and includes:</p>
-<ol style="list-style-type: decimal">
-<li>Linear methods (commonly used in microbiome data analysis)
-<ul>
-<li>PCA (Principal Component Analysis)</li>
-<li>Factor Analysis</li>
-<li>LDA (Linear Discriminant Analysis)</li>
-<li>More <a href="https://towardsdatascience.com/dimensionality-reduction-for-machine-learning-80a46c2ebb7e">here.</a>
-</li>
-</ul>
-</li>
-<li>Non-linear methods</li>
-</ol>
-</div>
+<p>By leveraging the transformed data from distance calculations, we can gain deeper insights into microbial community dynamics and their relationships with various environmental factors or experimental conditions.</p>
+
 </div>
 
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="preface.html">Preparing for Downstream Analysis</a></div>
-<div class="next"><a href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></div>
+<div class="prev"><a href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></div>
+<div class="next"><a href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-tidying"><span class="header-section-number">1</span> Data Tidying</a></li>
-<li><a class="nav-link" href="#general-snakemake-workflow"><span class="header-section-number">1.1</span> General snakemake workflow</a></li>
-<li><a class="nav-link" href="#data-tidying-1"><span class="header-section-number">1.2</span> Data Tidying</a></li>
-<li><a class="nav-link" href="#microbiome-composite-r-objects"><span class="header-section-number">1.3</span> Microbiome composite R objects</a></li>
-<li><a class="nav-link" href="#microbioma-phyloseq-objects"><span class="header-section-number">1.4</span> Microbioma phyloseq objects</a></li>
-<li><a class="nav-link" href="#data-transformation"><span class="header-section-number">1.5</span> Data transformation</a></li>
-<li><a class="nav-link" href="#data-reduction"><span class="header-section-number">1.6</span> Data reduction</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#utilizing-transformed-data"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/01_data_tidying.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/01_data_tidying.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/06_distance_matrices.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/06_distance_matrices.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
         </ul>
 </div>
     </nav>

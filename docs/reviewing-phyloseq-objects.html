@@ -70,8 +70,9 @@
 <li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
 <li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">10</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -188,12 +189,12 @@ phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]</code></pre>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Staphylococcus                      0        0        0        0        0
-Uncultured Clostridiales I         19      120     1183      399       19
-Alcaligenes faecalis et rel.        1        2        3        2        2
-Bacteroides ovatus et rel.        427       15       31       46       29
-Uncultured Bacteroidetes            2        2        1        5        1</code></pre>
+                                Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Ruminococcus obeum et rel.            89      901      620      476      457
+Escherichia coli et rel.               9       13       12       33       11
+Ruminococcus callidus et rel.         17       78      124       38       40
+Clostridium colinum et rel.           24       30       11       10       86
+Anaerovorax odorimutans et rel.        6       73       30       60       12</code></pre>
 </div>
 <div id="taxonomy-table" class="section level2" number="6.8">
 <h2>
@@ -202,18 +203,18 @@ Uncultured Bacteroidetes            2        2        1        5        1</code>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                             Phylum           Family                    
-Staphylococcus               "Firmicutes"     "Bacilli"                 
-Uncultured Clostridiales I   "Firmicutes"     "Uncultured Clostridiales"
-Alcaligenes faecalis et rel. "Proteobacteria" "Proteobacteria"          
-Bacteroides ovatus et rel.   "Bacteroidetes"  "Bacteroidetes"           
-Uncultured Bacteroidetes     "Bacteroidetes"  "Bacteroidetes"           
-                             Genus                         
-Staphylococcus               "Staphylococcus"              
-Uncultured Clostridiales I   "Uncultured Clostridiales I"  
-Alcaligenes faecalis et rel. "Alcaligenes faecalis et rel."
-Bacteroides ovatus et rel.   "Bacteroides ovatus et rel."  
-Uncultured Bacteroidetes     "Uncultured Bacteroidetes"    </code></pre>
+                                Phylum           Family                    
+Ruminococcus obeum et rel.      "Firmicutes"     "Clostridium cluster XIVa"
+Escherichia coli et rel.        "Proteobacteria" "Proteobacteria"          
+Ruminococcus callidus et rel.   "Firmicutes"     "Clostridium cluster IV"  
+Clostridium colinum et rel.     "Firmicutes"     "Clostridium cluster XIVa"
+Anaerovorax odorimutans et rel. "Firmicutes"     "Clostridium cluster XI"  
+                                Genus                            
+Ruminococcus obeum et rel.      "Ruminococcus obeum et rel."     
+Escherichia coli et rel.        "Escherichia coli et rel."       
+Ruminococcus callidus et rel.   "Ruminococcus callidus et rel."  
+Clostridium colinum et rel.     "Clostridium colinum et rel."    
+Anaerovorax odorimutans et rel. "Anaerovorax odorimutans et rel."</code></pre>
 </div>
 <div id="phylogenetic-tree-if-available" class="section level2" number="6.9">
 <h2>
@@ -226,11 +227,11 @@ Uncultured Bacteroidetes     "Uncultured Bacteroidetes"    </code></pre>
 </h2>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
-<pre><code> [1] "Staphylococcus"                   "Uncultured Clostridiales I"      
- [3] "Alcaligenes faecalis et rel."     "Bacteroides ovatus et rel."      
- [5] "Uncultured Bacteroidetes"         "Dialister"                       
- [7] "Clostridium thermocellum et rel." "Novosphingobium"                 
- [9] "Ruminococcus gnavus et rel."      "Sutterella wadsworthia et rel."  </code></pre>
+<pre><code> [1] "Ruminococcus obeum et rel."         "Escherichia coli et rel."          
+ [3] "Ruminococcus callidus et rel."      "Clostridium colinum et rel."       
+ [5] "Anaerovorax odorimutans et rel."    "Burkholderia"                      
+ [7] "Dorea formicigenerans et rel."      "Coprobacillus catenaformis et rel."
+ [9] "Propionibacterium"                  "Granulicatella"                    </code></pre>
 </div>
 <div id="summarize-phyloseq-object" class="section level2" number="6.11">
 <h2>

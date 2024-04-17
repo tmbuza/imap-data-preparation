@@ -598,12 +598,12 @@ otu_table(ps)[1:5, 1:5]
 ```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Staphylococcus                      0        0        0        0        0
-Uncultured Clostridiales I         19      120     1183      399       19
-Alcaligenes faecalis et rel.        1        2        3        2        2
-Bacteroides ovatus et rel.        427       15       31       46       29
-Uncultured Bacteroidetes            2        2        1        5        1
+                                Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Ruminococcus obeum et rel.            89      901      620      476      457
+Escherichia coli et rel.               9       13       12       33       11
+Ruminococcus callidus et rel.         17       78      124       38       40
+Clostridium colinum et rel.           24       30       11       10       86
+Anaerovorax odorimutans et rel.        6       73       30       60       12
 ```
 
 ## Taxonomy table
@@ -614,18 +614,18 @@ tax_table(ps)[1:5, ]
 
 ```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                             Phylum           Family                    
-Staphylococcus               "Firmicutes"     "Bacilli"                 
-Uncultured Clostridiales I   "Firmicutes"     "Uncultured Clostridiales"
-Alcaligenes faecalis et rel. "Proteobacteria" "Proteobacteria"          
-Bacteroides ovatus et rel.   "Bacteroidetes"  "Bacteroidetes"           
-Uncultured Bacteroidetes     "Bacteroidetes"  "Bacteroidetes"           
-                             Genus                         
-Staphylococcus               "Staphylococcus"              
-Uncultured Clostridiales I   "Uncultured Clostridiales I"  
-Alcaligenes faecalis et rel. "Alcaligenes faecalis et rel."
-Bacteroides ovatus et rel.   "Bacteroides ovatus et rel."  
-Uncultured Bacteroidetes     "Uncultured Bacteroidetes"    
+                                Phylum           Family                    
+Ruminococcus obeum et rel.      "Firmicutes"     "Clostridium cluster XIVa"
+Escherichia coli et rel.        "Proteobacteria" "Proteobacteria"          
+Ruminococcus callidus et rel.   "Firmicutes"     "Clostridium cluster IV"  
+Clostridium colinum et rel.     "Firmicutes"     "Clostridium cluster XIVa"
+Anaerovorax odorimutans et rel. "Firmicutes"     "Clostridium cluster XI"  
+                                Genus                            
+Ruminococcus obeum et rel.      "Ruminococcus obeum et rel."     
+Escherichia coli et rel.        "Escherichia coli et rel."       
+Ruminococcus callidus et rel.   "Ruminococcus callidus et rel."  
+Clostridium colinum et rel.     "Clostridium colinum et rel."    
+Anaerovorax odorimutans et rel. "Anaerovorax odorimutans et rel."
 ```
 
 ## Phylogenetic tree if available
@@ -638,11 +638,11 @@ taxa_names(ps)[1:10]
 ```
 
 ```
- [1] "Staphylococcus"                   "Uncultured Clostridiales I"      
- [3] "Alcaligenes faecalis et rel."     "Bacteroides ovatus et rel."      
- [5] "Uncultured Bacteroidetes"         "Dialister"                       
- [7] "Clostridium thermocellum et rel." "Novosphingobium"                 
- [9] "Ruminococcus gnavus et rel."      "Sutterella wadsworthia et rel."  
+ [1] "Ruminococcus obeum et rel."         "Escherichia coli et rel."          
+ [3] "Ruminococcus callidus et rel."      "Clostridium colinum et rel."       
+ [5] "Anaerovorax odorimutans et rel."    "Burkholderia"                      
+ [7] "Dorea formicigenerans et rel."      "Coprobacillus catenaformis et rel."
+ [9] "Propionibacterium"                  "Granulicatella"                    
 ```
 
 ## Summarize Phyloseq Object
@@ -813,11 +813,16 @@ psextra_clr_dietswap %>%
 ```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
-Sample-1      -3.555474                   1.317812                    -1.497647
-Sample-2      -3.359449                   2.438871                    -1.490870
-Sample-3      -3.114983                   4.654395                    -1.169073
-Sample-4      -3.622689                   3.839628                    -1.348227
+         Ruminococcus obeum et rel. Escherichia coli et rel.
+Sample-1                   2.855975                0.5790592
+Sample-2                   4.452252                0.2409833
+Sample-3                   4.008689                0.1038925
+Sample-4                   4.015991                1.3535232
+         Ruminococcus callidus et rel.
+Sample-1                      1.207485
+Sample-2                      2.009720
+Sample-3                      2.402470
+Sample-4                      1.493693
 ```
 
 ```r
@@ -845,11 +850,16 @@ psextra_id_dietswap %>%
 ```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
-Sample-1              0                         19                            1
-Sample-2              0                        120                            2
-Sample-3              0                       1183                            3
-Sample-4              0                        399                            2
+         Ruminococcus obeum et rel. Escherichia coli et rel.
+Sample-1                         89                        9
+Sample-2                        901                       13
+Sample-3                        620                       12
+Sample-4                        476                       33
+         Ruminococcus callidus et rel.
+Sample-1                            17
+Sample-2                            78
+Sample-3                           124
+Sample-4                            38
 ```
 
 ```r
@@ -877,11 +887,16 @@ psextra_log10p_dietswap %>%
 ```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
-Sample-1              0                   1.301030                    0.3010300
-Sample-2              0                   2.082785                    0.4771213
-Sample-3              0                   3.073352                    0.6020600
-Sample-4              0                   2.602060                    0.4771213
+         Ruminococcus obeum et rel. Escherichia coli et rel.
+Sample-1                   1.954243                 1.000000
+Sample-2                   2.955207                 1.146128
+Sample-3                   2.793092                 1.113943
+Sample-4                   2.678518                 1.531479
+         Ruminococcus callidus et rel.
+Sample-1                      1.255273
+Sample-2                      1.897627
+Sample-3                      2.096910
+Sample-4                      1.591065
 ```
 
 

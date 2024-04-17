@@ -33,28 +33,39 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Staphylococcus                          0        0        0        0        0
-Uncultured Clostridiales I             19      120     1183      399       19
-Alcaligenes faecalis et rel.            1        2        3        2        2
-Bacteroides ovatus et rel.            427       15       31       46       29
-Uncultured Bacteroidetes                2        2        1        5        1
-Dialister                               5       23        6       24        6
-Clostridium thermocellum et rel.        0        0        0        0        0
-Novosphingobium                         0        0        0        0        0
-Ruminococcus gnavus et rel.            15       56       65       41       47
-Sutterella wadsworthia et rel.         77       11       44        7       55
-                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Staphylococcus                          0        0        0        0         0
-Uncultured Clostridiales I             43      137       70       59       315
-Alcaligenes faecalis et rel.            2        2        2        2         7
-Bacteroides ovatus et rel.             13       15       19        7        11
-Uncultured Bacteroidetes                0        1        1        0         2
-Dialister                              38       37       25       45         4
-Clostridium thermocellum et rel.        0        0        0        0         0
-Novosphingobium                         0        0        0        0         0
-Ruminococcus gnavus et rel.            61      101       19       21        19
-Sutterella wadsworthia et rel.         14       13       10        6        10
+                                   Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Ruminococcus obeum et rel.               89      901      620      476      457
+Escherichia coli et rel.                  9       13       12       33       11
+Ruminococcus callidus et rel.            17       78      124       38       40
+Clostridium colinum et rel.              24       30       11       10       86
+Anaerovorax odorimutans et rel.           6       73       30       60       12
+Burkholderia                              1        1        2        0        2
+Dorea formicigenerans et rel.            42      267      419      135      189
+Coprobacillus catenaformis et rel.        3        2        3        4        4
+Propionibacterium                         1        1        1        1        1
+Granulicatella                            0        5        0        0        0
+                                   Sample-6 Sample-7 Sample-8 Sample-9
+Ruminococcus obeum et rel.              375      661      444      339
+Escherichia coli et rel.                 54        8       17       73
+Ruminococcus callidus et rel.            64       29       84       35
+Clostridium colinum et rel.               9        7       29        7
+Anaerovorax odorimutans et rel.           9       45       14       14
+Burkholderia                              1        1        1        0
+Dorea formicigenerans et rel.           331      480      156      101
+Coprobacillus catenaformis et rel.        3        4        2        2
+Propionibacterium                         1        1        1        1
+Granulicatella                            1        0        0       16
+                                   Sample-10
+Ruminococcus obeum et rel.               599
+Escherichia coli et rel.                  14
+Ruminococcus callidus et rel.            545
+Clostridium colinum et rel.               22
+Anaerovorax odorimutans et rel.           32
+Burkholderia                               1
+Dorea formicigenerans et rel.             70
+Coprobacillus catenaformis et rel.         2
+Propionibacterium                          1
+Granulicatella                             0
 ```
 
 ##  No Transformation
@@ -85,12 +96,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3
-Staphylococcus                      0        0        0
-Uncultured Clostridiales I         19      120     1183
-Alcaligenes faecalis et rel.        1        2        3
-Bacteroides ovatus et rel.        427       15       31
-Uncultured Bacteroidetes            2        2        1
+                                Sample-1 Sample-2 Sample-3
+Ruminococcus obeum et rel.            89      901      620
+Escherichia coli et rel.               9       13       12
+Ruminococcus callidus et rel.         17       78      124
+Clostridium colinum et rel.           24       30       11
+Anaerovorax odorimutans et rel.        6       73       30
 ```
 
 ## Relative abundance
@@ -115,12 +126,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1     Sample-2     Sample-3
-Staphylococcus               0.0000000000 0.000000e+00 0.000000e+00
-Uncultured Clostridiales I   0.0022461284 5.690980e-03 4.095835e-02
-Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 1.038673e-04
-Bacteroides ovatus et rel.   0.0504787800 7.113725e-04 1.073296e-03
-Uncultured Bacteroidetes     0.0002364346 9.484966e-05 3.462244e-05
+                                    Sample-1     Sample-2     Sample-3
+Ruminococcus obeum et rel.      0.0105213382 0.0427297733 0.0214659142
+Escherichia coli et rel.        0.0010639556 0.0006165228 0.0004154693
+Ruminococcus callidus et rel.   0.0020096938 0.0036991369 0.0042931828
+Clostridium colinum et rel.     0.0028372148 0.0014227449 0.0003808469
+Anaerovorax odorimutans et rel. 0.0007093037 0.0034620127 0.0010386733
 ```
 
 ## Arc sine (asin) transformation
@@ -144,12 +155,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3 Sample-4
-Staphylococcus               0.000000 0.000000 0.000000 0.000000
-Uncultured Clostridiales I   0.054038 0.086080 0.232740 0.199116
-Alcaligenes faecalis et rel. 0.012391 0.011099 0.011615 0.014005
-Bacteroides ovatus et rel.   0.258934 0.030401 0.037345 0.067213
-Uncultured Bacteroidetes     0.017525 0.011099 0.006706 0.022144
+                                Sample-1 Sample-2 Sample-3 Sample-4
+Ruminococcus obeum et rel.      0.117166 0.237814 0.167759 0.217764
+Escherichia coli et rel.        0.037182 0.028301 0.023232 0.056916
+Ruminococcus callidus et rel.   0.051112 0.069370 0.074742 0.061081
+Clostridium colinum et rel.     0.060741 0.043000 0.022242 0.031320
+Anaerovorax odorimutans et rel. 0.030357 0.067106 0.036737 0.076780
 ```
 
 
@@ -180,12 +191,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1     Sample-2     Sample-3
-Staphylococcus               0.0000000000 0.000000e+00 0.000000e+00
-Uncultured Clostridiales I   0.0022461284 5.690980e-03 4.095835e-02
-Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 1.038673e-04
-Bacteroides ovatus et rel.   0.0504787800 7.113725e-04 1.073296e-03
-Uncultured Bacteroidetes     0.0002364346 9.484966e-05 3.462244e-05
+                                    Sample-1     Sample-2     Sample-3
+Ruminococcus obeum et rel.      0.0105213382 0.0427297733 0.0214659142
+Escherichia coli et rel.        0.0010639556 0.0006165228 0.0004154693
+Ruminococcus callidus et rel.   0.0020096938 0.0036991369 0.0042931828
+Clostridium colinum et rel.     0.0028372148 0.0014227449 0.0003808469
+Anaerovorax odorimutans et rel. 0.0007093037 0.0034620127 0.0010386733
 ```
 
 ## Z-transform for OTUs
@@ -214,12 +225,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1    Sample-2    Sample-3
-Staphylococcus               -0.26858398 -0.26858398 -0.26858398
-Uncultured Clostridiales I   -0.73136690  1.04729654  3.30105031
-Alcaligenes faecalis et rel. -0.93076516 -0.44189484 -0.09503583
-Bacteroides ovatus et rel.    1.80487522 -1.13754389 -0.51697242
-Uncultured Bacteroidetes      0.07483888  0.07483888 -0.50384818
+                                  Sample-1   Sample-2   Sample-3
+Ruminococcus obeum et rel.      -0.7310885  2.1112033  1.6508691
+Escherichia coli et rel.        -0.6024728 -0.3248101 -0.3859653
+Ruminococcus callidus et rel.   -0.8536852  0.8144821  1.3320113
+Clostridium colinum et rel.      0.3285117  0.5682040 -0.4893285
+Anaerovorax odorimutans et rel. -1.1540729  3.3528861  1.6899736
 ```
 
 ## Z-transform for Samples
@@ -248,12 +259,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1    Sample-2   Sample-3
-Staphylococcus               -1.1517915 -1.21672513 -1.1804675
-Uncultured Clostridiales I    0.4455659  1.02710632  2.0075089
-Alcaligenes faecalis et rel. -0.7821978 -0.70271169 -0.5559529
-Bacteroides ovatus et rel.    2.0789997  0.08050037  0.3808190
-Uncultured Bacteroidetes     -0.5659993 -0.70271169 -0.8682102
+                                   Sample-1   Sample-2    Sample-3
+Ruminococcus obeum et rel.       1.24755658 1.96698523  1.71679611
+Escherichia coli et rel.         0.07597223 0.01802434 -0.02497819
+Ruminococcus callidus et rel.    0.38938655 0.82763115  0.99464951
+Clostridium colinum et rel.      0.56454854 0.38995231 -0.06103679
+Anaerovorax odorimutans et rel. -0.11421078 0.79704017  0.36651647
 ```
 
 ## Log10 Transform
@@ -282,12 +293,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                              Sample-1  Sample-2 Sample-3
-Staphylococcus               0.0000000 0.0000000 0.000000
-Uncultured Clostridiales I   1.3010300 2.0827854 3.073352
-Alcaligenes faecalis et rel. 0.3010300 0.4771213 0.602060
-Bacteroides ovatus et rel.   2.6314438 1.2041200 1.505150
-Uncultured Bacteroidetes     0.4771213 0.4771213 0.301030
+                                Sample-1 Sample-2 Sample-3
+Ruminococcus obeum et rel.      1.954243 2.955207 2.793092
+Escherichia coli et rel.        1.000000 1.146128 1.113943
+Ruminococcus callidus et rel.   1.255273 1.897627 2.096910
+Clostridium colinum et rel.     1.397940 1.491362 1.079181
+Anaerovorax odorimutans et rel. 0.845098 1.869232 1.491362
 ```
 
 ## Log10p Transform
@@ -316,12 +327,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                              Sample-1  Sample-2 Sample-3
-Staphylococcus               0.0000000 0.0000000 0.000000
-Uncultured Clostridiales I   1.3010300 2.0827854 3.073352
-Alcaligenes faecalis et rel. 0.3010300 0.4771213 0.602060
-Bacteroides ovatus et rel.   2.6314438 1.2041200 1.505150
-Uncultured Bacteroidetes     0.4771213 0.4771213 0.301030
+                                Sample-1 Sample-2 Sample-3
+Ruminococcus obeum et rel.      1.954243 2.955207 2.793092
+Escherichia coli et rel.        1.000000 1.146128 1.113943
+Ruminococcus callidus et rel.   1.255273 1.897627 2.096910
+Clostridium colinum et rel.     1.397940 1.491362 1.079181
+Anaerovorax odorimutans et rel. 0.845098 1.869232 1.491362
 ```
 
 ## CLR Transform
@@ -351,12 +362,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1   Sample-2  Sample-3
-Staphylococcus               -3.5554744 -3.3594489 -3.114983
-Uncultured Clostridiales I    1.3178115  2.4388711  4.654395
-Alcaligenes faecalis et rel. -1.4976474 -1.4908696 -1.169073
-Bacteroides ovatus et rel.    4.4228219  0.3804359  1.028151
-Uncultured Bacteroidetes     -0.8704964 -1.4908696 -2.016371
+                                 Sample-1  Sample-2   Sample-3
+Ruminococcus obeum et rel.      2.8559753 4.4522524 4.00868942
+Escherichia coli et rel.        0.5790592 0.2409833 0.10389246
+Ruminococcus callidus et rel.   1.2074853 2.0097198 2.40246953
+Clostridium colinum et rel.     1.5498317 1.0616335 0.02051085
+Anaerovorax odorimutans et rel. 0.1815673 1.9437894 0.99589050
 ```
 
 
@@ -386,12 +397,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3
-Staphylococcus                      1        1        1
-Uncultured Clostridiales I         20      121     1184
-Alcaligenes faecalis et rel.        2        3        4
-Bacteroides ovatus et rel.        428       16       32
-Uncultured Bacteroidetes            3        3        2
+                                Sample-1 Sample-2 Sample-3
+Ruminococcus obeum et rel.            90      902      621
+Escherichia coli et rel.              10       14       13
+Ruminococcus callidus et rel.         18       79      125
+Clostridium colinum et rel.           25       31       12
+Anaerovorax odorimutans et rel.        7       74       31
 ```
 
 ## Data Scaling
@@ -420,12 +431,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1 Sample-2 Sample-3
-Staphylococcus                      0        0        0
-Uncultured Clostridiales I         19      120     1183
-Alcaligenes faecalis et rel.        1        2        3
-Bacteroides ovatus et rel.        427       15       31
-Uncultured Bacteroidetes            2        2        1
+                                Sample-1 Sample-2 Sample-3
+Ruminococcus obeum et rel.            89      901      620
+Escherichia coli et rel.               9       13       12
+Ruminococcus callidus et rel.         17       78      124
+Clostridium colinum et rel.           24       30       11
+Anaerovorax odorimutans et rel.        6       73       30
 ```
 
 ## Save transformed objects

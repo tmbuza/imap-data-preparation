@@ -73,9 +73,11 @@ phyloseq-extra-bray-curtis-dissimilarity
 confirm-computed-bray-curtis-distance-objects
 jaccard-distance
 confirm-computed-jaccard-distance-objects
-unifrac-distance-weighted-and-unweighted
 euclidean-distance
+confirm-computed-euclidean-distance-objects
 aitchison-distance
+confirm-computed-aitchison-distance-objects
+utilizing-transformed-data
 dimensionality-reduction-techniques
 pca-principal-component-analysis
 mds-multidimensional-scaling

@@ -213,51 +213,10 @@ Loading objects:
 ```
 
 
-## UniFrac Distance (Weighted and Unweighted)
-UniFrac distances quantify the dissimilarity between microbial communities based on the evolutionary distances along a phylogenetic tree. Unweighted UniFrac considers only the presence or absence of taxa, while weighted UniFrac also takes into account the relative abundance of taxa.
-
-
-
-```r
-library(vegan)
-library(dplyr)
-
-ps_asin_jaccard_dist  <- vegdist(t(otu_table(ps_asin)), method="jaccard") %>%
-  as.matrix()
-ps_identity_jaccard_dist  <- vegdist(t(otu_table(ps_identity)), method="jaccard") %>%
-  as.matrix 
-ps_compositional_jaccard_dist  <- vegdist(t(otu_table(ps_compositional)), method="jaccard") %>%
-  as.matrix 
-ps_z_otu_jaccard_dist  <- vegdist(t(otu_table(ps_z_otu)), method="jaccard") %>%
-  as.matrix 
-ps_z_sample_jaccard_dist  <- vegdist(t(otu_table(ps_z_sample)), method="jaccard") %>%
-  as.matrix 
-ps_log10_jaccard_dist  <- vegdist(t(otu_table(ps_log10)), method="jaccard") %>%
-  as.matrix 
-ps_log10p_jaccard_dist  <- vegdist(t(otu_table(ps_log10p)), method="jaccard") %>%
-  as.matrix 
-ps_clr_jaccard_dist  <- vegdist(t(otu_table(ps_clr)), method="jaccard") %>%
-  as.matrix 
-ps_shift_jaccard_dist  <- vegdist(t(otu_table(ps_shift)), method="jaccard") %>%
-  as.matrix 
-ps_scale_jaccard_dist  <- vegdist(t(otu_table(ps_scale)), method="jaccard") %>%
-  as.matrix 
-
-save(ps_asin_jaccard_dist, 
-     ps_compositional_jaccard_dist, 
-     ps_z_otu_jaccard_dist, 
-     ps_z_sample_jaccard_dist, 
-     ps_log10_jaccard_dist, 
-     ps_log10p_jaccard_dist, 
-     ps_clr_jaccard_dist, 
-     ps_shift_jaccard_dist, 
-     ps_scale_jaccard_dist, 
-     file = "data/jaccard_distances.rda")
-```
-
 
 ## Euclidean Distance
 The Euclidean distance calculates the straight-line distance between two samples in a multidimensional space based on their abundance profiles. It considers differences in both presence and abundance of taxa.
+
 
 
 ```r
@@ -298,6 +257,26 @@ save(ps_asin_euclidean_dist,
 ```
 
 
+## Confirm computed Euclidean distance objects
+
+```r
+load("data/euclidean_distances.rda", verbose = T)
+```
+
+```
+Loading objects:
+  ps_asin_euclidean_dist
+  ps_compositional_euclidean_dist
+  ps_z_otu_euclidean_dist
+  ps_z_sample_euclidean_dist
+  ps_log10_euclidean_dist
+  ps_log10p_euclidean_dist
+  ps_clr_euclidean_dist
+  ps_shift_euclidean_dist
+  ps_scale_euclidean_dist
+```
+
+
 ## Aitchison Distance
 The Aitchison distance, also known as the compositional distance or log-ratio distance, is specifically designed for compositional data such as microbiome abundance data. It calculates the dissimilarity between two samples based on the log-ratio transformations of their compositional vectors, providing meaningful comparisons between samples while addressing the compositional constraints inherent in relative abundance data.
 
@@ -318,5 +297,31 @@ save(ps_GlobalPatterns_aitchison_dists,
      ps_kostic_crc_aitchison_dists, 
      file = "data/aitchison_distances.rda")
 ```
+
+
+
+## Confirm computed Aitchison distance objects
+
+```r
+load("data/aitchison_distances.rda", verbose = T)
+```
+
+```
+Loading objects:
+  ps_GlobalPatterns_aitchison_dists
+  ps_dietswap_aitchison_dists
+  ps_kostic_crc_aitchison_dists
+```
+
+# What's Next: Utilizing Transformed Data {#utilizing-transformed-data}
+
+After computing distances using various methods, such as Bray-Curtis, Jaccard, Euclidean, and Aitchison, we can harness these transformed data in downstream analyses. These analyses may encompass:
+
+- **Beta Diversity Analysis:** Comparing microbial community compositions between samples to elucidate differences or similarities.
+- **Multivariate Statistical Analysis:** Assessing the significance of differences between groups of samples using methods like PERMANOVA or MANOVA.
+- **Data Visualization:** Identifying patterns or clusters within the microbial community data through visualization techniques such as PCoA or NMDS plots.
+- **Correlation Analysis:** Exploring relationships between microbial taxa and environmental variables to uncover potential ecological associations.
+
+By leveraging the transformed data from distance calculations, we can gain deeper insights into microbial community dynamics and their relationships with various environmental factors or experimental conditions.
 
 

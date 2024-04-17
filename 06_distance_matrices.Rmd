@@ -236,6 +236,7 @@ After computing distances using various methods, such as Bray-Curtis, Jaccard, E
 - **Multivariate Statistical Analysis:** Assessing the significance of differences between groups of samples using methods like PERMANOVA or MANOVA.
 - **Data Visualization:** Identifying patterns or clusters within the microbial community data through visualization techniques such as PCoA or NMDS plots.
 - **Correlation Analysis:** Exploring relationships between microbial taxa and environmental variables to uncover potential ecological associations.
+- **Dimensionality Reduction:** Employing techniques like Principal Component Analysis (PCA), t-Distributed Stochastic Neighbor Embedding (t-SNE), or Uniform Manifold Approximation and Projection (UMAP) to visualize high-dimensional microbiome data in lower-dimensional spaces.
 
 By leveraging the transformed data from distance calculations, we can gain deeper insights into microbial community dynamics and their relationships with various environmental factors or experimental conditions.
 

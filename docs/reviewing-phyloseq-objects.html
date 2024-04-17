@@ -189,12 +189,12 @@ phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]</code></pre>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Ruminococcus obeum et rel.            89      901      620      476      457
-Escherichia coli et rel.               9       13       12       33       11
-Ruminococcus callidus et rel.         17       78      124       38       40
-Clostridium colinum et rel.           24       30       11       10       86
-Anaerovorax odorimutans et rel.        6       73       30       60       12</code></pre>
+                               Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Ruminococcus bromii et rel.          72      403      106       60       30
+Enterococcus                          3      232        5        5        4
+Lactococcus                           1        4        2       81        1
+Roseburia intestinalis et rel.       34       10       18        7       24
+Bacteroides fragilis et rel.        443       21       73       29       33</code></pre>
 </div>
 <div id="taxonomy-table" class="section level2" number="6.8">
 <h2>
@@ -203,18 +203,18 @@ Anaerovorax odorimutans et rel.        6       73       30       60       12</co
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                Phylum           Family                    
-Ruminococcus obeum et rel.      "Firmicutes"     "Clostridium cluster XIVa"
-Escherichia coli et rel.        "Proteobacteria" "Proteobacteria"          
-Ruminococcus callidus et rel.   "Firmicutes"     "Clostridium cluster IV"  
-Clostridium colinum et rel.     "Firmicutes"     "Clostridium cluster XIVa"
-Anaerovorax odorimutans et rel. "Firmicutes"     "Clostridium cluster XI"  
-                                Genus                            
-Ruminococcus obeum et rel.      "Ruminococcus obeum et rel."     
-Escherichia coli et rel.        "Escherichia coli et rel."       
-Ruminococcus callidus et rel.   "Ruminococcus callidus et rel."  
-Clostridium colinum et rel.     "Clostridium colinum et rel."    
-Anaerovorax odorimutans et rel. "Anaerovorax odorimutans et rel."</code></pre>
+                               Phylum          Family                    
+Ruminococcus bromii et rel.    "Firmicutes"    "Clostridium cluster IV"  
+Enterococcus                   "Firmicutes"    "Bacilli"                 
+Lactococcus                    "Firmicutes"    "Bacilli"                 
+Roseburia intestinalis et rel. "Firmicutes"    "Clostridium cluster XIVa"
+Bacteroides fragilis et rel.   "Bacteroidetes" "Bacteroidetes"           
+                               Genus                           
+Ruminococcus bromii et rel.    "Ruminococcus bromii et rel."   
+Enterococcus                   "Enterococcus"                  
+Lactococcus                    "Lactococcus"                   
+Roseburia intestinalis et rel. "Roseburia intestinalis et rel."
+Bacteroides fragilis et rel.   "Bacteroides fragilis et rel."  </code></pre>
 </div>
 <div id="phylogenetic-tree-if-available" class="section level2" number="6.9">
 <h2>
@@ -227,11 +227,11 @@ Anaerovorax odorimutans et rel. "Anaerovorax odorimutans et rel."</code></pre>
 </h2>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
-<pre><code> [1] "Ruminococcus obeum et rel."         "Escherichia coli et rel."          
- [3] "Ruminococcus callidus et rel."      "Clostridium colinum et rel."       
- [5] "Anaerovorax odorimutans et rel."    "Burkholderia"                      
- [7] "Dorea formicigenerans et rel."      "Coprobacillus catenaformis et rel."
- [9] "Propionibacterium"                  "Granulicatella"                    </code></pre>
+<pre><code> [1] "Ruminococcus bromii et rel."      "Enterococcus"                    
+ [3] "Lactococcus"                      "Roseburia intestinalis et rel."  
+ [5] "Bacteroides fragilis et rel."     "Bacteroides intestinalis et rel."
+ [7] "Prevotella oralis et rel."        "Eubacterium ventriosum et rel."  
+ [9] "Uncultured Clostridiales II"      "Granulicatella"                  </code></pre>
 </div>
 <div id="summarize-phyloseq-object" class="section level2" number="6.11">
 <h2>

@@ -33,39 +33,28 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                   Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Ruminococcus obeum et rel.               89      901      620      476      457
-Escherichia coli et rel.                  9       13       12       33       11
-Ruminococcus callidus et rel.            17       78      124       38       40
-Clostridium colinum et rel.              24       30       11       10       86
-Anaerovorax odorimutans et rel.           6       73       30       60       12
-Burkholderia                              1        1        2        0        2
-Dorea formicigenerans et rel.            42      267      419      135      189
-Coprobacillus catenaformis et rel.        3        2        3        4        4
-Propionibacterium                         1        1        1        1        1
-Granulicatella                            0        5        0        0        0
-                                   Sample-6 Sample-7 Sample-8 Sample-9
-Ruminococcus obeum et rel.              375      661      444      339
-Escherichia coli et rel.                 54        8       17       73
-Ruminococcus callidus et rel.            64       29       84       35
-Clostridium colinum et rel.               9        7       29        7
-Anaerovorax odorimutans et rel.           9       45       14       14
-Burkholderia                              1        1        1        0
-Dorea formicigenerans et rel.           331      480      156      101
-Coprobacillus catenaformis et rel.        3        4        2        2
-Propionibacterium                         1        1        1        1
-Granulicatella                            1        0        0       16
-                                   Sample-10
-Ruminococcus obeum et rel.               599
-Escherichia coli et rel.                  14
-Ruminococcus callidus et rel.            545
-Clostridium colinum et rel.               22
-Anaerovorax odorimutans et rel.           32
-Burkholderia                               1
-Dorea formicigenerans et rel.             70
-Coprobacillus catenaformis et rel.         2
-Propionibacterium                          1
-Granulicatella                             0
+                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Ruminococcus bromii et rel.            72      403      106       60       30
+Enterococcus                            3      232        5        5        4
+Lactococcus                             1        4        2       81        1
+Roseburia intestinalis et rel.         34       10       18        7       24
+Bacteroides fragilis et rel.          443       21       73       29       33
+Bacteroides intestinalis et rel.       12        1        3        6        3
+Prevotella oralis et rel.              22      747     1832       10     1505
+Eubacterium ventriosum et rel.         10       20       13       11       14
+Uncultured Clostridiales II            27      205      284      155       30
+Granulicatella                          0        5        0        0        0
+                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Ruminococcus bromii et rel.            19       17      189       16        55
+Enterococcus                           11        4        6      692         6
+Lactococcus                             6        1        1        7         1
+Roseburia intestinalis et rel.         31       14       70       13         8
+Bacteroides fragilis et rel.           14       22      560        8        26
+Bacteroides intestinalis et rel.        1        1        2        0         1
+Prevotella oralis et rel.            1454       75     1806      138       637
+Eubacterium ventriosum et rel.         18       19       25       10        15
+Uncultured Clostridiales II            35      175       45       51       141
+Granulicatella                          1        0        0       16         0
 ```
 
 ##  No Transformation
@@ -96,12 +85,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3
-Ruminococcus obeum et rel.            89      901      620
-Escherichia coli et rel.               9       13       12
-Ruminococcus callidus et rel.         17       78      124
-Clostridium colinum et rel.           24       30       11
-Anaerovorax odorimutans et rel.        6       73       30
+                               Sample-1 Sample-2 Sample-3
+Ruminococcus bromii et rel.          72      403      106
+Enterococcus                          3      232        5
+Lactococcus                           1        4        2
+Roseburia intestinalis et rel.       34       10       18
+Bacteroides fragilis et rel.        443       21       73
 ```
 
 ## Relative abundance
@@ -126,12 +115,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                    Sample-1     Sample-2     Sample-3
-Ruminococcus obeum et rel.      0.0105213382 0.0427297733 0.0214659142
-Escherichia coli et rel.        0.0010639556 0.0006165228 0.0004154693
-Ruminococcus callidus et rel.   0.0020096938 0.0036991369 0.0042931828
-Clostridium colinum et rel.     0.0028372148 0.0014227449 0.0003808469
-Anaerovorax odorimutans et rel. 0.0007093037 0.0034620127 0.0010386733
+                                   Sample-1     Sample-2     Sample-3
+Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
+Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
+Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
+Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
+Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03
 ```
 
 ## Arc sine (asin) transformation
@@ -155,12 +144,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3 Sample-4
-Ruminococcus obeum et rel.      0.117166 0.237814 0.167759 0.217764
-Escherichia coli et rel.        0.037182 0.028301 0.023232 0.056916
-Ruminococcus callidus et rel.   0.051112 0.069370 0.074742 0.061081
-Clostridium colinum et rel.     0.060741 0.043000 0.022242 0.031320
-Anaerovorax odorimutans et rel. 0.030357 0.067106 0.036737 0.076780
+                               Sample-1 Sample-2 Sample-3 Sample-4
+Ruminococcus bromii et rel.    0.105337 0.158212 0.069095 0.076780
+Enterococcus                   0.021464 0.119828 0.014995 0.022144
+Lactococcus                    0.012391 0.015697 0.009484 0.089241
+Roseburia intestinalis et rel. 0.072315 0.024821 0.028454 0.026203
+Bacteroides fragilis et rel.   0.263854 0.035973 0.057326 0.053352
 ```
 
 
@@ -191,12 +180,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                    Sample-1     Sample-2     Sample-3
-Ruminococcus obeum et rel.      0.0105213382 0.0427297733 0.0214659142
-Escherichia coli et rel.        0.0010639556 0.0006165228 0.0004154693
-Ruminococcus callidus et rel.   0.0020096938 0.0036991369 0.0042931828
-Clostridium colinum et rel.     0.0028372148 0.0014227449 0.0003808469
-Anaerovorax odorimutans et rel. 0.0007093037 0.0034620127 0.0010386733
+                                   Sample-1     Sample-2     Sample-3
+Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
+Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
+Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
+Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
+Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03
 ```
 
 ## Z-transform for OTUs
@@ -225,12 +214,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                  Sample-1   Sample-2   Sample-3
-Ruminococcus obeum et rel.      -0.7310885  2.1112033  1.6508691
-Escherichia coli et rel.        -0.6024728 -0.3248101 -0.3859653
-Ruminococcus callidus et rel.   -0.8536852  0.8144821  1.3320113
-Clostridium colinum et rel.      0.3285117  0.5682040 -0.4893285
-Anaerovorax odorimutans et rel. -1.1540729  3.3528861  1.6899736
+                                 Sample-1   Sample-2    Sample-3
+Ruminococcus bromii et rel.     0.8452788  2.4252435  1.19837397
+Enterococcus                   -0.5423550  5.8629260  0.09658265
+Lactococcus                    -0.2903369  2.3306971  0.86948912
+Roseburia intestinalis et rel.  1.0432030 -0.4633681  0.24802758
+Bacteroides fragilis et rel.    1.3124945 -1.1679540 -0.16660347
 ```
 
 ## Z-transform for Samples
@@ -259,12 +248,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1   Sample-2    Sample-3
-Ruminococcus obeum et rel.       1.24755658 1.96698523  1.71679611
-Escherichia coli et rel.         0.07597223 0.01802434 -0.02497819
-Ruminococcus callidus et rel.    0.38938655 0.82763115  0.99464951
-Clostridium colinum et rel.      0.56454854 0.38995231 -0.06103679
-Anaerovorax odorimutans et rel. -0.11421078 0.79704017  0.36651647
+                                 Sample-1   Sample-2   Sample-3
+Ruminococcus bromii et rel.     1.1359287  1.5911880  0.9246048
+Enterococcus                   -0.4126041  1.3336806 -0.3732941
+Lactococcus                    -0.7821978 -0.4637090 -0.6855514
+Roseburia intestinalis et rel.  0.7439592 -0.0948094  0.1459789
+Bacteroides fragilis et rel.    2.0985693  0.2294970  0.7584797
 ```
 
 ## Log10 Transform
@@ -293,12 +282,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3
-Ruminococcus obeum et rel.      1.954243 2.955207 2.793092
-Escherichia coli et rel.        1.000000 1.146128 1.113943
-Ruminococcus callidus et rel.   1.255273 1.897627 2.096910
-Clostridium colinum et rel.     1.397940 1.491362 1.079181
-Anaerovorax odorimutans et rel. 0.845098 1.869232 1.491362
+                               Sample-1 Sample-2  Sample-3
+Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
+Enterococcus                   0.602060 2.367356 0.7781513
+Lactococcus                    0.301030 0.698970 0.4771213
+Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
+Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317
 ```
 
 ## Log10p Transform
@@ -327,12 +316,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3
-Ruminococcus obeum et rel.      1.954243 2.955207 2.793092
-Escherichia coli et rel.        1.000000 1.146128 1.113943
-Ruminococcus callidus et rel.   1.255273 1.897627 2.096910
-Clostridium colinum et rel.     1.397940 1.491362 1.079181
-Anaerovorax odorimutans et rel. 0.845098 1.869232 1.491362
+                               Sample-1 Sample-2  Sample-3
+Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
+Enterococcus                   0.602060 2.367356 0.7781513
+Lactococcus                    0.301030 0.698970 0.4771213
+Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
+Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317
 ```
 
 ## CLR Transform
@@ -362,12 +351,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1  Sample-2   Sample-3
-Ruminococcus obeum et rel.      2.8559753 4.4522524 4.00868942
-Escherichia coli et rel.        0.5790592 0.2409833 0.10389246
-Ruminococcus callidus et rel.   1.2074853 2.0097198 2.40246953
-Clostridium colinum et rel.     1.5498317 1.0616335 0.02051085
-Anaerovorax odorimutans et rel. 0.1815673 1.9437894 0.99589050
+                                 Sample-1    Sample-2   Sample-3
+Ruminococcus bromii et rel.     2.6443928  3.64818403  2.2463088
+Enterococcus                   -0.4880348  3.09665162 -0.7170881
+Lactococcus                    -1.4976474 -0.87803411 -1.5055455
+Roseburia intestinalis et rel.  1.8963532 -0.01322079  0.4959345
+Bacteroides fragilis et rel.    4.4595952  0.71009732  1.8754492
 ```
 
 
@@ -397,12 +386,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3
-Ruminococcus obeum et rel.            90      902      621
-Escherichia coli et rel.              10       14       13
-Ruminococcus callidus et rel.         18       79      125
-Clostridium colinum et rel.           25       31       12
-Anaerovorax odorimutans et rel.        7       74       31
+                               Sample-1 Sample-2 Sample-3
+Ruminococcus bromii et rel.          73      404      107
+Enterococcus                          4      233        6
+Lactococcus                           2        5        3
+Roseburia intestinalis et rel.       35       11       19
+Bacteroides fragilis et rel.        444       22       74
 ```
 
 ## Data Scaling
@@ -431,12 +420,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                Sample-1 Sample-2 Sample-3
-Ruminococcus obeum et rel.            89      901      620
-Escherichia coli et rel.               9       13       12
-Ruminococcus callidus et rel.         17       78      124
-Clostridium colinum et rel.           24       30       11
-Anaerovorax odorimutans et rel.        6       73       30
+                               Sample-1 Sample-2 Sample-3
+Ruminococcus bromii et rel.          72      403      106
+Enterococcus                          3      232        5
+Lactococcus                           1        4        2
+Roseburia intestinalis et rel.       34       10       18
+Bacteroides fragilis et rel.        443       21       73
 ```
 
 ## Save transformed objects

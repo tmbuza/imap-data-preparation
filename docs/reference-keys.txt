@@ -50,6 +50,9 @@ load-pre-existing-phyloseq-objects
 aggregate-taxonomic-data
 confirm-the-psextra-class
 save-psextra-to-r-object
+pipeline-for-cleaning-phyloseq-objects
+demo-with-the-dietswap-dataset
+phyloseq_based_data
 data-tarnsformation
 import-processed-phyloseq-object
 raw-abundance
@@ -68,15 +71,10 @@ save-transformed-objects
 confirm-saved-object
 distance-calculation-in-microbiome-data-analysis
 import-processed-and-transformed-data-objects
-phyloseq-bray-curtis-dissimilarity
-phyloseq-extra-bray-curtis-dissimilarity
-confirm-computed-bray-curtis-distance-objects
+bray-curtis-dissimilarity
 jaccard-distance
-confirm-computed-jaccard-distance-objects
 euclidean-distance
-confirm-computed-euclidean-distance-objects
 aitchison-distance
-confirm-computed-aitchison-distance-objects
 utilizing-transformed-data
 dimensionality-reduction-techniques
 pca-principal-component-analysis

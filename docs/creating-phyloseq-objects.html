@@ -66,13 +66,15 @@
 <li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
 <li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
 <li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
+<li class="book-part">CLEANING PHYLOSEQ OBJECT</li>
+<li><a class="" href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
 <li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
-<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -134,11 +136,11 @@
 </h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mt_ps_raw</span></span></code></pre></div>
-<pre><code>## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
-## sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
-## tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]</code></pre>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
+sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
+tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]</code></pre>
 </div>
 </div>
 <div id="from-qiime2-output" class="section level2" number="4.2">
@@ -186,11 +188,11 @@
 </h2>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q2_ps_raw</span></span></code></pre></div>
-<pre><code>## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
-## sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
-## tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]</code></pre>
+<pre><code>phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
+sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
+tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
+phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]</code></pre>
 </div>
 </div>
 

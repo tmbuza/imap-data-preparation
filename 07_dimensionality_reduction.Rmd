@@ -32,7 +32,7 @@ library(microbiome)
 library(vegan)
 
 cat("\nSaved RData objects\n\n")
-load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = T)
+load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = T)
 load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
 load("../imap-data-preparation/data/bray_distances.rda", verbose = T)
 

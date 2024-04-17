@@ -20,14 +20,14 @@ library(microbiome)
 
 ## Import processed phyloseq object
 ```{r}
-load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = TRUE) 
+load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = TRUE) 
 
 ```
 
 ## Raw Abundance
 
 ```{r}
-ps_raw <- ps_dietswap
+ps_raw <- psextra_raw
 otu_table(ps_raw)[1:10, 1:10]
 
 ```

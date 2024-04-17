@@ -11,50 +11,51 @@ The process of data transformation in microbiome analysis involves converting ra
 ## Import processed phyloseq object
 
 ```r
-load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = TRUE) 
+load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = TRUE) 
 ```
 
 ```
 Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc
+  ps_raw
+  ps_rel
+  psextra_raw
+  psextra_rel
+  ps_df
 ```
 
 ## Raw Abundance
 
 
 ```r
-ps_raw <- ps_dietswap
+ps_raw <- psextra_raw
 otu_table(ps_raw)[1:10, 1:10]
 ```
 
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Ruminococcus bromii et rel.            72      403      106       60       30
-Enterococcus                            3      232        5        5        4
-Lactococcus                             1        4        2       81        1
-Roseburia intestinalis et rel.         34       10       18        7       24
-Bacteroides fragilis et rel.          443       21       73       29       33
-Bacteroides intestinalis et rel.       12        1        3        6        3
-Prevotella oralis et rel.              22      747     1832       10     1505
-Eubacterium ventriosum et rel.         10       20       13       11       14
-Uncultured Clostridiales II            27      205      284      155       30
-Granulicatella                          0        5        0        0        0
-                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Ruminococcus bromii et rel.            19       17      189       16        55
-Enterococcus                           11        4        6      692         6
-Lactococcus                             6        1        1        7         1
-Roseburia intestinalis et rel.         31       14       70       13         8
-Bacteroides fragilis et rel.           14       22      560        8        26
-Bacteroides intestinalis et rel.        1        1        2        0         1
-Prevotella oralis et rel.            1454       75     1806      138       637
-Eubacterium ventriosum et rel.         18       19       25       10        15
-Uncultured Clostridiales II            35      175       45       51       141
-Granulicatella                          1        0        0       16         0
+                            Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Sporobacter termitidis            87     1187      713      764      138
+Eubacterium hallii                10      102       39       31       28
+Ruminococcus gnavus               15       56       65       41       47
+Klebisiella pneumoniae             3        6        6       22        6
+Veillonella                        8       19        6        5        7
+Oceanospirillum                    1        2        1        2        1
+Ruminococcus lactaris              3        9       23       39        7
+Weissella                          1      180        2       13        2
+Eggerthella lenta                  3       10        8       18        4
+Uncultured Selenomonadaceae        0        0        0        0        0
+                            Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Sporobacter termitidis            81      714      258      159       353
+Eubacterium hallii                40       58       26       20        28
+Ruminococcus gnavus               61      101       19       21        19
+Klebisiella pneumoniae            32        4        5       51        20
+Veillonella                        8       11       11       71        74
+Oceanospirillum                    1        1        1        1         2
+Ruminococcus lactaris             15       22        8        4         4
+Weissella                          8        6        1       20         4
+Eggerthella lenta                  7       13        6        6         8
+Uncultured Selenomonadaceae        0        0        0        0         0
 ```
 
 ##  No Transformation
@@ -71,7 +72,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -85,12 +85,12 @@ otu_table(ps_identity)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          72      403      106
-Enterococcus                          3      232        5
-Lactococcus                           1        4        2
-Roseburia intestinalis et rel.       34       10       18
-Bacteroides fragilis et rel.        443       21       73
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       87     1187      713
+Eubacterium hallii           10      102       39
+Ruminococcus gnavus          15       56       65
+Klebisiella pneumoniae        3        6        6
+Veillonella                   8       19        6
 ```
 
 ## Relative abundance
@@ -105,7 +105,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -115,12 +114,12 @@ otu_table(ps_rel)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
-Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
-Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
-Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
-Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03
+                           Sample-1     Sample-2     Sample-3
+Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
+Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
+Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
+Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
+Veillonella            0.0009457383 0.0009010718 0.0002077347
 ```
 
 ## Arc sine (asin) transformation
@@ -144,12 +143,12 @@ ps_asin[1:5, 1:4]
 ```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4
-Ruminococcus bromii et rel.    0.105337 0.158212 0.069095 0.076780
-Enterococcus                   0.021464 0.119828 0.014995 0.022144
-Lactococcus                    0.012391 0.015697 0.009484 0.089241
-Roseburia intestinalis et rel. 0.072315 0.024821 0.028454 0.026203
-Bacteroides fragilis et rel.   0.263854 0.035973 0.057326 0.053352
+                       Sample-1 Sample-2 Sample-3 Sample-4
+Sporobacter termitidis 0.115836 0.273804 0.180029 0.277249
+Eubacterium hallii     0.039194 0.079347 0.041890 0.055163
+Ruminococcus gnavus    0.048009 0.058765 0.054090 0.063450
+Klebisiella pneumoniae 0.021464 0.019225 0.016427 0.046464
+Veillonella            0.035055 0.034216 0.016427 0.022144
 ```
 
 
@@ -166,7 +165,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -180,12 +178,12 @@ otu_table(ps_compositional)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
-Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
-Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
-Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
-Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03
+                           Sample-1     Sample-2     Sample-3
+Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
+Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
+Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
+Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
+Veillonella            0.0009457383 0.0009010718 0.0002077347
 ```
 
 ## Z-transform for OTUs
@@ -200,7 +198,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -214,12 +211,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2    Sample-3
-Ruminococcus bromii et rel.     0.8452788  2.4252435  1.19837397
-Enterococcus                   -0.5423550  5.8629260  0.09658265
-Lactococcus                    -0.2903369  2.3306971  0.86948912
-Roseburia intestinalis et rel.  1.0432030 -0.4633681  0.24802758
-Bacteroides fragilis et rel.    1.3124945 -1.1679540 -0.16660347
+                         Sample-1    Sample-2    Sample-3
+Sporobacter termitidis -0.7794277  1.90302575  1.37827866
+Eubacterium hallii     -0.4477855  2.45470119  1.22737899
+Ruminococcus gnavus    -0.4074006  1.29211010  1.48822307
+Klebisiella pneumoniae -0.7431343 -0.01469595 -0.01469595
+Veillonella             0.6448912  1.68310449  0.31813426
 ```
 
 ## Z-transform for Samples
@@ -234,7 +231,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -248,12 +244,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2   Sample-3
-Ruminococcus bromii et rel.     1.1359287  1.5911880  0.9246048
-Enterococcus                   -0.4126041  1.3336806 -0.3732941
-Lactococcus                    -0.7821978 -0.4637090 -0.6855514
-Roseburia intestinalis et rel.  0.7439592 -0.0948094  0.1459789
-Bacteroides fragilis et rel.    2.0985693  0.2294970  0.7584797
+                          Sample-1   Sample-2   Sample-3
+Sporobacter termitidis  1.23557381  2.0958437  1.7796631
+Eubacterium hallii      0.12679267  0.9517496  0.4813434
+Ruminococcus gnavus     0.32658334  0.6749183  0.7069387
+Klebisiella pneumoniae -0.41260408 -0.3062820 -0.3038504
+Veillonella             0.01979284  0.1849037 -0.3038504
 ```
 
 ## Log10 Transform
@@ -268,7 +264,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -282,12 +277,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2  Sample-3
-Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
-Enterococcus                   0.602060 2.367356 0.7781513
-Lactococcus                    0.301030 0.698970 0.4771213
-Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
-Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317
+                        Sample-1 Sample-2 Sample-3
+Sporobacter termitidis 1.9444827 3.074816 2.853698
+Eubacterium hallii     1.0413927 2.012837 1.602060
+Ruminococcus gnavus    1.2041200 1.755875 1.819544
+Klebisiella pneumoniae 0.6020600 0.845098 0.845098
+Veillonella            0.9542425 1.301030 0.845098
 ```
 
 ## Log10p Transform
@@ -302,7 +297,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -316,12 +310,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2  Sample-3
-Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
-Enterococcus                   0.602060 2.367356 0.7781513
-Lactococcus                    0.301030 0.698970 0.4771213
-Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
-Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317
+                        Sample-1 Sample-2 Sample-3
+Sporobacter termitidis 1.9444827 3.074816 2.853698
+Eubacterium hallii     1.0413927 2.012837 1.602060
+Ruminococcus gnavus    1.2041200 1.755875 1.819544
+Klebisiella pneumoniae 0.6020600 0.845098 0.845098
+Veillonella            0.9542425 1.301030 0.845098
 ```
 
 ## CLR Transform
@@ -337,7 +331,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -351,12 +344,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1    Sample-2   Sample-3
-Ruminococcus bromii et rel.     2.6443928  3.64818403  2.2463088
-Enterococcus                   -0.4880348  3.09665162 -0.7170881
-Lactococcus                    -1.4976474 -0.87803411 -1.5055455
-Roseburia intestinalis et rel.  1.8963532 -0.01322079  0.4959345
-Bacteroides fragilis et rel.    4.4595952  0.71009732  1.8754492
+                         Sample-1   Sample-2  Sample-3
+Sporobacter termitidis  2.8332848  4.7278340  4.148346
+Eubacterium hallii      0.6828174  2.2768872  1.254464
+Ruminococcus gnavus     1.0834602  1.6801909  1.760214
+Klebisiella pneumoniae -0.4880348 -0.5008398 -0.550034
+Veillonella             0.4632754  0.6118107 -0.550034
 ```
 
 
@@ -372,7 +365,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -386,12 +378,12 @@ otu_table(ps_shift)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          73      404      107
-Enterococcus                          4      233        6
-Lactococcus                           2        5        3
-Roseburia intestinalis et rel.       35       11       19
-Bacteroides fragilis et rel.        444       22       74
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       88     1188      714
+Eubacterium hallii           11      103       40
+Ruminococcus gnavus          16       57       66
+Klebisiella pneumoniae        4        7        7
+Veillonella                   9       20        7
 ```
 
 ## Data Scaling
@@ -406,7 +398,6 @@ phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```
 
 ```r
@@ -420,12 +411,12 @@ otu_table(ps_scale)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          72      403      106
-Enterococcus                          3      232        5
-Lactococcus                           1        4        2
-Roseburia intestinalis et rel.       34       10       18
-Bacteroides fragilis et rel.        443       21       73
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       87     1187      713
+Eubacterium hallii           10      102       39
+Ruminococcus gnavus          15       56       65
+Klebisiella pneumoniae        3        6        6
+Veillonella                   8       19        6
 ```
 
 ## Save transformed objects

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>8 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>9 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
 <meta name="description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="8 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="9 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/data-tarnsformation.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <meta property="og:description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:title" content="9 Data Tranformation from Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta name="twitter:description" content="The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,13 +66,15 @@
 <li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
 <li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
 <li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
+<li class="book-part">CLEANING PHYLOSEQ OBJECT</li>
+<li><a class="" href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
 <li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="active" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="active" href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
-<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -85,107 +87,106 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-tarnsformation" class="section level1" number="8">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-tarnsformation" class="section level1" number="9">
 <h1>
-<span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects<a class="anchor" aria-label="anchor" href="#data-tarnsformation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects<a class="anchor" aria-label="anchor" href="#data-tarnsformation"><i class="fas fa-link"></i></a>
 </h1>
 <p>The process of data transformation in microbiome analysis involves converting raw or relative abundance values into matrices that are suitable for further analysis. Data transformation focuses on modifying the data itself. In this context, we will explore various methods used for this transformation on a phyloseq object.</p>
-<div id="import-processed-phyloseq-object" class="section level2" number="8.1">
+<div id="import-processed-phyloseq-object" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">8.1</span> Import processed phyloseq object<a class="anchor" aria-label="anchor" href="#import-processed-phyloseq-object"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Import processed phyloseq object<a class="anchor" aria-label="anchor" href="#import-processed-phyloseq-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc</code></pre>
+  ps_raw
+  ps_rel
+  psextra_raw
+  psextra_rel
+  ps_df</code></pre>
 </div>
-<div id="raw-abundance" class="section level2" number="8.2">
+<div id="raw-abundance" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">8.2</span> Raw Abundance<a class="anchor" aria-label="anchor" href="#raw-abundance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Raw Abundance<a class="anchor" aria-label="anchor" href="#raw-abundance"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_raw</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ps_raw</span> <span class="op">&lt;-</span> <span class="va">psextra_raw</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Ruminococcus bromii et rel.            72      403      106       60       30
-Enterococcus                            3      232        5        5        4
-Lactococcus                             1        4        2       81        1
-Roseburia intestinalis et rel.         34       10       18        7       24
-Bacteroides fragilis et rel.          443       21       73       29       33
-Bacteroides intestinalis et rel.       12        1        3        6        3
-Prevotella oralis et rel.              22      747     1832       10     1505
-Eubacterium ventriosum et rel.         10       20       13       11       14
-Uncultured Clostridiales II            27      205      284      155       30
-Granulicatella                          0        5        0        0        0
-                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Ruminococcus bromii et rel.            19       17      189       16        55
-Enterococcus                           11        4        6      692         6
-Lactococcus                             6        1        1        7         1
-Roseburia intestinalis et rel.         31       14       70       13         8
-Bacteroides fragilis et rel.           14       22      560        8        26
-Bacteroides intestinalis et rel.        1        1        2        0         1
-Prevotella oralis et rel.            1454       75     1806      138       637
-Eubacterium ventriosum et rel.         18       19       25       10        15
-Uncultured Clostridiales II            35      175       45       51       141
-Granulicatella                          1        0        0       16         0</code></pre>
+                            Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Sporobacter termitidis            87     1187      713      764      138
+Eubacterium hallii                10      102       39       31       28
+Ruminococcus gnavus               15       56       65       41       47
+Klebisiella pneumoniae             3        6        6       22        6
+Veillonella                        8       19        6        5        7
+Oceanospirillum                    1        2        1        2        1
+Ruminococcus lactaris              3        9       23       39        7
+Weissella                          1      180        2       13        2
+Eggerthella lenta                  3       10        8       18        4
+Uncultured Selenomonadaceae        0        0        0        0        0
+                            Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Sporobacter termitidis            81      714      258      159       353
+Eubacterium hallii                40       58       26       20        28
+Ruminococcus gnavus               61      101       19       21        19
+Klebisiella pneumoniae            32        4        5       51        20
+Veillonella                        8       11       11       71        74
+Oceanospirillum                    1        1        1        1         2
+Ruminococcus lactaris             15       22        8        4         4
+Weissella                          8        6        1       20         4
+Eggerthella lenta                  7       13        6        6         8
+Uncultured Selenomonadaceae        0        0        0        0         0</code></pre>
 </div>
-<div id="no-transformation" class="section level2" number="8.3">
+<div id="no-transformation" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">8.3</span> No Transformation<a class="anchor" aria-label="anchor" href="#no-transformation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> No Transformation<a class="anchor" aria-label="anchor" href="#no-transformation"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Similar to raw abundance</p>
 </blockquote>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_identity</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'identity'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_identity</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          72      403      106
-Enterococcus                          3      232        5
-Lactococcus                           1        4        2
-Roseburia intestinalis et rel.       34       10       18
-Bacteroides fragilis et rel.        443       21       73</code></pre>
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       87     1187      713
+Eubacterium hallii           10      102       39
+Ruminococcus gnavus          15       56       65
+Klebisiella pneumoniae        3        6        6
+Veillonella                   8       19        6</code></pre>
 </div>
-<div id="relative-abundance" class="section level2" number="8.4">
+<div id="relative-abundance" class="section level2" number="9.4">
 <h2>
-<span class="header-section-number">8.4</span> Relative abundance<a class="anchor" aria-label="anchor" href="#relative-abundance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Relative abundance<a class="anchor" aria-label="anchor" href="#relative-abundance"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_rel</span> <span class="op">=</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
-Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
-Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
-Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
-Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03</code></pre>
+                           Sample-1     Sample-2     Sample-3
+Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
+Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
+Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
+Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
+Veillonella            0.0009457383 0.0009010718 0.0002077347</code></pre>
 </div>
-<div id="arc-sine-asin-transformation" class="section level2" number="8.5">
+<div id="arc-sine-asin-transformation" class="section level2" number="9.5">
 <h2>
-<span class="header-section-number">8.5</span> Arc sine (asin) transformation<a class="anchor" aria-label="anchor" href="#arc-sine-asin-transformation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Arc sine (asin) transformation<a class="anchor" aria-label="anchor" href="#arc-sine-asin-transformation"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Typically used when dealing with proportional and percentages.</li>
@@ -193,7 +194,7 @@ Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03</code></pr
 <li>Percentages range from 0 to 100</li>
 <li>The Metaphlan3 relative abundances are in percentages! That means the column totals in 100.</li>
 </ul>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
@@ -203,214 +204,206 @@ Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03</code></pr
 <span><span class="va">ps_asin</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3 Sample-4
-Ruminococcus bromii et rel.    0.105337 0.158212 0.069095 0.076780
-Enterococcus                   0.021464 0.119828 0.014995 0.022144
-Lactococcus                    0.012391 0.015697 0.009484 0.089241
-Roseburia intestinalis et rel. 0.072315 0.024821 0.028454 0.026203
-Bacteroides fragilis et rel.   0.263854 0.035973 0.057326 0.053352</code></pre>
+                       Sample-1 Sample-2 Sample-3 Sample-4
+Sporobacter termitidis 0.115836 0.273804 0.180029 0.277249
+Eubacterium hallii     0.039194 0.079347 0.041890 0.055163
+Ruminococcus gnavus    0.048009 0.058765 0.054090 0.063450
+Klebisiella pneumoniae 0.021464 0.019225 0.016427 0.046464
+Veillonella            0.035055 0.034216 0.016427 0.022144</code></pre>
 </div>
-<div id="compositional-version" class="section level2" number="8.6">
+<div id="compositional-version" class="section level2" number="9.6">
 <h2>
-<span class="header-section-number">8.6</span> Compositional Version<a class="anchor" aria-label="anchor" href="#compositional-version"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.6</span> Compositional Version<a class="anchor" aria-label="anchor" href="#compositional-version"><i class="fas fa-link"></i></a>
 </h2>
 <p>Compositional data represents relative proportions or percentages of different microbial taxa within a sample, rather than the absolute abundance of each taxon. This transformation is necessary because raw abundance data is typically affected by various factors, such as sequencing depth, which can lead to spurious correlations and biases in downstream analyses.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_compositional</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'compositional'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_compositional</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                   Sample-1     Sample-2     Sample-3
-Ruminococcus bromii et rel.    0.0085116444 0.0191122072 3.669979e-03
-Enterococcus                   0.0003546519 0.0110025609 1.731122e-04
-Lactococcus                    0.0001182173 0.0001896993 6.924488e-05
-Roseburia intestinalis et rel. 0.0040193876 0.0004742483 6.232040e-04
-Bacteroides fragilis et rel.   0.0523702565 0.0009959215 2.527438e-03</code></pre>
+                           Sample-1     Sample-2     Sample-3
+Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
+Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
+Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
+Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
+Veillonella            0.0009457383 0.0009010718 0.0002077347</code></pre>
 </div>
-<div id="z-transform-for-otus" class="section level2" number="8.7">
+<div id="z-transform-for-otus" class="section level2" number="9.7">
 <h2>
-<span class="header-section-number">8.7</span> Z-transform for OTUs<a class="anchor" aria-label="anchor" href="#z-transform-for-otus"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.7</span> Z-transform for OTUs<a class="anchor" aria-label="anchor" href="#z-transform-for-otus"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_z_otu</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'Z'</span>, <span class="st">'OTU'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_otu</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2    Sample-3
-Ruminococcus bromii et rel.     0.8452788  2.4252435  1.19837397
-Enterococcus                   -0.5423550  5.8629260  0.09658265
-Lactococcus                    -0.2903369  2.3306971  0.86948912
-Roseburia intestinalis et rel.  1.0432030 -0.4633681  0.24802758
-Bacteroides fragilis et rel.    1.3124945 -1.1679540 -0.16660347</code></pre>
+                         Sample-1    Sample-2    Sample-3
+Sporobacter termitidis -0.7794277  1.90302575  1.37827866
+Eubacterium hallii     -0.4477855  2.45470119  1.22737899
+Ruminococcus gnavus    -0.4074006  1.29211010  1.48822307
+Klebisiella pneumoniae -0.7431343 -0.01469595 -0.01469595
+Veillonella             0.6448912  1.68310449  0.31813426</code></pre>
 </div>
-<div id="z-transform-for-samples" class="section level2" number="8.8">
+<div id="z-transform-for-samples" class="section level2" number="9.8">
 <h2>
-<span class="header-section-number">8.8</span> Z-transform for Samples<a class="anchor" aria-label="anchor" href="#z-transform-for-samples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.8</span> Z-transform for Samples<a class="anchor" aria-label="anchor" href="#z-transform-for-samples"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_z_sample</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'Z'</span>, <span class="st">'sample'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_z_sample</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1   Sample-2   Sample-3
-Ruminococcus bromii et rel.     1.1359287  1.5911880  0.9246048
-Enterococcus                   -0.4126041  1.3336806 -0.3732941
-Lactococcus                    -0.7821978 -0.4637090 -0.6855514
-Roseburia intestinalis et rel.  0.7439592 -0.0948094  0.1459789
-Bacteroides fragilis et rel.    2.0985693  0.2294970  0.7584797</code></pre>
+                          Sample-1   Sample-2   Sample-3
+Sporobacter termitidis  1.23557381  2.0958437  1.7796631
+Eubacterium hallii      0.12679267  0.9517496  0.4813434
+Ruminococcus gnavus     0.32658334  0.6749183  0.7069387
+Klebisiella pneumoniae -0.41260408 -0.3062820 -0.3038504
+Veillonella             0.01979284  0.1849037 -0.3038504</code></pre>
 </div>
-<div id="log10-transform" class="section level2" number="8.9">
+<div id="log10-transform" class="section level2" number="9.9">
 <h2>
-<span class="header-section-number">8.9</span> Log10 Transform<a class="anchor" aria-label="anchor" href="#log10-transform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.9</span> Log10 Transform<a class="anchor" aria-label="anchor" href="#log10-transform"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_log10</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'log10'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2  Sample-3
-Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
-Enterococcus                   0.602060 2.367356 0.7781513
-Lactococcus                    0.301030 0.698970 0.4771213
-Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
-Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317</code></pre>
+                        Sample-1 Sample-2 Sample-3
+Sporobacter termitidis 1.9444827 3.074816 2.853698
+Eubacterium hallii     1.0413927 2.012837 1.602060
+Ruminococcus gnavus    1.2041200 1.755875 1.819544
+Klebisiella pneumoniae 0.6020600 0.845098 0.845098
+Veillonella            0.9542425 1.301030 0.845098</code></pre>
 </div>
-<div id="log10p-transform" class="section level2" number="8.10">
+<div id="log10p-transform" class="section level2" number="9.10">
 <h2>
-<span class="header-section-number">8.10</span> Log10p Transform<a class="anchor" aria-label="anchor" href="#log10p-transform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.10</span> Log10p Transform<a class="anchor" aria-label="anchor" href="#log10p-transform"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_log10p</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'log10p'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_log10p</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2  Sample-3
-Ruminococcus bromii et rel.    1.863323 2.606381 2.0293838
-Enterococcus                   0.602060 2.367356 0.7781513
-Lactococcus                    0.301030 0.698970 0.4771213
-Roseburia intestinalis et rel. 1.544068 1.041393 1.2787536
-Bacteroides fragilis et rel.   2.647383 1.342423 1.8692317</code></pre>
+                        Sample-1 Sample-2 Sample-3
+Sporobacter termitidis 1.9444827 3.074816 2.853698
+Eubacterium hallii     1.0413927 2.012837 1.602060
+Ruminococcus gnavus    1.2041200 1.755875 1.819544
+Klebisiella pneumoniae 0.6020600 0.845098 0.845098
+Veillonella            0.9542425 1.301030 0.845098</code></pre>
 </div>
-<div id="clr-transform" class="section level2" number="8.11">
+<div id="clr-transform" class="section level2" number="9.11">
 <h2>
-<span class="header-section-number">8.11</span> CLR Transform<a class="anchor" aria-label="anchor" href="#clr-transform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.11</span> CLR Transform<a class="anchor" aria-label="anchor" href="#clr-transform"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Note that small pseudocount is added if data contains zeroes</li>
 </ul>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_clr</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'clr'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_clr</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                                 Sample-1    Sample-2   Sample-3
-Ruminococcus bromii et rel.     2.6443928  3.64818403  2.2463088
-Enterococcus                   -0.4880348  3.09665162 -0.7170881
-Lactococcus                    -1.4976474 -0.87803411 -1.5055455
-Roseburia intestinalis et rel.  1.8963532 -0.01322079  0.4959345
-Bacteroides fragilis et rel.    4.4595952  0.71009732  1.8754492</code></pre>
+                         Sample-1   Sample-2  Sample-3
+Sporobacter termitidis  2.8332848  4.7278340  4.148346
+Eubacterium hallii      0.6828174  2.2768872  1.254464
+Ruminococcus gnavus     1.0834602  1.6801909  1.760214
+Klebisiella pneumoniae -0.4880348 -0.5008398 -0.550034
+Veillonella             0.4632754  0.6118107 -0.550034</code></pre>
 </div>
-<div id="shift-the-baseline" class="section level2" number="8.12">
+<div id="shift-the-baseline" class="section level2" number="9.12">
 <h2>
-<span class="header-section-number">8.12</span> Shift the baseline<a class="anchor" aria-label="anchor" href="#shift-the-baseline"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.12</span> Shift the baseline<a class="anchor" aria-label="anchor" href="#shift-the-baseline"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_shift</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'shift'</span>, shift<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_shift</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          73      404      107
-Enterococcus                          4      233        6
-Lactococcus                           2        5        3
-Roseburia intestinalis et rel.       35       11       19
-Bacteroides fragilis et rel.        444       22       74</code></pre>
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       88     1188      714
+Eubacterium hallii           11      103       40
+Ruminococcus gnavus          16       57       66
+Klebisiella pneumoniae        4        7        7
+Veillonella                   9       20        7</code></pre>
 </div>
-<div id="data-scaling" class="section level2" number="8.13">
+<div id="data-scaling" class="section level2" number="9.13">
 <h2>
-<span class="header-section-number">8.13</span> Data Scaling<a class="anchor" aria-label="anchor" href="#data-scaling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.13</span> Data Scaling<a class="anchor" aria-label="anchor" href="#data-scaling"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">ps_scale</span> <span class="op">&lt;-</span> <span class="fu">microbiome</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/transform.html">transform</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="st">'scale'</span>, scale<span class="op">=</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_scale</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1 Sample-2 Sample-3
-Ruminococcus bromii et rel.          72      403      106
-Enterococcus                          3      232        5
-Lactococcus                           1        4        2
-Roseburia intestinalis et rel.       34       10       18
-Bacteroides fragilis et rel.        443       21       73</code></pre>
+                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       87     1187      713
+Eubacterium hallii           10      102       39
+Ruminococcus gnavus          15       56       65
+Klebisiella pneumoniae        3        6        6
+Veillonella                   8       19        6</code></pre>
 </div>
-<div id="save-transformed-objects" class="section level2" number="8.14">
+<div id="save-transformed-objects" class="section level2" number="9.14">
 <h2>
-<span class="header-section-number">8.14</span> Save transformed objects<a class="anchor" aria-label="anchor" href="#save-transformed-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.14</span> Save transformed objects<a class="anchor" aria-label="anchor" href="#save-transformed-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span></span>
 <span>  <span class="va">ps_asin</span>, </span>
 <span>  <span class="va">ps_identity</span>,</span>
@@ -424,11 +417,11 @@ Bacteroides fragilis et rel.        443       21       73</code></pre>
 <span>  <span class="va">ps_scale</span>, </span>
 <span>  file <span class="op">=</span> <span class="st">"data/ps_transformed.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-saved-object" class="section level2" number="8.15">
+<div id="confirm-saved-object" class="section level2" number="9.15">
 <h2>
-<span class="header-section-number">8.15</span> Confirm saved object<a class="anchor" aria-label="anchor" href="#confirm-saved-object"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.15</span> Confirm saved object<a class="anchor" aria-label="anchor" href="#confirm-saved-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/ps_transformed.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin
@@ -448,27 +441,27 @@ Bacteroides fragilis et rel.        443       21       73</code></pre>
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></div>
-<div class="next"><a href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></div>
+<div class="prev"><a href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></div>
+<div class="next"><a href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-tarnsformation"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
-<li><a class="nav-link" href="#import-processed-phyloseq-object"><span class="header-section-number">8.1</span> Import processed phyloseq object</a></li>
-<li><a class="nav-link" href="#raw-abundance"><span class="header-section-number">8.2</span> Raw Abundance</a></li>
-<li><a class="nav-link" href="#no-transformation"><span class="header-section-number">8.3</span> No Transformation</a></li>
-<li><a class="nav-link" href="#relative-abundance"><span class="header-section-number">8.4</span> Relative abundance</a></li>
-<li><a class="nav-link" href="#arc-sine-asin-transformation"><span class="header-section-number">8.5</span> Arc sine (asin) transformation</a></li>
-<li><a class="nav-link" href="#compositional-version"><span class="header-section-number">8.6</span> Compositional Version</a></li>
-<li><a class="nav-link" href="#z-transform-for-otus"><span class="header-section-number">8.7</span> Z-transform for OTUs</a></li>
-<li><a class="nav-link" href="#z-transform-for-samples"><span class="header-section-number">8.8</span> Z-transform for Samples</a></li>
-<li><a class="nav-link" href="#log10-transform"><span class="header-section-number">8.9</span> Log10 Transform</a></li>
-<li><a class="nav-link" href="#log10p-transform"><span class="header-section-number">8.10</span> Log10p Transform</a></li>
-<li><a class="nav-link" href="#clr-transform"><span class="header-section-number">8.11</span> CLR Transform</a></li>
-<li><a class="nav-link" href="#shift-the-baseline"><span class="header-section-number">8.12</span> Shift the baseline</a></li>
-<li><a class="nav-link" href="#data-scaling"><span class="header-section-number">8.13</span> Data Scaling</a></li>
-<li><a class="nav-link" href="#save-transformed-objects"><span class="header-section-number">8.14</span> Save transformed objects</a></li>
-<li><a class="nav-link" href="#confirm-saved-object"><span class="header-section-number">8.15</span> Confirm saved object</a></li>
+<li><a class="nav-link" href="#data-tarnsformation"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="nav-link" href="#import-processed-phyloseq-object"><span class="header-section-number">9.1</span> Import processed phyloseq object</a></li>
+<li><a class="nav-link" href="#raw-abundance"><span class="header-section-number">9.2</span> Raw Abundance</a></li>
+<li><a class="nav-link" href="#no-transformation"><span class="header-section-number">9.3</span> No Transformation</a></li>
+<li><a class="nav-link" href="#relative-abundance"><span class="header-section-number">9.4</span> Relative abundance</a></li>
+<li><a class="nav-link" href="#arc-sine-asin-transformation"><span class="header-section-number">9.5</span> Arc sine (asin) transformation</a></li>
+<li><a class="nav-link" href="#compositional-version"><span class="header-section-number">9.6</span> Compositional Version</a></li>
+<li><a class="nav-link" href="#z-transform-for-otus"><span class="header-section-number">9.7</span> Z-transform for OTUs</a></li>
+<li><a class="nav-link" href="#z-transform-for-samples"><span class="header-section-number">9.8</span> Z-transform for Samples</a></li>
+<li><a class="nav-link" href="#log10-transform"><span class="header-section-number">9.9</span> Log10 Transform</a></li>
+<li><a class="nav-link" href="#log10p-transform"><span class="header-section-number">9.10</span> Log10p Transform</a></li>
+<li><a class="nav-link" href="#clr-transform"><span class="header-section-number">9.11</span> CLR Transform</a></li>
+<li><a class="nav-link" href="#shift-the-baseline"><span class="header-section-number">9.12</span> Shift the baseline</a></li>
+<li><a class="nav-link" href="#data-scaling"><span class="header-section-number">9.13</span> Data Scaling</a></li>
+<li><a class="nav-link" href="#save-transformed-objects"><span class="header-section-number">9.14</span> Save transformed objects</a></li>
+<li><a class="nav-link" href="#confirm-saved-object"><span class="header-section-number">9.15</span> Confirm saved object</a></li>
 </ul>
 
       <div class="book-extra">

@@ -4,6 +4,18 @@
 
 In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo  =TRUE,
+  message  =FALSE,
+  warning  =FALSE,
+  cache  =FALSE,
+  comment  =NA)
+
+library(phyloseq)
+library(microbiome)
+```
+
 ## From mothur output
 ```{r mothurphyseqobj, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -492,4 +504,142 @@ save(psextra_clr_dietswap, psextra_id_dietswap, psextra_log10p_dietswap, file = 
 
 ```
 
+
+# (PART) CLEANING PHYLOSEQ OBJECT {-}
+
+# Pipeline for Cleaning Phyloseq Objects
+
+Before proceeding with downstream analyses, it's a good practice to inspect and clean your phyloseq object to minimize any potential errors or biases. By ensuring data integrity and consistency, you can enhance the reliability of your results.
+
+In this section, we'll outline a pipeline for inspecting and cleaning a phyloseq object. We'll thoroughly examine its contents and rebuild the object as needed to prepare it for subsequent analyses.
+
+
+## Demo with the `dietswap` dataset
+
+```{r message=FALSE, warning=FALSE}
+# Set seed for reproducibility
+set.seed(110912)
+
+# Load required libraries
+library(tidyverse)
+library(phyloseq)
+library(microbiome) # for dietswap ps object
+library(microViz) # for ps_melt function and psExtra object.
+library(ape)
+
+# Load the dietswap dataset from the microbiome package
+data("dietswap", package = "microbiome")
+
+ps <- ps_dietswap
+
+# Apply string replacement to specified columns
+ps_df <- ps_melt(ps)  %>% # melt using microViz function ps_melt()
+mutate(Genus = str_replace_all(Genus, " et rel.", ""),
+       Genus = str_replace_all(Genus, " at rel.", ""),
+       # Species = replace(Species, is.na(Species), 0),
+       Genus = replace(Genus, is.na(Genus), 0),
+       Family = replace(Family, is.na(Family), 0),
+       # Order = replace(Order, is.na(Order), 0),
+       # Class = replace(Genus, is.na(Class), 0),
+       Phylum = replace(Phylum, is.na(Phylum), 0)
+      )
+
+otu_table <- ps_df %>%
+pivot_wider(id_cols = "OTU", names_from = "Sample", values_from = "Abundance") %>%
+mutate(OTU = paste0("OTU", sprintf("%03d", 1:nrow(otu_table(ps))))) %>% # just for neat OTU names
+tibble::column_to_rownames("OTU") %>%
+otu_table(otutable, taxa_are_rows = TRUE)
+
+tax_table <- ps_df %>%
+select("OTU", "Phylum", "Family", "Genus") %>%
+distinct() %>%
+mutate(OTU = paste0("OTU", sprintf("%03d", 1:nrow(otu_table(ps))))) %>%
+tibble::column_to_rownames("OTU") %>%
+as.matrix() %>%
+tax_table(taxtable)
+
+# Check if rowname of otutable and that of taxonomy are equal
+x1 = otu_table %>%
+as.data.frame() %>%
+rownames_to_column("OTU")
+
+
+x2 = tax_table %>%
+as.data.frame() %>%
+rownames_to_column("OTU")
+
+identical(x1$OTU, x2$OTU)
+
+
+## Creating a new phyloseq object after alteration
+
+ps_basic<- merge_phyloseq(otu_table, tax_table, sample_data(ps))
+ps_tree = rtree(ntaxa(ps_basic), rooted=TRUE, tip.label=taxa_names(ps_basic))
+ps_raw <- phyloseq::merge_phyloseq(ps_basic, ps_tree)
+ps_rel <- phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)})
+
+# # Check points
+# otu_table(ps_raw)
+# tax_table(ps_raw)
+# sample_data(ps_raw)
+# phy_tree(ps_raw)
+
+## Create a Phylosic extra object
+
+library(microViz)
+
+psextra_raw <- tax_agg(ps = ps_raw, rank = "Genus")
+
+cat("\nClass of ps_raw\n\n")
+summary(ps_raw)
+
+cat("\nClass of psextra_raw\n")
+summary(psextra_raw)
+
+otu_table(psextra_raw)[1:3, 1:3] %>% as.data.frame()
+
+psextra_rel <- phyloseq::transform_sample_counts(psextra_raw, function(x){x / sum(x)})
+
+otu_table(ps_rel)[1:3, 1:3] %>% as.data.frame()
+
+
+## Getting clean dataframe from psExtra object
+ps_df <- psmelt(psextra_raw) %>%
+group_by(Sample) %>%
+mutate(total = sum(Abundance)) %>%
+filter(total > 0) %>%
+filter(Abundance >0) %>%
+group_by(OTU) %>%
+mutate(total = sum(Abundance)) %>%
+filter(total != 0) %>%
+ungroup() %>%
+select(-total) %>% as.data.frame() %>%
+group_by(Sample) %>%
+mutate(rel_abund = Abundance/sum(Abundance)) %>%
+ungroup() %>%
+relocate(Abundance, .before = rel_abund) %>%
+rename_all(~ make.unique(tolower(.), sep = "_")) %>%
+rename(sample_id = sample,
+count = abundance,
+bmi = bmi_group,
+grp = group,
+timewithingrp = timepoint.within.group) %>%
+pivot_longer(cols = c("phylum", "family", "genus", "otu"), names_to = "level", values_to = "taxon") %>%
+mutate(taxon = str_replace(string = taxon,
+pattern = "(.*)",
+replacement = "*\\1*"),
+taxon = str_replace(string = taxon,
+pattern = "\\*(.*)_unclassified\\*",
+replacement = "Unclassified<br>*\\1*"),
+taxon = str_replace_all(taxon, "_", " "))
+
+```
+
+
+## Save clean object
+
+```{r cleandata}
+save(ps_raw, ps_rel, psextra_raw, psextra_rel, ps_df, file = "data/phyloseq_raw_rel_psextra_df_objects.rda")
+
+```
 

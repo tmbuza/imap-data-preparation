@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>11 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<title>12 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
 <meta name="description" content="Dimensionality reduction is a crucial step in microbiome analysis, aiming to simplify datasets while retaining essential information. This section explores techniques for reducing the number of...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
-<meta property="og:title" content="11 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:title" content="12 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/dimensionality-reduction-techniques.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <meta property="og:description" content="Dimensionality reduction is a crucial step in microbiome analysis, aiming to simplify datasets while retaining essential information. This section explores techniques for reducing the number of...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:title" content="12 Dimensionality Reduction Techniques | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta name="twitter:description" content="Dimensionality reduction is a crucial step in microbiome analysis, aiming to simplify datasets while retaining essential information. This section explores techniques for reducing the number of...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,13 +66,15 @@
 <li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
 <li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
 <li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
+<li class="book-part">CLEANING PHYLOSEQ OBJECT</li>
+<li><a class="" href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
 <li class="book-part">DATA TRANSFORMATION</li>
-<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">8</span> Data Tranformation from Phyloseq Objects</a></li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
 <li class="book-part">DISTANCES MATRICES</li>
-<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
-<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
-<li><a class="active" href="dimensionality-reduction-techniques.html"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="active" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
 <li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
@@ -85,9 +87,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dimensionality-reduction-techniques" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dimensionality-reduction-techniques" class="section level1" number="12">
 <h1>
-<span class="header-section-number">11</span> Dimensionality Reduction Techniques<a class="anchor" aria-label="anchor" href="#dimensionality-reduction-techniques"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12</span> Dimensionality Reduction Techniques<a class="anchor" aria-label="anchor" href="#dimensionality-reduction-techniques"><i class="fas fa-link"></i></a>
 </h1>
 <p>Dimensionality reduction is a crucial step in microbiome analysis, aiming to simplify datasets while retaining essential information. This section explores techniques for reducing the number of features or variables in a phyloseq object, enabling more efficient analysis and visualization of microbial community data.</p>
 <p>We delve into commonly used dimensionality reduction methods such as PCA, MDS, and t-SNE. These techniques utilize distance matrices obtained from the previous step to visualize and explore the structure of microbiome data in lower-dimensional spaces. The subsection covers the technical details of each method and provides examples of their application in microbiome data analysis.</p>
@@ -105,7 +107,7 @@
 <div id="import-libraries-and-data-objects" class="section level2 unnumbered">
 <h2>Import libraries and data objects<a class="anchor" aria-label="anchor" href="#import-libraries-and-data-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -116,14 +118,15 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nSaved RData objects\n\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 Saved RData objects</code></pre>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc</code></pre>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+  ps_raw
+  ps_rel
+  psextra_raw
+  psextra_rel
+  ps_df</code></pre>
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/ps_transformed.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin
@@ -136,7 +139,7 @@ Saved RData objects</code></pre>
   ps_clr
   ps_shift
   ps_scale</code></pre>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/bray_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin_bray_dist
@@ -149,89 +152,89 @@ Saved RData objects</code></pre>
   ps_shift_bray_dist
   ps_scale_bray_dist</code></pre>
 </div>
-<div id="pca-principal-component-analysis" class="section level2" number="11.1">
+<div id="pca-principal-component-analysis" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">11.1</span> PCA (Principal Component Analysis)<a class="anchor" aria-label="anchor" href="#pca-principal-component-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> PCA (Principal Component Analysis)<a class="anchor" aria-label="anchor" href="#pca-principal-component-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>PCA is a dimensionality reduction technique commonly used to explore patterns and structure in high-dimensional data. It works by transforming the original variables into a new set of uncorrelated variables called principal components. These principal components capture the maximum variance in the data, allowing for visualization and exploration of the major patterns or clusters within the dataset.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for PCA with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">pca_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="mds-multidimensional-scaling" class="section level2" number="11.2">
+<div id="mds-multidimensional-scaling" class="section level2" number="12.2">
 <h2>
-<span class="header-section-number">11.2</span> MDS (Multidimensional Scaling)<a class="anchor" aria-label="anchor" href="#mds-multidimensional-scaling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.2</span> MDS (Multidimensional Scaling)<a class="anchor" aria-label="anchor" href="#mds-multidimensional-scaling"><i class="fas fa-link"></i></a>
 </h2>
 <p>MDS is a method for visualizing the similarities or dissimilarities between samples in a lower-dimensional space. It aims to preserve the pairwise distances or dissimilarities between samples as much as possible, representing the data in a reduced-dimensional space while maintaining the overall structure. MDS is particularly useful for exploring the overall structure of complex datasets and identifying sample clusters or gradients based on ecological distances or dissimilarity measures.</p>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for MDS with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">mds_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html">cmdscale</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="pcoa-principal-coordinates-analysis" class="section level2" number="11.3">
+<div id="pcoa-principal-coordinates-analysis" class="section level2" number="12.3">
 <h2>
-<span class="header-section-number">11.3</span> PCoA (Principal Coordinates Analysis)<a class="anchor" aria-label="anchor" href="#pcoa-principal-coordinates-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.3</span> PCoA (Principal Coordinates Analysis)<a class="anchor" aria-label="anchor" href="#pcoa-principal-coordinates-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Principal Coordinates Analysis (PCoA), also known as classical multidimensional scaling (MDS), is a dimensionality reduction technique commonly used in ecology and other fields to visualize and explore patterns in distance or dissimilarity data. PCoA takes a distance or dissimilarity matrix as input and transforms it into a set of orthogonal axes (principal coordinates) that capture the maximum variation in the data. These principal coordinates represent a lower-dimensional representation of the original data while preserving the pairwise distances between samples as much as possible. PCoA is particularly useful for visualizing and interpreting relationships between samples based on their similarities or dissimilarities, facilitating the identification of clusters, gradients, or other patterns in complex datasets</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for MDS with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">pcoa_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/vegan/man/capscale.html">capscale</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span> <span class="op">~</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="t-sne-t-distributed-stochastic-neighbor-embedding" class="section level2" number="11.4">
+<div id="t-sne-t-distributed-stochastic-neighbor-embedding" class="section level2" number="12.4">
 <h2>
-<span class="header-section-number">11.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)<a class="anchor" aria-label="anchor" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)<a class="anchor" aria-label="anchor" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><i class="fas fa-link"></i></a>
 </h2>
 <p>t-SNE is a nonlinear dimensionality reduction technique that aims to preserve both local and global relationships between samples in a lower-dimensional space. It is particularly effective for visualizing high-dimensional data in two or three dimensions, capturing fine-scale structure or clustering within the dataset. t-SNE works by modeling the similarities between samples in the high-dimensional space and mapping them to a lower-dimensional space while minimizing the Kullback-Leibler divergence between the two distributions. It is commonly used for exploratory data analysis and visualization of complex datasets, including microbiome abundance data.</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for t-SNE with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jkrijthe/Rtsne">Rtsne</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">tsne_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Rtsne/man/Rtsne.html">Rtsne</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html">as.dist</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pca_asin_bray_metrics</span>, <span class="va">mds_asin_bray_metrics</span>, <span class="va">pcoa_asin_bray_metrics</span>, <span class="va">tsne_asin_bray_metrics</span>, file <span class="op">=</span> <span class="st">"data/reduced_dimension.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="non-negative-matrix-factorization-nmf" class="section level2" number="11.5">
+<div id="non-negative-matrix-factorization-nmf" class="section level2" number="12.5">
 <h2>
-<span class="header-section-number">11.5</span> Non-negative Matrix Factorization (NMF)<a class="anchor" aria-label="anchor" href="#non-negative-matrix-factorization-nmf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.5</span> Non-negative Matrix Factorization (NMF)<a class="anchor" aria-label="anchor" href="#non-negative-matrix-factorization-nmf"><i class="fas fa-link"></i></a>
 </h2>
 <p>NMF is a dimensionality reduction technique that factorizes a non-negative matrix into two lower-dimensional matrices with non-negative elements. In microbiome analysis, NMF can be applied to identify latent features or microbial signatures within complex microbial community data, facilitating the identification of microbial co-occurrence patterns or functional groups.</p>
 </div>
-<div id="redundancy-analysis-rda" class="section level2" number="11.6">
+<div id="redundancy-analysis-rda" class="section level2" number="12.6">
 <h2>
-<span class="header-section-number">11.6</span> Redundancy Analysis (RDA)<a class="anchor" aria-label="anchor" href="#redundancy-analysis-rda"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.6</span> Redundancy Analysis (RDA)<a class="anchor" aria-label="anchor" href="#redundancy-analysis-rda"><i class="fas fa-link"></i></a>
 </h2>
 <p>RDA is a multivariate statistical technique used to explore the relationships between multiple response variables (e.g., microbial taxa) and explanatory variables (e.g., environmental or metadata factors). In microbiome analysis, RDA can be applied to identify microbial taxa associated with specific environmental gradients or experimental conditions, providing insights into the ecological drivers shaping microbial composition.</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for RDA with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">rda_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/vegan/man/cca.html">rda</a></span><span class="op">(</span><span class="va">ps_asin</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="canonical-correspondence-analysis-cca" class="section level2" number="11.7">
+<div id="canonical-correspondence-analysis-cca" class="section level2" number="12.7">
 <h2>
-<span class="header-section-number">11.7</span> Canonical Correspondence Analysis (CCA)<a class="anchor" aria-label="anchor" href="#canonical-correspondence-analysis-cca"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.7</span> Canonical Correspondence Analysis (CCA)<a class="anchor" aria-label="anchor" href="#canonical-correspondence-analysis-cca"><i class="fas fa-link"></i></a>
 </h2>
 <p>CCA is a multivariate technique similar to RDA but specifically designed for analyzing relationships between species data (e.g., microbial taxa) and environmental variables. In microbiome analysis, CCA can be used to identify microbial taxa that are most strongly correlated with environmental or metadata factors, helping to understand how microbial communities respond to different ecological conditions.</p>
 </div>
-<div id="random-forests" class="section level2" number="11.8">
+<div id="random-forests" class="section level2" number="12.8">
 <h2>
-<span class="header-section-number">11.8</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.8</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
 </h2>
 <p>Random Forests is a machine learning algorithm that can be applied for feature selection and dimensionality reduction in microbiome data. It works by constructing an ensemble of decision trees and aggregating their predictions to identify the most important features (e.g., microbial taxa) for predicting a response variable of interest (e.g., disease status). Random Forests can be useful for identifying key microbial biomarkers associated with specific outcomes or conditions.</p>
 </div>
-<div id="deep-learning" class="section level2" number="11.9">
+<div id="deep-learning" class="section level2" number="12.9">
 <h2>
-<span class="header-section-number">11.9</span> Deep Learning<a class="anchor" aria-label="anchor" href="#deep-learning"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.9</span> Deep Learning<a class="anchor" aria-label="anchor" href="#deep-learning"><i class="fas fa-link"></i></a>
 </h2>
 <p>Deep learning techniques, such as deep neural networks, can also be applied for dimensionality reduction and feature extraction in microbiome data. These techniques have the ability to learn complex patterns and representations directly from the data, potentially uncovering novel insights into microbial community structure and function. However, deep learning methods may require large amounts of data and computational resources, and their interpretability can be challenging.</p>
 <p>These methods provide alternative approaches for reducing the dimensionality of microbiome data and extracting meaningful information from complex microbial community datasets. Depending on the specific research question and characteristics of the data, different methods may be more suitable or informative.</p>
@@ -242,23 +245,23 @@ Saved RData objects</code></pre>
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="utilizing-transformed-data.html"><span class="header-section-number">10</span> What’s Next: Utilizing Transformed Data</a></div>
+<div class="prev"><a href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></div>
 <div class="next"><a href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#dimensionality-reduction-techniques"><span class="header-section-number">11</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="nav-link" href="#dimensionality-reduction-techniques"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
 <li><a class="nav-link" href="#prerequisite-1">Prerequisite</a></li>
 <li><a class="nav-link" href="#import-libraries-and-data-objects">Import libraries and data objects</a></li>
-<li><a class="nav-link" href="#pca-principal-component-analysis"><span class="header-section-number">11.1</span> PCA (Principal Component Analysis)</a></li>
-<li><a class="nav-link" href="#mds-multidimensional-scaling"><span class="header-section-number">11.2</span> MDS (Multidimensional Scaling)</a></li>
-<li><a class="nav-link" href="#pcoa-principal-coordinates-analysis"><span class="header-section-number">11.3</span> PCoA (Principal Coordinates Analysis)</a></li>
-<li><a class="nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><span class="header-section-number">11.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)</a></li>
-<li><a class="nav-link" href="#non-negative-matrix-factorization-nmf"><span class="header-section-number">11.5</span> Non-negative Matrix Factorization (NMF)</a></li>
-<li><a class="nav-link" href="#redundancy-analysis-rda"><span class="header-section-number">11.6</span> Redundancy Analysis (RDA)</a></li>
-<li><a class="nav-link" href="#canonical-correspondence-analysis-cca"><span class="header-section-number">11.7</span> Canonical Correspondence Analysis (CCA)</a></li>
-<li><a class="nav-link" href="#random-forests"><span class="header-section-number">11.8</span> Random Forests</a></li>
-<li><a class="nav-link" href="#deep-learning"><span class="header-section-number">11.9</span> Deep Learning</a></li>
+<li><a class="nav-link" href="#pca-principal-component-analysis"><span class="header-section-number">12.1</span> PCA (Principal Component Analysis)</a></li>
+<li><a class="nav-link" href="#mds-multidimensional-scaling"><span class="header-section-number">12.2</span> MDS (Multidimensional Scaling)</a></li>
+<li><a class="nav-link" href="#pcoa-principal-coordinates-analysis"><span class="header-section-number">12.3</span> PCoA (Principal Coordinates Analysis)</a></li>
+<li><a class="nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><span class="header-section-number">12.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)</a></li>
+<li><a class="nav-link" href="#non-negative-matrix-factorization-nmf"><span class="header-section-number">12.5</span> Non-negative Matrix Factorization (NMF)</a></li>
+<li><a class="nav-link" href="#redundancy-analysis-rda"><span class="header-section-number">12.6</span> Redundancy Analysis (RDA)</a></li>
+<li><a class="nav-link" href="#canonical-correspondence-analysis-cca"><span class="header-section-number">12.7</span> Canonical Correspondence Analysis (CCA)</a></li>
+<li><a class="nav-link" href="#random-forests"><span class="header-section-number">12.8</span> Random Forests</a></li>
+<li><a class="nav-link" href="#deep-learning"><span class="header-section-number">12.9</span> Deep Learning</a></li>
 </ul>
 
       <div class="book-extra">

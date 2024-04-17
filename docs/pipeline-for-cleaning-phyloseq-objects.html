@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>8 Pipeline for Cleaning Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<meta name="author" content="Teresia Mrema-Buza">
+<meta name="description" content="Before proceeding with downstream analyses, it’s a good practice to inspect and clean your phyloseq object to minimize any potential errors or biases. By ensuring data integrity and consistency,...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="8 Pipeline for Cleaning Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/pipeline-for-cleaning-phyloseq-objects.html">
+<meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<meta property="og:description" content="Before proceeding with downstream analyses, it’s a good practice to inspect and clean your phyloseq object to minimize any potential errors or biases. By ensuring data integrity and consistency,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8 Pipeline for Cleaning Phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="Before proceeding with downstream analyses, it’s a good practice to inspect and clean your phyloseq object to minimize any potential errors or biases. By ensuring data integrity and consistency,...">
+<meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Sen-0.4.8/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/Bitter-0.4.8/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="End-to-End Practical User Guides Using Integrated Approaches"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a>:
+        <small class="text-muted">End-to-End Practical User Guides Using Integrated Approaches</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
+<li class="book-part">GETTING STARTED</li>
+<li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
+<li><a class="" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
+<li class="book-part">MOTHUR OUTPUT</li>
+<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
+<li class="book-part">QIIME2 OUTPUT</li>
+<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li class="book-part">PHYLOSEQ OBJECTS</li>
+<li><a class="" href="creating-phyloseq-objects.html"><span class="header-section-number">4</span> Creating phyloseq Objects</a></li>
+<li class="book-part">EXTERNAL DATASETS</li>
+<li><a class="" href="phyloseq-objects-demo-datasets.html"><span class="header-section-number">5</span> Phyloseq Objects Demo Datasets</a></li>
+<li class="book-part">PHYLOSEQ FUNCTIONS</li>
+<li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
+<li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
+<li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
+<li class="book-part">CLEANING PHYLOSEQ OBJECT</li>
+<li><a class="active" href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
+<li class="book-part">DATA TRANSFORMATION</li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
+<li class="book-part">DISTANCES MATRICES</li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
+<li class="book-part">DIMENSIONALITY REDUCTION</li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
+<li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tmbuza/imap-data-preparation.git">View book source <i class="fas fa-air-freshener"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="pipeline-for-cleaning-phyloseq-objects" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects<a class="anchor" aria-label="anchor" href="#pipeline-for-cleaning-phyloseq-objects"><i class="fas fa-link"></i></a>
+</h1>
+<p>Before proceeding with downstream analyses, it’s a good practice to inspect and clean your phyloseq object to minimize any potential errors or biases. By ensuring data integrity and consistency, you can enhance the reliability of your results.</p>
+<p>In this section, we’ll outline a pipeline for inspecting and cleaning a phyloseq object. We’ll thoroughly examine its contents and rebuild the object as needed to prepare it for subsequent analyses.</p>
+<div id="demo-with-the-dietswap-dataset" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Demo with the <code>dietswap</code> dataset<a class="anchor" aria-label="anchor" href="#demo-with-the-dietswap-dataset"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Set seed for reproducibility</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load required libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span> <span class="co"># for dietswap ps object</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span> <span class="co"># for ps_melt function and psExtra object.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load the dietswap dataset from the microbiome package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"dietswap"</span>, package <span class="op">=</span> <span class="st">"microbiome"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
+<span></span>
+<span><span class="co"># Apply string replacement to specified columns</span></span>
+<span><span class="va">ps_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/ps_melt.html">ps_melt</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># melt using microViz function ps_melt()</span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Genus <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="st">" et rel."</span>, <span class="st">""</span><span class="op">)</span>,</span>
+<span>       Genus <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="st">" at rel."</span>, <span class="st">""</span><span class="op">)</span>,</span>
+<span>       <span class="co"># Species = replace(Species, is.na(Species), 0),</span></span>
+<span>       Genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Genus</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>       Family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Family</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Family</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>       <span class="co"># Order = replace(Order, is.na(Order), 0),</span></span>
+<span>       <span class="co"># Class = replace(Genus, is.na(Class), 0),</span></span>
+<span>       Phylum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Phylum</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Phylum</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
+<span>      <span class="op">)</span></span>
+<span></span>
+<span><span class="va">otu_table</span> <span class="op">&lt;-</span> <span class="va">ps_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="st">"OTU"</span>, names_from <span class="op">=</span> <span class="st">"Sample"</span>, values_from <span class="op">=</span> <span class="st">"Abundance"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>OTU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%03d"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># just for neat OTU names</span></span>
+<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">otutable</span>, taxa_are_rows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tax_table</span> <span class="op">&lt;-</span> <span class="va">ps_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="st">"Phylum"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>OTU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%03d"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">taxtable</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check if rowname of otutable and that of taxonomy are equal</span></span>
+<span><span class="va">x1</span> <span class="op">=</span> <span class="va">otu_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">x2</span> <span class="op">=</span> <span class="va">tax_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">x1</span><span class="op">$</span><span class="va">OTU</span>, <span class="va">x2</span><span class="op">$</span><span class="va">OTU</span><span class="op">)</span></span></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Creating a new phyloseq object after alteration</span></span>
+<span></span>
+<span><span class="va">ps_basic</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">otu_table</span>, <span class="va">tax_table</span>, <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_data-methods.html">sample_data</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">ps_tree</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps_basic</span><span class="op">)</span>, rooted<span class="op">=</span><span class="cn">TRUE</span>, tip.label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps_basic</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">ps_raw</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">ps_basic</span>, <span class="va">ps_tree</span><span class="op">)</span></span>
+<span><span class="va">ps_rel</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># # Check points</span></span>
+<span><span class="co"># otu_table(ps_raw)</span></span>
+<span><span class="co"># tax_table(ps_raw)</span></span>
+<span><span class="co"># sample_data(ps_raw)</span></span>
+<span><span class="co"># phy_tree(ps_raw)</span></span>
+<span></span>
+<span><span class="co">## Create a Phylosic extra object</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">psextra_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span>ps <span class="op">=</span> <span class="va">ps_raw</span>, rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nClass of ps_raw\n\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>
+Class of ps_raw</code></pre>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span></span></code></pre></div>
+<pre><code>  Length    Class     Mode 
+       1 phyloseq       S4 </code></pre>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nClass of psextra_raw\n"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>
+Class of psextra_raw</code></pre>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span></span></code></pre></div>
+<pre><code> Length   Class    Mode 
+      1 psExtra      S4 </code></pre>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>                       Sample-1 Sample-2 Sample-3
+Sporobacter termitidis       87     1187      713
+Eubacterium hallii           10      102       39
+Ruminococcus gnavus          15       56       65</code></pre>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">psextra_rel</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">psextra_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>          Sample-1    Sample-2    Sample-3
+OTU016 0.010284904 0.056293275 0.024685801
+OTU038 0.001182173 0.004837333 0.001350275
+OTU055 0.001773259 0.002655791 0.002250459</code></pre>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Getting clean dataframe from psExtra object</span></span>
+<span><span class="va">ps_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Sample</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Abundance</span> <span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">OTU</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Sample</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rel_abund <span class="op">=</span> <span class="va">Abundance</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">Abundance</span>, .before <span class="op">=</span> <span class="va">rel_abund</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/make.unique.html">make.unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>sample_id <span class="op">=</span> <span class="va">sample</span>,</span>
+<span>count <span class="op">=</span> <span class="va">abundance</span>,</span>
+<span>bmi <span class="op">=</span> <span class="va">bmi_group</span>,</span>
+<span>grp <span class="op">=</span> <span class="va">group</span>,</span>
+<span>timewithingrp <span class="op">=</span> <span class="va">timepoint.within.group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"phylum"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"otu"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"level"</span>, values_to <span class="op">=</span> <span class="st">"taxon"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">taxon</span>,</span>
+<span>pattern <span class="op">=</span> <span class="st">"(.*)"</span>,</span>
+<span>replacement <span class="op">=</span> <span class="st">"*\\1*"</span><span class="op">)</span>,</span>
+<span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">taxon</span>,</span>
+<span>pattern <span class="op">=</span> <span class="st">"\\*(.*)_unclassified\\*"</span>,</span>
+<span>replacement <span class="op">=</span> <span class="st">"Unclassified&lt;br&gt;*\\1*"</span><span class="op">)</span>,</span>
+<span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">taxon</span>, <span class="st">"_"</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="phyloseq_based_data" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Save ps_raw, ps_rel, psextra_raw, ps_df to R object<a class="anchor" aria-label="anchor" href="#phyloseq_based_data"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="va">ps_rel</span>, <span class="va">psextra_raw</span>, <span class="va">psextra_rel</span>, <span class="va">ps_df</span>, file <span class="op">=</span> <span class="st">"data/phyloseq_raw_rel_psextra_df_objects.rda"</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></div>
+<div class="next"><a href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pipeline-for-cleaning-phyloseq-objects"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
+<li><a class="nav-link" href="#demo-with-the-dietswap-dataset"><span class="header-section-number">8.1</span> Demo with the dietswap dataset</a></li>
+<li><a class="nav-link" href="#phyloseq_based_data"><span class="header-section-number">8.2</span> Save ps_raw, ps_rel, psextra_raw, ps_df to R object</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/04_create_phyloseq_objects.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/04_create_phyloseq_objects.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br>
+</div>
+      <div class="col-12 col-md-6 mt-3">
+        <p>Note: This practical guide was created using the <a class="text-light" href="https://bookdown.org/yihui/bookdown/">bookdown</a> R package, styled with the modern bs4_book format.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+</body>
+</html>

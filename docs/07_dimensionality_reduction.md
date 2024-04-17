@@ -33,15 +33,16 @@ Saved RData objects
 ```
 
 ```r
-load("../imap-data-preparation/data/phyloseq_objects.rda", verbose = T)
+load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = T)
 ```
 
 ```
 Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc
+  ps_raw
+  ps_rel
+  psextra_raw
+  psextra_rel
+  ps_df
 ```
 
 ```r

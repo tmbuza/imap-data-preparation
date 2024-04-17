@@ -15,6 +15,18 @@ library(phyloseq)
 library(microbiome)
 library(vegan)
 
+load("data/phyloseq_objects.rda", verbose = TRUE)
+```
+
+```
+Loading objects:
+  ps_GlobalPatterns
+  ps_dietswap
+  ps_caporaso
+  ps_kostic_crc
+```
+
+```r
 load("data/ps_transformed.rda", verbose = TRUE)
 ```
 
@@ -33,31 +45,38 @@ Loading objects:
 ```
 
 ```r
-load("data/phyloseq_objects.rda", verbose = TRUE)
+load("data/bray_distances.rda", verbose = TRUE)
 ```
 
 ```
 Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc
+  ps_asin_bray_dist
+  ps_compositional_bray_dist
+  ps_z_otu_bray_dist
+  ps_z_sample_bray_dist
+  ps_log10_bray_dist
+  ps_log10p_bray_dist
+  ps_clr_bray_dist
+  ps_shift_bray_dist
+  ps_scale_bray_dist
 ```
 
 ```r
-load("data/phyloseq_extra_objects.rda", verbose = TRUE)
+load("data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = TRUE)
 ```
 
 ```
 Loading objects:
-  psextra_clr_dietswap
-  psextra_id_dietswap
-  psextra_log10p_dietswap
+  ps_raw
+  ps_rel
+  psextra_raw
+  psextra_rel
+  ps_df
 ```
 
 
 
-## Phyloseq Bray-Curtis Dissimilarity
+## Bray-Curtis Dissimilarity
 The Bray-Curtis dissimilarity calculates the dissimilarity between two samples based on the relative abundances of taxa. It considers both presence and abundance information but is not sensitive to differences in abundance magnitude.
 
 
@@ -96,58 +115,6 @@ save(ps_asin_bray_dist,
      ps_shift_bray_dist, 
      ps_scale_bray_dist, 
      file = "data/bray_distances.rda")
-```
-
-
-
-## Phyloseq Extra Bray-Curtis Dissimilarity
-In this section, we compute the Bray-Curtis dissimilarity distance from a phyloseq extra object. The Bray-Curtis dissimilarity distance is a measure of dissimilarity between microbial communities based on the abundance of different taxa present in each community. This analysis provides valuable insights into the compositional differences between microbial communities, which are essential for understanding microbial diversity and community structure in microbiome studies.
-
-
-```r
-library(vegan)
-library(dplyr)
-library(microViz)
-
-psextra_clr_asin_bray_dist  <- psextra_clr_dietswap %>% dist_calc(dist = "bray")
-psextra_id_asin_bray_dist  <- psextra_id_dietswap %>% dist_calc(dist = "bray")
-psextra_log10p_asin_bray_dist  <- psextra_log10p_dietswap %>% dist_calc(dist = "bray")
-
-save(psextra_clr_asin_bray_dist, 
-     psextra_id_asin_bray_dist, 
-     psextra_log10p_asin_bray_dist, 
-     file = "data/psextra_distances.rda")
-```
-
-
-## Confirm computed Bray-Curtis distance objects
-
-```r
-load("data/bray_distances.rda", verbose = T)
-```
-
-```
-Loading objects:
-  ps_asin_bray_dist
-  ps_compositional_bray_dist
-  ps_z_otu_bray_dist
-  ps_z_sample_bray_dist
-  ps_log10_bray_dist
-  ps_log10p_bray_dist
-  ps_clr_bray_dist
-  ps_shift_bray_dist
-  ps_scale_bray_dist
-```
-
-```r
-load("data/psextra_distances.rda", verbose = T)
-```
-
-```
-Loading objects:
-  psextra_clr_asin_bray_dist
-  psextra_id_asin_bray_dist
-  psextra_log10p_asin_bray_dist
 ```
 
 
@@ -193,7 +160,7 @@ save(ps_asin_jaccard_dist,
      file = "data/jaccard_distances.rda")
 ```
 
-## Confirm computed Jaccard distance objects
+Confirm computed Jaccard distance objects
 
 ```r
 load("data/jaccard_distances.rda", verbose = T)
@@ -257,7 +224,7 @@ save(ps_asin_euclidean_dist,
 ```
 
 
-## Confirm computed Euclidean distance objects
+Confirm computed Euclidean distance objects
 
 ```r
 load("data/euclidean_distances.rda", verbose = T)
@@ -280,7 +247,6 @@ Loading objects:
 ## Aitchison Distance
 The Aitchison distance, also known as the compositional distance or log-ratio distance, is specifically designed for compositional data such as microbiome abundance data. It calculates the dissimilarity between two samples based on the log-ratio transformations of their compositional vectors, providing meaningful comparisons between samples while addressing the compositional constraints inherent in relative abundance data.
 
-- Computing aitchison using `microViz` packages
 
 
 ```r
@@ -300,7 +266,7 @@ save(ps_GlobalPatterns_aitchison_dists,
 
 
 
-## Confirm computed Aitchison distance objects
+Confirm computed Aitchison distance objects
 
 ```r
 load("data/aitchison_distances.rda", verbose = T)
@@ -312,6 +278,7 @@ Loading objects:
   ps_dietswap_aitchison_dists
   ps_kostic_crc_aitchison_dists
 ```
+
 
 # What's Next: Utilizing Transformed Data {#utilizing-transformed-data}
 

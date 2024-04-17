@@ -99,7 +99,7 @@
 <h2>
 <span class="header-section-number">7.2</span> Load pre-existing phyloseq objects<a class="anchor" aria-label="anchor" href="#load-pre-existing-phyloseq-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_GlobalPatterns
@@ -111,7 +111,7 @@
 <h2>
 <span class="header-section-number">7.3</span> Aggregate taxonomic data<a class="anchor" aria-label="anchor" href="#aggregate-taxonomic-data"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load required packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span> <span class="co"># For handling microbiome data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span> <span class="co"># For advanced microbiome visualization</span></span>
@@ -128,18 +128,18 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nCentered log Ratio (CLR) Transformation\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 Centered log Ratio (CLR) Transformation</code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">psextra_clr_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Akkermansia Atopobium Megasphaera elsdenii et rel.
-Sample-1    1.264169 -3.555474                   -0.4880348
-Sample-2    2.226809 -2.040486                    0.3131385
-Sample-3    1.790291 -3.114983                    1.4176161
-Sample-4    3.396164 -1.943474                    1.2914479</code></pre>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
+Sample-1      -3.555474                   1.317812                    -1.497647
+Sample-2      -3.359449                   2.438871                    -1.490870
+Sample-3      -3.114983                   4.654395                    -1.169073
+Sample-4      -3.622689                   3.839628                    -1.348227</code></pre>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Aggregate taxonomic data</span></span>
 <span><span class="va">psextra_id_dietswap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span></span>
 <span>  ps <span class="op">=</span> <span class="va">ps_dietswap</span>,</span>
@@ -150,18 +150,18 @@ Sample-4    3.396164 -1.943474                    1.2914479</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nIdentity Transformation\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 Identity Transformation</code></pre>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">psextra_id_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Akkermansia Atopobium Megasphaera elsdenii et rel.
-Sample-1          18         0                            3
-Sample-2          97         1                           14
-Sample-3          67         0                           46
-Sample-4         256         1                           31</code></pre>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
+Sample-1              0                         19                            1
+Sample-2              0                        120                            2
+Sample-3              0                       1183                            3
+Sample-4              0                        399                            2</code></pre>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Aggregate taxonomic data</span></span>
 <span><span class="va">psextra_log10p_dietswap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span></span>
 <span>  ps <span class="op">=</span> <span class="va">ps_dietswap</span>,</span>
@@ -172,31 +172,31 @@ Sample-4         256         1                           31</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nLog10p Transformation\n"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>
 Log10p Transformation</code></pre>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">psextra_log10p_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
 <pre><code>OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Akkermansia Atopobium Megasphaera elsdenii et rel.
-Sample-1    1.278754   0.00000                     0.602060
-Sample-2    1.991226   0.30103                     1.176091
-Sample-3    1.832509   0.00000                     1.672098
-Sample-4    2.409933   0.30103                     1.505150</code></pre>
+         Staphylococcus Uncultured Clostridiales I Alcaligenes faecalis et rel.
+Sample-1              0                   1.301030                    0.3010300
+Sample-2              0                   2.082785                    0.4771213
+Sample-3              0                   3.073352                    0.6020600
+Sample-4              0                   2.602060                    0.4771213</code></pre>
 </div>
 <div id="confirm-the-psextra-class" class="section level2" number="7.4">
 <h2>
 <span class="header-section-number">7.4</span> Confirm the psExtra class<a class="anchor" aria-label="anchor" href="#confirm-the-psextra-class"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_clr_dietswap</span><span class="op">)</span></span></code></pre></div>
 <pre><code> Length   Class    Mode 
       1 psExtra      S4 </code></pre>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_id_dietswap</span><span class="op">)</span></span></code></pre></div>
 <pre><code> Length   Class    Mode 
       1 psExtra      S4 </code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_log10p_dietswap</span><span class="op">)</span></span></code></pre></div>
 <pre><code> Length   Class    Mode 
       1 psExtra      S4 </code></pre>
@@ -205,7 +205,7 @@ Sample-4    2.409933   0.30103                     1.505150</code></pre>
 <h2>
 <span class="header-section-number">7.5</span> Save psExtra to R object<a class="anchor" aria-label="anchor" href="#save-psextra-to-r-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">psextra_clr_dietswap</span>, <span class="va">psextra_id_dietswap</span>, <span class="va">psextra_log10p_dietswap</span>, file <span class="op">=</span> <span class="st">"data/phyloseq_extra_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 
 </div>
@@ -243,7 +243,7 @@ Sample-4    2.409933   0.30103                     1.505150</code></pre>
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-16</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

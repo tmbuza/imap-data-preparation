@@ -2,7 +2,7 @@
 
 # Creating phyloseq Objects
 
-In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.
+In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.
 
 ## From mothur output
 ```{r mothurphyseqobj, message=FALSE, warning=FALSE}
@@ -43,14 +43,13 @@ save(mt_ps_tree, mt_ps_raw, mt_ps_rel, mt_ps_df_raw, mt_ps_df_rel, file = "data/
 ```
 
 
-### Review the mothur phyloseq object
+### Review the Mothur phyloseq object
 
 ```{r mothurpsraw}
 mt_ps_raw
 ```
 
 ## From QIIME2 output
-## Create a phyloseq object
 ```{r qiime2physeqobj, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(phyloseq)
@@ -88,7 +87,7 @@ save(q2_ps_tree, q2_ps_raw, q2_ps_rel, q2_ps_df_raw, q2_ps_df_rel, file = "data/
 ```
 
 
-## Review the phyloseq object
+## Review the QIIME2 phyloseq object
 
 ```{r qiime2psraw}
 q2_ps_raw
@@ -99,6 +98,7 @@ q2_ps_raw
 # (PART) EXTERNAL DATASETS {-}
 
 # Phyloseq Objects Demo Datasets
+In this section, we utilize publicly available real-world datasets to demonstrate the functionality and analysis workflows of phyloseq objects. These datasets serve as valuable resources for researchers seeking to reproduce and validate their analyses using similar microbiome data. By leveraging these demo datasets, we aim to enhance reproducibility and accessibility in microbiome research and analysis.
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
@@ -111,7 +111,6 @@ knitr::opts_chunk$set(
 library(tidyverse)
 ```
 
-In this section, we are presenting the process of importing authentic preprocessed data, which will serve as the cornerstone for our subsequent analyses. Although synthetic data certainly has its advantages, it can at times introduce biases or limitations that do not fully capture the intricate diversity inherent in real microbiome samples.
 
 ## The GlobalPatterns dataset
 The GlobalPatterns dataset, sourced from the Earth Microbiome Project (EMP), serves as a comprehensive repository for studying microbial communities worldwide. Here's a breakdown of its key attributes:
@@ -135,10 +134,19 @@ df_GlobalPatterns <-GlobalPatterns %>%
   phyloseq::psmelt() %>% 
   tibble::rownames_to_column("sample_id") %>% 
   rename_all(tolower)
+```
 
+**GlobalPatterns phyloseq-class**
+
+```{r}
+ps_GlobalPatterns
+```
+
+**Columns in GlobalPatterns  dataset**
+
+```{r}
 colnames(df_GlobalPatterns)
 cat("\n")
-ps_GlobalPatterns
 
 ```
 
@@ -179,9 +187,19 @@ df_dietswap <-ps_dietswap %>%
   dplyr::select(-9) %>% 
   rename_all(tolower)
 
-colnames(df_dietswap)
-cat("\n")
+```
+
+
+**Dietswap phyloseq-class**
+
+```{r}
 ps_dietswap
+```
+
+**Columns in Dietswap  dataset**
+
+```{r}
+colnames(df_dietswap)
 
 ```
 
@@ -199,7 +217,7 @@ The Caporaso dataset provides valuable insights into microbial marker genes and 
 
 - **Utility:** Researchers utilize the Caporaso dataset to investigate microbial marker genes' roles in various ecosystems, such as host-microbiome interactions, environmental responses, and disease states. The dataset contributes to a better understanding of microbial ecology and its implications for human health and environmental management.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(microbiomeMarker) # for caporaso dataset
 data("caporaso")
 
@@ -209,9 +227,19 @@ df_caporaso <-caporaso %>%
   tibble::rownames_to_column("sample_id") %>% 
   rename_all(tolower)
 
-colnames(df_caporaso)
-cat("\n")
+```
+
+
+**Caporaso phyloseq-class**
+
+```{r}
 ps_caporaso
+```
+
+**Columns in Caporaso  dataset**
+
+```{r}
+colnames(df_caporaso)
 
 ```
 
@@ -231,7 +259,7 @@ The Kostic_CRC dataset provides valuable insights into the gut microbiome of ind
 - **Utility:** Researchers utilize the Kostic_CRC dataset to investigate the role of the gut microbiome in colorectal cancer pathogenesis, prognosis, and treatment response. The dataset contributes to a deeper understanding of the complex interplay between the gut microbiome and colorectal cancer biology, potentially leading to novel diagnostic or therapeutic strategies.
 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(microbiomeMarker) # for kostic_crc dataset
 data("kostic_crc")
 
@@ -246,14 +274,20 @@ df_kostic_crc <-kostic_crc %>%
   tibble::rownames_to_column("sample_id") %>% 
   rename_all(tolower)
 
-colnames(df_kostic_crc)
-cat("\n")
-ps_kostic_crc
-
 ```
 
+
+**Kostic_crc phyloseq-class**
+
 ```{r}
-df_kostic_crc
+ps_kostic_crc
+```
+
+**Columns in Kostic_crc  dataset**
+
+```{r}
+colnames(df_kostic_crc)
+
 ```
 
 ## Save objects for transformation and exploration {#save_ps_objects}
@@ -278,9 +312,11 @@ save(ps_GlobalPatterns,
 load("data/phyloseq_objects.rda", verbose = TRUE)
 ```
 
+
 # (PART) PHYLOSEQ FUNCTIONS {-}
 
 # Reviewing Phyloseq Objects
+In this section, we demonstrate basic functions for reviewing and exploring the contents of phyloseq objects. By familiarizing ourselves with these functions, we gain insights into the structure, composition, and metadata associated with phyloseq objects, facilitating effective analysis and interpretation of microbiome data.
 
 ```{r message=FALSE, warning=FALSE}
 library(phyloseq)

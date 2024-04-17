@@ -33,28 +33,28 @@ otu_table(ps_raw)[1:10, 1:10]
 ```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Akkermansia                             18       97       67      256       21
-Atopobium                                0        1        0        1        0
-Megasphaera elsdenii et rel.             3       14       46       31        7
-Oceanospirillum                          1        2        1        2        1
-Prevotella tannerae et rel.             63       19       16       15       15
-Catenibacterium mitsuokai et rel.        0        5        3        2        0
-Helicobacter                             2        2        2        2        2
-Eubacterium hallii et rel.              10      102       39       31       28
-Lachnospira pectinoschiza et rel.       54      141      118       55       67
-Burkholderia                             1        1        2        0        2
-                                  Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Akkermansia                             16       26       30       19       125
-Atopobium                                0        1        0        0         0
-Megasphaera elsdenii et rel.            76       49       71      356       382
-Oceanospirillum                          1        1        1        1         2
-Prevotella tannerae et rel.             18       17       18        3       111
-Catenibacterium mitsuokai et rel.        8        7        1        2         1
-Helicobacter                             2        2        2        2         2
-Eubacterium hallii et rel.              40       58       26       20        28
-Lachnospira pectinoschiza et rel.       64       64       80       40        57
-Burkholderia                             1        1        1        0         1
+                                 Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Staphylococcus                          0        0        0        0        0
+Uncultured Clostridiales I             19      120     1183      399       19
+Alcaligenes faecalis et rel.            1        2        3        2        2
+Bacteroides ovatus et rel.            427       15       31       46       29
+Uncultured Bacteroidetes                2        2        1        5        1
+Dialister                               5       23        6       24        6
+Clostridium thermocellum et rel.        0        0        0        0        0
+Novosphingobium                         0        0        0        0        0
+Ruminococcus gnavus et rel.            15       56       65       41       47
+Sutterella wadsworthia et rel.         77       11       44        7       55
+                                 Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Staphylococcus                          0        0        0        0         0
+Uncultured Clostridiales I             43      137       70       59       315
+Alcaligenes faecalis et rel.            2        2        2        2         7
+Bacteroides ovatus et rel.             13       15       19        7        11
+Uncultured Bacteroidetes                0        1        1        0         2
+Dialister                              38       37       25       45         4
+Clostridium thermocellum et rel.        0        0        0        0         0
+Novosphingobium                         0        0        0        0         0
+Ruminococcus gnavus et rel.            61      101       19       21        19
+Sutterella wadsworthia et rel.         14       13       10        6        10
 ```
 
 ##  No Transformation
@@ -86,11 +86,11 @@ otu_table(ps_identity)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
                              Sample-1 Sample-2 Sample-3
-Akkermansia                        18       97       67
-Atopobium                           0        1        0
-Megasphaera elsdenii et rel.        3       14       46
-Oceanospirillum                     1        2        1
-Prevotella tannerae et rel.        63       19       16
+Staphylococcus                      0        0        0
+Uncultured Clostridiales I         19      120     1183
+Alcaligenes faecalis et rel.        1        2        3
+Bacteroides ovatus et rel.        427       15       31
+Uncultured Bacteroidetes            2        2        1
 ```
 
 ## Relative abundance
@@ -116,11 +116,11 @@ otu_table(ps_rel)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
                                  Sample-1     Sample-2     Sample-3
-Akkermansia                  0.0021279111 4.600209e-03 2.319704e-03
-Atopobium                    0.0000000000 4.742483e-05 0.000000e+00
-Megasphaera elsdenii et rel. 0.0003546519 6.639476e-04 1.592632e-03
-Oceanospirillum              0.0001182173 9.484966e-05 3.462244e-05
-Prevotella tannerae et rel.  0.0074476889 9.010718e-04 5.539591e-04
+Staphylococcus               0.0000000000 0.000000e+00 0.000000e+00
+Uncultured Clostridiales I   0.0022461284 5.690980e-03 4.095835e-02
+Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 1.038673e-04
+Bacteroides ovatus et rel.   0.0504787800 7.113725e-04 1.073296e-03
+Uncultured Bacteroidetes     0.0002364346 9.484966e-05 3.462244e-05
 ```
 
 ## Arc sine (asin) transformation
@@ -145,11 +145,11 @@ ps_asin[1:5, 1:4]
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
                              Sample-1 Sample-2 Sample-3 Sample-4
-Akkermansia                  0.052595 0.077374 0.054917 0.159111
-Atopobium                    0.000000 0.007848 0.000000 0.009903
-Megasphaera elsdenii et rel. 0.021464 0.029370 0.045497 0.055163
-Oceanospirillum              0.012391 0.011099 0.006706 0.014005
-Prevotella tannerae et rel.  0.098511 0.034216 0.026826 0.038362
+Staphylococcus               0.000000 0.000000 0.000000 0.000000
+Uncultured Clostridiales I   0.054038 0.086080 0.232740 0.199116
+Alcaligenes faecalis et rel. 0.012391 0.011099 0.011615 0.014005
+Bacteroides ovatus et rel.   0.258934 0.030401 0.037345 0.067213
+Uncultured Bacteroidetes     0.017525 0.011099 0.006706 0.022144
 ```
 
 
@@ -181,11 +181,11 @@ otu_table(ps_compositional)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
                                  Sample-1     Sample-2     Sample-3
-Akkermansia                  0.0021279111 4.600209e-03 2.319704e-03
-Atopobium                    0.0000000000 4.742483e-05 0.000000e+00
-Megasphaera elsdenii et rel. 0.0003546519 6.639476e-04 1.592632e-03
-Oceanospirillum              0.0001182173 9.484966e-05 3.462244e-05
-Prevotella tannerae et rel.  0.0074476889 9.010718e-04 5.539591e-04
+Staphylococcus               0.0000000000 0.000000e+00 0.000000e+00
+Uncultured Clostridiales I   0.0022461284 5.690980e-03 4.095835e-02
+Alcaligenes faecalis et rel. 0.0001182173 9.484966e-05 1.038673e-04
+Bacteroides ovatus et rel.   0.0504787800 7.113725e-04 1.073296e-03
+Uncultured Bacteroidetes     0.0002364346 9.484966e-05 3.462244e-05
 ```
 
 ## Z-transform for OTUs
@@ -214,12 +214,12 @@ otu_table(ps_z_otu)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1    Sample-2   Sample-3
-Akkermansia                  -0.7333167  0.65311419  0.3442596
-Atopobium                    -0.3664071  2.35344701 -0.3664071
-Megasphaera elsdenii et rel. -1.0345716 -0.04063187  0.8182075
-Oceanospirillum              -0.5570347  0.25304450 -0.5570347
-Prevotella tannerae et rel.   0.6612837 -0.55293969 -0.7225946
+                                Sample-1    Sample-2    Sample-3
+Staphylococcus               -0.26858398 -0.26858398 -0.26858398
+Uncultured Clostridiales I   -0.73136690  1.04729654  3.30105031
+Alcaligenes faecalis et rel. -0.93076516 -0.44189484 -0.09503583
+Bacteroides ovatus et rel.    1.80487522 -1.13754389 -0.51697242
+Uncultured Bacteroidetes      0.07483888  0.07483888 -0.50384818
 ```
 
 ## Z-transform for Samples
@@ -248,12 +248,12 @@ otu_table(ps_z_sample)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1    Sample-2    Sample-3
-Akkermansia                   0.4182158  0.92846743  0.72038722
-Atopobium                    -1.1517915 -0.89241875 -1.18046753
-Megasphaera elsdenii et rel. -0.4126041  0.05030439  0.55399343
-Oceanospirillum              -0.7821978 -0.70271169 -0.86821022
-Prevotella tannerae et rel.   1.0657708  0.18490370  0.09587261
+                               Sample-1    Sample-2   Sample-3
+Staphylococcus               -1.1517915 -1.21672513 -1.1804675
+Uncultured Clostridiales I    0.4455659  1.02710632  2.0075089
+Alcaligenes faecalis et rel. -0.7821978 -0.70271169 -0.5559529
+Bacteroides ovatus et rel.    2.0789997  0.08050037  0.3808190
+Uncultured Bacteroidetes     -0.5659993 -0.70271169 -0.8682102
 ```
 
 ## Log10 Transform
@@ -282,12 +282,12 @@ otu_table(ps_log10)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1  Sample-2 Sample-3
-Akkermansia                  1.278754 1.9912261 1.832509
-Atopobium                    0.000000 0.3010300 0.000000
-Megasphaera elsdenii et rel. 0.602060 1.1760913 1.672098
-Oceanospirillum              0.301030 0.4771213 0.301030
-Prevotella tannerae et rel.  1.806180 1.3010300 1.230449
+                              Sample-1  Sample-2 Sample-3
+Staphylococcus               0.0000000 0.0000000 0.000000
+Uncultured Clostridiales I   1.3010300 2.0827854 3.073352
+Alcaligenes faecalis et rel. 0.3010300 0.4771213 0.602060
+Bacteroides ovatus et rel.   2.6314438 1.2041200 1.505150
+Uncultured Bacteroidetes     0.4771213 0.4771213 0.301030
 ```
 
 ## Log10p Transform
@@ -316,12 +316,12 @@ otu_table(ps_log10p)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1  Sample-2 Sample-3
-Akkermansia                  1.278754 1.9912261 1.832509
-Atopobium                    0.000000 0.3010300 0.000000
-Megasphaera elsdenii et rel. 0.602060 1.1760913 1.672098
-Oceanospirillum              0.301030 0.4771213 0.301030
-Prevotella tannerae et rel.  1.806180 1.3010300 1.230449
+                              Sample-1  Sample-2 Sample-3
+Staphylococcus               0.0000000 0.0000000 0.000000
+Uncultured Clostridiales I   1.3010300 2.0827854 3.073352
+Alcaligenes faecalis et rel. 0.3010300 0.4771213 0.602060
+Bacteroides ovatus et rel.   2.6314438 1.2041200 1.505150
+Uncultured Bacteroidetes     0.4771213 0.4771213 0.301030
 ```
 
 ## CLR Transform
@@ -351,12 +351,12 @@ otu_table(ps_clr)[1:5, 1:3]
 ```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1   Sample-2   Sample-3
-Akkermansia                   1.2641691  2.2268092  1.7902914
-Atopobium                    -3.5554744 -2.0404856 -3.1149834
-Megasphaera elsdenii et rel. -0.4880348  0.3131385  1.4176161
-Oceanospirillum              -1.4976474 -1.4908696 -2.0163711
-Prevotella tannerae et rel.   2.5111514  0.6118107  0.3815242
+                               Sample-1   Sample-2  Sample-3
+Staphylococcus               -3.5554744 -3.3594489 -3.114983
+Uncultured Clostridiales I    1.3178115  2.4388711  4.654395
+Alcaligenes faecalis et rel. -1.4976474 -1.4908696 -1.169073
+Bacteroides ovatus et rel.    4.4228219  0.3804359  1.028151
+Uncultured Bacteroidetes     -0.8704964 -1.4908696 -2.016371
 ```
 
 
@@ -387,11 +387,11 @@ otu_table(ps_shift)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
                              Sample-1 Sample-2 Sample-3
-Akkermansia                        19       98       68
-Atopobium                           1        2        1
-Megasphaera elsdenii et rel.        4       15       47
-Oceanospirillum                     2        3        2
-Prevotella tannerae et rel.        64       20       17
+Staphylococcus                      1        1        1
+Uncultured Clostridiales I         20      121     1184
+Alcaligenes faecalis et rel.        2        3        4
+Bacteroides ovatus et rel.        428       16       32
+Uncultured Bacteroidetes            3        3        2
 ```
 
 ## Data Scaling
@@ -421,11 +421,11 @@ otu_table(ps_scale)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
                              Sample-1 Sample-2 Sample-3
-Akkermansia                        18       97       67
-Atopobium                           0        1        0
-Megasphaera elsdenii et rel.        3       14       46
-Oceanospirillum                     1        2        1
-Prevotella tannerae et rel.        63       19       16
+Staphylococcus                      0        0        0
+Uncultured Clostridiales I         19      120     1183
+Alcaligenes faecalis et rel.        1        2        3
+Bacteroides ovatus et rel.        427       15       31
+Uncultured Bacteroidetes            2        2        1
 ```
 
 ## Save transformed objects

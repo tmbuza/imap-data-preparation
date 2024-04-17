@@ -93,7 +93,7 @@
 <h2>
 <span class="header-section-number">9.1</span> Import processed and transformed data objects<a class="anchor" aria-label="anchor" href="#import-processed-and-transformed-data-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
@@ -112,20 +112,26 @@
   ps_clr
   ps_shift
   ps_scale</code></pre>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
   ps_kostic_crc</code></pre>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_extra_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Loading objects:
+  psextra_clr_dietswap
+  psextra_id_dietswap
+  psextra_log10p_dietswap</code></pre>
 </div>
-<div id="bray-curtis-dissimilarity" class="section level2" number="9.2">
+<div id="phyloseq-bray-curtis-dissimilarity" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">9.2</span> Bray-Curtis Dissimilarity<a class="anchor" aria-label="anchor" href="#bray-curtis-dissimilarity"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Phyloseq Bray-Curtis Dissimilarity<a class="anchor" aria-label="anchor" href="#phyloseq-bray-curtis-dissimilarity"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Bray-Curtis dissimilarity calculates the dissimilarity between two samples based on the relative abundances of taxa. It considers both presence and abundance information but is not sensitive to differences in abundance magnitude.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -161,11 +167,30 @@
 <span>     <span class="va">ps_scale_bray_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/bray_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-computed-bray-curtis-distance-objects" class="section level2" number="9.3">
+<div id="phyloseq-extra-bray-curtis-dissimilarity" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">9.3</span> Confirm computed Bray-Curtis distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-bray-curtis-distance-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Phyloseq Extra Bray-Curtis Dissimilarity<a class="anchor" aria-label="anchor" href="#phyloseq-extra-bray-curtis-dissimilarity"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<p>In this section, we compute the Bray-Curtis dissimilarity distance from a phyloseq extra object. The Bray-Curtis dissimilarity distance is a measure of dissimilarity between microbial communities based on the abundance of different taxa present in each community. This analysis provides valuable insights into the compositional differences between microbial communities, which are essential for understanding microbial diversity and community structure in microbiome studies.</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">psextra_clr_asin_bray_dist</span>  <span class="op">&lt;-</span> <span class="va">psextra_clr_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/dist_calc.html">dist_calc</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="st">"bray"</span><span class="op">)</span></span>
+<span><span class="va">psextra_id_asin_bray_dist</span>  <span class="op">&lt;-</span> <span class="va">psextra_id_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/dist_calc.html">dist_calc</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="st">"bray"</span><span class="op">)</span></span>
+<span><span class="va">psextra_log10p_asin_bray_dist</span>  <span class="op">&lt;-</span> <span class="va">psextra_log10p_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/dist_calc.html">dist_calc</a></span><span class="op">(</span>dist <span class="op">=</span> <span class="st">"bray"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">psextra_clr_asin_bray_dist</span>, </span>
+<span>     <span class="va">psextra_id_asin_bray_dist</span>, </span>
+<span>     <span class="va">psextra_log10p_asin_bray_dist</span>, </span>
+<span>     file <span class="op">=</span> <span class="st">"data/psextra_distances.rda"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="confirm-computed-bray-curtis-distance-objects" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Confirm computed Bray-Curtis distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-bray-curtis-distance-objects"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/bray_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin_bray_dist
@@ -177,13 +202,19 @@
   ps_clr_bray_dist
   ps_shift_bray_dist
   ps_scale_bray_dist</code></pre>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/psextra_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<pre><code>Loading objects:
+  psextra_clr_asin_bray_dist
+  psextra_id_asin_bray_dist
+  psextra_log10p_asin_bray_dist</code></pre>
 </div>
-<div id="jaccard-distance" class="section level2" number="9.4">
+<div id="jaccard-distance" class="section level2" number="9.5">
 <h2>
-<span class="header-section-number">9.4</span> Jaccard Distance<a class="anchor" aria-label="anchor" href="#jaccard-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Jaccard Distance<a class="anchor" aria-label="anchor" href="#jaccard-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Jaccard distance measures the dissimilarity between two samples based on the presence or absence of taxa, ignoring their abundance information. It is calculated as the ratio of the number of taxa found in only one of the samples to the total number of taxa found in both samples.</p>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -219,11 +250,11 @@
 <span>     <span class="va">ps_scale_jaccard_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/jaccard_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="confirm-computed-jaccard-distance-objects" class="section level2" number="9.5">
+<div id="confirm-computed-jaccard-distance-objects" class="section level2" number="9.6">
 <h2>
-<span class="header-section-number">9.5</span> Confirm computed Jaccard distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-jaccard-distance-objects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.6</span> Confirm computed Jaccard distance objects<a class="anchor" aria-label="anchor" href="#confirm-computed-jaccard-distance-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/jaccard_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Loading objects:
   ps_asin_jaccard_dist
@@ -236,12 +267,12 @@
   ps_shift_jaccard_dist
   ps_scale_jaccard_dist</code></pre>
 </div>
-<div id="unifrac-distance-weighted-and-unweighted" class="section level2" number="9.6">
+<div id="unifrac-distance-weighted-and-unweighted" class="section level2" number="9.7">
 <h2>
-<span class="header-section-number">9.6</span> UniFrac Distance (Weighted and Unweighted)<a class="anchor" aria-label="anchor" href="#unifrac-distance-weighted-and-unweighted"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.7</span> UniFrac Distance (Weighted and Unweighted)<a class="anchor" aria-label="anchor" href="#unifrac-distance-weighted-and-unweighted"><i class="fas fa-link"></i></a>
 </h2>
 <p>UniFrac distances quantify the dissimilarity between microbial communities based on the evolutionary distances along a phylogenetic tree. Unweighted UniFrac considers only the presence or absence of taxa, while weighted UniFrac also takes into account the relative abundance of taxa.</p>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -277,12 +308,12 @@
 <span>     <span class="va">ps_scale_jaccard_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/jaccard_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="euclidean-distance" class="section level2" number="9.7">
+<div id="euclidean-distance" class="section level2" number="9.8">
 <h2>
-<span class="header-section-number">9.7</span> Euclidean Distance<a class="anchor" aria-label="anchor" href="#euclidean-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.8</span> Euclidean Distance<a class="anchor" aria-label="anchor" href="#euclidean-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Euclidean distance calculates the straight-line distance between two samples in a multidimensional space based on their abundance profiles. It considers differences in both presence and abundance of taxa.</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -318,15 +349,15 @@
 <span>     <span class="va">ps_scale_euclidean_dist</span>, </span>
 <span>     file <span class="op">=</span> <span class="st">"data/euclidean_distances.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="aitchison-distance" class="section level2" number="9.8">
+<div id="aitchison-distance" class="section level2" number="9.9">
 <h2>
-<span class="header-section-number">9.8</span> Aitchison Distance<a class="anchor" aria-label="anchor" href="#aitchison-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.9</span> Aitchison Distance<a class="anchor" aria-label="anchor" href="#aitchison-distance"><i class="fas fa-link"></i></a>
 </h2>
 <p>The Aitchison distance, also known as the compositional distance or log-ratio distance, is specifically designed for compositional data such as microbiome abundance data. It calculates the dissimilarity between two samples based on the log-ratio transformations of their compositional vectors, providing meaningful comparisons between samples while addressing the compositional constraints inherent in relative abundance data.</p>
 <ul>
 <li>Computing aitchison using <code>microViz</code> packages</li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -353,13 +384,14 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#distance-calculation-in-microbiome-data-analysis"><span class="header-section-number">9</span> Distance Calculation in Microbiome Data Analysis</a></li>
 <li><a class="nav-link" href="#import-processed-and-transformed-data-objects"><span class="header-section-number">9.1</span> Import processed and transformed data objects</a></li>
-<li><a class="nav-link" href="#bray-curtis-dissimilarity"><span class="header-section-number">9.2</span> Bray-Curtis Dissimilarity</a></li>
-<li><a class="nav-link" href="#confirm-computed-bray-curtis-distance-objects"><span class="header-section-number">9.3</span> Confirm computed Bray-Curtis distance objects</a></li>
-<li><a class="nav-link" href="#jaccard-distance"><span class="header-section-number">9.4</span> Jaccard Distance</a></li>
-<li><a class="nav-link" href="#confirm-computed-jaccard-distance-objects"><span class="header-section-number">9.5</span> Confirm computed Jaccard distance objects</a></li>
-<li><a class="nav-link" href="#unifrac-distance-weighted-and-unweighted"><span class="header-section-number">9.6</span> UniFrac Distance (Weighted and Unweighted)</a></li>
-<li><a class="nav-link" href="#euclidean-distance"><span class="header-section-number">9.7</span> Euclidean Distance</a></li>
-<li><a class="nav-link" href="#aitchison-distance"><span class="header-section-number">9.8</span> Aitchison Distance</a></li>
+<li><a class="nav-link" href="#phyloseq-bray-curtis-dissimilarity"><span class="header-section-number">9.2</span> Phyloseq Bray-Curtis Dissimilarity</a></li>
+<li><a class="nav-link" href="#phyloseq-extra-bray-curtis-dissimilarity"><span class="header-section-number">9.3</span> Phyloseq Extra Bray-Curtis Dissimilarity</a></li>
+<li><a class="nav-link" href="#confirm-computed-bray-curtis-distance-objects"><span class="header-section-number">9.4</span> Confirm computed Bray-Curtis distance objects</a></li>
+<li><a class="nav-link" href="#jaccard-distance"><span class="header-section-number">9.5</span> Jaccard Distance</a></li>
+<li><a class="nav-link" href="#confirm-computed-jaccard-distance-objects"><span class="header-section-number">9.6</span> Confirm computed Jaccard distance objects</a></li>
+<li><a class="nav-link" href="#unifrac-distance-weighted-and-unweighted"><span class="header-section-number">9.7</span> UniFrac Distance (Weighted and Unweighted)</a></li>
+<li><a class="nav-link" href="#euclidean-distance"><span class="header-section-number">9.8</span> Euclidean Distance</a></li>
+<li><a class="nav-link" href="#aitchison-distance"><span class="header-section-number">9.9</span> Aitchison Distance</a></li>
 </ul>
 
       <div class="book-extra">
@@ -378,7 +410,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-16</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

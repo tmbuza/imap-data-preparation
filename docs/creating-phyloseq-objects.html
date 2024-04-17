@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Creating phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines</title>
 <meta name="author" content="Teresia Mrema-Buza">
-<meta name="description" content="In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.  4.1 From...">
+<meta name="description" content="In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="4 Creating phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/creating-phyloseq-objects.html">
 <meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
-<meta property="og:description" content="In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.  4.1 From...">
+<meta property="og:description" content="In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Creating phyloseq Objects | IMAP: Integrated Microbiome Analysis Pipelines">
-<meta name="twitter:description" content="In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.  4.1 From...">
+<meta name="twitter:description" content="In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and...">
 <meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -88,7 +88,7 @@
 <h1>
 <span class="header-section-number">4</span> Creating phyloseq Objects<a class="anchor" aria-label="anchor" href="#creating-phyloseq-objects"><i class="fas fa-link"></i></a>
 </h1>
-<p>In this section, we create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.</p>
+<p>In this section, we demonstrate how to create phyloseq objects to organize and structure microbiome data for analysis. These objects serve as the foundation for downstream analyses and visualization.</p>
 <div id="from-mothur-output" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> From mothur output<a class="anchor" aria-label="anchor" href="#from-mothur-output"><i class="fas fa-link"></i></a>
@@ -129,7 +129,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">mt_ps_tree</span>, <span class="va">mt_ps_raw</span>, <span class="va">mt_ps_rel</span>, <span class="va">mt_ps_df_raw</span>, <span class="va">mt_ps_df_rel</span>, file <span class="op">=</span> <span class="st">"data/mothur_phyloseq_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 <div id="review-the-mothur-phyloseq-object" class="section level3" number="4.1.1">
 <h3>
-<span class="header-section-number">4.1.1</span> Review the mothur phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-mothur-phyloseq-object"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.1</span> Review the Mothur phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-mothur-phyloseq-object"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mt_ps_raw</span></span></code></pre></div>
@@ -143,11 +143,6 @@
 <div id="from-qiime2-output" class="section level2" number="4.2">
 <h2>
 <span class="header-section-number">4.2</span> From QIIME2 output<a class="anchor" aria-label="anchor" href="#from-qiime2-output"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="create-a-phyloseq-object" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Create a phyloseq object<a class="anchor" aria-label="anchor" href="#create-a-phyloseq-object"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
@@ -184,9 +179,9 @@
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">q2_ps_tree</span>, <span class="va">q2_ps_raw</span>, <span class="va">q2_ps_rel</span>, <span class="va">q2_ps_df_raw</span>, <span class="va">q2_ps_df_rel</span>, file <span class="op">=</span> <span class="st">"data/qiime2_phyloseq_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="review-the-phyloseq-object" class="section level2" number="4.4">
+<div id="review-the-qiime2-phyloseq-object" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">4.4</span> Review the phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-phyloseq-object"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Review the QIIME2 phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-qiime2-phyloseq-object"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q2_ps_raw</span></span></code></pre></div>
@@ -208,11 +203,10 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#creating-phyloseq-objects"><span class="header-section-number">4</span> Creating phyloseq Objects</a></li>
 <li>
-<a class="nav-link" href="#from-mothur-output"><span class="header-section-number">4.1</span> From mothur output</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#review-the-mothur-phyloseq-object"><span class="header-section-number">4.1.1</span> Review the mothur phyloseq object</a></li></ul>
+<a class="nav-link" href="#from-mothur-output"><span class="header-section-number">4.1</span> From mothur output</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#review-the-mothur-phyloseq-object"><span class="header-section-number">4.1.1</span> Review the Mothur phyloseq object</a></li></ul>
 </li>
 <li><a class="nav-link" href="#from-qiime2-output"><span class="header-section-number">4.2</span> From QIIME2 output</a></li>
-<li><a class="nav-link" href="#create-a-phyloseq-object"><span class="header-section-number">4.3</span> Create a phyloseq object</a></li>
-<li><a class="nav-link" href="#review-the-phyloseq-object"><span class="header-section-number">4.4</span> Review the phyloseq object</a></li>
+<li><a class="nav-link" href="#review-the-qiime2-phyloseq-object"><span class="header-section-number">4.3</span> Review the QIIME2 phyloseq object</a></li>
 </ul>
 
       <div class="book-extra">
@@ -231,7 +225,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-16</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

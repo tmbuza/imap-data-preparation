@@ -44,8 +44,20 @@ Loading objects:
   ps_kostic_crc
 ```
 
+```r
+load("data/phyloseq_extra_objects.rda", verbose = TRUE)
+```
 
-## Bray-Curtis Dissimilarity
+```
+Loading objects:
+  psextra_clr_dietswap
+  psextra_id_dietswap
+  psextra_log10p_dietswap
+```
+
+
+
+## Phyloseq Bray-Curtis Dissimilarity
 The Bray-Curtis dissimilarity calculates the dissimilarity between two samples based on the relative abundances of taxa. It considers both presence and abundance information but is not sensitive to differences in abundance magnitude.
 
 
@@ -87,6 +99,27 @@ save(ps_asin_bray_dist,
 ```
 
 
+
+## Phyloseq Extra Bray-Curtis Dissimilarity
+In this section, we compute the Bray-Curtis dissimilarity distance from a phyloseq extra object. The Bray-Curtis dissimilarity distance is a measure of dissimilarity between microbial communities based on the abundance of different taxa present in each community. This analysis provides valuable insights into the compositional differences between microbial communities, which are essential for understanding microbial diversity and community structure in microbiome studies.
+
+
+```r
+library(vegan)
+library(dplyr)
+library(microViz)
+
+psextra_clr_asin_bray_dist  <- psextra_clr_dietswap %>% dist_calc(dist = "bray")
+psextra_id_asin_bray_dist  <- psextra_id_dietswap %>% dist_calc(dist = "bray")
+psextra_log10p_asin_bray_dist  <- psextra_log10p_dietswap %>% dist_calc(dist = "bray")
+
+save(psextra_clr_asin_bray_dist, 
+     psextra_id_asin_bray_dist, 
+     psextra_log10p_asin_bray_dist, 
+     file = "data/psextra_distances.rda")
+```
+
+
 ## Confirm computed Bray-Curtis distance objects
 
 ```r
@@ -106,8 +139,20 @@ Loading objects:
   ps_scale_bray_dist
 ```
 
+```r
+load("data/psextra_distances.rda", verbose = T)
+```
+
+```
+Loading objects:
+  psextra_clr_asin_bray_dist
+  psextra_id_asin_bray_dist
+  psextra_log10p_asin_bray_dist
+```
+
 
 ## Jaccard Distance
+
 The Jaccard distance measures the dissimilarity between two samples based on the presence or absence of taxa, ignoring their abundance information. It is calculated as the ratio of the number of taxa found in only one of the samples to the total number of taxa found in both samples.
 
 

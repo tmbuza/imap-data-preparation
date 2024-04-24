@@ -107,57 +107,53 @@
 <div id="import-libraries-and-data-objects" class="section level2 unnumbered">
 <h2>Import libraries and data objects<a class="anchor" aria-label="anchor" href="#import-libraries-and-data-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nSaved RData objects\n\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Saved RData objects</code></pre>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  ps_raw
-  ps_rel
-  psextra_raw
-  psextra_rel
-  ps_df</code></pre>
-<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/ps_transformed.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  ps_asin
-  ps_identity
-  ps_compositional
-  ps_z_otu
-  ps_z_sample
-  ps_log10
-  ps_log10p
-  ps_clr
-  ps_shift
-  ps_scale</code></pre>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"../imap-data-preparation/data/bray_distances.rda"</span>, verbose <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  ps_asin_bray_dist
-  ps_compositional_bray_dist
-  ps_z_otu_bray_dist
-  ps_z_sample_bray_dist
-  ps_log10_bray_dist
-  ps_log10p_bray_dist
-  ps_clr_bray_dist
-  ps_shift_bray_dist
-  ps_scale_bray_dist</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dimensionality-reduction-techniques.html#cb73-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">110912</span>)</span>
+<span id="cb73-2"><a href="dimensionality-reduction-techniques.html#cb73-2" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="dimensionality-reduction-techniques.html#cb73-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="fu">suppressPackageStartupMessages</span>())</span>
+<span id="cb73-4"><a href="dimensionality-reduction-techniques.html#cb73-4" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb73-5"><a href="dimensionality-reduction-techniques.html#cb73-5" tabindex="-1"></a><span class="fu">library</span>(microbiome)</span>
+<span id="cb73-6"><a href="dimensionality-reduction-techniques.html#cb73-6" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb73-7"><a href="dimensionality-reduction-techniques.html#cb73-7" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="dimensionality-reduction-techniques.html#cb73-8" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Saved RData objects</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb73-9"><a href="dimensionality-reduction-techniques.html#cb73-9" tabindex="-1"></a></span>
+<span id="cb73-10"><a href="dimensionality-reduction-techniques.html#cb73-10" tabindex="-1"></a>Saved RData objects</span>
+<span id="cb73-11"><a href="dimensionality-reduction-techniques.html#cb73-11" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda"</span>, <span class="at">verbose =</span> T)</span>
+<span id="cb73-12"><a href="dimensionality-reduction-techniques.html#cb73-12" tabindex="-1"></a>Loading objects<span class="sc">:</span></span>
+<span id="cb73-13"><a href="dimensionality-reduction-techniques.html#cb73-13" tabindex="-1"></a>  ps_raw</span>
+<span id="cb73-14"><a href="dimensionality-reduction-techniques.html#cb73-14" tabindex="-1"></a>  ps_rel</span>
+<span id="cb73-15"><a href="dimensionality-reduction-techniques.html#cb73-15" tabindex="-1"></a>  psextra_raw</span>
+<span id="cb73-16"><a href="dimensionality-reduction-techniques.html#cb73-16" tabindex="-1"></a>  psextra_rel</span>
+<span id="cb73-17"><a href="dimensionality-reduction-techniques.html#cb73-17" tabindex="-1"></a>  ps_df</span>
+<span id="cb73-18"><a href="dimensionality-reduction-techniques.html#cb73-18" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../imap-data-preparation/data/ps_transformed.rda"</span>, <span class="at">verbose =</span> T)</span>
+<span id="cb73-19"><a href="dimensionality-reduction-techniques.html#cb73-19" tabindex="-1"></a>Loading objects<span class="sc">:</span></span>
+<span id="cb73-20"><a href="dimensionality-reduction-techniques.html#cb73-20" tabindex="-1"></a>  ps_asin</span>
+<span id="cb73-21"><a href="dimensionality-reduction-techniques.html#cb73-21" tabindex="-1"></a>  ps_identity</span>
+<span id="cb73-22"><a href="dimensionality-reduction-techniques.html#cb73-22" tabindex="-1"></a>  ps_compositional</span>
+<span id="cb73-23"><a href="dimensionality-reduction-techniques.html#cb73-23" tabindex="-1"></a>  ps_z_otu</span>
+<span id="cb73-24"><a href="dimensionality-reduction-techniques.html#cb73-24" tabindex="-1"></a>  ps_z_sample</span>
+<span id="cb73-25"><a href="dimensionality-reduction-techniques.html#cb73-25" tabindex="-1"></a>  ps_log10</span>
+<span id="cb73-26"><a href="dimensionality-reduction-techniques.html#cb73-26" tabindex="-1"></a>  ps_log10p</span>
+<span id="cb73-27"><a href="dimensionality-reduction-techniques.html#cb73-27" tabindex="-1"></a>  ps_clr</span>
+<span id="cb73-28"><a href="dimensionality-reduction-techniques.html#cb73-28" tabindex="-1"></a>  ps_shift</span>
+<span id="cb73-29"><a href="dimensionality-reduction-techniques.html#cb73-29" tabindex="-1"></a>  ps_scale</span>
+<span id="cb73-30"><a href="dimensionality-reduction-techniques.html#cb73-30" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"../imap-data-preparation/data/bray_distances.rda"</span>, <span class="at">verbose =</span> T)</span>
+<span id="cb73-31"><a href="dimensionality-reduction-techniques.html#cb73-31" tabindex="-1"></a>Loading objects<span class="sc">:</span></span>
+<span id="cb73-32"><a href="dimensionality-reduction-techniques.html#cb73-32" tabindex="-1"></a>  ps_asin_bray_dist</span>
+<span id="cb73-33"><a href="dimensionality-reduction-techniques.html#cb73-33" tabindex="-1"></a>  ps_compositional_bray_dist</span>
+<span id="cb73-34"><a href="dimensionality-reduction-techniques.html#cb73-34" tabindex="-1"></a>  ps_z_otu_bray_dist</span>
+<span id="cb73-35"><a href="dimensionality-reduction-techniques.html#cb73-35" tabindex="-1"></a>  ps_z_sample_bray_dist</span>
+<span id="cb73-36"><a href="dimensionality-reduction-techniques.html#cb73-36" tabindex="-1"></a>  ps_log10_bray_dist</span>
+<span id="cb73-37"><a href="dimensionality-reduction-techniques.html#cb73-37" tabindex="-1"></a>  ps_log10p_bray_dist</span>
+<span id="cb73-38"><a href="dimensionality-reduction-techniques.html#cb73-38" tabindex="-1"></a>  ps_clr_bray_dist</span>
+<span id="cb73-39"><a href="dimensionality-reduction-techniques.html#cb73-39" tabindex="-1"></a>  ps_shift_bray_dist</span>
+<span id="cb73-40"><a href="dimensionality-reduction-techniques.html#cb73-40" tabindex="-1"></a>  ps_scale_bray_dist</span></code></pre></div>
 </div>
 <div id="pca-principal-component-analysis" class="section level2" number="12.1">
 <h2>
 <span class="header-section-number">12.1</span> PCA (Principal Component Analysis)<a class="anchor" aria-label="anchor" href="#pca-principal-component-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>PCA is a dimensionality reduction technique commonly used to explore patterns and structure in high-dimensional data. It works by transforming the original variables into a new set of uncorrelated variables called principal components. These principal components capture the maximum variance in the data, allowing for visualization and exploration of the major patterns or clusters within the dataset.</p>
-<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for PCA with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
 <span></span>
@@ -169,7 +165,7 @@ Saved RData objects</code></pre>
 <span class="header-section-number">12.2</span> MDS (Multidimensional Scaling)<a class="anchor" aria-label="anchor" href="#mds-multidimensional-scaling"><i class="fas fa-link"></i></a>
 </h2>
 <p>MDS is a method for visualizing the similarities or dissimilarities between samples in a lower-dimensional space. It aims to preserve the pairwise distances or dissimilarities between samples as much as possible, representing the data in a reduced-dimensional space while maintaining the overall structure. MDS is particularly useful for exploring the overall structure of complex datasets and identifying sample clusters or gradients based on ecological distances or dissimilarity measures.</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for MDS with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
 <span></span>
@@ -181,7 +177,7 @@ Saved RData objects</code></pre>
 <span class="header-section-number">12.3</span> PCoA (Principal Coordinates Analysis)<a class="anchor" aria-label="anchor" href="#pcoa-principal-coordinates-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Principal Coordinates Analysis (PCoA), also known as classical multidimensional scaling (MDS), is a dimensionality reduction technique commonly used in ecology and other fields to visualize and explore patterns in distance or dissimilarity data. PCoA takes a distance or dissimilarity matrix as input and transforms it into a set of orthogonal axes (principal coordinates) that capture the maximum variation in the data. These principal coordinates represent a lower-dimensional representation of the original data while preserving the pairwise distances between samples as much as possible. PCoA is particularly useful for visualizing and interpreting relationships between samples based on their similarities or dissimilarities, facilitating the identification of clusters, gradients, or other patterns in complex datasets</p>
-<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for MDS with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
@@ -193,13 +189,13 @@ Saved RData objects</code></pre>
 <span class="header-section-number">12.4</span> t-SNE (t-Distributed Stochastic Neighbor Embedding)<a class="anchor" aria-label="anchor" href="#t-sne-t-distributed-stochastic-neighbor-embedding"><i class="fas fa-link"></i></a>
 </h2>
 <p>t-SNE is a nonlinear dimensionality reduction technique that aims to preserve both local and global relationships between samples in a lower-dimensional space. It is particularly effective for visualizing high-dimensional data in two or three dimensions, capturing fine-scale structure or clustering within the dataset. t-SNE works by modeling the similarities between samples in the high-dimensional space and mapping them to a lower-dimensional space while minimizing the Kullback-Leibler divergence between the two distributions. It is commonly used for exploratory data analysis and visualization of complex datasets, including microbiome abundance data.</p>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for t-SNE with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jkrijthe/Rtsne">Rtsne</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Assuming 'distance_matrix' is your distance matrix between samples</span></span>
 <span><span class="va">tsne_asin_bray_metrics</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Rtsne/man/Rtsne.html">Rtsne</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html">as.dist</a></span><span class="op">(</span><span class="va">ps_asin_bray_dist</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">pca_asin_bray_metrics</span>, <span class="va">mds_asin_bray_metrics</span>, <span class="va">pcoa_asin_bray_metrics</span>, <span class="va">tsne_asin_bray_metrics</span>, file <span class="op">=</span> <span class="st">"data/reduced_dimension.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="non-negative-matrix-factorization-nmf" class="section level2" number="12.5">
@@ -213,7 +209,7 @@ Saved RData objects</code></pre>
 <span class="header-section-number">12.6</span> Redundancy Analysis (RDA)<a class="anchor" aria-label="anchor" href="#redundancy-analysis-rda"><i class="fas fa-link"></i></a>
 </h2>
 <p>RDA is a multivariate statistical technique used to explore the relationships between multiple response variables (e.g., microbial taxa) and explanatory variables (e.g., environmental or metadata factors). In microbiome analysis, RDA can be applied to identify microbial taxa associated with specific environmental gradients or experimental conditions, providing insights into the ecological drivers shaping microbial composition.</p>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Sample R code for RDA with distance matrices</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan">vegan</a></span><span class="op">)</span></span>
 <span></span>
@@ -280,7 +276,7 @@ Saved RData objects</code></pre>
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

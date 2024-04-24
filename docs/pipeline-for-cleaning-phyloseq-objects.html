@@ -97,145 +97,144 @@
 <h2>
 <span class="header-section-number">8.1</span> Demo with the <code>dietswap</code> dataset<a class="anchor" aria-label="anchor" href="#demo-with-the-dietswap-dataset"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Set seed for reproducibility</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">110912</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Load required libraries</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span> <span class="co"># for dietswap ps object</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span> <span class="co"># for ps_melt function and psExtra object.</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ape-package.ird.fr/">ape</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Load the dietswap dataset from the microbiome package</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"dietswap"</span>, package <span class="op">=</span> <span class="st">"microbiome"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">ps_dietswap</span></span>
-<span></span>
-<span><span class="co"># Apply string replacement to specified columns</span></span>
-<span><span class="va">ps_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/ps_melt.html">ps_melt</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># melt using microViz function ps_melt()</span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Genus <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="st">" et rel."</span>, <span class="st">""</span><span class="op">)</span>,</span>
-<span>       Genus <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="st">" at rel."</span>, <span class="st">""</span><span class="op">)</span>,</span>
-<span>       <span class="co"># Species = replace(Species, is.na(Species), 0),</span></span>
-<span>       Genus <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Genus</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Genus</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>       Family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Family</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Family</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>       <span class="co"># Order = replace(Order, is.na(Order), 0),</span></span>
-<span>       <span class="co"># Class = replace(Genus, is.na(Class), 0),</span></span>
-<span>       Phylum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/replace.html">replace</a></span><span class="op">(</span><span class="va">Phylum</span>, <span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">Phylum</span><span class="op">)</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span>      <span class="op">)</span></span>
-<span></span>
-<span><span class="va">otu_table</span> <span class="op">&lt;-</span> <span class="va">ps_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="st">"OTU"</span>, names_from <span class="op">=</span> <span class="st">"Sample"</span>, values_from <span class="op">=</span> <span class="st">"Abundance"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>OTU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%03d"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># just for neat OTU names</span></span>
-<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">otutable</span>, taxa_are_rows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">tax_table</span> <span class="op">&lt;-</span> <span class="va">ps_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="st">"Phylum"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>OTU <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"OTU"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%03d"</span>, <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/tax_table-methods.html">tax_table</a></span><span class="op">(</span><span class="va">taxtable</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Check if rowname of otutable and that of taxonomy are equal</span></span>
-<span><span class="va">x1</span> <span class="op">=</span> <span class="va">otu_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">x2</span> <span class="op">=</span> <span class="va">tax_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"OTU"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">x1</span><span class="op">$</span><span class="va">OTU</span>, <span class="va">x2</span><span class="op">$</span><span class="va">OTU</span><span class="op">)</span></span></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Creating a new phyloseq object after alteration</span></span>
-<span></span>
-<span><span class="va">ps_basic</span><span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">otu_table</span>, <span class="va">tax_table</span>, <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_data-methods.html">sample_data</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ps_tree</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/rtree.html">rtree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/ntaxa-methods.html">ntaxa</a></span><span class="op">(</span><span class="va">ps_basic</span><span class="op">)</span>, rooted<span class="op">=</span><span class="cn">TRUE</span>, tip.label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_names-methods.html">taxa_names</a></span><span class="op">(</span><span class="va">ps_basic</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ps_raw</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/merge_phyloseq.html">merge_phyloseq</a></span><span class="op">(</span><span class="va">ps_basic</span>, <span class="va">ps_tree</span><span class="op">)</span></span>
-<span><span class="va">ps_rel</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># # Check points</span></span>
-<span><span class="co"># otu_table(ps_raw)</span></span>
-<span><span class="co"># tax_table(ps_raw)</span></span>
-<span><span class="co"># sample_data(ps_raw)</span></span>
-<span><span class="co"># phy_tree(ps_raw)</span></span>
-<span></span>
-<span><span class="co">## Create a Phylosic extra object</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">psextra_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span>ps <span class="op">=</span> <span class="va">ps_raw</span>, rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nClass of ps_raw\n\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Class of ps_raw</code></pre>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span></span></code></pre></div>
-<pre><code>  Length    Class     Mode 
-       1 phyloseq       S4 </code></pre>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nClass of psextra_raw\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Class of psextra_raw</code></pre>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Length   Class    Mode 
-      1 psExtra      S4 </code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>                       Sample-1 Sample-2 Sample-3
-Sporobacter termitidis       87     1187      713
-Eubacterium hallii           10      102       39
-Ruminococcus gnavus          15       56       65</code></pre>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">psextra_rel</span> <span class="op">&lt;-</span> <span class="fu">phyloseq</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/transformcounts.html">transform_sample_counts</a></span><span class="op">(</span><span class="va">psextra_raw</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="va">x</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/otu_table-methods.html">otu_table</a></span><span class="op">(</span><span class="va">ps_rel</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>          Sample-1    Sample-2    Sample-3
-OTU016 0.010284904 0.056293275 0.024685801
-OTU038 0.001182173 0.004837333 0.001350275
-OTU055 0.001773259 0.002655791 0.002250459</code></pre>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Getting clean dataframe from psExtra object</span></span>
-<span><span class="va">ps_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/psmelt.html">psmelt</a></span><span class="op">(</span><span class="va">psextra_raw</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Sample</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Abundance</span> <span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">OTU</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Sample</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rel_abund <span class="op">=</span> <span class="va">Abundance</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Abundance</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">Abundance</span>, .before <span class="op">=</span> <span class="va">rel_abund</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/make.unique.html">make.unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>sample_id <span class="op">=</span> <span class="va">sample</span>,</span>
-<span>count <span class="op">=</span> <span class="va">abundance</span>,</span>
-<span>bmi <span class="op">=</span> <span class="va">bmi_group</span>,</span>
-<span>grp <span class="op">=</span> <span class="va">group</span>,</span>
-<span>timewithingrp <span class="op">=</span> <span class="va">timepoint.within.group</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"phylum"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"otu"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"level"</span>, values_to <span class="op">=</span> <span class="st">"taxon"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">taxon</span>,</span>
-<span>pattern <span class="op">=</span> <span class="st">"(.*)"</span>,</span>
-<span>replacement <span class="op">=</span> <span class="st">"*\\1*"</span><span class="op">)</span>,</span>
-<span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">taxon</span>,</span>
-<span>pattern <span class="op">=</span> <span class="st">"\\*(.*)_unclassified\\*"</span>,</span>
-<span>replacement <span class="op">=</span> <span class="st">"Unclassified&lt;br&gt;*\\1*"</span><span class="op">)</span>,</span>
-<span>taxon <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span><span class="va">taxon</span>, <span class="st">"_"</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb48-2"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">110912</span>)</span>
+<span id="cb48-3"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-3" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-4" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb48-5"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-5" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-6"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-6" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb48-7"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-7" tabindex="-1"></a><span class="fu">library</span>(microbiome) <span class="co"># for dietswap ps object</span></span>
+<span id="cb48-8"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-8" tabindex="-1"></a><span class="fu">library</span>(microViz) <span class="co"># for ps_melt function and psExtra object.</span></span>
+<span id="cb48-9"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-9" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb48-10"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-10" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-11" tabindex="-1"></a><span class="co"># Load the dietswap dataset from the microbiome package</span></span>
+<span id="cb48-12"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-12" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"dietswap"</span>, <span class="at">package =</span> <span class="st">"microbiome"</span>)</span>
+<span id="cb48-13"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-13" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-14" tabindex="-1"></a>ps <span class="ot">&lt;-</span> ps_dietswap</span>
+<span id="cb48-15"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-15" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-16" tabindex="-1"></a><span class="co"># Apply string replacement to specified columns</span></span>
+<span id="cb48-17"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-17" tabindex="-1"></a>ps_df <span class="ot">&lt;-</span> <span class="fu">ps_melt</span>(ps)  <span class="sc">%&gt;%</span> <span class="co"># melt using microViz function ps_melt()</span></span>
+<span id="cb48-18"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-18" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">Genus =</span> <span class="fu">str_replace_all</span>(Genus, <span class="st">" et rel."</span>, <span class="st">""</span>),</span>
+<span id="cb48-19"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-19" tabindex="-1"></a>       <span class="at">Genus =</span> <span class="fu">str_replace_all</span>(Genus, <span class="st">" at rel."</span>, <span class="st">""</span>),</span>
+<span id="cb48-20"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-20" tabindex="-1"></a>       <span class="co"># Species = replace(Species, is.na(Species), 0),</span></span>
+<span id="cb48-21"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-21" tabindex="-1"></a>       <span class="at">Genus =</span> <span class="fu">replace</span>(Genus, <span class="fu">is.na</span>(Genus), <span class="dv">0</span>),</span>
+<span id="cb48-22"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-22" tabindex="-1"></a>       <span class="at">Family =</span> <span class="fu">replace</span>(Family, <span class="fu">is.na</span>(Family), <span class="dv">0</span>),</span>
+<span id="cb48-23"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-23" tabindex="-1"></a>       <span class="co"># Order = replace(Order, is.na(Order), 0),</span></span>
+<span id="cb48-24"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-24" tabindex="-1"></a>       <span class="co"># Class = replace(Genus, is.na(Class), 0),</span></span>
+<span id="cb48-25"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-25" tabindex="-1"></a>       <span class="at">Phylum =</span> <span class="fu">replace</span>(Phylum, <span class="fu">is.na</span>(Phylum), <span class="dv">0</span>)</span>
+<span id="cb48-26"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-26" tabindex="-1"></a>      )</span>
+<span id="cb48-27"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-27" tabindex="-1"></a></span>
+<span id="cb48-28"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-28" tabindex="-1"></a>otu_table <span class="ot">&lt;-</span> ps_df <span class="sc">%&gt;%</span></span>
+<span id="cb48-29"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-29" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">"OTU"</span>, <span class="at">names_from =</span> <span class="st">"Sample"</span>, <span class="at">values_from =</span> <span class="st">"Abundance"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-30"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-30" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">OTU =</span> <span class="fu">paste0</span>(<span class="st">"OTU"</span>, <span class="fu">sprintf</span>(<span class="st">"%03d"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(<span class="fu">otu_table</span>(ps))))) <span class="sc">%&gt;%</span> <span class="co"># just for neat OTU names</span></span>
+<span id="cb48-31"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-31" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="st">"OTU"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-32"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-32" tabindex="-1"></a><span class="fu">otu_table</span>(otutable, <span class="at">taxa_are_rows =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb48-33"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-33" tabindex="-1"></a></span>
+<span id="cb48-34"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-34" tabindex="-1"></a>tax_table <span class="ot">&lt;-</span> ps_df <span class="sc">%&gt;%</span></span>
+<span id="cb48-35"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-35" tabindex="-1"></a><span class="fu">select</span>(<span class="st">"OTU"</span>, <span class="st">"Phylum"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-36"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-36" tabindex="-1"></a><span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-37"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-37" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">OTU =</span> <span class="fu">paste0</span>(<span class="st">"OTU"</span>, <span class="fu">sprintf</span>(<span class="st">"%03d"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(<span class="fu">otu_table</span>(ps))))) <span class="sc">%&gt;%</span></span>
+<span id="cb48-38"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-38" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="st">"OTU"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-39"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-39" tabindex="-1"></a><span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-40"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-40" tabindex="-1"></a><span class="fu">tax_table</span>(taxtable)</span>
+<span id="cb48-41"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-41" tabindex="-1"></a></span>
+<span id="cb48-42"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-42" tabindex="-1"></a><span class="co"># Check if rowname of otutable and that of taxonomy are equal</span></span>
+<span id="cb48-43"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-43" tabindex="-1"></a>x1 <span class="ot">=</span> otu_table <span class="sc">%&gt;%</span></span>
+<span id="cb48-44"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-44" tabindex="-1"></a><span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-45"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-45" tabindex="-1"></a><span class="fu">rownames_to_column</span>(<span class="st">"OTU"</span>)</span>
+<span id="cb48-46"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-46" tabindex="-1"></a></span>
+<span id="cb48-47"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-47" tabindex="-1"></a></span>
+<span id="cb48-48"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-48" tabindex="-1"></a>x2 <span class="ot">=</span> tax_table <span class="sc">%&gt;%</span></span>
+<span id="cb48-49"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-49" tabindex="-1"></a><span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-50"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-50" tabindex="-1"></a><span class="fu">rownames_to_column</span>(<span class="st">"OTU"</span>)</span>
+<span id="cb48-51"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-51" tabindex="-1"></a></span>
+<span id="cb48-52"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-52" tabindex="-1"></a><span class="fu">identical</span>(x1<span class="sc">$</span>OTU, x2<span class="sc">$</span>OTU)</span>
+<span id="cb48-53"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-53" tabindex="-1"></a>[<span class="dv">1</span>] <span class="cn">TRUE</span></span>
+<span id="cb48-54"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-54" tabindex="-1"></a></span>
+<span id="cb48-55"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-55" tabindex="-1"></a></span>
+<span id="cb48-56"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-56" tabindex="-1"></a><span class="do">## Creating a new phyloseq object after alteration</span></span>
+<span id="cb48-57"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-57" tabindex="-1"></a></span>
+<span id="cb48-58"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-58" tabindex="-1"></a>ps_basic<span class="ot">&lt;-</span> <span class="fu">merge_phyloseq</span>(otu_table, tax_table, <span class="fu">sample_data</span>(ps))</span>
+<span id="cb48-59"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-59" tabindex="-1"></a>ps_tree <span class="ot">=</span> <span class="fu">rtree</span>(<span class="fu">ntaxa</span>(ps_basic), <span class="at">rooted=</span><span class="cn">TRUE</span>, <span class="at">tip.label=</span><span class="fu">taxa_names</span>(ps_basic))</span>
+<span id="cb48-60"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-60" tabindex="-1"></a>ps_raw <span class="ot">&lt;-</span> phyloseq<span class="sc">::</span><span class="fu">merge_phyloseq</span>(ps_basic, ps_tree)</span>
+<span id="cb48-61"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-61" tabindex="-1"></a>ps_rel <span class="ot">&lt;-</span> phyloseq<span class="sc">::</span><span class="fu">transform_sample_counts</span>(ps_raw, <span class="cf">function</span>(x){x <span class="sc">/</span> <span class="fu">sum</span>(x)})</span>
+<span id="cb48-62"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-62" tabindex="-1"></a></span>
+<span id="cb48-63"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-63" tabindex="-1"></a><span class="co"># # Check points</span></span>
+<span id="cb48-64"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-64" tabindex="-1"></a><span class="co"># otu_table(ps_raw)</span></span>
+<span id="cb48-65"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-65" tabindex="-1"></a><span class="co"># tax_table(ps_raw)</span></span>
+<span id="cb48-66"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-66" tabindex="-1"></a><span class="co"># sample_data(ps_raw)</span></span>
+<span id="cb48-67"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-67" tabindex="-1"></a><span class="co"># phy_tree(ps_raw)</span></span>
+<span id="cb48-68"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-68" tabindex="-1"></a></span>
+<span id="cb48-69"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-69" tabindex="-1"></a><span class="do">## Create a Phylosic extra object</span></span>
+<span id="cb48-70"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-70" tabindex="-1"></a></span>
+<span id="cb48-71"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-71" tabindex="-1"></a><span class="fu">library</span>(microViz)</span>
+<span id="cb48-72"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-72" tabindex="-1"></a></span>
+<span id="cb48-73"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-73" tabindex="-1"></a>psextra_raw <span class="ot">&lt;-</span> <span class="fu">tax_agg</span>(<span class="at">ps =</span> ps_raw, <span class="at">rank =</span> <span class="st">"Genus"</span>)</span>
+<span id="cb48-74"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-74" tabindex="-1"></a></span>
+<span id="cb48-75"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-75" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Class of ps_raw</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb48-76"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-76" tabindex="-1"></a></span>
+<span id="cb48-77"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-77" tabindex="-1"></a>Class of ps_raw</span>
+<span id="cb48-78"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-78" tabindex="-1"></a><span class="fu">summary</span>(ps_raw)</span>
+<span id="cb48-79"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-79" tabindex="-1"></a>  Length    Class     Mode </span>
+<span id="cb48-80"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-80" tabindex="-1"></a>       <span class="dv">1</span> phyloseq       S4 </span>
+<span id="cb48-81"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-81" tabindex="-1"></a></span>
+<span id="cb48-82"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-82" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Class of psextra_raw</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb48-83"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-83" tabindex="-1"></a></span>
+<span id="cb48-84"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-84" tabindex="-1"></a>Class of psextra_raw</span>
+<span id="cb48-85"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-85" tabindex="-1"></a><span class="fu">summary</span>(psextra_raw)</span>
+<span id="cb48-86"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-86" tabindex="-1"></a> Length   Class    Mode </span>
+<span id="cb48-87"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-87" tabindex="-1"></a>      <span class="dv">1</span> psExtra      S4 </span>
+<span id="cb48-88"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-88" tabindex="-1"></a></span>
+<span id="cb48-89"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-89" tabindex="-1"></a><span class="fu">otu_table</span>(psextra_raw)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb48-90"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-90" tabindex="-1"></a>                           Sample<span class="dv">-1</span> Sample<span class="dv">-2</span> Sample<span class="dv">-3</span></span>
+<span id="cb48-91"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-91" tabindex="-1"></a>Parabacteroides distasonis      <span class="dv">187</span>       <span class="dv">28</span>       <span class="dv">17</span></span>
+<span id="cb48-92"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-92" tabindex="-1"></a>Eggerthella lenta                 <span class="dv">3</span>       <span class="dv">10</span>        <span class="dv">8</span></span>
+<span id="cb48-93"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-93" tabindex="-1"></a>Coprococcus eutactus             <span class="dv">49</span>      <span class="dv">355</span>      <span class="dv">477</span></span>
+<span id="cb48-94"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-94" tabindex="-1"></a></span>
+<span id="cb48-95"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-95" tabindex="-1"></a>psextra_rel <span class="ot">&lt;-</span> phyloseq<span class="sc">::</span><span class="fu">transform_sample_counts</span>(psextra_raw, <span class="cf">function</span>(x){x <span class="sc">/</span> <span class="fu">sum</span>(x)})</span>
+<span id="cb48-96"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-96" tabindex="-1"></a></span>
+<span id="cb48-97"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-97" tabindex="-1"></a><span class="fu">otu_table</span>(ps_rel)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb48-98"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-98" tabindex="-1"></a>           Sample<span class="dv">-1</span>     Sample<span class="dv">-2</span>     Sample<span class="dv">-3</span></span>
+<span id="cb48-99"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-99" tabindex="-1"></a>OTU016 <span class="fl">0.0221066320</span> <span class="fl">0.0013278953</span> <span class="fl">0.0005885815</span></span>
+<span id="cb48-100"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-100" tabindex="-1"></a>OTU038 <span class="fl">0.0003546519</span> <span class="fl">0.0004742483</span> <span class="fl">0.0002769795</span></span>
+<span id="cb48-101"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-101" tabindex="-1"></a>OTU055 <span class="fl">0.0057926469</span> <span class="fl">0.0168358152</span> <span class="fl">0.0165149050</span></span>
+<span id="cb48-102"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-102" tabindex="-1"></a></span>
+<span id="cb48-103"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-103" tabindex="-1"></a></span>
+<span id="cb48-104"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-104" tabindex="-1"></a><span class="do">## Getting clean dataframe from psExtra object</span></span>
+<span id="cb48-105"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-105" tabindex="-1"></a>ps_df <span class="ot">&lt;-</span> <span class="fu">psmelt</span>(psextra_raw) <span class="sc">%&gt;%</span></span>
+<span id="cb48-106"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-106" tabindex="-1"></a><span class="fu">group_by</span>(Sample) <span class="sc">%&gt;%</span></span>
+<span id="cb48-107"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-107" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(Abundance)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-108"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-108" tabindex="-1"></a><span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-109"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-109" tabindex="-1"></a><span class="fu">filter</span>(Abundance <span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-110"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-110" tabindex="-1"></a><span class="fu">group_by</span>(OTU) <span class="sc">%&gt;%</span></span>
+<span id="cb48-111"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-111" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">total =</span> <span class="fu">sum</span>(Abundance)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-112"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-112" tabindex="-1"></a><span class="fu">filter</span>(total <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-113"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-113" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-114"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-114" tabindex="-1"></a><span class="fu">select</span>(<span class="sc">-</span>total) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-115"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-115" tabindex="-1"></a><span class="fu">group_by</span>(Sample) <span class="sc">%&gt;%</span></span>
+<span id="cb48-116"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-116" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">rel_abund =</span> Abundance<span class="sc">/</span><span class="fu">sum</span>(Abundance)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-117"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-117" tabindex="-1"></a><span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb48-118"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-118" tabindex="-1"></a><span class="fu">relocate</span>(Abundance, <span class="at">.before =</span> rel_abund) <span class="sc">%&gt;%</span></span>
+<span id="cb48-119"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-119" tabindex="-1"></a><span class="fu">rename_all</span>(<span class="sc">~</span> <span class="fu">make.unique</span>(<span class="fu">tolower</span>(.), <span class="at">sep =</span> <span class="st">"_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-120"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-120" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">sample_id =</span> sample,</span>
+<span id="cb48-121"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-121" tabindex="-1"></a><span class="at">count =</span> abundance,</span>
+<span id="cb48-122"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-122" tabindex="-1"></a><span class="at">bmi =</span> bmi_group,</span>
+<span id="cb48-123"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-123" tabindex="-1"></a><span class="at">grp =</span> group,</span>
+<span id="cb48-124"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-124" tabindex="-1"></a><span class="at">timewithingrp =</span> timepoint.within.group) <span class="sc">%&gt;%</span></span>
+<span id="cb48-125"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-125" tabindex="-1"></a><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"phylum"</span>, <span class="st">"family"</span>, <span class="st">"genus"</span>, <span class="st">"otu"</span>), <span class="at">names_to =</span> <span class="st">"level"</span>, <span class="at">values_to =</span> <span class="st">"taxon"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-126"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-126" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">taxon =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> taxon,</span>
+<span id="cb48-127"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-127" tabindex="-1"></a><span class="at">pattern =</span> <span class="st">"(.*)"</span>,</span>
+<span id="cb48-128"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-128" tabindex="-1"></a><span class="at">replacement =</span> <span class="st">"*</span><span class="sc">\\</span><span class="st">1*"</span>),</span>
+<span id="cb48-129"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-129" tabindex="-1"></a><span class="at">taxon =</span> <span class="fu">str_replace</span>(<span class="at">string =</span> taxon,</span>
+<span id="cb48-130"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-130" tabindex="-1"></a><span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">*(.*)_unclassified</span><span class="sc">\\</span><span class="st">*"</span>,</span>
+<span id="cb48-131"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-131" tabindex="-1"></a><span class="at">replacement =</span> <span class="st">"Unclassified&lt;br&gt;*</span><span class="sc">\\</span><span class="st">1*"</span>),</span>
+<span id="cb48-132"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-132" tabindex="-1"></a><span class="at">taxon =</span> <span class="fu">str_replace_all</span>(taxon, <span class="st">"_"</span>, <span class="st">" "</span>))</span></code></pre></div>
 </div>
-<div id="phyloseq_based_data" class="section level2" number="8.2">
+<div id="save-clean-object" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">8.2</span> Save ps_raw, ps_rel, psextra_raw, ps_df to R object<a class="anchor" aria-label="anchor" href="#phyloseq_based_data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Save clean object<a class="anchor" aria-label="anchor" href="#save-clean-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">ps_raw</span>, <span class="va">ps_rel</span>, <span class="va">psextra_raw</span>, <span class="va">psextra_rel</span>, <span class="va">ps_df</span>, file <span class="op">=</span> <span class="st">"data/phyloseq_raw_rel_psextra_df_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 
 </div>
@@ -251,7 +250,7 @@ OTU055 0.001773259 0.002655791 0.002250459</code></pre>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#pipeline-for-cleaning-phyloseq-objects"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
 <li><a class="nav-link" href="#demo-with-the-dietswap-dataset"><span class="header-section-number">8.1</span> Demo with the dietswap dataset</a></li>
-<li><a class="nav-link" href="#phyloseq_based_data"><span class="header-section-number">8.2</span> Save ps_raw, ps_rel, psextra_raw, ps_df to R object</a></li>
+<li><a class="nav-link" href="#save-clean-object"><span class="header-section-number">8.2</span> Save clean object</a></li>
 </ul>
 
       <div class="book-extra">
@@ -270,7 +269,7 @@ OTU055 0.001773259 0.002655791 0.002250459</code></pre>
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

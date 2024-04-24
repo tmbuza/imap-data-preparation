@@ -52,7 +52,7 @@ confirm-the-psextra-class
 save-psextra-to-r-object
 pipeline-for-cleaning-phyloseq-objects
 demo-with-the-dietswap-dataset
-phyloseq_based_data
+save-clean-object
 data-tarnsformation
 import-processed-phyloseq-object
 raw-abundance

@@ -50,9 +50,6 @@ save(mt_ps_tree, mt_ps_raw, mt_ps_rel, mt_ps_df_raw, mt_ps_df_rel, file = "data/
 
 ```r
 mt_ps_raw
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
 sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
@@ -104,9 +101,6 @@ save(q2_ps_tree, q2_ps_raw, q2_ps_rel, q2_ps_df_raw, q2_ps_df_rel, file = "data/
 
 ```r
 q2_ps_raw
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
 sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
@@ -154,9 +148,6 @@ df_GlobalPatterns <-GlobalPatterns %>%
 
 ```r
 ps_GlobalPatterns
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 19216 taxa and 26 samples ]
 sample_data() Sample Data:       [ 26 samples by 7 sample variables ]
@@ -169,9 +160,6 @@ phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]
 
 ```r
 colnames(df_GlobalPatterns)
-```
-
-```
  [1] "sample_id"                "otu"                     
  [3] "sample"                   "abundance"               
  [5] "x.sampleid"               "primer"                  
@@ -181,9 +169,6 @@ colnames(df_GlobalPatterns)
 [13] "phylum"                   "class"                   
 [15] "order"                    "family"                  
 [17] "genus"                    "species"                 
-```
-
-```r
 cat("\n")
 ```
 
@@ -206,9 +191,6 @@ library(microbiome) # for dietswap dataset
 data("dietswap")
 
 dietswap
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -240,9 +222,6 @@ df_dietswap <-ps_dietswap %>%
 
 ```r
 ps_dietswap
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -255,9 +234,6 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 
 ```r
 colnames(df_dietswap)
-```
-
-```
  [1] "sample_id"              "otu"                    "sample"                
  [4] "abundance"              "subject"                "sex"                   
  [7] "nationality"            "group"                  "timepoint"             
@@ -297,9 +273,6 @@ df_caporaso <-caporaso %>%
 
 ```r
 ps_caporaso
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 3426 taxa and 34 samples ]
 sample_data() Sample Data:       [ 34 samples by 8 sample variables ]
@@ -312,9 +285,6 @@ phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]
 
 ```r
 colnames(df_caporaso)
-```
-
-```
  [1] "sample_id"                "otu"                     
  [3] "sample"                   "abundance"               
  [5] "sampletype"               "year"                    
@@ -366,9 +336,6 @@ df_kostic_crc <-kostic_crc %>%
 
 ```r
 ps_kostic_crc
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 2505 taxa and 177 samples ]
 sample_data() Sample Data:       [ 177 samples by 71 sample variables ]
@@ -381,9 +348,6 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]
 
 ```r
 colnames(df_kostic_crc)
-```
-
-```
  [1] "sample_id"                     "otu"                          
  [3] "sample"                        "abundance"                    
  [5] "x.sampleid"                    "barcodesequence"              
@@ -448,9 +412,6 @@ save(ps_GlobalPatterns,
 
 ```r
 load("data/phyloseq_objects.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_GlobalPatterns
   ps_dietswap
@@ -471,9 +432,6 @@ library(ape)
 
 ps <- ps_dietswap
 ps
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -485,9 +443,6 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 
 ```r
 rank_names(ps)
-```
-
-```
 [1] "Phylum" "Family" "Genus" 
 ```
 
@@ -495,9 +450,6 @@ rank_names(ps)
 
 ```r
 ntaxa(ps)
-```
-
-```
 [1] 130
 ```
 
@@ -508,45 +460,21 @@ library(metagMisc) # foe phyloseq_sep_tax()
 
 taxa_stats <- phyloseq_sep_tax(ps, TaxRank = "Phylum", drop_NA = FALSE)
 cat("\n")
-```
-
-```r
 taxa_stats$Firmicutes
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 76 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 76 taxa by 3 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 76 tips and 75 internal nodes ]
-```
-
-```r
 cat("\n")
-```
-
-```r
 taxa_stats$Bacteroidetes
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 16 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 16 taxa by 3 taxonomic ranks ]
 phy_tree()    Phylogenetic Tree: [ 16 tips and 15 internal nodes ]
-```
-
-```r
 cat("\n")
-```
-
-```r
 taxa_stats$Actinobacteria
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 8 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -559,9 +487,6 @@ phy_tree()    Phylogenetic Tree: [ 8 tips and 7 internal nodes ]
 
 ```r
 nsamples(ps)
-```
-
-```
 [1] 222
 ```
 
@@ -569,9 +494,6 @@ nsamples(ps)
 
 ```r
 head(sample_names(ps), 20)
-```
-
-```
  [1] "Sample-1"  "Sample-2"  "Sample-3"  "Sample-4"  "Sample-5"  "Sample-6" 
  [7] "Sample-7"  "Sample-8"  "Sample-9"  "Sample-10" "Sample-11" "Sample-12"
 [13] "Sample-13" "Sample-14" "Sample-15" "Sample-16" "Sample-17" "Sample-18"
@@ -583,9 +505,6 @@ head(sample_names(ps), 20)
 
 ```r
 sample_variables(ps)
-```
-
-```
 [1] "subject"                "sex"                    "nationality"           
 [4] "group"                  "sample"                 "timepoint"             
 [7] "timepoint.within.group" "bmi_group"             
@@ -595,45 +514,33 @@ sample_variables(ps)
 
 ```r
 otu_table(ps)[1:5, 1:5]
-```
-
-```
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                      Sample-1 Sample-2 Sample-3 Sample-4
-Eubacterium biforme et rel.                  3       26       34       65
-Ruminococcus bromii et rel.                 72      403      106       60
-Peptostreptococcus anaerobius et rel.        0        0        0        0
-Lactobacillus plantarum et rel.             10       19       12       14
-Bacteroides vulgatus et rel.              2774       48      455      469
-                                      Sample-5
-Eubacterium biforme et rel.                 17
-Ruminococcus bromii et rel.                 30
-Peptostreptococcus anaerobius et rel.        0
-Lactobacillus plantarum et rel.             11
-Bacteroides vulgatus et rel.               167
+                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Peptococcus niger et rel.                2        4       11       10        2
+Lachnospira pectinoschiza et rel.       54      141      118       55       67
+Leminorella                              3        1        0        0        0
+Streptococcus bovis et rel.            112       41       95       27      110
+Sutterella wadsworthia et rel.          77       11       44        7       55
 ```
 
 ## Taxonomy table
 
 ```r
 tax_table(ps)[1:5, ]
-```
-
-```
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                      Phylum          Family                   
-Eubacterium biforme et rel.           "Firmicutes"    "Clostridium cluster XVI"
-Ruminococcus bromii et rel.           "Firmicutes"    "Clostridium cluster IV" 
-Peptostreptococcus anaerobius et rel. "Firmicutes"    "Clostridium cluster XI" 
-Lactobacillus plantarum et rel.       "Firmicutes"    "Bacilli"                
-Bacteroides vulgatus et rel.          "Bacteroidetes" "Bacteroidetes"          
-                                      Genus                                  
-Eubacterium biforme et rel.           "Eubacterium biforme et rel."          
-Ruminococcus bromii et rel.           "Ruminococcus bromii et rel."          
-Peptostreptococcus anaerobius et rel. "Peptostreptococcus anaerobius et rel."
-Lactobacillus plantarum et rel.       "Lactobacillus plantarum et rel."      
-Bacteroides vulgatus et rel.          "Bacteroides vulgatus et rel."         
+                                  Phylum           Family                    
+Peptococcus niger et rel.         "Firmicutes"     "Clostridium cluster IX"  
+Lachnospira pectinoschiza et rel. "Firmicutes"     "Clostridium cluster XIVa"
+Leminorella                       "Proteobacteria" "Proteobacteria"          
+Streptococcus bovis et rel.       "Firmicutes"     "Bacilli"                 
+Sutterella wadsworthia et rel.    "Proteobacteria" "Proteobacteria"          
+                                  Genus                              
+Peptococcus niger et rel.         "Peptococcus niger et rel."        
+Lachnospira pectinoschiza et rel. "Lachnospira pectinoschiza et rel."
+Leminorella                       "Leminorella"                      
+Streptococcus bovis et rel.       "Streptococcus bovis et rel."      
+Sutterella wadsworthia et rel.    "Sutterella wadsworthia et rel."   
 ```
 
 ## Phylogenetic tree if available
@@ -643,28 +550,18 @@ Bacteroides vulgatus et rel.          "Bacteroides vulgatus et rel."
 
 ```r
 taxa_names(ps)[1:10]
-```
-
-```
- [1] "Eubacterium biforme et rel."          
- [2] "Ruminococcus bromii et rel."          
- [3] "Peptostreptococcus anaerobius et rel."
- [4] "Lactobacillus plantarum et rel."      
- [5] "Bacteroides vulgatus et rel."         
- [6] "Corynebacterium"                      
- [7] "Clostridium thermocellum et rel."     
- [8] "Novosphingobium"                      
- [9] "Tannerella et rel."                   
-[10] "Helicobacter"                         
+ [1] "Peptococcus niger et rel."         "Lachnospira pectinoschiza et rel."
+ [3] "Leminorella"                       "Streptococcus bovis et rel."      
+ [5] "Sutterella wadsworthia et rel."    "Oxalobacter formigenes et rel."   
+ [7] "Megasphaera elsdenii et rel."      "Escherichia coli et rel."         
+ [9] "Bacteroides fragilis et rel."      "Peptostreptococcus micros et rel."
 ```
 
 ## Summarize Phyloseq Object
 
 ```r
-microbiome::summarize_phyloseq(ps)
-```
 
-```
+microbiome::summarize_phyloseq(ps)
 [[1]]
 [1] "1] Min. number of reads = 1776"
 
@@ -705,35 +602,14 @@ microbiome::summarize_phyloseq(ps)
 
 ```r
 cat("In ascending order\n")
-```
-
-```
 In ascending order
-```
-
-```r
 head(sort(phyloseq::sample_sums(ps), decreasing = F))
-```
-
-```
  Sample-56 Sample-195 Sample-196  Sample-42 Sample-164 Sample-147 
       1776       4477       4606       5006       5541       5624 
-```
-
-```r
 cat("\nIn descending order\n")
-```
-
-```
 
 In descending order
-```
-
-```r
 head(sort(phyloseq::sample_sums(ps), decreasing = T))
-```
-
-```
   Sample-3  Sample-11  Sample-12  Sample-54 Sample-208  Sample-20 
      28883      26895      25238      23529      23131      22413 
 ```
@@ -743,9 +619,6 @@ head(sort(phyloseq::sample_sums(ps), decreasing = T))
 ```r
 ps1perc0 <- phyloseq::subset_samples(ps, phyloseq::sample_sums(ps) > 1)
 ps1perc0
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -758,9 +631,6 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]
 ```r
 pstaxa01 <- phyloseq::prune_taxa(phyloseq::taxa_sums(ps) > 1, ps)
 pstaxa01 
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 120 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
@@ -783,9 +653,6 @@ Before creating psExtra objects, it's essential to have pre-existing phyloseq ob
 
 ```r
 load("data/phyloseq_objects.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_GlobalPatterns
   ps_dietswap
@@ -810,35 +677,24 @@ psextra_clr_dietswap <- tax_agg(
 
 # Display a subset of the transformed data
 cat("\nCentered log Ratio (CLR) Transformation\n")
-```
-
-```
 
 Centered log Ratio (CLR) Transformation
-```
-
-```r
 psextra_clr_dietswap %>% 
   otu_get() %>%
   .[1:4, 1:3]
-```
-
-```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                  -0.4880348                    2.644393
-Sample-2                   0.9203804                    3.648184
-Sample-3                   1.1191231                    2.246309
-Sample-4                   2.0280002                    1.948250
-         Peptostreptococcus anaerobius et rel.
-Sample-1                             -3.555474
-Sample-2                             -3.359449
-Sample-3                             -3.114983
-Sample-4                             -3.622689
-```
+         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
+Sample-1               -0.87049643                          2.357387
+Sample-2               -0.87803411                          2.599687
+Sample-3                0.02051085                          2.353077
+Sample-4                0.17534649                          1.861585
+         Leminorella
+Sample-1  -0.4880348
+Sample-2  -2.0404856
+Sample-3  -3.1149834
+Sample-4  -3.6226887
 
-```r
 # Aggregate taxonomic data
 psextra_id_dietswap <- tax_agg(
   ps = ps_dietswap,
@@ -847,35 +703,24 @@ psextra_id_dietswap <- tax_agg(
 
 # Display a subset of the transformed data
 cat("\nIdentity Transformation\n")
-```
-
-```
 
 Identity Transformation
-```
-
-```r
 psextra_id_dietswap %>% 
   otu_get() %>%
   .[1:4, 1:3]
-```
-
-```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                           3                          72
-Sample-2                          26                         403
-Sample-3                          34                         106
-Sample-4                          65                          60
-         Peptostreptococcus anaerobius et rel.
-Sample-1                                     0
-Sample-2                                     0
-Sample-3                                     0
-Sample-4                                     0
-```
+         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
+Sample-1                         2                                54
+Sample-2                         4                               141
+Sample-3                        11                               118
+Sample-4                        10                                55
+         Leminorella
+Sample-1           3
+Sample-2           1
+Sample-3           0
+Sample-4           0
 
-```r
 # Aggregate taxonomic data
 psextra_log10p_dietswap <- tax_agg(
   ps = ps_dietswap,
@@ -884,32 +729,23 @@ psextra_log10p_dietswap <- tax_agg(
 
 # Display a subset of the transformed data
 cat("\nLog10p Transformation\n")
-```
-
-```
 
 Log10p Transformation
-```
-
-```r
 psextra_log10p_dietswap %>% 
   otu_get() %>%
   .[1:4, 1:3]
-```
-
-```
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                    0.602060                    1.863323
-Sample-2                    1.431364                    2.606381
-Sample-3                    1.544068                    2.029384
-Sample-4                    1.819544                    1.785330
-         Peptostreptococcus anaerobius et rel.
-Sample-1                                     0
-Sample-2                                     0
-Sample-3                                     0
-Sample-4                                     0
+         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
+Sample-1                 0.4771213                          1.740363
+Sample-2                 0.6989700                          2.152288
+Sample-3                 1.0791812                          2.075547
+Sample-4                 1.0413927                          1.748188
+         Leminorella
+Sample-1     0.60206
+Sample-2     0.30103
+Sample-3     0.00000
+Sample-4     0.00000
 ```
 
 
@@ -917,27 +753,12 @@ Sample-4                                     0
 
 ```r
 summary(psextra_clr_dietswap)
-```
-
-```
  Length   Class    Mode 
       1 psExtra      S4 
-```
-
-```r
 summary(psextra_id_dietswap)
-```
-
-```
  Length   Class    Mode 
       1 psExtra      S4 
-```
-
-```r
 summary(psextra_log10p_dietswap)
-```
-
-```
  Length   Class    Mode 
       1 psExtra      S4 
 ```
@@ -1014,13 +835,9 @@ as.data.frame() %>%
 rownames_to_column("OTU")
 
 identical(x1$OTU, x2$OTU)
-```
-
-```
 [1] TRUE
-```
 
-```r
+
 ## Creating a new phyloseq object after alteration
 
 ps_basic<- merge_phyloseq(otu_table, tax_table, sample_data(ps))
@@ -1041,65 +858,34 @@ library(microViz)
 psextra_raw <- tax_agg(ps = ps_raw, rank = "Genus")
 
 cat("\nClass of ps_raw\n\n")
-```
-
-```
 
 Class of ps_raw
-```
-
-```r
 summary(ps_raw)
-```
-
-```
   Length    Class     Mode 
        1 phyloseq       S4 
-```
 
-```r
 cat("\nClass of psextra_raw\n")
-```
-
-```
 
 Class of psextra_raw
-```
-
-```r
 summary(psextra_raw)
-```
-
-```
  Length   Class    Mode 
       1 psExtra      S4 
-```
 
-```r
 otu_table(psextra_raw)[1:3, 1:3] %>% as.data.frame()
-```
+                           Sample-1 Sample-2 Sample-3
+Parabacteroides distasonis      187       28       17
+Eggerthella lenta                 3       10        8
+Coprococcus eutactus             49      355      477
 
-```
-                       Sample-1 Sample-2 Sample-3
-Sporobacter termitidis       87     1187      713
-Eubacterium hallii           10      102       39
-Ruminococcus gnavus          15       56       65
-```
-
-```r
 psextra_rel <- phyloseq::transform_sample_counts(psextra_raw, function(x){x / sum(x)})
 
 otu_table(ps_rel)[1:3, 1:3] %>% as.data.frame()
-```
+           Sample-1     Sample-2     Sample-3
+OTU016 0.0221066320 0.0013278953 0.0005885815
+OTU038 0.0003546519 0.0004742483 0.0002769795
+OTU055 0.0057926469 0.0168358152 0.0165149050
 
-```
-          Sample-1    Sample-2    Sample-3
-OTU016 0.010284904 0.056293275 0.024685801
-OTU038 0.001182173 0.004837333 0.001350275
-OTU055 0.001773259 0.002655791 0.002250459
-```
 
-```r
 ## Getting clean dataframe from psExtra object
 ps_df <- psmelt(psextra_raw) %>%
 group_by(Sample) %>%
@@ -1132,7 +918,8 @@ taxon = str_replace_all(taxon, "_", " "))
 ```
 
 
-## Save ps_raw, ps_rel, psextra_raw, ps_df to R object {#phyloseq_based_data}
+## Save clean object
+
 
 ```r
 save(ps_raw, ps_rel, psextra_raw, psextra_rel, ps_df, file = "data/phyloseq_raw_rel_psextra_df_objects.rda")

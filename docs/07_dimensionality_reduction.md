@@ -25,31 +25,16 @@ library(microbiome)
 library(vegan)
 
 cat("\nSaved RData objects\n\n")
-```
-
-```
 
 Saved RData objects
-```
-
-```r
 load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_raw
   ps_rel
   psextra_raw
   psextra_rel
   ps_df
-```
-
-```r
 load("../imap-data-preparation/data/ps_transformed.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_asin
   ps_identity
@@ -61,13 +46,7 @@ Loading objects:
   ps_clr
   ps_shift
   ps_scale
-```
-
-```r
 load("../imap-data-preparation/data/bray_distances.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_asin_bray_dist
   ps_compositional_bray_dist

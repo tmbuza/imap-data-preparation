@@ -16,21 +16,12 @@ library(microbiome)
 library(vegan)
 
 load("data/phyloseq_objects.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_GlobalPatterns
   ps_dietswap
   ps_caporaso
   ps_kostic_crc
-```
-
-```r
 load("data/ps_transformed.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_asin
   ps_identity
@@ -42,13 +33,7 @@ Loading objects:
   ps_clr
   ps_shift
   ps_scale
-```
-
-```r
 load("data/bray_distances.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_asin_bray_dist
   ps_compositional_bray_dist
@@ -59,13 +44,7 @@ Loading objects:
   ps_clr_bray_dist
   ps_shift_bray_dist
   ps_scale_bray_dist
-```
-
-```r
 load("data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_raw
   ps_rel
@@ -164,9 +143,6 @@ Confirm computed Jaccard distance objects
 
 ```r
 load("data/jaccard_distances.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_asin_jaccard_dist
   ps_compositional_jaccard_dist
@@ -228,9 +204,6 @@ Confirm computed Euclidean distance objects
 
 ```r
 load("data/euclidean_distances.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_asin_euclidean_dist
   ps_compositional_euclidean_dist
@@ -270,9 +243,6 @@ Confirm computed Aitchison distance objects
 
 ```r
 load("data/aitchison_distances.rda", verbose = T)
-```
-
-```
 Loading objects:
   ps_GlobalPatterns_aitchison_dists
   ps_dietswap_aitchison_dists

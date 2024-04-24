@@ -104,7 +104,7 @@
 <li><p><strong>Format:</strong> Presented as a phyloseq object in R, it integrates sample metadata and taxonomic abundance for analysis.</p></li>
 <li><p><strong>Utility:</strong> Researchers utilize it for community profiling, abundance testing, and ecological modeling, enhancing understanding of global microbial diversity and function.</p></li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span> <span class="co"># for GlobalPatterns dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"GlobalPatterns"</span><span class="op">)</span></span>
 <span></span>
@@ -114,27 +114,24 @@
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span></code></pre></div>
 <p><strong>GlobalPatterns phyloseq-class</strong></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_GlobalPatterns</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 19216 taxa and 26 samples ]
-sample_data() Sample Data:       [ 26 samples by 7 sample variables ]
-tax_table()   Taxonomy Table:    [ 19216 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="phyloseq-objects-demo-datasets.html#cb16-1" tabindex="-1"></a>ps_GlobalPatterns</span>
+<span id="cb16-2"><a href="phyloseq-objects-demo-datasets.html#cb16-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb16-3"><a href="phyloseq-objects-demo-datasets.html#cb16-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">19216</span> taxa and <span class="dv">26</span> samples ]</span>
+<span id="cb16-4"><a href="phyloseq-objects-demo-datasets.html#cb16-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">26</span> samples by <span class="dv">7</span> sample variables ]</span>
+<span id="cb16-5"><a href="phyloseq-objects-demo-datasets.html#cb16-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">19216</span> taxa by <span class="dv">7</span> taxonomic ranks ]</span>
+<span id="cb16-6"><a href="phyloseq-objects-demo-datasets.html#cb16-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">19216</span> tips and <span class="dv">19215</span> internal nodes ]</span></code></pre></div>
 <p><strong>Columns in GlobalPatterns dataset</strong></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_GlobalPatterns</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                "otu"                     
- [3] "sample"                   "abundance"               
- [5] "x.sampleid"               "primer"                  
- [7] "final_barcode"            "barcode_truncated_plus_t"
- [9] "barcode_full_length"      "sampletype"              
-[11] "description"              "kingdom"                 
-[13] "phylum"                   "class"                   
-[15] "order"                    "family"                  
-[17] "genus"                    "species"                 </code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="phyloseq-objects-demo-datasets.html#cb17-1" tabindex="-1"></a><span class="fu">colnames</span>(df_GlobalPatterns)</span>
+<span id="cb17-2"><a href="phyloseq-objects-demo-datasets.html#cb17-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"sample_id"</span>                <span class="st">"otu"</span>                     </span>
+<span id="cb17-3"><a href="phyloseq-objects-demo-datasets.html#cb17-3" tabindex="-1"></a> [<span class="dv">3</span>] <span class="st">"sample"</span>                   <span class="st">"abundance"</span>               </span>
+<span id="cb17-4"><a href="phyloseq-objects-demo-datasets.html#cb17-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="st">"x.sampleid"</span>               <span class="st">"primer"</span>                  </span>
+<span id="cb17-5"><a href="phyloseq-objects-demo-datasets.html#cb17-5" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"final_barcode"</span>            <span class="st">"barcode_truncated_plus_t"</span></span>
+<span id="cb17-6"><a href="phyloseq-objects-demo-datasets.html#cb17-6" tabindex="-1"></a> [<span class="dv">9</span>] <span class="st">"barcode_full_length"</span>      <span class="st">"sampletype"</span>              </span>
+<span id="cb17-7"><a href="phyloseq-objects-demo-datasets.html#cb17-7" tabindex="-1"></a>[<span class="dv">11</span>] <span class="st">"description"</span>              <span class="st">"kingdom"</span>                 </span>
+<span id="cb17-8"><a href="phyloseq-objects-demo-datasets.html#cb17-8" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"phylum"</span>                   <span class="st">"class"</span>                   </span>
+<span id="cb17-9"><a href="phyloseq-objects-demo-datasets.html#cb17-9" tabindex="-1"></a>[<span class="dv">15</span>] <span class="st">"order"</span>                    <span class="st">"family"</span>                  </span>
+<span id="cb17-10"><a href="phyloseq-objects-demo-datasets.html#cb17-10" tabindex="-1"></a>[<span class="dv">17</span>] <span class="st">"genus"</span>                    <span class="st">"species"</span>                 </span>
+<span id="cb17-11"><a href="phyloseq-objects-demo-datasets.html#cb17-11" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div>
 </div>
 <div id="the-dietswap-dataset" class="section level2" number="5.2">
 <h2>
@@ -148,19 +145,18 @@ phy_tree()    Phylogenetic Tree: [ 19216 tips and 19215 internal nodes ]</code><
 <li><p><strong>Format:</strong> Presented in a format suitable for microbiome analysis, the dataset includes sample metadata and taxonomic abundance data, facilitating comprehensive analyses of microbial community dynamics.</p></li>
 <li><p><strong>Utility:</strong> Researchers utilize the dietswap dataset to investigate the effects of dietary interventions on gut microbiome composition, contributing to a better understanding of the intricate interactions between diet, host physiology, and microbial ecology.</p></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span> <span class="co"># for dietswap dataset</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"dietswap"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dietswap</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="phyloseq-objects-demo-datasets.html#cb18-1" tabindex="-1"></a><span class="fu">library</span>(microbiome) <span class="co"># for dietswap dataset</span></span>
+<span id="cb18-2"><a href="phyloseq-objects-demo-datasets.html#cb18-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"dietswap"</span>)</span>
+<span id="cb18-3"><a href="phyloseq-objects-demo-datasets.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="phyloseq-objects-demo-datasets.html#cb18-4" tabindex="-1"></a>dietswap</span>
+<span id="cb18-5"><a href="phyloseq-objects-demo-datasets.html#cb18-5" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb18-6"><a href="phyloseq-objects-demo-datasets.html#cb18-6" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">130</span> taxa and <span class="dv">222</span> samples ]</span>
+<span id="cb18-7"><a href="phyloseq-objects-demo-datasets.html#cb18-7" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">222</span> samples by <span class="dv">8</span> sample variables ]</span>
+<span id="cb18-8"><a href="phyloseq-objects-demo-datasets.html#cb18-8" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">130</span> taxa by <span class="dv">3</span> taxonomic ranks ]</span></code></pre></div>
 <blockquote>
 <p>Note: dietswap is missing the phylo_tree slot, we can construct it and add it like so:</p>
 </blockquote>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">'dietswap'</span><span class="op">)</span></span>
 <span><span class="va">ps_raw_basic</span> <span class="op">&lt;-</span> <span class="va">dietswap</span></span>
@@ -175,21 +171,19 @@ tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]</code></pre>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fl">9</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Dietswap phyloseq-class</strong></p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_dietswap</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
-sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="phyloseq-objects-demo-datasets.html#cb20-1" tabindex="-1"></a>ps_dietswap</span>
+<span id="cb20-2"><a href="phyloseq-objects-demo-datasets.html#cb20-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb20-3"><a href="phyloseq-objects-demo-datasets.html#cb20-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">130</span> taxa and <span class="dv">222</span> samples ]</span>
+<span id="cb20-4"><a href="phyloseq-objects-demo-datasets.html#cb20-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">222</span> samples by <span class="dv">8</span> sample variables ]</span>
+<span id="cb20-5"><a href="phyloseq-objects-demo-datasets.html#cb20-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">130</span> taxa by <span class="dv">3</span> taxonomic ranks ]</span>
+<span id="cb20-6"><a href="phyloseq-objects-demo-datasets.html#cb20-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">130</span> tips and <span class="dv">129</span> internal nodes ]</span></code></pre></div>
 <p><strong>Columns in Dietswap dataset</strong></p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_dietswap</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"              "otu"                    "sample"                
- [4] "abundance"              "subject"                "sex"                   
- [7] "nationality"            "group"                  "timepoint"             
-[10] "timepoint.within.group" "bmi_group"              "phylum"                
-[13] "family"                 "genus"                 </code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="phyloseq-objects-demo-datasets.html#cb21-1" tabindex="-1"></a><span class="fu">colnames</span>(df_dietswap)</span>
+<span id="cb21-2"><a href="phyloseq-objects-demo-datasets.html#cb21-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"sample_id"</span>              <span class="st">"otu"</span>                    <span class="st">"sample"</span>                </span>
+<span id="cb21-3"><a href="phyloseq-objects-demo-datasets.html#cb21-3" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">"abundance"</span>              <span class="st">"subject"</span>                <span class="st">"sex"</span>                   </span>
+<span id="cb21-4"><a href="phyloseq-objects-demo-datasets.html#cb21-4" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"nationality"</span>            <span class="st">"group"</span>                  <span class="st">"timepoint"</span>             </span>
+<span id="cb21-5"><a href="phyloseq-objects-demo-datasets.html#cb21-5" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">"timepoint.within.group"</span> <span class="st">"bmi_group"</span>              <span class="st">"phylum"</span>                </span>
+<span id="cb21-6"><a href="phyloseq-objects-demo-datasets.html#cb21-6" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"family"</span>                 <span class="st">"genus"</span>                 </span></code></pre></div>
 </div>
 <div id="caporaso-dataset" class="section level2" number="5.3">
 <h2>
@@ -203,7 +197,7 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <li><p><strong>Format:</strong> The dataset is structured to facilitate microbiome marker analysis, with sample metadata and taxonomic abundance data included. This format enables researchers to conduct comprehensive analyses of microbial marker genes and their associations with environmental or biological factors.</p></li>
 <li><p><strong>Utility:</strong> Researchers utilize the Caporaso dataset to investigate microbial marker genes’ roles in various ecosystems, such as host-microbiome interactions, environmental responses, and disease states. The dataset contributes to a better understanding of microbial ecology and its implications for human health and environmental management.</p></li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yiluheihei/microbiomeMarker">microbiomeMarker</a></span><span class="op">)</span> <span class="co"># for caporaso dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"caporaso"</span><span class="op">)</span></span>
 <span></span>
@@ -213,26 +207,24 @@ phy_tree()    Phylogenetic Tree: [ 130 tips and 129 internal nodes ]</code></pre
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Caporaso phyloseq-class</strong></p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_caporaso</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 3426 taxa and 34 samples ]
-sample_data() Sample Data:       [ 34 samples by 8 sample variables ]
-tax_table()   Taxonomy Table:    [ 3426 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="phyloseq-objects-demo-datasets.html#cb23-1" tabindex="-1"></a>ps_caporaso</span>
+<span id="cb23-2"><a href="phyloseq-objects-demo-datasets.html#cb23-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb23-3"><a href="phyloseq-objects-demo-datasets.html#cb23-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">3426</span> taxa and <span class="dv">34</span> samples ]</span>
+<span id="cb23-4"><a href="phyloseq-objects-demo-datasets.html#cb23-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">34</span> samples by <span class="dv">8</span> sample variables ]</span>
+<span id="cb23-5"><a href="phyloseq-objects-demo-datasets.html#cb23-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">3426</span> taxa by <span class="dv">7</span> taxonomic ranks ]</span>
+<span id="cb23-6"><a href="phyloseq-objects-demo-datasets.html#cb23-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">3426</span> tips and <span class="dv">3424</span> internal nodes ]</span></code></pre></div>
 <p><strong>Columns in Caporaso dataset</strong></p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_caporaso</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                "otu"                     
- [3] "sample"                   "abundance"               
- [5] "sampletype"               "year"                    
- [7] "month"                    "day"                     
- [9] "subject"                  "reportedantibioticusage" 
-[11] "dayssinceexperimentstart" "description"             
-[13] "kingdom"                  "phylum"                  
-[15] "class"                    "order"                   
-[17] "family"                   "genus"                   
-[19] "species"                 </code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="phyloseq-objects-demo-datasets.html#cb24-1" tabindex="-1"></a><span class="fu">colnames</span>(df_caporaso)</span>
+<span id="cb24-2"><a href="phyloseq-objects-demo-datasets.html#cb24-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"sample_id"</span>                <span class="st">"otu"</span>                     </span>
+<span id="cb24-3"><a href="phyloseq-objects-demo-datasets.html#cb24-3" tabindex="-1"></a> [<span class="dv">3</span>] <span class="st">"sample"</span>                   <span class="st">"abundance"</span>               </span>
+<span id="cb24-4"><a href="phyloseq-objects-demo-datasets.html#cb24-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="st">"sampletype"</span>               <span class="st">"year"</span>                    </span>
+<span id="cb24-5"><a href="phyloseq-objects-demo-datasets.html#cb24-5" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"month"</span>                    <span class="st">"day"</span>                     </span>
+<span id="cb24-6"><a href="phyloseq-objects-demo-datasets.html#cb24-6" tabindex="-1"></a> [<span class="dv">9</span>] <span class="st">"subject"</span>                  <span class="st">"reportedantibioticusage"</span> </span>
+<span id="cb24-7"><a href="phyloseq-objects-demo-datasets.html#cb24-7" tabindex="-1"></a>[<span class="dv">11</span>] <span class="st">"dayssinceexperimentstart"</span> <span class="st">"description"</span>             </span>
+<span id="cb24-8"><a href="phyloseq-objects-demo-datasets.html#cb24-8" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"kingdom"</span>                  <span class="st">"phylum"</span>                  </span>
+<span id="cb24-9"><a href="phyloseq-objects-demo-datasets.html#cb24-9" tabindex="-1"></a>[<span class="dv">15</span>] <span class="st">"class"</span>                    <span class="st">"order"</span>                   </span>
+<span id="cb24-10"><a href="phyloseq-objects-demo-datasets.html#cb24-10" tabindex="-1"></a>[<span class="dv">17</span>] <span class="st">"family"</span>                   <span class="st">"genus"</span>                   </span>
+<span id="cb24-11"><a href="phyloseq-objects-demo-datasets.html#cb24-11" tabindex="-1"></a>[<span class="dv">19</span>] <span class="st">"species"</span>                 </span></code></pre></div>
 </div>
 <div id="kostic_crc-dataset" class="section level2" number="5.4">
 <h2>
@@ -246,7 +238,7 @@ phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></p
 <li><p><strong>Format:</strong> The dataset is structured to facilitate microbiome marker analysis, including sample metadata and taxonomic abundance data. This format enables researchers to conduct comprehensive analyses of microbial community dynamics in colorectal cancer.</p></li>
 <li><p><strong>Utility:</strong> Researchers utilize the Kostic_CRC dataset to investigate the role of the gut microbiome in colorectal cancer pathogenesis, prognosis, and treatment response. The dataset contributes to a deeper understanding of the complex interplay between the gut microbiome and colorectal cancer biology, potentially leading to novel diagnostic or therapeutic strategies.</p></li>
 </ul>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yiluheihei/microbiomeMarker">microbiomeMarker</a></span><span class="op">)</span> <span class="co"># for kostic_crc dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"kostic_crc"</span><span class="op">)</span></span>
 <span></span>
@@ -261,63 +253,61 @@ phy_tree()    Phylogenetic Tree: [ 3426 tips and 3424 internal nodes ]</code></p
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select_all.html">rename_all</a></span><span class="op">(</span><span class="va">tolower</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Kostic_crc phyloseq-class</strong></p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ps_kostic_crc</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 2505 taxa and 177 samples ]
-sample_data() Sample Data:       [ 177 samples by 71 sample variables ]
-tax_table()   Taxonomy Table:    [ 2505 taxa by 7 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="phyloseq-objects-demo-datasets.html#cb26-1" tabindex="-1"></a>ps_kostic_crc</span>
+<span id="cb26-2"><a href="phyloseq-objects-demo-datasets.html#cb26-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb26-3"><a href="phyloseq-objects-demo-datasets.html#cb26-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">2505</span> taxa and <span class="dv">177</span> samples ]</span>
+<span id="cb26-4"><a href="phyloseq-objects-demo-datasets.html#cb26-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">177</span> samples by <span class="dv">71</span> sample variables ]</span>
+<span id="cb26-5"><a href="phyloseq-objects-demo-datasets.html#cb26-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">2505</span> taxa by <span class="dv">7</span> taxonomic ranks ]</span>
+<span id="cb26-6"><a href="phyloseq-objects-demo-datasets.html#cb26-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">2505</span> tips and <span class="dv">2504</span> internal nodes ]</span></code></pre></div>
 <p><strong>Columns in Kostic_crc dataset</strong></p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df_kostic_crc</span><span class="op">)</span></span></code></pre></div>
-<pre><code> [1] "sample_id"                     "otu"                          
- [3] "sample"                        "abundance"                    
- [5] "x.sampleid"                    "barcodesequence"              
- [7] "linkerprimersequence"          "necrosis_percent"             
- [9] "target_subfragment"            "assigned_from_geo"            
-[11] "experiment_center"             "title"                        
-[13] "run_prefix"                    "age"                          
-[15] "normal_equivalent_percent"     "fibroblast_and_vessel_percent"
-[17] "depth"                         "treatment"                    
-[19] "age_at_diagnosis"              "common_name"                  
-[21] "host_common_name"              "body_site"                    
-[23] "elevation"                     "reports_received"             
-[25] "cea"                           "pcr_primers"                  
-[27] "collection_date"               "altitude"                     
-[29] "env_biome"                     "sex"                          
-[31] "platform"                      "race"                         
-[33] "bsp_diagnosis"                 "study_center"                 
-[35] "country"                       "chemotherapy"                 
-[37] "year_of_death"                 "ethnicity"                    
-[39] "anonymized_name"               "taxon_id"                     
-[41] "sample_center"                 "samp_size"                    
-[43] "year_of_birth"                 "original_diagnosis"           
-[45] "age_unit"                      "study_id"                     
-[47] "experiment_design_description" "description_duplicate"        
-[49] "diagnosis"                     "body_habitat"                 
-[51] "sequencing_meth"               "run_date"                     
-[53] "histologic_grade"              "longitude"                    
-[55] "env_matter"                    "target_gene"                  
-[57] "env_feature"                   "key_seq"                      
-[59] "body_product"                  "tumor_percent"                
-[61] "library_construction_protocol" "region"                       
-[63] "run_center"                    "tumor_type"                   
-[65] "bsp_notes"                     "radiation_therapy"            
-[67] "inflammation_percent"          "host_subject_id"              
-[69] "pc3"                           "latitude"                     
-[71] "osh_diagnosis"                 "stage"                        
-[73] "primary_disease"               "host_taxid"                   
-[75] "description"                   "kingdom"                      
-[77] "phylum"                        "class"                        
-[79] "order"                         "family"                       
-[81] "genus"                         "species"                      </code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="phyloseq-objects-demo-datasets.html#cb27-1" tabindex="-1"></a><span class="fu">colnames</span>(df_kostic_crc)</span>
+<span id="cb27-2"><a href="phyloseq-objects-demo-datasets.html#cb27-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"sample_id"</span>                     <span class="st">"otu"</span>                          </span>
+<span id="cb27-3"><a href="phyloseq-objects-demo-datasets.html#cb27-3" tabindex="-1"></a> [<span class="dv">3</span>] <span class="st">"sample"</span>                        <span class="st">"abundance"</span>                    </span>
+<span id="cb27-4"><a href="phyloseq-objects-demo-datasets.html#cb27-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="st">"x.sampleid"</span>                    <span class="st">"barcodesequence"</span>              </span>
+<span id="cb27-5"><a href="phyloseq-objects-demo-datasets.html#cb27-5" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"linkerprimersequence"</span>          <span class="st">"necrosis_percent"</span>             </span>
+<span id="cb27-6"><a href="phyloseq-objects-demo-datasets.html#cb27-6" tabindex="-1"></a> [<span class="dv">9</span>] <span class="st">"target_subfragment"</span>            <span class="st">"assigned_from_geo"</span>            </span>
+<span id="cb27-7"><a href="phyloseq-objects-demo-datasets.html#cb27-7" tabindex="-1"></a>[<span class="dv">11</span>] <span class="st">"experiment_center"</span>             <span class="st">"title"</span>                        </span>
+<span id="cb27-8"><a href="phyloseq-objects-demo-datasets.html#cb27-8" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">"run_prefix"</span>                    <span class="st">"age"</span>                          </span>
+<span id="cb27-9"><a href="phyloseq-objects-demo-datasets.html#cb27-9" tabindex="-1"></a>[<span class="dv">15</span>] <span class="st">"normal_equivalent_percent"</span>     <span class="st">"fibroblast_and_vessel_percent"</span></span>
+<span id="cb27-10"><a href="phyloseq-objects-demo-datasets.html#cb27-10" tabindex="-1"></a>[<span class="dv">17</span>] <span class="st">"depth"</span>                         <span class="st">"treatment"</span>                    </span>
+<span id="cb27-11"><a href="phyloseq-objects-demo-datasets.html#cb27-11" tabindex="-1"></a>[<span class="dv">19</span>] <span class="st">"age_at_diagnosis"</span>              <span class="st">"common_name"</span>                  </span>
+<span id="cb27-12"><a href="phyloseq-objects-demo-datasets.html#cb27-12" tabindex="-1"></a>[<span class="dv">21</span>] <span class="st">"host_common_name"</span>              <span class="st">"body_site"</span>                    </span>
+<span id="cb27-13"><a href="phyloseq-objects-demo-datasets.html#cb27-13" tabindex="-1"></a>[<span class="dv">23</span>] <span class="st">"elevation"</span>                     <span class="st">"reports_received"</span>             </span>
+<span id="cb27-14"><a href="phyloseq-objects-demo-datasets.html#cb27-14" tabindex="-1"></a>[<span class="dv">25</span>] <span class="st">"cea"</span>                           <span class="st">"pcr_primers"</span>                  </span>
+<span id="cb27-15"><a href="phyloseq-objects-demo-datasets.html#cb27-15" tabindex="-1"></a>[<span class="dv">27</span>] <span class="st">"collection_date"</span>               <span class="st">"altitude"</span>                     </span>
+<span id="cb27-16"><a href="phyloseq-objects-demo-datasets.html#cb27-16" tabindex="-1"></a>[<span class="dv">29</span>] <span class="st">"env_biome"</span>                     <span class="st">"sex"</span>                          </span>
+<span id="cb27-17"><a href="phyloseq-objects-demo-datasets.html#cb27-17" tabindex="-1"></a>[<span class="dv">31</span>] <span class="st">"platform"</span>                      <span class="st">"race"</span>                         </span>
+<span id="cb27-18"><a href="phyloseq-objects-demo-datasets.html#cb27-18" tabindex="-1"></a>[<span class="dv">33</span>] <span class="st">"bsp_diagnosis"</span>                 <span class="st">"study_center"</span>                 </span>
+<span id="cb27-19"><a href="phyloseq-objects-demo-datasets.html#cb27-19" tabindex="-1"></a>[<span class="dv">35</span>] <span class="st">"country"</span>                       <span class="st">"chemotherapy"</span>                 </span>
+<span id="cb27-20"><a href="phyloseq-objects-demo-datasets.html#cb27-20" tabindex="-1"></a>[<span class="dv">37</span>] <span class="st">"year_of_death"</span>                 <span class="st">"ethnicity"</span>                    </span>
+<span id="cb27-21"><a href="phyloseq-objects-demo-datasets.html#cb27-21" tabindex="-1"></a>[<span class="dv">39</span>] <span class="st">"anonymized_name"</span>               <span class="st">"taxon_id"</span>                     </span>
+<span id="cb27-22"><a href="phyloseq-objects-demo-datasets.html#cb27-22" tabindex="-1"></a>[<span class="dv">41</span>] <span class="st">"sample_center"</span>                 <span class="st">"samp_size"</span>                    </span>
+<span id="cb27-23"><a href="phyloseq-objects-demo-datasets.html#cb27-23" tabindex="-1"></a>[<span class="dv">43</span>] <span class="st">"year_of_birth"</span>                 <span class="st">"original_diagnosis"</span>           </span>
+<span id="cb27-24"><a href="phyloseq-objects-demo-datasets.html#cb27-24" tabindex="-1"></a>[<span class="dv">45</span>] <span class="st">"age_unit"</span>                      <span class="st">"study_id"</span>                     </span>
+<span id="cb27-25"><a href="phyloseq-objects-demo-datasets.html#cb27-25" tabindex="-1"></a>[<span class="dv">47</span>] <span class="st">"experiment_design_description"</span> <span class="st">"description_duplicate"</span>        </span>
+<span id="cb27-26"><a href="phyloseq-objects-demo-datasets.html#cb27-26" tabindex="-1"></a>[<span class="dv">49</span>] <span class="st">"diagnosis"</span>                     <span class="st">"body_habitat"</span>                 </span>
+<span id="cb27-27"><a href="phyloseq-objects-demo-datasets.html#cb27-27" tabindex="-1"></a>[<span class="dv">51</span>] <span class="st">"sequencing_meth"</span>               <span class="st">"run_date"</span>                     </span>
+<span id="cb27-28"><a href="phyloseq-objects-demo-datasets.html#cb27-28" tabindex="-1"></a>[<span class="dv">53</span>] <span class="st">"histologic_grade"</span>              <span class="st">"longitude"</span>                    </span>
+<span id="cb27-29"><a href="phyloseq-objects-demo-datasets.html#cb27-29" tabindex="-1"></a>[<span class="dv">55</span>] <span class="st">"env_matter"</span>                    <span class="st">"target_gene"</span>                  </span>
+<span id="cb27-30"><a href="phyloseq-objects-demo-datasets.html#cb27-30" tabindex="-1"></a>[<span class="dv">57</span>] <span class="st">"env_feature"</span>                   <span class="st">"key_seq"</span>                      </span>
+<span id="cb27-31"><a href="phyloseq-objects-demo-datasets.html#cb27-31" tabindex="-1"></a>[<span class="dv">59</span>] <span class="st">"body_product"</span>                  <span class="st">"tumor_percent"</span>                </span>
+<span id="cb27-32"><a href="phyloseq-objects-demo-datasets.html#cb27-32" tabindex="-1"></a>[<span class="dv">61</span>] <span class="st">"library_construction_protocol"</span> <span class="st">"region"</span>                       </span>
+<span id="cb27-33"><a href="phyloseq-objects-demo-datasets.html#cb27-33" tabindex="-1"></a>[<span class="dv">63</span>] <span class="st">"run_center"</span>                    <span class="st">"tumor_type"</span>                   </span>
+<span id="cb27-34"><a href="phyloseq-objects-demo-datasets.html#cb27-34" tabindex="-1"></a>[<span class="dv">65</span>] <span class="st">"bsp_notes"</span>                     <span class="st">"radiation_therapy"</span>            </span>
+<span id="cb27-35"><a href="phyloseq-objects-demo-datasets.html#cb27-35" tabindex="-1"></a>[<span class="dv">67</span>] <span class="st">"inflammation_percent"</span>          <span class="st">"host_subject_id"</span>              </span>
+<span id="cb27-36"><a href="phyloseq-objects-demo-datasets.html#cb27-36" tabindex="-1"></a>[<span class="dv">69</span>] <span class="st">"pc3"</span>                           <span class="st">"latitude"</span>                     </span>
+<span id="cb27-37"><a href="phyloseq-objects-demo-datasets.html#cb27-37" tabindex="-1"></a>[<span class="dv">71</span>] <span class="st">"osh_diagnosis"</span>                 <span class="st">"stage"</span>                        </span>
+<span id="cb27-38"><a href="phyloseq-objects-demo-datasets.html#cb27-38" tabindex="-1"></a>[<span class="dv">73</span>] <span class="st">"primary_disease"</span>               <span class="st">"host_taxid"</span>                   </span>
+<span id="cb27-39"><a href="phyloseq-objects-demo-datasets.html#cb27-39" tabindex="-1"></a>[<span class="dv">75</span>] <span class="st">"description"</span>                   <span class="st">"kingdom"</span>                      </span>
+<span id="cb27-40"><a href="phyloseq-objects-demo-datasets.html#cb27-40" tabindex="-1"></a>[<span class="dv">77</span>] <span class="st">"phylum"</span>                        <span class="st">"class"</span>                        </span>
+<span id="cb27-41"><a href="phyloseq-objects-demo-datasets.html#cb27-41" tabindex="-1"></a>[<span class="dv">79</span>] <span class="st">"order"</span>                         <span class="st">"family"</span>                       </span>
+<span id="cb27-42"><a href="phyloseq-objects-demo-datasets.html#cb27-42" tabindex="-1"></a>[<span class="dv">81</span>] <span class="st">"genus"</span>                         <span class="st">"species"</span>                      </span></code></pre></div>
 </div>
 <div id="save_ps_objects" class="section level2" number="5.5">
 <h2>
 <span class="header-section-number">5.5</span> Save objects for transformation and exploration<a class="anchor" aria-label="anchor" href="#save_ps_objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">df_GlobalPatterns</span>, </span>
 <span>     <span class="va">df_dietswap</span>,  </span>
 <span>     <span class="va">df_caporaso</span>,</span>
@@ -334,13 +324,12 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
 <h2>
 <span class="header-section-number">5.6</span> Confirm saved objects<a class="anchor" aria-label="anchor" href="#confirm-saved-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="phyloseq-objects-demo-datasets.html#cb29-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/phyloseq_objects.rda"</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-2"><a href="phyloseq-objects-demo-datasets.html#cb29-2" tabindex="-1"></a>Loading objects<span class="sc">:</span></span>
+<span id="cb29-3"><a href="phyloseq-objects-demo-datasets.html#cb29-3" tabindex="-1"></a>  ps_GlobalPatterns</span>
+<span id="cb29-4"><a href="phyloseq-objects-demo-datasets.html#cb29-4" tabindex="-1"></a>  ps_dietswap</span>
+<span id="cb29-5"><a href="phyloseq-objects-demo-datasets.html#cb29-5" tabindex="-1"></a>  ps_caporaso</span>
+<span id="cb29-6"><a href="phyloseq-objects-demo-datasets.html#cb29-6" tabindex="-1"></a>  ps_kostic_crc</span></code></pre></div>
 </div>
 </div>
 
@@ -377,7 +366,7 @@ phy_tree()    Phylogenetic Tree: [ 2505 tips and 2504 internal nodes ]</code></p
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

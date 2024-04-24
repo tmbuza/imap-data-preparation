@@ -134,20 +134,19 @@
 <h3>
 <span class="header-section-number">4.1.1</span> Review the Mothur phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-mothur-phyloseq-object"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mt_ps_raw</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 920 taxa and 10 samples ]
-sample_data() Sample Data:       [ 10 samples by 2 sample variables ]
-tax_table()   Taxonomy Table:    [ 920 taxa by 6 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="creating-phyloseq-objects.html#cb12-1" tabindex="-1"></a>mt_ps_raw</span>
+<span id="cb12-2"><a href="creating-phyloseq-objects.html#cb12-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb12-3"><a href="creating-phyloseq-objects.html#cb12-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">920</span> taxa and <span class="dv">10</span> samples ]</span>
+<span id="cb12-4"><a href="creating-phyloseq-objects.html#cb12-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">10</span> samples by <span class="dv">2</span> sample variables ]</span>
+<span id="cb12-5"><a href="creating-phyloseq-objects.html#cb12-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">920</span> taxa by <span class="dv">6</span> taxonomic ranks ]</span>
+<span id="cb12-6"><a href="creating-phyloseq-objects.html#cb12-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">920</span> tips and <span class="dv">919</span> internal nodes ]</span></code></pre></div>
 </div>
 </div>
 <div id="from-qiime2-output" class="section level2" number="4.2">
 <h2>
 <span class="header-section-number">4.2</span> From QIIME2 output<a class="anchor" aria-label="anchor" href="#from-qiime2-output"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
@@ -186,13 +185,12 @@ phy_tree()    Phylogenetic Tree: [ 920 tips and 919 internal nodes ]</code></pre
 <h2>
 <span class="header-section-number">4.3</span> Review the QIIME2 phyloseq object<a class="anchor" aria-label="anchor" href="#review-the-qiime2-phyloseq-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">q2_ps_raw</span></span></code></pre></div>
-<pre><code>phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 95 taxa and 128 samples ]
-sample_data() Sample Data:       [ 128 samples by 12 sample variables ]
-tax_table()   Taxonomy Table:    [ 95 taxa by 6 taxonomic ranks ]
-phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="creating-phyloseq-objects.html#cb14-1" tabindex="-1"></a>q2_ps_raw</span>
+<span id="cb14-2"><a href="creating-phyloseq-objects.html#cb14-2" tabindex="-1"></a>phyloseq<span class="sc">-</span>class experiment<span class="sc">-</span>level object</span>
+<span id="cb14-3"><a href="creating-phyloseq-objects.html#cb14-3" tabindex="-1"></a><span class="fu">otu_table</span>()   OTU Table<span class="sc">:</span>         [ <span class="dv">95</span> taxa and <span class="dv">128</span> samples ]</span>
+<span id="cb14-4"><a href="creating-phyloseq-objects.html#cb14-4" tabindex="-1"></a><span class="fu">sample_data</span>() Sample Data<span class="sc">:</span>       [ <span class="dv">128</span> samples by <span class="dv">12</span> sample variables ]</span>
+<span id="cb14-5"><a href="creating-phyloseq-objects.html#cb14-5" tabindex="-1"></a><span class="fu">tax_table</span>()   Taxonomy Table<span class="sc">:</span>    [ <span class="dv">95</span> taxa by <span class="dv">6</span> taxonomic ranks ]</span>
+<span id="cb14-6"><a href="creating-phyloseq-objects.html#cb14-6" tabindex="-1"></a><span class="fu">phy_tree</span>()    Phylogenetic Tree<span class="sc">:</span> [ <span class="dv">95</span> tips and <span class="dv">94</span> internal nodes ]</span></code></pre></div>
 </div>
 </div>
 
@@ -228,7 +226,7 @@ phy_tree()    Phylogenetic Tree: [ 95 tips and 94 internal nodes ]</code></pre>
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

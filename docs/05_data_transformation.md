@@ -12,9 +12,6 @@ The process of data transformation in microbiome analysis involves converting ra
 
 ```r
 load("../imap-data-preparation/data/phyloseq_raw_rel_psextra_df_objects.rda", verbose = TRUE) 
-```
-
-```
 Loading objects:
   ps_raw
   ps_rel
@@ -29,33 +26,30 @@ Loading objects:
 ```r
 ps_raw <- psextra_raw
 otu_table(ps_raw)[1:10, 1:10]
-```
-
-```
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                            Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Sporobacter termitidis            87     1187      713      764      138
-Eubacterium hallii                10      102       39       31       28
-Ruminococcus gnavus               15       56       65       41       47
-Klebisiella pneumoniae             3        6        6       22        6
-Veillonella                        8       19        6        5        7
-Oceanospirillum                    1        2        1        2        1
-Ruminococcus lactaris              3        9       23       39        7
-Weissella                          1      180        2       13        2
-Eggerthella lenta                  3       10        8       18        4
-Uncultured Selenomonadaceae        0        0        0        0        0
-                            Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Sporobacter termitidis            81      714      258      159       353
-Eubacterium hallii                40       58       26       20        28
-Ruminococcus gnavus               61      101       19       21        19
-Klebisiella pneumoniae            32        4        5       51        20
-Veillonella                        8       11       11       71        74
-Oceanospirillum                    1        1        1        1         2
-Ruminococcus lactaris             15       22        8        4         4
-Weissella                          8        6        1       20         4
-Eggerthella lenta                  7       13        6        6         8
-Uncultured Selenomonadaceae        0        0        0        0         0
+                           Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
+Parabacteroides distasonis      187       28       17       19       38
+Eggerthella lenta                 3       10        8       18        4
+Coprococcus eutactus             49      355      477      329      211
+Serratia                          1        1        0        3        0
+Clostridium felsineum             0        0        0        0        0
+Clostridium orbiscindens         85      750      510      691      265
+Anaerovorax odorimutans           6       73       30       60       12
+Bifidobacterium                  43       25      183      493       22
+Fusobacteria                      4        5        5        5        5
+Eubacterium limosum               1        1        1        1        1
+                           Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
+Parabacteroides distasonis       12       27       19       10        15
+Eggerthella lenta                 7       13        6        6         8
+Coprococcus eutactus            137      332      267      146        52
+Serratia                          9        0        1       16         2
+Clostridium felsineum             0        0        0        0         0
+Clostridium orbiscindens        229      671      243      447       149
+Anaerovorax odorimutans           9       45       14       14        32
+Bifidobacterium                  24      116       62      151        20
+Fusobacteria                      8        5        5        4         5
+Eubacterium limosum               1        1        1        1         1
 ```
 
 ##  No Transformation
@@ -65,32 +59,21 @@ Uncultured Selenomonadaceae        0        0        0        0         0
 
 ```r
 (ps_identity <- microbiome::transform(ps_raw, 'identity'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_identity)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                       Sample-1 Sample-2 Sample-3
-Sporobacter termitidis       87     1187      713
-Eubacterium hallii           10      102       39
-Ruminococcus gnavus          15       56       65
-Klebisiella pneumoniae        3        6        6
-Veillonella                   8       19        6
+                           Sample-1 Sample-2 Sample-3
+Parabacteroides distasonis      187       28       17
+Eggerthella lenta                 3       10        8
+Coprococcus eutactus             49      355      477
+Serratia                          1        1        0
+Clostridium felsineum             0        0        0
 ```
 
 ## Relative abundance
@@ -98,28 +81,20 @@ Veillonella                   8       19        6
 
 ```r
 (ps_rel = phyloseq::transform_sample_counts(ps_raw, function(x){x / sum(x)}))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 otu_table(ps_rel)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1     Sample-2     Sample-3
-Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
-Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
-Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
-Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
-Veillonella            0.0009457383 0.0009010718 0.0002077347
+                               Sample-1     Sample-2     Sample-3
+Parabacteroides distasonis 0.0221066320 1.327895e-03 0.0005885815
+Eggerthella lenta          0.0003546519 4.742483e-04 0.0002769795
+Coprococcus eutactus       0.0057926469 1.683582e-02 0.0165149050
+Serratia                   0.0001182173 4.742483e-05 0.0000000000
+Clostridium felsineum      0.0000000000 0.000000e+00 0.0000000000
 ```
 
 ## Arc sine (asin) transformation
@@ -138,17 +113,14 @@ ps_asin <- round(asin(sqrt(y)), 6)
 
 ps_asin <- as.matrix(ps_asin)
 ps_asin[1:5, 1:4]
-```
-
-```
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                       Sample-1 Sample-2 Sample-3 Sample-4
-Sporobacter termitidis 0.115836 0.273804 0.180029 0.277249
-Eubacterium hallii     0.039194 0.079347 0.041890 0.055163
-Ruminococcus gnavus    0.048009 0.058765 0.054090 0.063450
-Klebisiella pneumoniae 0.021464 0.019225 0.016427 0.046464
-Veillonella            0.035055 0.034216 0.016427 0.022144
+                           Sample-1 Sample-2 Sample-3 Sample-4
+Parabacteroides distasonis 0.170268 0.041541 0.027652 0.043177
+Eggerthella lenta          0.021464 0.024821 0.018968 0.042025
+Coprococcus eutactus       0.086847 0.148417 0.146985 0.180595
+Serratia                   0.012391 0.007848 0.000000 0.017152
+Clostridium felsineum      0.000000 0.000000 0.000000 0.000000
 ```
 
 
@@ -158,32 +130,21 @@ Compositional data represents relative proportions or percentages of different m
 
 ```r
 (ps_compositional <- microbiome::transform(ps_raw, 'compositional'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_compositional)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1     Sample-2     Sample-3
-Sporobacter termitidis 0.0102849037 0.0562932752 0.0246858013
-Eubacterium hallii     0.0011821728 0.0048373328 0.0013502752
-Ruminococcus gnavus    0.0017732593 0.0026557906 0.0022504587
-Klebisiella pneumoniae 0.0003546519 0.0002845490 0.0002077347
-Veillonella            0.0009457383 0.0009010718 0.0002077347
+                               Sample-1     Sample-2     Sample-3
+Parabacteroides distasonis 0.0221066320 1.327895e-03 0.0005885815
+Eggerthella lenta          0.0003546519 4.742483e-04 0.0002769795
+Coprococcus eutactus       0.0057926469 1.683582e-02 0.0165149050
+Serratia                   0.0001182173 4.742483e-05 0.0000000000
+Clostridium felsineum      0.0000000000 0.000000e+00 0.0000000000
 ```
 
 ## Z-transform for OTUs
@@ -191,32 +152,21 @@ Veillonella            0.0009457383 0.0009010718 0.0002077347
 
 ```r
 (ps_z_otu <- microbiome::transform(ps_raw, 'Z', 'OTU'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_z_otu)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                         Sample-1    Sample-2    Sample-3
-Sporobacter termitidis -0.7794277  1.90302575  1.37827866
-Eubacterium hallii     -0.4477855  2.45470119  1.22737899
-Ruminococcus gnavus    -0.4074006  1.29211010  1.48822307
-Klebisiella pneumoniae -0.7431343 -0.01469595 -0.01469595
-Veillonella             0.6448912  1.68310449  0.31813426
+                               Sample-1   Sample-2   Sample-3
+Parabacteroides distasonis  0.994190116 -0.7348082 -1.1759727
+Eggerthella lenta          -0.821628886  2.3094335  1.6883264
+Coprococcus eutactus       -0.006970883  2.0022117  2.3038387
+Serratia                    0.033901004  0.0339010 -0.6285507
+Clostridium felsineum       0.000000000  0.0000000  0.0000000
 ```
 
 ## Z-transform for Samples
@@ -224,32 +174,21 @@ Veillonella             0.6448912  1.68310449  0.31813426
 
 ```r
 (ps_z_sample <- microbiome::transform(ps_raw, 'Z', 'sample'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_z_sample)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                          Sample-1   Sample-2   Sample-3
-Sporobacter termitidis  1.23557381  2.0958437  1.7796631
-Eubacterium hallii      0.12679267  0.9517496  0.4813434
-Ruminococcus gnavus     0.32658334  0.6749183  0.7069387
-Klebisiella pneumoniae -0.41260408 -0.3062820 -0.3038504
-Veillonella             0.01979284  0.1849037 -0.3038504
+                             Sample-1   Sample-2   Sample-3
+Parabacteroides distasonis  1.6403370  0.3587491  0.1216220
+Eggerthella lenta          -0.4126041 -0.0948094 -0.1906353
+Coprococcus eutactus        0.9341423  1.5320092  1.5988932
+Serratia                   -0.7821978 -0.8924188 -1.1804675
+Clostridium felsineum      -1.1517915 -1.2167251 -1.1804675
 ```
 
 ## Log10 Transform
@@ -257,32 +196,21 @@ Veillonella             0.01979284  0.1849037 -0.3038504
 
 ```r
 (ps_log10 <- microbiome::transform(ps_raw, 'log10'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_log10)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                        Sample-1 Sample-2 Sample-3
-Sporobacter termitidis 1.9444827 3.074816 2.853698
-Eubacterium hallii     1.0413927 2.012837 1.602060
-Ruminococcus gnavus    1.2041200 1.755875 1.819544
-Klebisiella pneumoniae 0.6020600 0.845098 0.845098
-Veillonella            0.9542425 1.301030 0.845098
+                           Sample-1 Sample-2  Sample-3
+Parabacteroides distasonis 2.274158 1.462398 1.2552725
+Eggerthella lenta          0.602060 1.041393 0.9542425
+Coprococcus eutactus       1.698970 2.551450 2.6794279
+Serratia                   0.301030 0.301030 0.0000000
+Clostridium felsineum      0.000000 0.000000 0.0000000
 ```
 
 ## Log10p Transform
@@ -290,32 +218,21 @@ Veillonella            0.9542425 1.301030 0.845098
 
 ```r
 (ps_log10p <- microbiome::transform(ps_raw, 'log10p'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_log10p)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                        Sample-1 Sample-2 Sample-3
-Sporobacter termitidis 1.9444827 3.074816 2.853698
-Eubacterium hallii     1.0413927 2.012837 1.602060
-Ruminococcus gnavus    1.2041200 1.755875 1.819544
-Klebisiella pneumoniae 0.6020600 0.845098 0.845098
-Veillonella            0.9542425 1.301030 0.845098
+                           Sample-1 Sample-2  Sample-3
+Parabacteroides distasonis 2.274158 1.462398 1.2552725
+Eggerthella lenta          0.602060 1.041393 0.9542425
+Coprococcus eutactus       1.698970 2.551450 2.6794279
+Serratia                   0.301030 0.301030 0.0000000
+Clostridium felsineum      0.000000 0.000000 0.0000000
 ```
 
 ## CLR Transform
@@ -324,32 +241,21 @@ Veillonella            0.9542425 1.301030 0.845098
 
 ```r
 (ps_clr <- microbiome::transform(ps_raw, 'clr'))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_clr)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                         Sample-1   Sample-2  Sample-3
-Sporobacter termitidis  2.8332848  4.7278340  4.148346
-Eubacterium hallii      0.6828174  2.2768872  1.254464
-Ruminococcus gnavus     1.0834602  1.6801909  1.760214
-Klebisiella pneumoniae -0.4880348 -0.5008398 -0.550034
-Veillonella             0.4632754  0.6118107 -0.550034
+                             Sample-1    Sample-2   Sample-3
+Parabacteroides distasonis  3.5975863  0.99349896  0.4403647
+Eggerthella lenta          -0.4880348 -0.01322079 -0.2817700
+Coprococcus eutactus        2.2604993  3.52148760  3.7467280
+Serratia                   -1.4976474 -2.04048558 -3.1149834
+Clostridium felsineum      -3.5554744 -3.35944895 -3.1149834
 ```
 
 
@@ -358,32 +264,21 @@ Veillonella             0.4632754  0.6118107 -0.550034
 
 ```r
 (ps_shift <- microbiome::transform(ps_raw, 'shift', shift=1))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_shift)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                       Sample-1 Sample-2 Sample-3
-Sporobacter termitidis       88     1188      714
-Eubacterium hallii           11      103       40
-Ruminococcus gnavus          16       57       66
-Klebisiella pneumoniae        4        7        7
-Veillonella                   9       20        7
+                           Sample-1 Sample-2 Sample-3
+Parabacteroides distasonis      188       29       18
+Eggerthella lenta                 4       11        9
+Coprococcus eutactus             50      356      478
+Serratia                          2        2        1
+Clostridium felsineum             1        1        1
 ```
 
 ## Data Scaling
@@ -391,32 +286,21 @@ Veillonella                   9       20        7
 
 ```r
 (ps_scale <- microbiome::transform(ps_raw, 'scale', scale=1))
-```
-
-```
 phyloseq-class experiment-level object
 otu_table()   OTU Table:         [ 130 taxa and 222 samples ]
 sample_data() Sample Data:       [ 222 samples by 8 sample variables ]
 tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
-```
 
-```r
 cat("\n\n")
-```
-
-```r
 otu_table(ps_scale)[1:5, 1:3]
-```
-
-```
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                       Sample-1 Sample-2 Sample-3
-Sporobacter termitidis       87     1187      713
-Eubacterium hallii           10      102       39
-Ruminococcus gnavus          15       56       65
-Klebisiella pneumoniae        3        6        6
-Veillonella                   8       19        6
+                           Sample-1 Sample-2 Sample-3
+Parabacteroides distasonis      187       28       17
+Eggerthella lenta                 3       10        8
+Coprococcus eutactus             49      355      477
+Serratia                          1        1        0
+Clostridium felsineum             0        0        0
 ```
 
 ## Save transformed objects
@@ -442,9 +326,6 @@ save(
 
 ```r
 load("data/ps_transformed.rda", verbose = TRUE)
-```
-
-```
 Loading objects:
   ps_asin
   ps_identity

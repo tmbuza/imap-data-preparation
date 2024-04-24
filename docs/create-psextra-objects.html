@@ -102,128 +102,120 @@
 <h2>
 <span class="header-section-number">7.2</span> Load pre-existing phyloseq objects<a class="anchor" aria-label="anchor" href="#load-pre-existing-phyloseq-objects"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/phyloseq_objects.rda"</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code>Loading objects:
-  ps_GlobalPatterns
-  ps_dietswap
-  ps_caporaso
-  ps_kostic_crc</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="create-psextra-objects.html#cb44-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"data/phyloseq_objects.rda"</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-2"><a href="create-psextra-objects.html#cb44-2" tabindex="-1"></a>Loading objects<span class="sc">:</span></span>
+<span id="cb44-3"><a href="create-psextra-objects.html#cb44-3" tabindex="-1"></a>  ps_GlobalPatterns</span>
+<span id="cb44-4"><a href="create-psextra-objects.html#cb44-4" tabindex="-1"></a>  ps_dietswap</span>
+<span id="cb44-5"><a href="create-psextra-objects.html#cb44-5" tabindex="-1"></a>  ps_caporaso</span>
+<span id="cb44-6"><a href="create-psextra-objects.html#cb44-6" tabindex="-1"></a>  ps_kostic_crc</span></code></pre></div>
 </div>
 <div id="aggregate-taxonomic-data" class="section level2" number="7.3">
 <h2>
 <span class="header-section-number">7.3</span> Aggregate taxonomic data<a class="anchor" aria-label="anchor" href="#aggregate-taxonomic-data"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load required packages</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span> <span class="co"># For handling microbiome data</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://david-barnett.github.io/microViz">microViz</a></span><span class="op">)</span> <span class="co"># For advanced microbiome visualization</span></span>
-<span></span>
-<span><span class="co"># Assuming ps_dietswap is already loaded or available</span></span>
-<span></span>
-<span><span class="co"># Aggregate taxonomic data</span></span>
-<span><span class="va">psextra_clr_dietswap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span></span>
-<span>  ps <span class="op">=</span> <span class="va">ps_dietswap</span>,</span>
-<span>  rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_transform.html">tax_transform</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"clr"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display a subset of the transformed data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nCentered log Ratio (CLR) Transformation\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Centered log Ratio (CLR) Transformation</code></pre>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">psextra_clr_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
-<pre><code>OTU Table:          [3 taxa and 4 samples]
-                     taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                  -0.4880348                    2.644393
-Sample-2                   0.9203804                    3.648184
-Sample-3                   1.1191231                    2.246309
-Sample-4                   2.0280002                    1.948250
-         Peptostreptococcus anaerobius et rel.
-Sample-1                             -3.555474
-Sample-2                             -3.359449
-Sample-3                             -3.114983
-Sample-4                             -3.622689</code></pre>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Aggregate taxonomic data</span></span>
-<span><span class="va">psextra_id_dietswap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span></span>
-<span>  ps <span class="op">=</span> <span class="va">ps_dietswap</span>,</span>
-<span>  rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_transform.html">tax_transform</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display a subset of the transformed data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nIdentity Transformation\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Identity Transformation</code></pre>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">psextra_id_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
-<pre><code>OTU Table:          [3 taxa and 4 samples]
-                     taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                           3                          72
-Sample-2                          26                         403
-Sample-3                          34                         106
-Sample-4                          65                          60
-         Peptostreptococcus anaerobius et rel.
-Sample-1                                     0
-Sample-2                                     0
-Sample-3                                     0
-Sample-4                                     0</code></pre>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Aggregate taxonomic data</span></span>
-<span><span class="va">psextra_log10p_dietswap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_agg.html">tax_agg</a></span><span class="op">(</span></span>
-<span>  ps <span class="op">=</span> <span class="va">ps_dietswap</span>,</span>
-<span>  rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/tax_transform.html">tax_transform</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log10p"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Display a subset of the transformed data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\nLog10p Transformation\n"</span><span class="op">)</span></span></code></pre></div>
-<pre><code>
-Log10p Transformation</code></pre>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">psextra_log10p_dietswap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://david-barnett.github.io/microViz/reference/psExtra-accessors.html">otu_get</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="va">.</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></code></pre></div>
-<pre><code>OTU Table:          [3 taxa and 4 samples]
-                     taxa are columns
-         Eubacterium biforme et rel. Ruminococcus bromii et rel.
-Sample-1                    0.602060                    1.863323
-Sample-2                    1.431364                    2.606381
-Sample-3                    1.544068                    2.029384
-Sample-4                    1.819544                    1.785330
-         Peptostreptococcus anaerobius et rel.
-Sample-1                                     0
-Sample-2                                     0
-Sample-3                                     0
-Sample-4                                     0</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="create-psextra-objects.html#cb45-1" tabindex="-1"></a><span class="co"># Load required packages</span></span>
+<span id="cb45-2"><a href="create-psextra-objects.html#cb45-2" tabindex="-1"></a><span class="fu">library</span>(phyloseq) <span class="co"># For handling microbiome data</span></span>
+<span id="cb45-3"><a href="create-psextra-objects.html#cb45-3" tabindex="-1"></a><span class="fu">library</span>(microViz) <span class="co"># For advanced microbiome visualization</span></span>
+<span id="cb45-4"><a href="create-psextra-objects.html#cb45-4" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="create-psextra-objects.html#cb45-5" tabindex="-1"></a><span class="co"># Assuming ps_dietswap is already loaded or available</span></span>
+<span id="cb45-6"><a href="create-psextra-objects.html#cb45-6" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="create-psextra-objects.html#cb45-7" tabindex="-1"></a><span class="co"># Aggregate taxonomic data</span></span>
+<span id="cb45-8"><a href="create-psextra-objects.html#cb45-8" tabindex="-1"></a>psextra_clr_dietswap <span class="ot">&lt;-</span> <span class="fu">tax_agg</span>(</span>
+<span id="cb45-9"><a href="create-psextra-objects.html#cb45-9" tabindex="-1"></a>  <span class="at">ps =</span> ps_dietswap,</span>
+<span id="cb45-10"><a href="create-psextra-objects.html#cb45-10" tabindex="-1"></a>  <span class="at">rank =</span> <span class="st">"Genus"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-11"><a href="create-psextra-objects.html#cb45-11" tabindex="-1"></a>  <span class="fu">tax_transform</span>(<span class="at">trans =</span> <span class="st">"clr"</span>)</span>
+<span id="cb45-12"><a href="create-psextra-objects.html#cb45-12" tabindex="-1"></a></span>
+<span id="cb45-13"><a href="create-psextra-objects.html#cb45-13" tabindex="-1"></a><span class="co"># Display a subset of the transformed data</span></span>
+<span id="cb45-14"><a href="create-psextra-objects.html#cb45-14" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Centered log Ratio (CLR) Transformation</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb45-15"><a href="create-psextra-objects.html#cb45-15" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="create-psextra-objects.html#cb45-16" tabindex="-1"></a>Centered log <span class="fu">Ratio</span> (CLR) Transformation</span>
+<span id="cb45-17"><a href="create-psextra-objects.html#cb45-17" tabindex="-1"></a>psextra_clr_dietswap <span class="sc">%&gt;%</span> </span>
+<span id="cb45-18"><a href="create-psextra-objects.html#cb45-18" tabindex="-1"></a>  <span class="fu">otu_get</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-19"><a href="create-psextra-objects.html#cb45-19" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb45-20"><a href="create-psextra-objects.html#cb45-20" tabindex="-1"></a>OTU Table<span class="sc">:</span>          [<span class="dv">3</span> taxa and <span class="dv">4</span> samples]</span>
+<span id="cb45-21"><a href="create-psextra-objects.html#cb45-21" tabindex="-1"></a>                     taxa are columns</span>
+<span id="cb45-22"><a href="create-psextra-objects.html#cb45-22" tabindex="-1"></a>         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.</span>
+<span id="cb45-23"><a href="create-psextra-objects.html#cb45-23" tabindex="-1"></a>Sample<span class="dv">-1</span>               <span class="sc">-</span><span class="fl">0.87049643</span>                          <span class="fl">2.357387</span></span>
+<span id="cb45-24"><a href="create-psextra-objects.html#cb45-24" tabindex="-1"></a>Sample<span class="dv">-2</span>               <span class="sc">-</span><span class="fl">0.87803411</span>                          <span class="fl">2.599687</span></span>
+<span id="cb45-25"><a href="create-psextra-objects.html#cb45-25" tabindex="-1"></a>Sample<span class="dv">-3</span>                <span class="fl">0.02051085</span>                          <span class="fl">2.353077</span></span>
+<span id="cb45-26"><a href="create-psextra-objects.html#cb45-26" tabindex="-1"></a>Sample<span class="dv">-4</span>                <span class="fl">0.17534649</span>                          <span class="fl">1.861585</span></span>
+<span id="cb45-27"><a href="create-psextra-objects.html#cb45-27" tabindex="-1"></a>         Leminorella</span>
+<span id="cb45-28"><a href="create-psextra-objects.html#cb45-28" tabindex="-1"></a>Sample<span class="dv">-1</span>  <span class="sc">-</span><span class="fl">0.4880348</span></span>
+<span id="cb45-29"><a href="create-psextra-objects.html#cb45-29" tabindex="-1"></a>Sample<span class="dv">-2</span>  <span class="sc">-</span><span class="fl">2.0404856</span></span>
+<span id="cb45-30"><a href="create-psextra-objects.html#cb45-30" tabindex="-1"></a>Sample<span class="dv">-3</span>  <span class="sc">-</span><span class="fl">3.1149834</span></span>
+<span id="cb45-31"><a href="create-psextra-objects.html#cb45-31" tabindex="-1"></a>Sample<span class="dv">-4</span>  <span class="sc">-</span><span class="fl">3.6226887</span></span>
+<span id="cb45-32"><a href="create-psextra-objects.html#cb45-32" tabindex="-1"></a></span>
+<span id="cb45-33"><a href="create-psextra-objects.html#cb45-33" tabindex="-1"></a><span class="co"># Aggregate taxonomic data</span></span>
+<span id="cb45-34"><a href="create-psextra-objects.html#cb45-34" tabindex="-1"></a>psextra_id_dietswap <span class="ot">&lt;-</span> <span class="fu">tax_agg</span>(</span>
+<span id="cb45-35"><a href="create-psextra-objects.html#cb45-35" tabindex="-1"></a>  <span class="at">ps =</span> ps_dietswap,</span>
+<span id="cb45-36"><a href="create-psextra-objects.html#cb45-36" tabindex="-1"></a>  <span class="at">rank =</span> <span class="st">"Genus"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-37"><a href="create-psextra-objects.html#cb45-37" tabindex="-1"></a>  <span class="fu">tax_transform</span>(<span class="at">trans =</span> <span class="st">"identity"</span>)</span>
+<span id="cb45-38"><a href="create-psextra-objects.html#cb45-38" tabindex="-1"></a></span>
+<span id="cb45-39"><a href="create-psextra-objects.html#cb45-39" tabindex="-1"></a><span class="co"># Display a subset of the transformed data</span></span>
+<span id="cb45-40"><a href="create-psextra-objects.html#cb45-40" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Identity Transformation</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb45-41"><a href="create-psextra-objects.html#cb45-41" tabindex="-1"></a></span>
+<span id="cb45-42"><a href="create-psextra-objects.html#cb45-42" tabindex="-1"></a>Identity Transformation</span>
+<span id="cb45-43"><a href="create-psextra-objects.html#cb45-43" tabindex="-1"></a>psextra_id_dietswap <span class="sc">%&gt;%</span> </span>
+<span id="cb45-44"><a href="create-psextra-objects.html#cb45-44" tabindex="-1"></a>  <span class="fu">otu_get</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-45"><a href="create-psextra-objects.html#cb45-45" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb45-46"><a href="create-psextra-objects.html#cb45-46" tabindex="-1"></a>OTU Table<span class="sc">:</span>          [<span class="dv">3</span> taxa and <span class="dv">4</span> samples]</span>
+<span id="cb45-47"><a href="create-psextra-objects.html#cb45-47" tabindex="-1"></a>                     taxa are columns</span>
+<span id="cb45-48"><a href="create-psextra-objects.html#cb45-48" tabindex="-1"></a>         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.</span>
+<span id="cb45-49"><a href="create-psextra-objects.html#cb45-49" tabindex="-1"></a>Sample<span class="dv">-1</span>                         <span class="dv">2</span>                                <span class="dv">54</span></span>
+<span id="cb45-50"><a href="create-psextra-objects.html#cb45-50" tabindex="-1"></a>Sample<span class="dv">-2</span>                         <span class="dv">4</span>                               <span class="dv">141</span></span>
+<span id="cb45-51"><a href="create-psextra-objects.html#cb45-51" tabindex="-1"></a>Sample<span class="dv">-3</span>                        <span class="dv">11</span>                               <span class="dv">118</span></span>
+<span id="cb45-52"><a href="create-psextra-objects.html#cb45-52" tabindex="-1"></a>Sample<span class="dv">-4</span>                        <span class="dv">10</span>                                <span class="dv">55</span></span>
+<span id="cb45-53"><a href="create-psextra-objects.html#cb45-53" tabindex="-1"></a>         Leminorella</span>
+<span id="cb45-54"><a href="create-psextra-objects.html#cb45-54" tabindex="-1"></a>Sample<span class="dv">-1</span>           <span class="dv">3</span></span>
+<span id="cb45-55"><a href="create-psextra-objects.html#cb45-55" tabindex="-1"></a>Sample<span class="dv">-2</span>           <span class="dv">1</span></span>
+<span id="cb45-56"><a href="create-psextra-objects.html#cb45-56" tabindex="-1"></a>Sample<span class="dv">-3</span>           <span class="dv">0</span></span>
+<span id="cb45-57"><a href="create-psextra-objects.html#cb45-57" tabindex="-1"></a>Sample<span class="dv">-4</span>           <span class="dv">0</span></span>
+<span id="cb45-58"><a href="create-psextra-objects.html#cb45-58" tabindex="-1"></a></span>
+<span id="cb45-59"><a href="create-psextra-objects.html#cb45-59" tabindex="-1"></a><span class="co"># Aggregate taxonomic data</span></span>
+<span id="cb45-60"><a href="create-psextra-objects.html#cb45-60" tabindex="-1"></a>psextra_log10p_dietswap <span class="ot">&lt;-</span> <span class="fu">tax_agg</span>(</span>
+<span id="cb45-61"><a href="create-psextra-objects.html#cb45-61" tabindex="-1"></a>  <span class="at">ps =</span> ps_dietswap,</span>
+<span id="cb45-62"><a href="create-psextra-objects.html#cb45-62" tabindex="-1"></a>  <span class="at">rank =</span> <span class="st">"Genus"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-63"><a href="create-psextra-objects.html#cb45-63" tabindex="-1"></a>  <span class="fu">tax_transform</span>(<span class="at">trans =</span> <span class="st">"log10p"</span>)</span>
+<span id="cb45-64"><a href="create-psextra-objects.html#cb45-64" tabindex="-1"></a></span>
+<span id="cb45-65"><a href="create-psextra-objects.html#cb45-65" tabindex="-1"></a><span class="co"># Display a subset of the transformed data</span></span>
+<span id="cb45-66"><a href="create-psextra-objects.html#cb45-66" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Log10p Transformation</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb45-67"><a href="create-psextra-objects.html#cb45-67" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="create-psextra-objects.html#cb45-68" tabindex="-1"></a>Log10p Transformation</span>
+<span id="cb45-69"><a href="create-psextra-objects.html#cb45-69" tabindex="-1"></a>psextra_log10p_dietswap <span class="sc">%&gt;%</span> </span>
+<span id="cb45-70"><a href="create-psextra-objects.html#cb45-70" tabindex="-1"></a>  <span class="fu">otu_get</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb45-71"><a href="create-psextra-objects.html#cb45-71" tabindex="-1"></a>  .[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb45-72"><a href="create-psextra-objects.html#cb45-72" tabindex="-1"></a>OTU Table<span class="sc">:</span>          [<span class="dv">3</span> taxa and <span class="dv">4</span> samples]</span>
+<span id="cb45-73"><a href="create-psextra-objects.html#cb45-73" tabindex="-1"></a>                     taxa are columns</span>
+<span id="cb45-74"><a href="create-psextra-objects.html#cb45-74" tabindex="-1"></a>         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.</span>
+<span id="cb45-75"><a href="create-psextra-objects.html#cb45-75" tabindex="-1"></a>Sample<span class="dv">-1</span>                 <span class="fl">0.4771213</span>                          <span class="fl">1.740363</span></span>
+<span id="cb45-76"><a href="create-psextra-objects.html#cb45-76" tabindex="-1"></a>Sample<span class="dv">-2</span>                 <span class="fl">0.6989700</span>                          <span class="fl">2.152288</span></span>
+<span id="cb45-77"><a href="create-psextra-objects.html#cb45-77" tabindex="-1"></a>Sample<span class="dv">-3</span>                 <span class="fl">1.0791812</span>                          <span class="fl">2.075547</span></span>
+<span id="cb45-78"><a href="create-psextra-objects.html#cb45-78" tabindex="-1"></a>Sample<span class="dv">-4</span>                 <span class="fl">1.0413927</span>                          <span class="fl">1.748188</span></span>
+<span id="cb45-79"><a href="create-psextra-objects.html#cb45-79" tabindex="-1"></a>         Leminorella</span>
+<span id="cb45-80"><a href="create-psextra-objects.html#cb45-80" tabindex="-1"></a>Sample<span class="dv">-1</span>     <span class="fl">0.60206</span></span>
+<span id="cb45-81"><a href="create-psextra-objects.html#cb45-81" tabindex="-1"></a>Sample<span class="dv">-2</span>     <span class="fl">0.30103</span></span>
+<span id="cb45-82"><a href="create-psextra-objects.html#cb45-82" tabindex="-1"></a>Sample<span class="dv">-3</span>     <span class="fl">0.00000</span></span>
+<span id="cb45-83"><a href="create-psextra-objects.html#cb45-83" tabindex="-1"></a>Sample<span class="dv">-4</span>     <span class="fl">0.00000</span></span></code></pre></div>
 </div>
 <div id="confirm-the-psextra-class" class="section level2" number="7.4">
 <h2>
 <span class="header-section-number">7.4</span> Confirm the psExtra class<a class="anchor" aria-label="anchor" href="#confirm-the-psextra-class"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_clr_dietswap</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Length   Class    Mode 
-      1 psExtra      S4 </code></pre>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_id_dietswap</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Length   Class    Mode 
-      1 psExtra      S4 </code></pre>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">psextra_log10p_dietswap</span><span class="op">)</span></span></code></pre></div>
-<pre><code> Length   Class    Mode 
-      1 psExtra      S4 </code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="create-psextra-objects.html#cb46-1" tabindex="-1"></a><span class="fu">summary</span>(psextra_clr_dietswap)</span>
+<span id="cb46-2"><a href="create-psextra-objects.html#cb46-2" tabindex="-1"></a> Length   Class    Mode </span>
+<span id="cb46-3"><a href="create-psextra-objects.html#cb46-3" tabindex="-1"></a>      <span class="dv">1</span> psExtra      S4 </span>
+<span id="cb46-4"><a href="create-psextra-objects.html#cb46-4" tabindex="-1"></a><span class="fu">summary</span>(psextra_id_dietswap)</span>
+<span id="cb46-5"><a href="create-psextra-objects.html#cb46-5" tabindex="-1"></a> Length   Class    Mode </span>
+<span id="cb46-6"><a href="create-psextra-objects.html#cb46-6" tabindex="-1"></a>      <span class="dv">1</span> psExtra      S4 </span>
+<span id="cb46-7"><a href="create-psextra-objects.html#cb46-7" tabindex="-1"></a><span class="fu">summary</span>(psextra_log10p_dietswap)</span>
+<span id="cb46-8"><a href="create-psextra-objects.html#cb46-8" tabindex="-1"></a> Length   Class    Mode </span>
+<span id="cb46-9"><a href="create-psextra-objects.html#cb46-9" tabindex="-1"></a>      <span class="dv">1</span> psExtra      S4 </span></code></pre></div>
 </div>
 <div id="save-psextra-to-r-object" class="section level2" number="7.5">
 <h2>
 <span class="header-section-number">7.5</span> Save psExtra to R object<a class="anchor" aria-label="anchor" href="#save-psextra-to-r-object"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">psextra_clr_dietswap</span>, <span class="va">psextra_id_dietswap</span>, <span class="va">psextra_log10p_dietswap</span>, file <span class="op">=</span> <span class="st">"data/phyloseq_extra_objects.rda"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -260,7 +252,7 @@ Sample-4                                     0</code></pre>
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-17</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

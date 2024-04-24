@@ -1,4 +1,4 @@
-# IMAP Project Overview
+# IMAP PART 07: Data Preparation
 
 ---In Progress---
 

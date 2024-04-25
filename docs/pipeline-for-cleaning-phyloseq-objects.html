@@ -75,10 +75,10 @@
 <li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
 <li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="taxa-prevalence-and-detection.html"><span class="header-section-number">13</span> Taxa Prevalence and Detection</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
-<li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
-<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">B</span> Session Information</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -186,18 +186,18 @@
 <span id="cb48-87"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-87" tabindex="-1"></a>      <span class="dv">1</span> psExtra      S4 </span>
 <span id="cb48-88"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-88" tabindex="-1"></a></span>
 <span id="cb48-89"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-89" tabindex="-1"></a><span class="fu">otu_table</span>(psextra_raw)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
-<span id="cb48-90"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-90" tabindex="-1"></a>                           Sample<span class="dv">-1</span> Sample<span class="dv">-2</span> Sample<span class="dv">-3</span></span>
-<span id="cb48-91"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-91" tabindex="-1"></a>Parabacteroides distasonis      <span class="dv">187</span>       <span class="dv">28</span>       <span class="dv">17</span></span>
-<span id="cb48-92"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-92" tabindex="-1"></a>Eggerthella lenta                 <span class="dv">3</span>       <span class="dv">10</span>        <span class="dv">8</span></span>
-<span id="cb48-93"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-93" tabindex="-1"></a>Coprococcus eutactus             <span class="dv">49</span>      <span class="dv">355</span>      <span class="dv">477</span></span>
+<span id="cb48-90"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-90" tabindex="-1"></a>                    Sample<span class="dv">-1</span> Sample<span class="dv">-2</span> Sample<span class="dv">-3</span></span>
+<span id="cb48-91"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-91" tabindex="-1"></a>Eubacterium limosum        <span class="dv">1</span>        <span class="dv">1</span>        <span class="dv">1</span></span>
+<span id="cb48-92"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-92" tabindex="-1"></a>Staphylococcus             <span class="dv">0</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
+<span id="cb48-93"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-93" tabindex="-1"></a>Oceanospirillum            <span class="dv">1</span>        <span class="dv">2</span>        <span class="dv">1</span></span>
 <span id="cb48-94"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-94" tabindex="-1"></a></span>
 <span id="cb48-95"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-95" tabindex="-1"></a>psextra_rel <span class="ot">&lt;-</span> phyloseq<span class="sc">::</span><span class="fu">transform_sample_counts</span>(psextra_raw, <span class="cf">function</span>(x){x <span class="sc">/</span> <span class="fu">sum</span>(x)})</span>
 <span id="cb48-96"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-96" tabindex="-1"></a></span>
 <span id="cb48-97"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-97" tabindex="-1"></a><span class="fu">otu_table</span>(ps_rel)[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>] <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()</span>
 <span id="cb48-98"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-98" tabindex="-1"></a>           Sample<span class="dv">-1</span>     Sample<span class="dv">-2</span>     Sample<span class="dv">-3</span></span>
-<span id="cb48-99"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-99" tabindex="-1"></a>OTU016 <span class="fl">0.0221066320</span> <span class="fl">0.0013278953</span> <span class="fl">0.0005885815</span></span>
-<span id="cb48-100"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-100" tabindex="-1"></a>OTU038 <span class="fl">0.0003546519</span> <span class="fl">0.0004742483</span> <span class="fl">0.0002769795</span></span>
-<span id="cb48-101"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-101" tabindex="-1"></a>OTU055 <span class="fl">0.0057926469</span> <span class="fl">0.0168358152</span> <span class="fl">0.0165149050</span></span>
+<span id="cb48-99"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-99" tabindex="-1"></a>OTU016 <span class="fl">0.0001182173</span> <span class="fl">4.742483e-05</span> <span class="fl">3.462244e-05</span></span>
+<span id="cb48-100"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-100" tabindex="-1"></a>OTU038 <span class="fl">0.0000000000</span> <span class="fl">0.000000e+00</span> <span class="fl">0.000000e+00</span></span>
+<span id="cb48-101"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-101" tabindex="-1"></a>OTU055 <span class="fl">0.0001182173</span> <span class="fl">9.484966e-05</span> <span class="fl">3.462244e-05</span></span>
 <span id="cb48-102"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-102" tabindex="-1"></a></span>
 <span id="cb48-103"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-103" tabindex="-1"></a></span>
 <span id="cb48-104"><a href="pipeline-for-cleaning-phyloseq-objects.html#cb48-104" tabindex="-1"></a><span class="do">## Getting clean dataframe from psExtra object</span></span>
@@ -269,7 +269,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-26</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

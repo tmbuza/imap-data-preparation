@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>13 Taxa Prevalence and Detection | IMAP: Integrated Microbiome Analysis Pipelines</title>
+<meta name="author" content="Teresia Mrema-Buza">
+<meta name="description" content="Taxa prevalence and detection analysis quantify how often a taxon is present or detected across the samples under study. High prevalence indicates that the taxon is commonly found across many...">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
+<meta property="og:title" content="13 Taxa Prevalence and Detection | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tmbuza.github.io/imap-data-preparation/taxa-prevalence-and-detection.html">
+<meta property="og:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<meta property="og:description" content="Taxa prevalence and detection analysis quantify how often a taxon is present or detected across the samples under study. High prevalence indicates that the taxon is commonly found across many...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="13 Taxa Prevalence and Detection | IMAP: Integrated Microbiome Analysis Pipelines">
+<meta name="twitter:description" content="Taxa prevalence and detection analysis quantify how often a taxon is present or detected across the samples under study. High prevalence indicates that the taxon is commonly found across many...">
+<meta name="twitter:image" content="https://tmbuza.github.io/imap-data-preparation/images/planning.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Sen-0.4.8/font.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM%20Mono&amp;display=swap" rel="stylesheet">
+<link href="libs/Bitter-0.4.8/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="End-to-End Practical User Guides Using Integrated Approaches"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a>:
+        <small class="text-muted">End-to-End Practical User Guides Using Integrated Approaches</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">IMAP-Part 07: Microbiome Data Preparation Guide</a></li>
+<li class="book-part">GETTING STARTED</li>
+<li><a class="" href="preface.html">Preparing for Downstream Analysis</a></li>
+<li><a class="" href="data-tidying.html"><span class="header-section-number">1</span> Data Tidying</a></li>
+<li class="book-part">MOTHUR OUTPUT</li>
+<li><a class="" href="prepare-mothur-output.html"><span class="header-section-number">2</span> Prepare Mothur Output</a></li>
+<li class="book-part">QIIME2 OUTPUT</li>
+<li><a class="" href="prepare-qiime2-output.html"><span class="header-section-number">3</span> Prepare Qiime2 Output</a></li>
+<li class="book-part">PHYLOSEQ OBJECTS</li>
+<li><a class="" href="creating-phyloseq-objects.html"><span class="header-section-number">4</span> Creating phyloseq Objects</a></li>
+<li class="book-part">EXTERNAL DATASETS</li>
+<li><a class="" href="phyloseq-objects-demo-datasets.html"><span class="header-section-number">5</span> Phyloseq Objects Demo Datasets</a></li>
+<li class="book-part">PHYLOSEQ FUNCTIONS</li>
+<li><a class="" href="reviewing-phyloseq-objects.html"><span class="header-section-number">6</span> Reviewing Phyloseq Objects</a></li>
+<li class="book-part">PHYLOSEQ EXTRA OBJECTS</li>
+<li><a class="" href="create-psextra-objects.html"><span class="header-section-number">7</span> Create psExtra Objects</a></li>
+<li class="book-part">CLEANING PHYLOSEQ OBJECT</li>
+<li><a class="" href="pipeline-for-cleaning-phyloseq-objects.html"><span class="header-section-number">8</span> Pipeline for Cleaning Phyloseq Objects</a></li>
+<li class="book-part">DATA TRANSFORMATION</li>
+<li><a class="" href="data-tarnsformation.html"><span class="header-section-number">9</span> Data Tranformation from Phyloseq Objects</a></li>
+<li class="book-part">DISTANCES MATRICES</li>
+<li><a class="" href="distance-calculation-in-microbiome-data-analysis.html"><span class="header-section-number">10</span> Distance Calculation in Microbiome Data Analysis</a></li>
+<li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
+<li class="book-part">DIMENSIONALITY REDUCTION</li>
+<li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="active" href="taxa-prevalence-and-detection.html"><span class="header-section-number">13</span> Taxa Prevalence and Detection</a></li>
+<li class="book-part">APPENDIX</li>
+<li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">B</span> Session Information</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tmbuza/imap-data-preparation.git">View book source <i class="fas fa-air-freshener"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="taxa-prevalence-and-detection" class="section level1" number="13">
+<h1>
+<span class="header-section-number">13</span> Taxa Prevalence and Detection<a class="anchor" aria-label="anchor" href="#taxa-prevalence-and-detection"><i class="fas fa-link"></i></a>
+</h1>
+<ul>
+<li>Taxa prevalence and detection analysis quantify how often a taxon is present or detected across the samples under study.</li>
+<li>High prevalence indicates that the taxon is commonly found across many samples.</li>
+<li>Low prevalence suggests that the taxon is more sporadic or rare.</li>
+<li>Analyzing taxa prevalence can provide insights into the distribution of different microbial taxa and their potential ecological roles.</li>
+</ul>
+<div id="understand-sample-and-taxa-sizes" class="section level2" number="13.1">
+<h2>
+<span class="header-section-number">13.1</span> Understand sample and taxa sizes<a class="anchor" aria-label="anchor" href="#understand-sample-and-taxa-sizes"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="taxa-prevalence-and-detection.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb80-2"><a href="taxa-prevalence-and-detection.html#cb80-2" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="taxa-prevalence-and-detection.html#cb80-3" tabindex="-1"></a><span class="co"># Min and max sample and taxa sums: These values are useful when setting up some threshholds.</span></span>
+<span id="cb80-4"><a href="taxa-prevalence-and-detection.html#cb80-4" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="taxa-prevalence-and-detection.html#cb80-5" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Minimum sample sums:"</span>, <span class="fu">min</span>(<span class="fu">data.frame</span>(<span class="fu">sample_sums</span>(ps_raw))), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb80-6"><a href="taxa-prevalence-and-detection.html#cb80-6" tabindex="-1"></a>Minimum sample sums<span class="sc">:</span> <span class="dv">1776</span> </span>
+<span id="cb80-7"><a href="taxa-prevalence-and-detection.html#cb80-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Maximum sample sums:"</span>, <span class="fu">max</span>(<span class="fu">data.frame</span>(<span class="fu">sample_sums</span>(ps_raw))), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb80-8"><a href="taxa-prevalence-and-detection.html#cb80-8" tabindex="-1"></a>Maximum sample sums<span class="sc">:</span> <span class="dv">28883</span> </span>
+<span id="cb80-9"><a href="taxa-prevalence-and-detection.html#cb80-9" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Minimum taxa sums:"</span>, <span class="fu">min</span>(<span class="fu">data.frame</span>(<span class="fu">taxa_sums</span>(ps_raw))), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb80-10"><a href="taxa-prevalence-and-detection.html#cb80-10" tabindex="-1"></a>Minimum taxa sums<span class="sc">:</span> <span class="dv">0</span> </span>
+<span id="cb80-11"><a href="taxa-prevalence-and-detection.html#cb80-11" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Maximum taxa sums:"</span>, <span class="fu">max</span>(<span class="fu">data.frame</span>(<span class="fu">taxa_sums</span>(ps_raw))), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb80-12"><a href="taxa-prevalence-and-detection.html#cb80-12" tabindex="-1"></a>Maximum taxa sums<span class="sc">:</span> <span class="dv">873314</span> </span></code></pre></div>
+</div>
+<div id="subsetting-microbiome-data-by-taxa-prevalence" class="section level2" number="13.2">
+<h2>
+<span class="header-section-number">13.2</span> Subsetting Microbiome Data by Taxa Prevalence<a class="anchor" aria-label="anchor" href="#subsetting-microbiome-data-by-taxa-prevalence"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217">phyloseq</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://microbiome.github.io/microbiome">microbiome</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Define a function to subset microbiome data based on taxa prevalence</span></span>
+<span><span class="va">subset_by_prevalence</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">ps_raw</span>, <span class="va">prevalence_threshold</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="co"># Calculate taxa prevalence across samples</span></span>
+<span>  <span class="va">taxa_prevalence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbiome/man/prevalence.html">prevalence</a></span><span class="op">(</span><span class="va">ps_raw</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Subset taxa based on prevalence threshold</span></span>
+<span>  <span class="va">taxa_to_keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">taxa_prevalence</span><span class="op">)</span><span class="op">[</span><span class="va">taxa_prevalence</span> <span class="op">&gt;=</span> <span class="va">prevalence_threshold</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="co"># Subset microbiome data</span></span>
+<span>  <span class="va">ps_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html">prune_taxa</a></span><span class="op">(</span><span class="va">taxa_to_keep</span>, <span class="va">ps_raw</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ps_subset</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Example usage: Subset microbiome data with a prevalence threshold of 0.1 (10%)</span></span>
+<span><span class="va">ps_subset</span> <span class="op">&lt;-</span> <span class="fu">subset_by_prevalence</span><span class="op">(</span><span class="va">ps_raw</span>, <span class="fl">0.9</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></div>
+<div class="next"><a href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#taxa-prevalence-and-detection"><span class="header-section-number">13</span> Taxa Prevalence and Detection</a></li>
+<li><a class="nav-link" href="#understand-sample-and-taxa-sizes"><span class="header-section-number">13.1</span> Understand sample and taxa sizes</a></li>
+<li><a class="nav-link" href="#subsetting-microbiome-data-by-taxa-prevalence"><span class="header-section-number">13.2</span> Subsetting Microbiome Data by Taxa Prevalence</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tmbuza/imap-data-preparation.git/blob/gh-pages/07_dimensionality_reduction.Rmd">View source <i class="fas fa-air-freshener"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tmbuza/imap-data-preparation.git/edit/gh-pages/07_dimensionality_reduction.Rmd">Edit this page <i class="fas fa-air-freshener"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mt-3">
+        <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-26</b>.</p>
+<br>
+</div>
+      <div class="col-12 col-md-6 mt-3">
+        <p>Note: This practical guide was created using the <a class="text-light" href="https://bookdown.org/yihui/bookdown/">bookdown</a> R package, styled with the modern bs4_book format.</p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+</body>
+</html>

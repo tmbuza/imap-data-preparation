@@ -516,12 +516,18 @@ sample_variables(ps)
 otu_table(ps)[1:5, 1:5]
 OTU Table:          [5 taxa and 5 samples]
                      taxa are rows
-                                  Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Peptococcus niger et rel.                2        4       11       10        2
-Lachnospira pectinoschiza et rel.       54      141      118       55       67
-Leminorella                              3        1        0        0        0
-Streptococcus bovis et rel.            112       41       95       27      110
-Sutterella wadsworthia et rel.          77       11       44        7       55
+                                      Sample-1 Sample-2 Sample-3 Sample-4
+Phascolarctobacterium faecium et rel.        4        5       13        4
+Actinomycetaceae                             0        1        0        1
+Eubacterium hallii et rel.                  10      102       39       31
+Clostridium stercorarium et rel.             6        3        9        8
+Clostridium symbiosum et rel.              220      247      214      111
+                                      Sample-5
+Phascolarctobacterium faecium et rel.       33
+Actinomycetaceae                             0
+Eubacterium hallii et rel.                  28
+Clostridium stercorarium et rel.             3
+Clostridium symbiosum et rel.              155
 ```
 
 ## Taxonomy table
@@ -529,18 +535,24 @@ Sutterella wadsworthia et rel.          77       11       44        7       55
 ```r
 tax_table(ps)[1:5, ]
 Taxonomy Table:     [5 taxa by 3 taxonomic ranks]:
-                                  Phylum           Family                    
-Peptococcus niger et rel.         "Firmicutes"     "Clostridium cluster IX"  
-Lachnospira pectinoschiza et rel. "Firmicutes"     "Clostridium cluster XIVa"
-Leminorella                       "Proteobacteria" "Proteobacteria"          
-Streptococcus bovis et rel.       "Firmicutes"     "Bacilli"                 
-Sutterella wadsworthia et rel.    "Proteobacteria" "Proteobacteria"          
-                                  Genus                              
-Peptococcus niger et rel.         "Peptococcus niger et rel."        
-Lachnospira pectinoschiza et rel. "Lachnospira pectinoschiza et rel."
-Leminorella                       "Leminorella"                      
-Streptococcus bovis et rel.       "Streptococcus bovis et rel."      
-Sutterella wadsworthia et rel.    "Sutterella wadsworthia et rel."   
+                                      Phylum          
+Phascolarctobacterium faecium et rel. "Firmicutes"    
+Actinomycetaceae                      "Actinobacteria"
+Eubacterium hallii et rel.            "Firmicutes"    
+Clostridium stercorarium et rel.      "Firmicutes"    
+Clostridium symbiosum et rel.         "Firmicutes"    
+                                      Family                    
+Phascolarctobacterium faecium et rel. "Clostridium cluster IX"  
+Actinomycetaceae                      "Actinobacteria"          
+Eubacterium hallii et rel.            "Clostridium cluster XIVa"
+Clostridium stercorarium et rel.      "Clostridium cluster III" 
+Clostridium symbiosum et rel.         "Clostridium cluster XIVa"
+                                      Genus                                  
+Phascolarctobacterium faecium et rel. "Phascolarctobacterium faecium et rel."
+Actinomycetaceae                      "Actinomycetaceae"                     
+Eubacterium hallii et rel.            "Eubacterium hallii et rel."           
+Clostridium stercorarium et rel.      "Clostridium stercorarium et rel."     
+Clostridium symbiosum et rel.         "Clostridium symbiosum et rel."        
 ```
 
 ## Phylogenetic tree if available
@@ -550,11 +562,16 @@ Sutterella wadsworthia et rel.    "Sutterella wadsworthia et rel."
 
 ```r
 taxa_names(ps)[1:10]
- [1] "Peptococcus niger et rel."         "Lachnospira pectinoschiza et rel."
- [3] "Leminorella"                       "Streptococcus bovis et rel."      
- [5] "Sutterella wadsworthia et rel."    "Oxalobacter formigenes et rel."   
- [7] "Megasphaera elsdenii et rel."      "Escherichia coli et rel."         
- [9] "Bacteroides fragilis et rel."      "Peptostreptococcus micros et rel."
+ [1] "Phascolarctobacterium faecium et rel."
+ [2] "Actinomycetaceae"                     
+ [3] "Eubacterium hallii et rel."           
+ [4] "Clostridium stercorarium et rel."     
+ [5] "Clostridium symbiosum et rel."        
+ [6] "Wissella et rel."                     
+ [7] "Peptostreptococcus anaerobius et rel."
+ [8] "Ruminococcus bromii et rel."          
+ [9] "Prevotella ruminicola et rel."        
+[10] "Yersinia et rel."                     
 ```
 
 ## Summarize Phyloseq Object
@@ -684,16 +701,16 @@ psextra_clr_dietswap %>%
   .[1:4, 1:3]
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
-Sample-1               -0.87049643                          2.357387
-Sample-2               -0.87803411                          2.599687
-Sample-3                0.02051085                          2.353077
-Sample-4                0.17534649                          1.861585
-         Leminorella
-Sample-1  -0.4880348
-Sample-2  -2.0404856
-Sample-3  -3.1149834
-Sample-4  -3.6226887
+         Phascolarctobacterium faecium et rel. Actinomycetaceae
+Sample-1                            -0.2120560        -3.555474
+Sample-2                            -0.6717570        -2.040486
+Sample-3                             0.1808535        -3.114983
+Sample-4                            -0.7078750        -1.943474
+         Eubacterium hallii et rel.
+Sample-1                  0.6828174
+Sample-2                  2.2768872
+Sample-3                  1.2544645
+Sample-4                  1.2914479
 
 # Aggregate taxonomic data
 psextra_id_dietswap <- tax_agg(
@@ -710,16 +727,16 @@ psextra_id_dietswap %>%
   .[1:4, 1:3]
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
-Sample-1                         2                                54
-Sample-2                         4                               141
-Sample-3                        11                               118
-Sample-4                        10                                55
-         Leminorella
-Sample-1           3
-Sample-2           1
-Sample-3           0
-Sample-4           0
+         Phascolarctobacterium faecium et rel. Actinomycetaceae
+Sample-1                                     4                0
+Sample-2                                     5                1
+Sample-3                                    13                0
+Sample-4                                     4                1
+         Eubacterium hallii et rel.
+Sample-1                         10
+Sample-2                        102
+Sample-3                         39
+Sample-4                         31
 
 # Aggregate taxonomic data
 psextra_log10p_dietswap <- tax_agg(
@@ -736,16 +753,16 @@ psextra_log10p_dietswap %>%
   .[1:4, 1:3]
 OTU Table:          [3 taxa and 4 samples]
                      taxa are columns
-         Peptococcus niger et rel. Lachnospira pectinoschiza et rel.
-Sample-1                 0.4771213                          1.740363
-Sample-2                 0.6989700                          2.152288
-Sample-3                 1.0791812                          2.075547
-Sample-4                 1.0413927                          1.748188
-         Leminorella
-Sample-1     0.60206
-Sample-2     0.30103
-Sample-3     0.00000
-Sample-4     0.00000
+         Phascolarctobacterium faecium et rel. Actinomycetaceae
+Sample-1                             0.6989700          0.00000
+Sample-2                             0.7781513          0.30103
+Sample-3                             1.1461280          0.00000
+Sample-4                             0.6989700          0.30103
+         Eubacterium hallii et rel.
+Sample-1                   1.041393
+Sample-2                   2.012837
+Sample-3                   1.602060
+Sample-4                   1.505150
 ```
 
 
@@ -872,18 +889,18 @@ summary(psextra_raw)
       1 psExtra      S4 
 
 otu_table(psextra_raw)[1:3, 1:3] %>% as.data.frame()
-                           Sample-1 Sample-2 Sample-3
-Parabacteroides distasonis      187       28       17
-Eggerthella lenta                 3       10        8
-Coprococcus eutactus             49      355      477
+                    Sample-1 Sample-2 Sample-3
+Eubacterium limosum        1        1        1
+Staphylococcus             0        0        0
+Oceanospirillum            1        2        1
 
 psextra_rel <- phyloseq::transform_sample_counts(psextra_raw, function(x){x / sum(x)})
 
 otu_table(ps_rel)[1:3, 1:3] %>% as.data.frame()
            Sample-1     Sample-2     Sample-3
-OTU016 0.0221066320 0.0013278953 0.0005885815
-OTU038 0.0003546519 0.0004742483 0.0002769795
-OTU055 0.0057926469 0.0168358152 0.0165149050
+OTU016 0.0001182173 4.742483e-05 3.462244e-05
+OTU038 0.0000000000 0.000000e+00 0.000000e+00
+OTU055 0.0001182173 9.484966e-05 3.462244e-05
 
 
 ## Getting clean dataframe from psExtra object

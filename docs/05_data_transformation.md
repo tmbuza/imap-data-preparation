@@ -28,28 +28,28 @@ ps_raw <- psextra_raw
 otu_table(ps_raw)[1:10, 1:10]
 OTU Table:          [10 taxa and 10 samples]
                      taxa are rows
-                           Sample-1 Sample-2 Sample-3 Sample-4 Sample-5
-Parabacteroides distasonis      187       28       17       19       38
-Eggerthella lenta                 3       10        8       18        4
-Coprococcus eutactus             49      355      477      329      211
-Serratia                          1        1        0        3        0
-Clostridium felsineum             0        0        0        0        0
-Clostridium orbiscindens         85      750      510      691      265
-Anaerovorax odorimutans           6       73       30       60       12
-Bifidobacterium                  43       25      183      493       22
-Fusobacteria                      4        5        5        5        5
-Eubacterium limosum               1        1        1        1        1
-                           Sample-6 Sample-7 Sample-8 Sample-9 Sample-10
-Parabacteroides distasonis       12       27       19       10        15
-Eggerthella lenta                 7       13        6        6         8
-Coprococcus eutactus            137      332      267      146        52
-Serratia                          9        0        1       16         2
-Clostridium felsineum             0        0        0        0         0
-Clostridium orbiscindens        229      671      243      447       149
-Anaerovorax odorimutans           9       45       14       14        32
-Bifidobacterium                  24      116       62      151        20
-Fusobacteria                      8        5        5        4         5
-Eubacterium limosum               1        1        1        1         1
+                       Sample-1 Sample-2 Sample-3 Sample-4 Sample-5 Sample-6
+Eubacterium limosum           1        1        1        1        1        1
+Staphylococcus                0        0        0        0        0        0
+Oceanospirillum               1        2        1        2        1        1
+Ruminococcus obeum           89      901      620      476      457      375
+Burkholderia                  1        1        2        0        2        1
+Clostridium sphenoides       41      127      133       63       94       90
+Fusobacteria                  4        5        5        5        5        8
+Bifidobacterium              43       25      183      493       22       24
+Methylobacterium              0        0        0        0        0        0
+Clostridium ramosum           2        2        2        2        2        2
+                       Sample-7 Sample-8 Sample-9 Sample-10
+Eubacterium limosum           1        1        1         1
+Staphylococcus                0        0        0         0
+Oceanospirillum               1        1        1         2
+Ruminococcus obeum          661      444      339       599
+Burkholderia                  1        1        0         1
+Clostridium sphenoides      153       92       55        84
+Fusobacteria                  5        5        4         5
+Bifidobacterium             116       62      151        20
+Methylobacterium              0        0        0         0
+Clostridium ramosum           3        2        2         2
 ```
 
 ##  No Transformation
@@ -68,12 +68,12 @@ cat("\n\n")
 otu_table(ps_identity)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1 Sample-2 Sample-3
-Parabacteroides distasonis      187       28       17
-Eggerthella lenta                 3       10        8
-Coprococcus eutactus             49      355      477
-Serratia                          1        1        0
-Clostridium felsineum             0        0        0
+                    Sample-1 Sample-2 Sample-3
+Eubacterium limosum        1        1        1
+Staphylococcus             0        0        0
+Oceanospirillum            1        2        1
+Ruminococcus obeum        89      901      620
+Burkholderia               1        1        2
 ```
 
 ## Relative abundance
@@ -89,12 +89,12 @@ tax_table()   Taxonomy Table:    [ 130 taxa by 3 taxonomic ranks ]
 otu_table(ps_rel)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1     Sample-2     Sample-3
-Parabacteroides distasonis 0.0221066320 1.327895e-03 0.0005885815
-Eggerthella lenta          0.0003546519 4.742483e-04 0.0002769795
-Coprococcus eutactus       0.0057926469 1.683582e-02 0.0165149050
-Serratia                   0.0001182173 4.742483e-05 0.0000000000
-Clostridium felsineum      0.0000000000 0.000000e+00 0.0000000000
+                        Sample-1     Sample-2     Sample-3
+Eubacterium limosum 0.0001182173 4.742483e-05 3.462244e-05
+Staphylococcus      0.0000000000 0.000000e+00 0.000000e+00
+Oceanospirillum     0.0001182173 9.484966e-05 3.462244e-05
+Ruminococcus obeum  0.0105213382 4.272977e-02 2.146591e-02
+Burkholderia        0.0001182173 4.742483e-05 6.924488e-05
 ```
 
 ## Arc sine (asin) transformation
@@ -115,12 +115,12 @@ ps_asin <- as.matrix(ps_asin)
 ps_asin[1:5, 1:4]
 OTU Table:          [5 taxa and 4 samples]
                      taxa are rows
-                           Sample-1 Sample-2 Sample-3 Sample-4
-Parabacteroides distasonis 0.170268 0.041541 0.027652 0.043177
-Eggerthella lenta          0.021464 0.024821 0.018968 0.042025
-Coprococcus eutactus       0.086847 0.148417 0.146985 0.180595
-Serratia                   0.012391 0.007848 0.000000 0.017152
-Clostridium felsineum      0.000000 0.000000 0.000000 0.000000
+                    Sample-1 Sample-2 Sample-3 Sample-4
+Eubacterium limosum 0.012391 0.007848 0.006706 0.009903
+Staphylococcus      0.000000 0.000000 0.000000 0.000000
+Oceanospirillum     0.012391 0.011099 0.006706 0.014005
+Ruminococcus obeum  0.117166 0.237814 0.167759 0.217764
+Burkholderia        0.012391 0.007848 0.009484 0.000000
 ```
 
 
@@ -139,12 +139,12 @@ cat("\n\n")
 otu_table(ps_compositional)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1     Sample-2     Sample-3
-Parabacteroides distasonis 0.0221066320 1.327895e-03 0.0005885815
-Eggerthella lenta          0.0003546519 4.742483e-04 0.0002769795
-Coprococcus eutactus       0.0057926469 1.683582e-02 0.0165149050
-Serratia                   0.0001182173 4.742483e-05 0.0000000000
-Clostridium felsineum      0.0000000000 0.000000e+00 0.0000000000
+                        Sample-1     Sample-2     Sample-3
+Eubacterium limosum 0.0001182173 4.742483e-05 3.462244e-05
+Staphylococcus      0.0000000000 0.000000e+00 0.000000e+00
+Oceanospirillum     0.0001182173 9.484966e-05 3.462244e-05
+Ruminococcus obeum  0.0105213382 4.272977e-02 2.146591e-02
+Burkholderia        0.0001182173 4.742483e-05 6.924488e-05
 ```
 
 ## Z-transform for OTUs
@@ -161,12 +161,12 @@ cat("\n\n")
 otu_table(ps_z_otu)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                               Sample-1   Sample-2   Sample-3
-Parabacteroides distasonis  0.994190116 -0.7348082 -1.1759727
-Eggerthella lenta          -0.821628886  2.3094335  1.6883264
-Coprococcus eutactus       -0.006970883  2.0022117  2.3038387
-Serratia                    0.033901004  0.0339010 -0.6285507
-Clostridium felsineum       0.000000000  0.0000000  0.0000000
+                      Sample-1   Sample-2   Sample-3
+Eubacterium limosum -0.2855358 -0.2855358 -0.2855358
+Staphylococcus      -0.2685840 -0.2685840 -0.2685840
+Oceanospirillum     -0.5570347  0.2530445 -0.5570347
+Ruminococcus obeum  -0.7310885  2.1112033  1.6508691
+Burkholderia         0.3632341  0.3632341  1.1488042
 ```
 
 ## Z-transform for Samples
@@ -183,12 +183,12 @@ cat("\n\n")
 otu_table(ps_z_sample)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1   Sample-2   Sample-3
-Parabacteroides distasonis  1.6403370  0.3587491  0.1216220
-Eggerthella lenta          -0.4126041 -0.0948094 -0.1906353
-Coprococcus eutactus        0.9341423  1.5320092  1.5988932
-Serratia                   -0.7821978 -0.8924188 -1.1804675
-Clostridium felsineum      -1.1517915 -1.2167251 -1.1804675
+                      Sample-1   Sample-2   Sample-3
+Eubacterium limosum -0.7821978 -0.8924188 -0.8682102
+Staphylococcus      -1.1517915 -1.2167251 -1.1804675
+Oceanospirillum     -0.7821978 -0.7027117 -0.8682102
+Ruminococcus obeum   1.2475566  1.9669852  1.7167961
+Burkholderia        -0.7821978 -0.8924188 -0.6855514
 ```
 
 ## Log10 Transform
@@ -205,12 +205,12 @@ cat("\n\n")
 otu_table(ps_log10)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1 Sample-2  Sample-3
-Parabacteroides distasonis 2.274158 1.462398 1.2552725
-Eggerthella lenta          0.602060 1.041393 0.9542425
-Coprococcus eutactus       1.698970 2.551450 2.6794279
-Serratia                   0.301030 0.301030 0.0000000
-Clostridium felsineum      0.000000 0.000000 0.0000000
+                    Sample-1  Sample-2  Sample-3
+Eubacterium limosum 0.301030 0.3010300 0.3010300
+Staphylococcus      0.000000 0.0000000 0.0000000
+Oceanospirillum     0.301030 0.4771213 0.3010300
+Ruminococcus obeum  1.954243 2.9552065 2.7930916
+Burkholderia        0.301030 0.3010300 0.4771213
 ```
 
 ## Log10p Transform
@@ -227,12 +227,12 @@ cat("\n\n")
 otu_table(ps_log10p)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1 Sample-2  Sample-3
-Parabacteroides distasonis 2.274158 1.462398 1.2552725
-Eggerthella lenta          0.602060 1.041393 0.9542425
-Coprococcus eutactus       1.698970 2.551450 2.6794279
-Serratia                   0.301030 0.301030 0.0000000
-Clostridium felsineum      0.000000 0.000000 0.0000000
+                    Sample-1  Sample-2  Sample-3
+Eubacterium limosum 0.301030 0.3010300 0.3010300
+Staphylococcus      0.000000 0.0000000 0.0000000
+Oceanospirillum     0.301030 0.4771213 0.3010300
+Ruminococcus obeum  1.954243 2.9552065 2.7930916
+Burkholderia        0.301030 0.3010300 0.4771213
 ```
 
 ## CLR Transform
@@ -250,12 +250,12 @@ cat("\n\n")
 otu_table(ps_clr)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                             Sample-1    Sample-2   Sample-3
-Parabacteroides distasonis  3.5975863  0.99349896  0.4403647
-Eggerthella lenta          -0.4880348 -0.01322079 -0.2817700
-Coprococcus eutactus        2.2604993  3.52148760  3.7467280
-Serratia                   -1.4976474 -2.04048558 -3.1149834
-Clostridium felsineum      -3.5554744 -3.35944895 -3.1149834
+                     Sample-1  Sample-2  Sample-3
+Eubacterium limosum -1.497647 -2.040486 -2.016371
+Staphylococcus      -3.555474 -3.359449 -3.114983
+Oceanospirillum     -1.497647 -1.490870 -2.016371
+Ruminococcus obeum   2.855975  4.452252  4.008689
+Burkholderia        -1.497647 -2.040486 -1.505545
 ```
 
 
@@ -273,12 +273,12 @@ cat("\n\n")
 otu_table(ps_shift)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1 Sample-2 Sample-3
-Parabacteroides distasonis      188       29       18
-Eggerthella lenta                 4       11        9
-Coprococcus eutactus             50      356      478
-Serratia                          2        2        1
-Clostridium felsineum             1        1        1
+                    Sample-1 Sample-2 Sample-3
+Eubacterium limosum        2        2        2
+Staphylococcus             1        1        1
+Oceanospirillum            2        3        2
+Ruminococcus obeum        90      902      621
+Burkholderia               2        2        3
 ```
 
 ## Data Scaling
@@ -295,12 +295,12 @@ cat("\n\n")
 otu_table(ps_scale)[1:5, 1:3]
 OTU Table:          [5 taxa and 3 samples]
                      taxa are rows
-                           Sample-1 Sample-2 Sample-3
-Parabacteroides distasonis      187       28       17
-Eggerthella lenta                 3       10        8
-Coprococcus eutactus             49      355      477
-Serratia                          1        1        0
-Clostridium felsineum             0        0        0
+                    Sample-1 Sample-2 Sample-3
+Eubacterium limosum        1        1        1
+Staphylococcus             0        0        0
+Oceanospirillum            1        2        1
+Ruminococcus obeum        89      901      620
+Burkholderia               1        1        2
 ```
 
 ## Save transformed objects

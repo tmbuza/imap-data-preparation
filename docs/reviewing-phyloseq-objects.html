@@ -75,10 +75,10 @@
 <li><a class="" href="utilizing-transformed-data.html"><span class="header-section-number">11</span> What’s Next: Utilizing Transformed Data</a></li>
 <li class="book-part">DIMENSIONALITY REDUCTION</li>
 <li><a class="" href="dimensionality-reduction-techniques.html"><span class="header-section-number">12</span> Dimensionality Reduction Techniques</a></li>
+<li><a class="" href="taxa-prevalence-and-detection.html"><span class="header-section-number">13</span> Taxa Prevalence and Detection</a></li>
 <li class="book-part">APPENDIX</li>
 <li><a class="" href="imap-github-repos.html"><span class="header-section-number">A</span> IMAP GitHub Repos</a></li>
-<li><a class="" href="data-preparation-rulegraph.html"><span class="header-section-number">B</span> Data Preparation Rulegraph</a></li>
-<li><a class="" href="session-information.html"><span class="header-section-number">C</span> Session Information</a></li>
+<li><a class="" href="session-information.html"><span class="header-section-number">B</span> Session Information</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -178,12 +178,18 @@
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="reviewing-phyloseq-objects.html#cb37-1" tabindex="-1"></a><span class="fu">otu_table</span>(ps)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
 <span id="cb37-2"><a href="reviewing-phyloseq-objects.html#cb37-2" tabindex="-1"></a>OTU Table<span class="sc">:</span>          [<span class="dv">5</span> taxa and <span class="dv">5</span> samples]</span>
 <span id="cb37-3"><a href="reviewing-phyloseq-objects.html#cb37-3" tabindex="-1"></a>                     taxa are rows</span>
-<span id="cb37-4"><a href="reviewing-phyloseq-objects.html#cb37-4" tabindex="-1"></a>                                  Sample<span class="dv">-1</span> Sample<span class="dv">-2</span> Sample<span class="dv">-3</span> Sample<span class="dv">-4</span> Sample<span class="dv">-5</span></span>
-<span id="cb37-5"><a href="reviewing-phyloseq-objects.html#cb37-5" tabindex="-1"></a>Peptococcus niger et rel.                <span class="dv">2</span>        <span class="dv">4</span>       <span class="dv">11</span>       <span class="dv">10</span>        <span class="dv">2</span></span>
-<span id="cb37-6"><a href="reviewing-phyloseq-objects.html#cb37-6" tabindex="-1"></a>Lachnospira pectinoschiza et rel.       <span class="dv">54</span>      <span class="dv">141</span>      <span class="dv">118</span>       <span class="dv">55</span>       <span class="dv">67</span></span>
-<span id="cb37-7"><a href="reviewing-phyloseq-objects.html#cb37-7" tabindex="-1"></a>Leminorella                              <span class="dv">3</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">0</span>        <span class="dv">0</span></span>
-<span id="cb37-8"><a href="reviewing-phyloseq-objects.html#cb37-8" tabindex="-1"></a>Streptococcus bovis et rel.            <span class="dv">112</span>       <span class="dv">41</span>       <span class="dv">95</span>       <span class="dv">27</span>      <span class="dv">110</span></span>
-<span id="cb37-9"><a href="reviewing-phyloseq-objects.html#cb37-9" tabindex="-1"></a>Sutterella wadsworthia et rel.          <span class="dv">77</span>       <span class="dv">11</span>       <span class="dv">44</span>        <span class="dv">7</span>       <span class="dv">55</span></span></code></pre></div>
+<span id="cb37-4"><a href="reviewing-phyloseq-objects.html#cb37-4" tabindex="-1"></a>                                      Sample<span class="dv">-1</span> Sample<span class="dv">-2</span> Sample<span class="dv">-3</span> Sample<span class="dv">-4</span></span>
+<span id="cb37-5"><a href="reviewing-phyloseq-objects.html#cb37-5" tabindex="-1"></a>Phascolarctobacterium faecium et rel.        <span class="dv">4</span>        <span class="dv">5</span>       <span class="dv">13</span>        <span class="dv">4</span></span>
+<span id="cb37-6"><a href="reviewing-phyloseq-objects.html#cb37-6" tabindex="-1"></a>Actinomycetaceae                             <span class="dv">0</span>        <span class="dv">1</span>        <span class="dv">0</span>        <span class="dv">1</span></span>
+<span id="cb37-7"><a href="reviewing-phyloseq-objects.html#cb37-7" tabindex="-1"></a>Eubacterium hallii et rel.                  <span class="dv">10</span>      <span class="dv">102</span>       <span class="dv">39</span>       <span class="dv">31</span></span>
+<span id="cb37-8"><a href="reviewing-phyloseq-objects.html#cb37-8" tabindex="-1"></a>Clostridium stercorarium et rel.             <span class="dv">6</span>        <span class="dv">3</span>        <span class="dv">9</span>        <span class="dv">8</span></span>
+<span id="cb37-9"><a href="reviewing-phyloseq-objects.html#cb37-9" tabindex="-1"></a>Clostridium symbiosum et rel.              <span class="dv">220</span>      <span class="dv">247</span>      <span class="dv">214</span>      <span class="dv">111</span></span>
+<span id="cb37-10"><a href="reviewing-phyloseq-objects.html#cb37-10" tabindex="-1"></a>                                      Sample<span class="dv">-5</span></span>
+<span id="cb37-11"><a href="reviewing-phyloseq-objects.html#cb37-11" tabindex="-1"></a>Phascolarctobacterium faecium et rel.       <span class="dv">33</span></span>
+<span id="cb37-12"><a href="reviewing-phyloseq-objects.html#cb37-12" tabindex="-1"></a>Actinomycetaceae                             <span class="dv">0</span></span>
+<span id="cb37-13"><a href="reviewing-phyloseq-objects.html#cb37-13" tabindex="-1"></a>Eubacterium hallii et rel.                  <span class="dv">28</span></span>
+<span id="cb37-14"><a href="reviewing-phyloseq-objects.html#cb37-14" tabindex="-1"></a>Clostridium stercorarium et rel.             <span class="dv">3</span></span>
+<span id="cb37-15"><a href="reviewing-phyloseq-objects.html#cb37-15" tabindex="-1"></a>Clostridium symbiosum et rel.              <span class="dv">155</span></span></code></pre></div>
 </div>
 <div id="taxonomy-table" class="section level2" number="6.8">
 <h2>
@@ -191,18 +197,24 @@
 </h2>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="reviewing-phyloseq-objects.html#cb38-1" tabindex="-1"></a><span class="fu">tax_table</span>(ps)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ]</span>
 <span id="cb38-2"><a href="reviewing-phyloseq-objects.html#cb38-2" tabindex="-1"></a>Taxonomy Table<span class="sc">:</span>     [<span class="dv">5</span> taxa by <span class="dv">3</span> taxonomic ranks]<span class="sc">:</span></span>
-<span id="cb38-3"><a href="reviewing-phyloseq-objects.html#cb38-3" tabindex="-1"></a>                                  Phylum           Family                    </span>
-<span id="cb38-4"><a href="reviewing-phyloseq-objects.html#cb38-4" tabindex="-1"></a>Peptococcus niger et rel.         <span class="st">"Firmicutes"</span>     <span class="st">"Clostridium cluster IX"</span>  </span>
-<span id="cb38-5"><a href="reviewing-phyloseq-objects.html#cb38-5" tabindex="-1"></a>Lachnospira pectinoschiza et rel. <span class="st">"Firmicutes"</span>     <span class="st">"Clostridium cluster XIVa"</span></span>
-<span id="cb38-6"><a href="reviewing-phyloseq-objects.html#cb38-6" tabindex="-1"></a>Leminorella                       <span class="st">"Proteobacteria"</span> <span class="st">"Proteobacteria"</span>          </span>
-<span id="cb38-7"><a href="reviewing-phyloseq-objects.html#cb38-7" tabindex="-1"></a>Streptococcus bovis et rel.       <span class="st">"Firmicutes"</span>     <span class="st">"Bacilli"</span>                 </span>
-<span id="cb38-8"><a href="reviewing-phyloseq-objects.html#cb38-8" tabindex="-1"></a>Sutterella wadsworthia et rel.    <span class="st">"Proteobacteria"</span> <span class="st">"Proteobacteria"</span>          </span>
-<span id="cb38-9"><a href="reviewing-phyloseq-objects.html#cb38-9" tabindex="-1"></a>                                  Genus                              </span>
-<span id="cb38-10"><a href="reviewing-phyloseq-objects.html#cb38-10" tabindex="-1"></a>Peptococcus niger et rel.         <span class="st">"Peptococcus niger et rel."</span>        </span>
-<span id="cb38-11"><a href="reviewing-phyloseq-objects.html#cb38-11" tabindex="-1"></a>Lachnospira pectinoschiza et rel. <span class="st">"Lachnospira pectinoschiza et rel."</span></span>
-<span id="cb38-12"><a href="reviewing-phyloseq-objects.html#cb38-12" tabindex="-1"></a>Leminorella                       <span class="st">"Leminorella"</span>                      </span>
-<span id="cb38-13"><a href="reviewing-phyloseq-objects.html#cb38-13" tabindex="-1"></a>Streptococcus bovis et rel.       <span class="st">"Streptococcus bovis et rel."</span>      </span>
-<span id="cb38-14"><a href="reviewing-phyloseq-objects.html#cb38-14" tabindex="-1"></a>Sutterella wadsworthia et rel.    <span class="st">"Sutterella wadsworthia et rel."</span>   </span></code></pre></div>
+<span id="cb38-3"><a href="reviewing-phyloseq-objects.html#cb38-3" tabindex="-1"></a>                                      Phylum          </span>
+<span id="cb38-4"><a href="reviewing-phyloseq-objects.html#cb38-4" tabindex="-1"></a>Phascolarctobacterium faecium et rel. <span class="st">"Firmicutes"</span>    </span>
+<span id="cb38-5"><a href="reviewing-phyloseq-objects.html#cb38-5" tabindex="-1"></a>Actinomycetaceae                      <span class="st">"Actinobacteria"</span></span>
+<span id="cb38-6"><a href="reviewing-phyloseq-objects.html#cb38-6" tabindex="-1"></a>Eubacterium hallii et rel.            <span class="st">"Firmicutes"</span>    </span>
+<span id="cb38-7"><a href="reviewing-phyloseq-objects.html#cb38-7" tabindex="-1"></a>Clostridium stercorarium et rel.      <span class="st">"Firmicutes"</span>    </span>
+<span id="cb38-8"><a href="reviewing-phyloseq-objects.html#cb38-8" tabindex="-1"></a>Clostridium symbiosum et rel.         <span class="st">"Firmicutes"</span>    </span>
+<span id="cb38-9"><a href="reviewing-phyloseq-objects.html#cb38-9" tabindex="-1"></a>                                      Family                    </span>
+<span id="cb38-10"><a href="reviewing-phyloseq-objects.html#cb38-10" tabindex="-1"></a>Phascolarctobacterium faecium et rel. <span class="st">"Clostridium cluster IX"</span>  </span>
+<span id="cb38-11"><a href="reviewing-phyloseq-objects.html#cb38-11" tabindex="-1"></a>Actinomycetaceae                      <span class="st">"Actinobacteria"</span>          </span>
+<span id="cb38-12"><a href="reviewing-phyloseq-objects.html#cb38-12" tabindex="-1"></a>Eubacterium hallii et rel.            <span class="st">"Clostridium cluster XIVa"</span></span>
+<span id="cb38-13"><a href="reviewing-phyloseq-objects.html#cb38-13" tabindex="-1"></a>Clostridium stercorarium et rel.      <span class="st">"Clostridium cluster III"</span> </span>
+<span id="cb38-14"><a href="reviewing-phyloseq-objects.html#cb38-14" tabindex="-1"></a>Clostridium symbiosum et rel.         <span class="st">"Clostridium cluster XIVa"</span></span>
+<span id="cb38-15"><a href="reviewing-phyloseq-objects.html#cb38-15" tabindex="-1"></a>                                      Genus                                  </span>
+<span id="cb38-16"><a href="reviewing-phyloseq-objects.html#cb38-16" tabindex="-1"></a>Phascolarctobacterium faecium et rel. <span class="st">"Phascolarctobacterium faecium et rel."</span></span>
+<span id="cb38-17"><a href="reviewing-phyloseq-objects.html#cb38-17" tabindex="-1"></a>Actinomycetaceae                      <span class="st">"Actinomycetaceae"</span>                     </span>
+<span id="cb38-18"><a href="reviewing-phyloseq-objects.html#cb38-18" tabindex="-1"></a>Eubacterium hallii et rel.            <span class="st">"Eubacterium hallii et rel."</span>           </span>
+<span id="cb38-19"><a href="reviewing-phyloseq-objects.html#cb38-19" tabindex="-1"></a>Clostridium stercorarium et rel.      <span class="st">"Clostridium stercorarium et rel."</span>     </span>
+<span id="cb38-20"><a href="reviewing-phyloseq-objects.html#cb38-20" tabindex="-1"></a>Clostridium symbiosum et rel.         <span class="st">"Clostridium symbiosum et rel."</span>        </span></code></pre></div>
 </div>
 <div id="phylogenetic-tree-if-available" class="section level2" number="6.9">
 <h2>
@@ -214,11 +226,16 @@
 <span class="header-section-number">6.10</span> Taxa names<a class="anchor" aria-label="anchor" href="#taxa-names"><i class="fas fa-link"></i></a>
 </h2>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="reviewing-phyloseq-objects.html#cb39-1" tabindex="-1"></a><span class="fu">taxa_names</span>(ps)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span>
-<span id="cb39-2"><a href="reviewing-phyloseq-objects.html#cb39-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"Peptococcus niger et rel."</span>         <span class="st">"Lachnospira pectinoschiza et rel."</span></span>
-<span id="cb39-3"><a href="reviewing-phyloseq-objects.html#cb39-3" tabindex="-1"></a> [<span class="dv">3</span>] <span class="st">"Leminorella"</span>                       <span class="st">"Streptococcus bovis et rel."</span>      </span>
-<span id="cb39-4"><a href="reviewing-phyloseq-objects.html#cb39-4" tabindex="-1"></a> [<span class="dv">5</span>] <span class="st">"Sutterella wadsworthia et rel."</span>    <span class="st">"Oxalobacter formigenes et rel."</span>   </span>
-<span id="cb39-5"><a href="reviewing-phyloseq-objects.html#cb39-5" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"Megasphaera elsdenii et rel."</span>      <span class="st">"Escherichia coli et rel."</span>         </span>
-<span id="cb39-6"><a href="reviewing-phyloseq-objects.html#cb39-6" tabindex="-1"></a> [<span class="dv">9</span>] <span class="st">"Bacteroides fragilis et rel."</span>      <span class="st">"Peptostreptococcus micros et rel."</span></span></code></pre></div>
+<span id="cb39-2"><a href="reviewing-phyloseq-objects.html#cb39-2" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">"Phascolarctobacterium faecium et rel."</span></span>
+<span id="cb39-3"><a href="reviewing-phyloseq-objects.html#cb39-3" tabindex="-1"></a> [<span class="dv">2</span>] <span class="st">"Actinomycetaceae"</span>                     </span>
+<span id="cb39-4"><a href="reviewing-phyloseq-objects.html#cb39-4" tabindex="-1"></a> [<span class="dv">3</span>] <span class="st">"Eubacterium hallii et rel."</span>           </span>
+<span id="cb39-5"><a href="reviewing-phyloseq-objects.html#cb39-5" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">"Clostridium stercorarium et rel."</span>     </span>
+<span id="cb39-6"><a href="reviewing-phyloseq-objects.html#cb39-6" tabindex="-1"></a> [<span class="dv">5</span>] <span class="st">"Clostridium symbiosum et rel."</span>        </span>
+<span id="cb39-7"><a href="reviewing-phyloseq-objects.html#cb39-7" tabindex="-1"></a> [<span class="dv">6</span>] <span class="st">"Wissella et rel."</span>                     </span>
+<span id="cb39-8"><a href="reviewing-phyloseq-objects.html#cb39-8" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">"Peptostreptococcus anaerobius et rel."</span></span>
+<span id="cb39-9"><a href="reviewing-phyloseq-objects.html#cb39-9" tabindex="-1"></a> [<span class="dv">8</span>] <span class="st">"Ruminococcus bromii et rel."</span>          </span>
+<span id="cb39-10"><a href="reviewing-phyloseq-objects.html#cb39-10" tabindex="-1"></a> [<span class="dv">9</span>] <span class="st">"Prevotella ruminicola et rel."</span>        </span>
+<span id="cb39-11"><a href="reviewing-phyloseq-objects.html#cb39-11" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">"Yersinia et rel."</span>                     </span></code></pre></div>
 </div>
 <div id="summarize-phyloseq-object" class="section level2" number="6.11">
 <h2>
@@ -344,7 +361,7 @@
     <div class="row">
       <div class="col-12 col-md-6 mt-3">
         <p><strong><u><a class="text-light" href="https://microbiome.complexdatainsights.com"><big>IMAP:</big> Integrated Microbiome Analysis Pipelines</a></u></strong>: End-to-End Practical User Guides Using Integrated Approaches</p>
-<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-24</b>.</p>
+<br><p>Authored by Teresia Mrema-Buza, Last updated: <b>2024-04-26</b>.</p>
 <br>
 </div>
       <div class="col-12 col-md-6 mt-3">

@@ -3,7 +3,7 @@ title: "<big>IMAP:</big> Integrated Microbiome Analysis Pipelines"
 permalink: /imap-overview/
 subtitle: "End-to-End Practical User Guides Using Integrated Approaches"
 date:
-- <b>2024-04-24</b>
+- <b>2024-04-26</b>
 author: Teresia Mrema-Buza
 site: bookdown::bookdown_site
 documentclass: book
@@ -50,7 +50,7 @@ description: |
 ![](images/dataprep.png)
 <br>
 
-## Welcome to IMAP chapter 7 {-}
+## Welcome to IMAP chapter 07 {-}
 
 Microbiome research employs high-throughput sequencing to explore microbial communities across diverse environments. This project focuses on preparing and visualizing microbiome data generated from the Mothur and QIIME2 pipelines. The dataset comprises an OTU table, taxonomic assignments, and metadata. This comprehensive guide is tailored for researchers and analysts engaged in microbiome studies, providing essential insights and methodologies for adequate data preparation. Assuming that the bioinformatics analysis phase has been successfully completed and you now possess the output or features tables, including Operational Taxonomic Unit (OTU) tables, taxonomy tables, and a metadata table, from platforms such as Mothur or QIIME2, this guide will lead you through the crucial steps of refining and optimizing your microbiome data.
 

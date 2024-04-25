@@ -164,5 +164,53 @@ Deep learning techniques, such as deep neural networks, can also be applied for 
 These methods provide alternative approaches for reducing the dimensionality of microbiome data and extracting meaningful information from complex microbial community datasets. Depending on the specific research question and characteristics of the data, different methods may be more suitable or informative.
 
 
+# Taxa Prevalence and Detection
 
+- Taxa prevalence and detection analysis quantify how often a taxon is present or detected across the samples under study.
+- High prevalence indicates that the taxon is commonly found across many samples.
+- Low prevalence suggests that the taxon is more sporadic or rare.
+- Analyzing taxa prevalence can provide insights into the distribution of different microbial taxa and their potential ecological roles.
+
+## Understand sample and taxa sizes
+
+```r
+library(phyloseq)
+
+# Min and max sample and taxa sums: These values are useful when setting up some threshholds.
+
+cat("Minimum sample sums:", min(data.frame(sample_sums(ps_raw))), "\n\n")
+Minimum sample sums: 1776 
+cat("Maximum sample sums:", max(data.frame(sample_sums(ps_raw))), "\n\n")
+Maximum sample sums: 28883 
+cat("Minimum taxa sums:", min(data.frame(taxa_sums(ps_raw))), "\n\n")
+Minimum taxa sums: 0 
+cat("Maximum taxa sums:", max(data.frame(taxa_sums(ps_raw))), "\n\n")
+Maximum taxa sums: 873314 
+```
+
+
+## Subsetting Microbiome Data by Taxa Prevalence
+
+
+```r
+library(phyloseq)
+library(microbiome)
+
+# Define a function to subset microbiome data based on taxa prevalence
+subset_by_prevalence <- function(ps_raw, prevalence_threshold) {
+  # Calculate taxa prevalence across samples
+  taxa_prevalence <- prevalence(ps_raw)
+  
+  # Subset taxa based on prevalence threshold
+  taxa_to_keep <- rownames(taxa_prevalence)[taxa_prevalence >= prevalence_threshold]
+  
+  # Subset microbiome data
+  ps_subset <- prune_taxa(taxa_to_keep, ps_raw)
+  
+  return(ps_subset)
+}
+
+# Example usage: Subset microbiome data with a prevalence threshold of 0.1 (10%)
+ps_subset <- subset_by_prevalence(ps_raw, 0.9)
+```
 

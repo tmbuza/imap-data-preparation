@@ -86,6 +86,8 @@ redundancy-analysis-rda
 canonical-correspondence-analysis-cca
 random-forests
 deep-learning
+taxa-prevalence-and-detection
+understand-sample-and-taxa-sizes
+subsetting-microbiome-data-by-taxa-prevalence
 imap-github-repos
-data-preparation-rulegraph
 session-information

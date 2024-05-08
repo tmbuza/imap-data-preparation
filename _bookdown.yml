@@ -22,7 +22,7 @@ rmd_files:
     - 07_dimensionality_reduction.Rmd
     - 99-appendix.Rmd
     - 999-references.Rmd
-# - 9999-footer.Rmd
+
   
 
 
